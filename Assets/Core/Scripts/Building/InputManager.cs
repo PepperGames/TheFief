@@ -16,6 +16,8 @@ public class InputManager : MonoBehaviour
 
     public LayerMask groundMask;
 
+    private bool isMouseDown = false;
+
     public Vector2 CameraMovementVector
     {
         get { return cameraMovementVector; }
@@ -45,14 +47,34 @@ public class InputManager : MonoBehaviour
     {
         cameraMovementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
-
-    private void CheckClickHoldEvent()
+    private void CheckClickDownEvent()
     {
-        if (Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject() == false)
+        if (isMouseDown == true)
+            return;
+
+        if (Input.GetMouseButton(0))
         {
             var position = RaycastGround();
             if (position != null)
             {
+                Debug.Log("OnMouseClick");
+                OnMouseClick?.Invoke(position.Value);
+                isMouseDown = true;
+            }
+        }
+    }
+
+    private void CheckClickHoldEvent()
+    {
+        if (isMouseDown == false)
+            return;
+
+        if (Input.GetMouseButton(0))
+        {
+            var position = RaycastGround();
+            if (position != null)
+            {
+                Debug.Log("OnMouseHold");
                 OnMouseHold?.Invoke(position.Value);
             }
         }
@@ -60,21 +82,37 @@ public class InputManager : MonoBehaviour
 
     private void CheckClickUpEvent()
     {
-        if (Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject() == false)
+        if (Input.GetMouseButton(0) == false && isMouseDown == true)
         {
+            Debug.Log("OnMouseUp");
             OnMouseUp?.Invoke();
+            isMouseDown = false;
+
+            //Debug.Log("OnMouseUp");
+            //OnMouseUp?.Invoke();
         }
     }
 
-    private void CheckClickDownEvent()
-    {
-        if (Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject() == false)
-        {
-            var position = RaycastGround();
-            if (position != null)
-            {
-                OnMouseClick?.Invoke(position.Value);
-            }
-        }
-    }
+
+    //public void OnMouseDown()
+    //{
+    //            Debug.Log("OnMouseClick");
+    //    if (Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject() == false)
+    //    {
+    //        var position = RaycastGround();
+    //        if (position != null)
+    //        {
+    //            Debug.Log("OnMouseClick");
+    //            OnMouseClick?.Invoke(position.Value);
+    //        }
+    //    }
+    //}
+
+    //public void OnMouseUp()
+    //{
+    //    Debug.Log("OnMouseUp");
+    //    OnMouseUpEvent?.Invoke();
+    //}
+
+
 }

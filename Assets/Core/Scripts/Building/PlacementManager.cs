@@ -11,6 +11,7 @@ public class PlacementManager : MonoBehaviour
     private Grid placementGrid;
 
     private Dictionary<Vector3Int, StructureModel> temporaryRoadObject = new Dictionary<Vector3Int, StructureModel>();
+    private Dictionary<Vector3Int, StructureModel> structureDictionary = new Dictionary<Vector3Int, StructureModel>();
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class PlacementManager : MonoBehaviour
 
         List<Vector3Int> neighbours = new List<Vector3Int>();
 
-        foreach(var point in neighbourVerticles)
+        foreach (var point in neighbourVerticles)
         {
             neighbours.Add(new Vector3Int(point.X, point.Y, 0));
         }
@@ -48,6 +49,38 @@ public class PlacementManager : MonoBehaviour
         return CheckIfPositionIsOfType(position, CellType.Empty);
     }
 
+    internal List<Vector3Int> GetPathBetween(Vector3Int startPosition, Vector3Int endPosition)
+    {
+        var resultPath = GridSearch.AStarSearch(placementGrid, new Point(startPosition.x, startPosition.y), new Point(endPosition.x, endPosition.y));
+
+        List<Vector3Int> path = new List<Vector3Int>();
+        foreach (Point point in resultPath)
+        {
+            path.Add(new Vector3Int(point.X, point.Y, 0));
+        }
+        return path;
+    }
+
+    internal void RemoveAllTemporaryStructures()
+    {
+        foreach (var structure in temporaryRoadObject.Values)
+        {
+            var position = Vector3Int.RoundToInt(structure.transform.position);
+            placementGrid[position.x, position.y] = CellType.Empty;
+            Destroy(structure.gameObject);
+        }
+        temporaryRoadObject.Clear();
+    }
+
+    internal void AddTemporaryStructuresToStructureDictionary()
+    {
+        foreach (var structure in temporaryRoadObject)
+        {
+            structureDictionary.Add(structure.Key, structure.Value);
+        }
+        temporaryRoadObject.Clear();
+    }
+
     private bool CheckIfPositionIsOfType(Vector3Int position, CellType type)
     {
         return placementGrid[position.x, position.y] == type;
@@ -60,8 +93,6 @@ public class PlacementManager : MonoBehaviour
         StructureModel structure = CreateANewStructureModel(position, structurePrefab, type);
         temporaryRoadObject.Add(position, structure);
     }
-
-   
 
     private StructureModel CreateANewStructureModel(Vector3Int position, GameObject structurePrefab, CellType type)
     {
@@ -78,7 +109,11 @@ public class PlacementManager : MonoBehaviour
     {
         if (temporaryRoadObject.ContainsKey(position))
         {
-            temporaryRoadObject[position].SwapModel(newModel,rotation);
+            temporaryRoadObject[position].SwapModel(newModel, rotation);
         }
+        else if (structureDictionary.ContainsKey(position))
+        {
+            structureDictionary[position].SwapModel(newModel, rotation);
+        } 
     }
 }

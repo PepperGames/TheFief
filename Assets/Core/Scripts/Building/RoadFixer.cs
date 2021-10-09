@@ -34,8 +34,6 @@ public class RoadFixer : MonoBehaviour
         }
     }
 
-
-
     private void CreateFourWay(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
     {
         placementManager.ModifyStructureModel(temporaryPosition, fourWay, Quaternion.identity);
