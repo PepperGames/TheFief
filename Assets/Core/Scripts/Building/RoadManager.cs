@@ -23,9 +23,9 @@ public class RoadManager : MonoBehaviour
 
     public void PlaceRoad(Vector3Int position)
     {
-        if (placementManager.ChecIfPositionInBound(position) == false)
+        if (placementManager.CheckIfPositionInBound(position) == false)
             return;
-        if (placementManager.ChecIfPositionIsFree(position) == false)
+        if (placementManager.CheckIfPositionIsFree(position) == false)
             return;
 
         if (placementMode == false)
@@ -57,7 +57,7 @@ public class RoadManager : MonoBehaviour
 
             foreach (var temporaryPosition in temporaryPlacementPositions)
             {
-                if (placementManager.ChecIfPositionIsFree(temporaryPosition) == false)
+                if (placementManager.CheckIfPositionIsFree(temporaryPosition) == false)
                     continue;
                 placementManager.PlaceTemporaryStructure(temporaryPosition, roadFixer.deadEnd, CellType.Road);
             }
@@ -70,7 +70,7 @@ public class RoadManager : MonoBehaviour
         foreach (var temporaryPosition in temporaryPlacementPositions)
         {
             roadFixer.FixRoadAtPosition(placementManager, temporaryPosition);
-            var neighbours = placementManager.GetNeighbourTypesFor(temporaryPosition, CellType.Road);
+            var neighbours = placementManager.GetNeighboursOfTypeFor(temporaryPosition, CellType.Road);
 
             foreach (var roadPosition in neighbours)
             {
@@ -97,6 +97,6 @@ public class RoadManager : MonoBehaviour
         temporaryPlacementPositions.Clear();
         startPosition = Vector3Int.zero;
 
-        Debug.Log("FinishPlacingRoad");
+        //Debug.Log("FinishPlacingRoad");
     }
 }

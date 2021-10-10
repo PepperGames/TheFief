@@ -22,7 +22,8 @@ public class PlacementManager : MonoBehaviour
     {
         return placementGrid.GetAllAdjacentCellTypes(temporaryPosition.x, temporaryPosition.y);
     }
-    internal List<Vector3Int> GetNeighbourTypesFor(Vector3Int position, CellType type)
+
+    internal List<Vector3Int> GetNeighboursOfTypeFor(Vector3Int position, CellType type)
     {
         var neighbourVerticles = placementGrid.GetAdjacentCellsOfType(position.x, position.y, type);
 
@@ -35,7 +36,27 @@ public class PlacementManager : MonoBehaviour
         return neighbours;
     }
 
-    internal bool ChecIfPositionInBound(Vector3Int position)
+    internal void PlaceObjectOnTheMap(Vector3Int position, GameObject structurePrefab, CellType type, int width = 1, int height = 1)
+    {
+        //placementGrid[position.x, position.y] = type;
+        //StructureModel structure = CreateANewStructureModel(position, structurePrefab, type);
+        //structureDictionary.Add(position, structure);
+
+        StructureModel structure = CreateANewStructureModel(position, structurePrefab, type);
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                var newPosition = position + new Vector3Int(x, y, 0);
+                placementGrid[newPosition.x, newPosition.y] = type;
+                structureDictionary.Add(newPosition, structure);
+                DestroyNatureAt(newPosition);
+            }
+        }
+    }
+
+    internal bool CheckIfPositionInBound(Vector3Int position)
     {
         if (position.x >= 0 && position.x <= width && position.y >= 0 && position.y < height)
         {
@@ -44,7 +65,7 @@ public class PlacementManager : MonoBehaviour
         return false;
     }
 
-    internal bool ChecIfPositionIsFree(Vector3Int position)
+    internal bool CheckIfPositionIsFree(Vector3Int position)
     {
         return CheckIfPositionIsOfType(position, CellType.Empty);
     }
@@ -77,8 +98,27 @@ public class PlacementManager : MonoBehaviour
         foreach (var structure in temporaryRoadObject)
         {
             structureDictionary.Add(structure.Key, structure.Value);
+            DestroyNatureAt(structure.Key);
         }
         temporaryRoadObject.Clear();
+    }
+
+    private void DestroyNatureAt(Vector3Int position)
+    {
+        //Vector2 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero, Mathf.Infinity, groundMask);
+        //if (hit.collider != null)
+        //{
+        //    Vector3Int positionInt = Vector3Int.RoundToInt(hit.point);
+        //    return positionInt;
+        //}
+        //return null;
+
+        RaycastHit2D[] hits = Physics2D.BoxCastAll((Vector2Int)position, new Vector3(0.5f, 0.5f),0, Vector2.zero, Mathf.Infinity, 1 << LayerMask.NameToLayer("Nature"));
+        foreach (var item in hits)
+        {
+            Destroy(item.collider.gameObject);
+        }
     }
 
     private bool CheckIfPositionIsOfType(Vector3Int position, CellType type)
@@ -89,7 +129,6 @@ public class PlacementManager : MonoBehaviour
     internal void PlaceTemporaryStructure(Vector3Int position, GameObject structurePrefab, CellType type)
     {
         placementGrid[position.x, position.y] = type;
-
         StructureModel structure = CreateANewStructureModel(position, structurePrefab, type);
         temporaryRoadObject.Add(position, structure);
     }

@@ -57,7 +57,7 @@ public class InputManager : MonoBehaviour
             var position = RaycastGround();
             if (position != null)
             {
-                Debug.Log("OnMouseClick");
+                //Debug.Log("OnMouseClick");
                 OnMouseClick?.Invoke(position.Value);
                 isMouseDown = true;
             }
@@ -74,7 +74,7 @@ public class InputManager : MonoBehaviour
             var position = RaycastGround();
             if (position != null)
             {
-                Debug.Log("OnMouseHold");
+                //Debug.Log("OnMouseHold");
                 OnMouseHold?.Invoke(position.Value);
             }
         }
@@ -84,7 +84,7 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetMouseButton(0) == false && isMouseDown == true)
         {
-            Debug.Log("OnMouseUp");
+            //Debug.Log("OnMouseUp");
             OnMouseUp?.Invoke();
             isMouseDown = false;
 
