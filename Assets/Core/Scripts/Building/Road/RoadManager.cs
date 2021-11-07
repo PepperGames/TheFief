@@ -8,10 +8,10 @@ public class RoadManager : MonoBehaviour
 {
     public PlacementManager placementManager;
 
-    public List<Vector3Int> temporaryPlacementPositions = new List<Vector3Int>();
-    public List<Vector3Int> roadPositionsToRecheck = new List<Vector3Int>();
+    public List<Vector2Int> temporaryPlacementPositions = new List<Vector2Int>();
+    public List<Vector2Int> roadPositionsToRecheck = new List<Vector2Int>();
 
-    private Vector3Int startPosition;
+    private Vector2Int startPosition;
     private bool placementMode = false;
 
     public RoadFixer roadFixer;
@@ -21,7 +21,7 @@ public class RoadManager : MonoBehaviour
         roadFixer = GetComponent<RoadFixer>();
     }
 
-    public void PlaceRoad(Vector3Int position)
+    public void PlaceRoad(Vector2Int position)
     {
         if (placementManager.CheckIfPositionInBound(position) == false)
             return;
@@ -95,7 +95,7 @@ public class RoadManager : MonoBehaviour
             //AudioPlayer.instance.PlayPlacementSound();
         }
         temporaryPlacementPositions.Clear();
-        startPosition = Vector3Int.zero;
+        startPosition = Vector2Int.zero;
 
         //Debug.Log("FinishPlacingRoad");
     }

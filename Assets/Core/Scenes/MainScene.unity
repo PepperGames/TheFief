@@ -603,22 +603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ce81a5c8d2fd24e97064a01df0344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  housesPrefabe:
-  - prefab: {fileID: 3436385156467146161, guid: 20c0e53e2aa09bb4e9826272e322d01c, type: 3}
-    weight: 1
-  - prefab: {fileID: 3436385156467146161, guid: 20c0e53e2aa09bb4e9826272e322d01c, type: 3}
-    weight: 1
-  specialPrefabs:
-  - prefab: {fileID: 3436385156467146161, guid: 20c0e53e2aa09bb4e9826272e322d01c, type: 3}
-    weight: 1
-  - prefab: {fileID: 1572348828872168456, guid: cb00868a172445d499e96e2bff324b4e, type: 3}
-    weight: 1
-  bigStructuresPrefabs:
-  - prefab: {fileID: 7479036962794329751, guid: 3b006c80b909d5b459613ada8b8c0988, type: 3}
-    weight: 0.31
-  - prefab: {fileID: 3769723270787691674, guid: f79be43fa13013b43b5fdafd31f838b0, type: 3}
-    weight: 0.65
   placementManager: {fileID: 2074002798}
+  housesPrefab: {fileID: 3081426743770827007, guid: 20c0e53e2aa09bb4e9826272e322d01c, type: 3}
+  specialPrefab: {fileID: 4037390954215229483, guid: f79be43fa13013b43b5fdafd31f838b0, type: 3}
+  bigStructuresPrefab: {fileID: 1904921133376426087, guid: 3b006c80b909d5b459613ada8b8c0988, type: 3}
 --- !u!1 &555022157
 GameObject:
   m_ObjectHideFlags: 0
