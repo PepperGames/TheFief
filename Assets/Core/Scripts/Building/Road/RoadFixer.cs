@@ -8,7 +8,7 @@ public class RoadFixer : MonoBehaviour
 {
     public GameObject deadEnd, roadStraight, corner, threeWay, fourWay;
 
-    public void FixRoadAtPosition(PlacementManager placementManager, Vector3Int temporaryPosition)
+    public void FixRoadAtPosition(PlacementManager placementManager, Vector2Int temporaryPosition)
     {
         var result = placementManager.GetNeighbourTypesFor(temporaryPosition);
         int roadCount = 0;
@@ -34,12 +34,12 @@ public class RoadFixer : MonoBehaviour
         }
     }
 
-    private void CreateFourWay(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
+    private void CreateFourWay(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
     {
         placementManager.ModifyStructureModel(temporaryPosition, fourWay, Quaternion.identity);
     }
 
-    private void CreateThreeWay(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
+    private void CreateThreeWay(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
     {
         if (result[1] == CellType.Road && result[2] == CellType.Road && result[3] == CellType.Road)
         {
@@ -59,7 +59,7 @@ public class RoadFixer : MonoBehaviour
         }
     }
 
-    private void CreateCorner(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
+    private void CreateCorner(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
     {
         if (result[1] == CellType.Road && result[2] == CellType.Road)
         {
@@ -79,7 +79,7 @@ public class RoadFixer : MonoBehaviour
         }
     }
 
-    private bool CreateStraightRoad(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
+    private bool CreateStraightRoad(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
     {
         if (result[0] == CellType.Road && result[2] == CellType.Road)
         {
@@ -94,7 +94,7 @@ public class RoadFixer : MonoBehaviour
         return false;
     }
 
-    private void CreateDeadEnd(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
+    private void CreateDeadEnd(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
     {
         if (result[1] == CellType.Road)
         {

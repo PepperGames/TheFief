@@ -5,4 +5,5 @@ public enum CellType
     Structure,
     SpecialStructure,
     None
+
 }
