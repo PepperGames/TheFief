@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Structure : MonoBehaviour
+public class Structure : MonoBehaviour, IDemolished
 {
     public GameObject prefab;
     [SerializeField] private bool drawGizmo = true;
@@ -16,6 +16,11 @@ public class Structure : MonoBehaviour
         }
     }
 
+    public void Demolish()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void OnDrawGizmos()
     {
         if (drawGizmo)
@@ -27,4 +32,5 @@ public class Structure : MonoBehaviour
             }
         }
     }
+
 }

@@ -4,10 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class StructureManager : MonoBehaviour
 {
-    public PlacementManager placementManager;
+    [Inject] [SerializeField] private PlacementManager placementManager;
 
     public Structure housesPrefab, specialPrefab, bigStructuresPrefab;
 

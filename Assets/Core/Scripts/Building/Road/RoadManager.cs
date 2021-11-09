@@ -3,10 +3,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class RoadManager : MonoBehaviour
 {
-    public PlacementManager placementManager;
+    [Inject] [SerializeField] private PlacementManager placementManager;
+    [Inject] [SerializeField] private RoadFixer roadFixer;
 
     public List<Vector2Int> temporaryPlacementPositions = new List<Vector2Int>();
     public List<Vector2Int> roadPositionsToRecheck = new List<Vector2Int>();
@@ -14,7 +16,6 @@ public class RoadManager : MonoBehaviour
     private Vector2Int startPosition;
     private bool placementMode = false;
 
-    public RoadFixer roadFixer;
 
     private void Start()
     {

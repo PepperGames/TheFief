@@ -3,14 +3,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class GameManager : MonoBehaviour
 {
     public CameraMovement cameraMovement;
-    public RoadManager roadManager;
-    public InputManager inputManager;
 
-    public StructureManager structureManager;
+    [Inject] [SerializeField] private RoadManager roadManager;
+    [Inject] [SerializeField] private InputManager inputManager;
+
+    [Inject] [SerializeField] private StructureManager structureManager;
 
     public TestUIController uiController;
     private void Start()
@@ -19,7 +21,6 @@ public class GameManager : MonoBehaviour
         uiController.OnHousePlacement += HousePlacementHandler;
         uiController.OnSpecialPlacement += SpecialPlacementHandler;
         uiController.OnBigStructurePlacement += BigStructurePlacementHandler;
-
     }
 
     private void BigStructurePlacementHandler()
@@ -57,6 +58,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        cameraMovement.MoveCamera(new Vector3(inputManager.CameraMovementVector.x, inputManager.CameraMovementVector.y, 0 ));
+        cameraMovement.MoveCamera(new Vector3(inputManager.CameraMovementVector.x, inputManager.CameraMovementVector.y, 0));
     }
 }
