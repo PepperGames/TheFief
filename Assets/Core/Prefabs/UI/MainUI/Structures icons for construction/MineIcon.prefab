@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7368430050881027723}
   - component: {fileID: 3026606056004974380}
   - component: {fileID: 8516885892900118070}
-  - component: {fileID: 2043745578138951108}
+  - component: {fileID: 5613269221601509488}
   m_Layer: 5
-  m_Name: FarmIcon
+  m_Name: MineIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 3026606056004974380}
-  structure: {fileID: 5834884874822571305, guid: f860955e7fb39354fbb984fad4c89f79, type: 3}
---- !u!114 &2043745578138951108
+  structure: {fileID: 8890420643490677571, guid: 26e6af987b331b64b99939cccdac6282, type: 3}
+--- !u!114 &5613269221601509488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

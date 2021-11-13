@@ -10,23 +10,35 @@ public class StructureManager : MonoBehaviour
 {
     [Inject] [SerializeField] private PlacementManager placementManager;
 
-    public Structure housesPrefab, specialPrefab, bigStructuresPrefab;
+    [SerializeField] private Structure selectedStructure;
+    //public Structure housesPrefab, specialPrefab, bigStructuresPrefab;
 
-    public void PlaceHouse(Vector2Int position/*, Structure structure*/)
+    public void SetSelectedStructure(Structure newSelectedStructure)
     {
-        if (CheckBigStructure(position, housesPrefab))
+        if (newSelectedStructure != null)
         {
-            placementManager.PlaceObjectOnTheMap(position, housesPrefab, CellType.Structure);
+            selectedStructure = newSelectedStructure;
         }
     }
 
-    internal void PlaceBigStructure(Vector2Int position/*, Structure structure*/)
+    public void PlaceHouse(Vector2Int position)
     {
-        if (CheckBigStructure(position, bigStructuresPrefab))
+        if (selectedStructure != null)
         {
-            placementManager.PlaceObjectOnTheMap(position, bigStructuresPrefab, CellType.Structure);
+            if (CheckBigStructure(position, selectedStructure))
+            {
+                placementManager.PlaceObjectOnTheMap(position, selectedStructure, CellType.Structure);
+            }
         }
     }
+
+    //internal void PlaceBigStructure(Vector2Int position, Structure structure)
+    //{
+    //    if (CheckBigStructure(position, bigStructuresPrefab))
+    //    {
+    //        placementManager.PlaceObjectOnTheMap(position, bigStructuresPrefab, CellType.Structure);
+    //    }
+    //}
 
     private bool CheckBigStructure(Vector2Int position, Structure structure)
     {
@@ -49,28 +61,28 @@ public class StructureManager : MonoBehaviour
         return nearRoad;
     }
 
-    public void PlaceSpecial(Vector2Int position/*, Structure structure*/)
-    {
-        if (CheckBigStructure(position, specialPrefab))
-        {
-            placementManager.PlaceObjectOnTheMap(position, specialPrefab, CellType.Structure);
-        }
+    //public void PlaceSpecial(Vector2Int position/*, Structure structure*/)
+    //{
+    //    if (CheckBigStructure(position, specialPrefab))
+    //    {
+    //        placementManager.PlaceObjectOnTheMap(position, specialPrefab, CellType.Structure);
+    //    }
 
-    }
+    //}
 
-    private bool CheckPositionBeforePlacement(Vector2Int position)
-    {
-        if (DefaultCheck(position) == false)
-        {
-            return false;
-        }
-        if (RoadCheck(position) == false)
-        {
-            return false;
-        }
-        return true;
+    //private bool CheckPositionBeforePlacement(Vector2Int position)
+    //{
+    //    if (DefaultCheck(position) == false)
+    //    {
+    //        return false;
+    //    }
+    //    if (RoadCheck(position) == false)
+    //    {
+    //        return false;
+    //    }
+    //    return true;
 
-    }
+    //}
 
     private bool RoadCheck(Vector2Int position)
     {

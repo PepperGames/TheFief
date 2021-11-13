@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7368430050881027723}
   - component: {fileID: 3026606056004974380}
   - component: {fileID: 8516885892900118070}
-  - component: {fileID: 2043745578138951108}
+  - component: {fileID: -7015555897888560931}
   m_Layer: 5
-  m_Name: FarmIcon
+  m_Name: SawmillIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 3026606056004974380}
-  structure: {fileID: 5834884874822571305, guid: f860955e7fb39354fbb984fad4c89f79, type: 3}
---- !u!114 &2043745578138951108
+  structure: {fileID: 7370552179297963114, guid: ff3803f0f4433544ba1f557f2525fcd4, type: 3}
+--- !u!114 &-7015555897888560931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
