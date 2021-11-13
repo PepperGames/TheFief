@@ -109,4 +109,41 @@ public struct Resources
         return new Resources(a.Money - b.Money, a.Food - b.Food, a.Wood - b.Wood, a.Stone - b.Stone, a.Metal - b.Metal);
     }
 
+    public static bool operator >(Resources a, Resources b)
+    {
+        a -= b;
+        if (a.Money < 0)
+            return false;
+        if (a.Food < 0)
+            return false;
+        if (a.Wood < 0)
+            return false;
+        if (a.Stone < 0)
+            return false;
+        if (a.Metal < 0)
+            return false;
+
+
+        return true;
+    }
+    public static bool operator <(Resources a, Resources b)
+    {
+        return b > a;
+    }
+
+    public static bool operator >(Resources a, float b)
+    {
+        Resources r = new Resources(b, b, b, b, b);
+
+        return a > r;
+    }
+
+    public static bool operator <(Resources a, float b)
+    {
+        Resources r = new Resources(b, b, b, b, b);
+
+        return a < r;
+    }
+
+    
 }
