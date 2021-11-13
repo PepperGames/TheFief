@@ -6,6 +6,6 @@ public class Sawmill : IndustrialStructure
 {
     public override void ProduceResource()
     {
-        throw new System.NotImplementedException();
+        resourcesManager.AddResources(new Resources { Wood = 1 });
     }
 }

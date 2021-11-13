@@ -9,6 +9,8 @@ public class TestUIController : MonoBehaviour
     public Action OnRoadPlacement, OnHousePlacement, OnSpecialPlacement, OnBigStructurePlacement;
     public Button placeRoadButton, placeHouseButton, placeSpecialButton, placeBigStructureButton;
 
+    //public Button placeRoadButton, placeHouseButton, placeSpecialButton, placeBigStructureButton;
+
     public Color outlineColor;
     List<Button> buttonList;
 

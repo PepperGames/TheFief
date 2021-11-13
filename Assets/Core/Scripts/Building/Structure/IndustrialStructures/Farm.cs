@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class Farm : IndustrialStructure
 {
     public override void ProduceResource()
     {
-        throw new System.NotImplementedException();
+        resourcesManager.AddResources(new Resources { Food = 1 });
     }
 }

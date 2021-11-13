@@ -6,6 +6,6 @@ public class Mine : IndustrialStructure
 {
     public override void ProduceResource()
     {
-        throw new System.NotImplementedException();
+        resourcesManager.AddResources(new Resources { Metal = 1 });
     }
 }
