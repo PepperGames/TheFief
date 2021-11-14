@@ -14,6 +14,7 @@ public class StructureCost : MonoBehaviour
     public Resources GetAmountOfResourcesForUpdate(int nextLvl)
     {
         nextLvl -= 1;
+        print(nextLvl);
         if (nextLvl > 0 && nextLvl < resources.Length)
         {
             return resources[nextLvl];

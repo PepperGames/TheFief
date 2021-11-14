@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(StructureCost))]
 public abstract class Structure : MonoBehaviour, IDemolishable, IImprovable
 {
     public GameObject prefab;
     [SerializeField] private bool drawGizmo = true;
-
     [SerializeField] private List<Vector2Int> points;
     public List<Vector2Int> Points
     {
@@ -16,25 +16,49 @@ public abstract class Structure : MonoBehaviour, IDemolishable, IImprovable
             return points;
         }
     }
-    [SerializeField] protected int lvl = 1;
+
+    [SerializeField] protected int lvl;
     [SerializeField] protected int maxLvl;
+
     public StructureCost structureCost;
+
+    [Inject] [SerializeField] protected ResourcesManager resourcesManager;
 
     protected virtual void Start()
     {
         maxLvl = structureCost.GetMaxLvl();
         StartCoroutine("WaitForImprove");
+        lvl = 1;
     }
 
     public void Demolish()
     {
         throw new System.NotImplementedException();
     }
+
+    public bool CanBeImprove()
+    {
+        int newLvl = lvl + 1;
+        print(newLvl);
+        if (newLvl <= maxLvl)
+        {
+            if (resourcesManager.EnoughResources(structureCost.GetAmountOfResourcesForUpdate(newLvl)))
+            {
+                Debug.Log("CanBeImprove");
+                return true;
+            }
+        }
+        Debug.Log("Not CanBeImprove");
+        return false;
+    }
+
     public virtual void Improve()
     {
         lvl++;
+        resourcesManager.SpendResources(structureCost.GetAmountOfResourcesForUpdate(lvl));
     }
 
+    //TODO
     IEnumerator WaitForImprove()
     {
         yield return new WaitForSeconds(4f);
@@ -53,5 +77,4 @@ public abstract class Structure : MonoBehaviour, IDemolishable, IImprovable
             }
         }
     }
-
 }

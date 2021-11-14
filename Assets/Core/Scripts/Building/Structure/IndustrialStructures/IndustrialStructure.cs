@@ -5,7 +5,7 @@ using Zenject;
 
 public abstract class IndustrialStructure : Structure
 {
-    [Inject] [SerializeField] protected ResourcesManager resourcesManager;
+    //[Inject] [SerializeField] protected ResourcesManager resourcesManager;
 
     //TODO удалить
     private void Update()
@@ -14,4 +14,18 @@ public abstract class IndustrialStructure : Structure
     }
 
     public abstract void ProduceResource();
+
+    public override void Improve()
+    {
+        if (CanBeImprove())
+        {
+            base.Improve();
+        }
+    }
+
+    //IEnumerator WaitForImprove()
+    //{
+    //    yield return new WaitForSeconds(4f);
+    //    Improve();
+    //}
 }
