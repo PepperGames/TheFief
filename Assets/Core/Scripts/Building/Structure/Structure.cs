@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(StructureCost))]
-public class Structure : MonoBehaviour, IDemolishable
+public abstract class Structure : MonoBehaviour, IDemolishable, IImprovable
 {
     public GameObject prefab;
     [SerializeField] private bool drawGizmo = true;
@@ -16,18 +16,30 @@ public class Structure : MonoBehaviour, IDemolishable
             return points;
         }
     }
-    protected int lvl = 1;
+    [SerializeField] protected int lvl = 1;
     [SerializeField] protected int maxLvl;
     public StructureCost structureCost;
 
     protected virtual void Start()
     {
         maxLvl = structureCost.GetMaxLvl();
+        StartCoroutine("WaitForImprove");
     }
 
     public void Demolish()
     {
         throw new System.NotImplementedException();
+    }
+    public virtual void Improve()
+    {
+        lvl++;
+    }
+
+    IEnumerator WaitForImprove()
+    {
+        yield return new WaitForSeconds(4f);
+        Improve();
+        Debug.Log("Improve");
     }
 
     private void OnDrawGizmos()

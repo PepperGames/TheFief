@@ -11,11 +11,12 @@ public class StructureCost : MonoBehaviour
         return resources[0];
     }
 
-    public Resources GetAmountOfResourcesForUpdate(int lvl)
+    public Resources GetAmountOfResourcesForUpdate(int nextLvl)
     {
-        if (lvl > 0 && lvl < resources.Length)
+        nextLvl -= 1;
+        if (nextLvl > 0 && nextLvl < resources.Length)
         {
-            return resources[lvl];
+            return resources[nextLvl];
         }
         else
         {
