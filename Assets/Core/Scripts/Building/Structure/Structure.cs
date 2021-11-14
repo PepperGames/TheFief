@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Structure : MonoBehaviour, IDemolished
+[RequireComponent(typeof(StructureCost))]
+public class Structure : MonoBehaviour, IDemolishable
 {
     public GameObject prefab;
     [SerializeField] private bool drawGizmo = true;
@@ -14,6 +15,14 @@ public class Structure : MonoBehaviour, IDemolished
         {
             return points;
         }
+    }
+    protected int lvl = 1;
+    [SerializeField] protected int maxLvl;
+    public StructureCost structureCost;
+
+    protected virtual void Start()
+    {
+        maxLvl = structureCost.GetMaxLvl();
     }
 
     public void Demolish()

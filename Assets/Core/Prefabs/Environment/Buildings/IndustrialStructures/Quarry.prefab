@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6766789996925685761}
   - component: {fileID: 552805177819580694}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Quarry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,8 @@ MonoBehaviour:
   drawGizmo: 1
   points:
   - {x: 0, y: 0}
+  maxLvl: 0
+  structureCost: {fileID: 0}
   resourcesManager: {fileID: 0}
 --- !u!1 &6377264598548512073
 GameObject:
@@ -59,7 +61,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2694112232607553656}
   - component: {fileID: 7855874681616680634}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: roadTextures_tilesheet@2_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6766789996925685761}
   - component: {fileID: 5834884874822571305}
-  m_Layer: 0
+  - component: {fileID: 161658102896801185}
+  m_Layer: 11
   m_Name: Farm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +49,37 @@ MonoBehaviour:
   drawGizmo: 1
   points:
   - {x: 0, y: 0}
+  maxLvl: 0
+  structureCost: {fileID: 161658102896801185}
   resourcesManager: {fileID: 0}
+--- !u!114 &161658102896801185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436385156467146161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b63a8892d89b14e8f729ab98b9325e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resources:
+  - money: 1
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
+  - money: 2
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
+  - money: 3
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
 --- !u!1 &6377264598548512073
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2694112232607553656}
   - component: {fileID: 7855874681616680634}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: roadTextures_tilesheet@2_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}

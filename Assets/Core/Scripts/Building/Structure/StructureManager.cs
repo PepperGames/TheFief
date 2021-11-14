@@ -9,6 +9,7 @@ using Zenject;
 public class StructureManager : MonoBehaviour
 {
     [Inject] [SerializeField] private PlacementManager placementManager;
+    [Inject] [SerializeField] private ResourcesManager resourcesManager;
 
     [SerializeField] private Structure selectedStructure;
     //public Structure housesPrefab, specialPrefab, bigStructuresPrefab;
@@ -25,22 +26,28 @@ public class StructureManager : MonoBehaviour
     {
         if (selectedStructure != null)
         {
-            if (CheckBigStructure(position, selectedStructure))
+            if (CheckCost())
             {
-                placementManager.PlaceObjectOnTheMap(position, selectedStructure, CellType.Structure);
+                if (CheckStructurePosition(position, selectedStructure))
+                {
+                    resourcesManager.SpendResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild());
+                    placementManager.PlaceObjectOnTheMap(position, selectedStructure, CellType.Structure);
+                }
             }
         }
     }
 
-    //internal void PlaceBigStructure(Vector2Int position, Structure structure)
-    //{
-    //    if (CheckBigStructure(position, bigStructuresPrefab))
-    //    {
-    //        placementManager.PlaceObjectOnTheMap(position, bigStructuresPrefab, CellType.Structure);
-    //    }
-    //}
+    private bool CheckCost()
+    {
+        if (resourcesManager.EnoughResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild()))
+        {
+            return true;
+        }
+        Debug.Log("Not enough resources");
+        return false;
+    }
 
-    private bool CheckBigStructure(Vector2Int position, Structure structure)
+    private bool CheckStructurePosition(Vector2Int position, Structure structure)
     {
         bool nearRoad = false;
         foreach (Vector2Int item in structure.Points)
@@ -57,32 +64,8 @@ public class StructureManager : MonoBehaviour
                 nearRoad = RoadCheck(newPosition);
             }
         }
-
         return nearRoad;
     }
-
-    //public void PlaceSpecial(Vector2Int position/*, Structure structure*/)
-    //{
-    //    if (CheckBigStructure(position, specialPrefab))
-    //    {
-    //        placementManager.PlaceObjectOnTheMap(position, specialPrefab, CellType.Structure);
-    //    }
-
-    //}
-
-    //private bool CheckPositionBeforePlacement(Vector2Int position)
-    //{
-    //    if (DefaultCheck(position) == false)
-    //    {
-    //        return false;
-    //    }
-    //    if (RoadCheck(position) == false)
-    //    {
-    //        return false;
-    //    }
-    //    return true;
-
-    //}
 
     private bool RoadCheck(Vector2Int position)
     {
@@ -108,4 +91,38 @@ public class StructureManager : MonoBehaviour
         }
         return true;
     }
+
+
+    //internal void PlaceBigStructure(Vector2Int position, Structure structure)
+    //{
+    //    if (CheckBigStructure(position, bigStructuresPrefab))
+    //    {
+    //        placementManager.PlaceObjectOnTheMap(position, bigStructuresPrefab, CellType.Structure);
+    //    }
+    //}
+
+    //public void PlaceSpecial(Vector2Int position/*, Structure structure*/)
+    //{
+    //    if (CheckBigStructure(position, specialPrefab))
+    //    {
+    //        placementManager.PlaceObjectOnTheMap(position, specialPrefab, CellType.Structure);
+    //    }
+
+    //}
+
+    //private bool CheckPositionBeforePlacement(Vector2Int position)
+    //{
+    //    if (DefaultCheck(position) == false)
+    //    {
+    //        return false;
+    //    }
+    //    if (RoadCheck(position) == false)
+    //    {
+    //        return false;
+    //    }
+    //    return true;
+
+    //}
+
+
 }

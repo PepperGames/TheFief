@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
+[Serializable]
 public struct Resources
 {
     [SerializeField] float money, food, wood, stone, metal;

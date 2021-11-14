@@ -91,7 +91,7 @@ public class ResourcesManager : MonoBehaviour
         return true;
     }
 
-    private bool EnoughResources(Resources neededResources)
+    public bool EnoughResources(Resources neededResources)
     {
         return resources > neededResources;
     }
