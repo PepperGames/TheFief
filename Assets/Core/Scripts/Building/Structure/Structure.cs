@@ -28,12 +28,20 @@ public abstract class Structure : MonoBehaviour, IDemolishable, IImprovable
     {
         maxLvl = structureCost.GetMaxLvl();
         StartCoroutine("WaitForImprove");
+        StartCoroutine("WaitForDemolish");
         lvl = 1;
     }
 
     public void Demolish()
     {
-        throw new System.NotImplementedException();
+        gameObject.transform.localScale /= 3f;
+    }
+   
+    IEnumerator WaitForDemolish() //TODO удалить
+    {
+        yield return new WaitForSeconds(4f);
+        Demolish();
+        Debug.Log("Demolish");
     }
 
     public bool CanBeImprove()
@@ -59,7 +67,7 @@ public abstract class Structure : MonoBehaviour, IDemolishable, IImprovable
     }
 
     //TODO
-    IEnumerator WaitForImprove()
+    IEnumerator WaitForImprove() //TODO удалить
     {
         yield return new WaitForSeconds(4f);
         Improve();

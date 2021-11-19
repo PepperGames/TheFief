@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         inputManager.OnMouseHold += roadManager.PlaceRoad;
         inputManager.OnMouseUp += roadManager.FinishPlacingRoad;
     }
+
     private void ClearInputActions()
     {
         inputManager.OnMouseClick = null;
