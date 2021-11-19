@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Road : MonoBehaviour, IDemolishable
+public class Road : BasicStructure
 {
-    public void Demolish()
-    {
-        gameObject.transform.localScale /= 3f;
-    }
-
     private void Start()
     {
         StartCoroutine("WaitForImprove");

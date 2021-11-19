@@ -10,7 +10,9 @@ public class RoadManager : MonoBehaviour
     [Inject] [SerializeField] private PlacementManager placementManager;
     [Inject] [SerializeField] private RoadFixer roadFixer;
 
-    public List<Vector2Int> temporaryPlacementPositions = new List<Vector2Int>();
+    [SerializeField] private List<Road> roads = new List<Road>();
+
+    [SerializeField] private List<Vector2Int> temporaryPlacementPositions = new List<Vector2Int>();
     public List<Vector2Int> roadPositionsToRecheck = new List<Vector2Int>();
 
     private Vector2Int startPosition;

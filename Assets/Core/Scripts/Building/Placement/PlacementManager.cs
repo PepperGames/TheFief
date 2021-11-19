@@ -10,8 +10,8 @@ public class PlacementManager : MonoBehaviour
 
     private Grid placementGrid;
 
-    private Dictionary<Vector2Int, StructureModel> temporaryRoadObject = new Dictionary<Vector2Int, StructureModel>();
-    private Dictionary<Vector2Int, StructureModel> structureDictionary = new Dictionary<Vector2Int, StructureModel>();
+    [SerializeField] private Dictionary<Vector2Int, StructureModel> temporaryRoadObject = new Dictionary<Vector2Int, StructureModel>();
+    [SerializeField] private Dictionary<Vector2Int, StructureModel> structureDictionary = new Dictionary<Vector2Int, StructureModel>();
 
     private void Start()
     {
@@ -99,7 +99,7 @@ public class PlacementManager : MonoBehaviour
 
     private void DestroyNatureAt(Vector2Int position)
     {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll((Vector2Int)position, new Vector3(0.5f, 0.5f),0, Vector2.zero, Mathf.Infinity, 1 << LayerMask.NameToLayer("Nature"));
+        RaycastHit2D[] hits = Physics2D.BoxCastAll((Vector2Int)position, new Vector3(0.5f, 0.5f), 0, Vector2.zero, Mathf.Infinity, 1 << LayerMask.NameToLayer("Nature"));
         foreach (var item in hits)
         {
             Destroy(item.collider.gameObject);
@@ -138,6 +138,6 @@ public class PlacementManager : MonoBehaviour
         else if (structureDictionary.ContainsKey(position))
         {
             structureDictionary[position].SwapModel(newModel, rotation);
-        } 
+        }
     }
 }
