@@ -12,7 +12,6 @@ public class StructureManager : MonoBehaviour
     [Inject] [SerializeField] private ResourcesManager resourcesManager;
 
     [SerializeField] private Structure selectedStructure;
-    //public Structure housesPrefab, specialPrefab, bigStructuresPrefab;
 
     public void SetSelectedStructure(Structure newSelectedStructure)
     {
@@ -91,38 +90,4 @@ public class StructureManager : MonoBehaviour
         }
         return true;
     }
-
-
-    //internal void PlaceBigStructure(Vector2Int position, Structure structure)
-    //{
-    //    if (CheckBigStructure(position, bigStructuresPrefab))
-    //    {
-    //        placementManager.PlaceObjectOnTheMap(position, bigStructuresPrefab, CellType.Structure);
-    //    }
-    //}
-
-    //public void PlaceSpecial(Vector2Int position/*, Structure structure*/)
-    //{
-    //    if (CheckBigStructure(position, specialPrefab))
-    //    {
-    //        placementManager.PlaceObjectOnTheMap(position, specialPrefab, CellType.Structure);
-    //    }
-
-    //}
-
-    //private bool CheckPositionBeforePlacement(Vector2Int position)
-    //{
-    //    if (DefaultCheck(position) == false)
-    //    {
-    //        return false;
-    //    }
-    //    if (RoadCheck(position) == false)
-    //    {
-    //        return false;
-    //    }
-    //    return true;
-
-    //}
-
-
 }

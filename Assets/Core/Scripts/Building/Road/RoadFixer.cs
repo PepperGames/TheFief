@@ -3,12 +3,14 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Zenject;
 
 public class RoadFixer : MonoBehaviour
 {
+    [Inject] [SerializeField] private PlacementManager placementManager;
     public Road deadEnd, roadStraight, corner, threeWay, fourWay;
 
-    public void FixRoadAtPosition(PlacementManager placementManager, Vector2Int temporaryPosition)
+    public void FixRoadAtPosition(Vector2Int temporaryPosition)
     {
         var result = placementManager.GetNeighbourTypesFor(temporaryPosition);
         int roadCount = 0;
@@ -16,30 +18,30 @@ public class RoadFixer : MonoBehaviour
 
         if (roadCount == 0 || roadCount == 1)
         {
-            CreateDeadEnd(placementManager, result, temporaryPosition);
+            CreateDeadEnd(result, temporaryPosition);
         }
         else if (roadCount == 2)
         {
-            if (CreateStraightRoad(placementManager, result, temporaryPosition))
+            if (CreateStraightRoad(result, temporaryPosition))
                 return;
-            CreateCorner(placementManager, result, temporaryPosition);
+            CreateCorner(result, temporaryPosition);
         }
         else if (roadCount == 3)
         {
-            CreateThreeWay(placementManager, result, temporaryPosition);
+            CreateThreeWay(result, temporaryPosition);
         }
         else
         {
-            CreateFourWay(placementManager, result, temporaryPosition);
+            CreateFourWay(result, temporaryPosition);
         }
     }
 
-    private void CreateFourWay(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
+    private void CreateFourWay(CellType[] result, Vector2Int temporaryPosition)
     {
         placementManager.ModifyStructureModel(temporaryPosition, fourWay.modelView, Quaternion.identity);
     }
 
-    private void CreateThreeWay(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
+    private void CreateThreeWay(CellType[] result, Vector2Int temporaryPosition)
     {
         if (result[1] == CellType.Road && result[2] == CellType.Road && result[3] == CellType.Road)
         {
@@ -59,7 +61,7 @@ public class RoadFixer : MonoBehaviour
         }
     }
 
-    private void CreateCorner(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
+    private void CreateCorner(CellType[] result, Vector2Int temporaryPosition)
     {
         if (result[1] == CellType.Road && result[2] == CellType.Road)
         {
@@ -79,7 +81,7 @@ public class RoadFixer : MonoBehaviour
         }
     }
 
-    private bool CreateStraightRoad(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
+    private bool CreateStraightRoad(CellType[] result, Vector2Int temporaryPosition)
     {
         if (result[0] == CellType.Road && result[2] == CellType.Road)
         {
@@ -94,7 +96,7 @@ public class RoadFixer : MonoBehaviour
         return false;
     }
 
-    private void CreateDeadEnd(PlacementManager placementManager, CellType[] result, Vector2Int temporaryPosition)
+    private void CreateDeadEnd(CellType[] result, Vector2Int temporaryPosition)
     {
         if (result[1] == CellType.Road)
         {
