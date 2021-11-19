@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
+using static Zenject.ZenAutoInjecter;
 
 public class StructureModel : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class StructureModel : MonoBehaviour
     public void CreateModel(GameObject model)
     {
         var structure = Instantiate(model, transform);
+        ZenAutoInjecter zenAutoInjecter = structure.AddComponent<ZenAutoInjecter>();
+        zenAutoInjecter.ContainerSource = ContainerSources.SceneContext;
         yHeight = model.transform.position.y;
     }
 

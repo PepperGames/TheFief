@@ -38,7 +38,6 @@ public class InputManager : MonoBehaviour
         if (hit.collider != null)
         {
             Vector2Int positionInt = Vector2Int.RoundToInt(hit.point);
-            print(positionInt);
             return positionInt;
         }
         return null;
@@ -48,6 +47,7 @@ public class InputManager : MonoBehaviour
     {
         cameraMovementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
+
     private void CheckClickDownEvent()
     {
         if (isMouseDown == true)
@@ -58,7 +58,6 @@ public class InputManager : MonoBehaviour
             var position = RaycastGround();
             if (position != null)
             {
-                //Debug.Log("OnMouseClick");
                 OnMouseClick?.Invoke(position.Value);
                 isMouseDown = true;
             }
@@ -75,7 +74,6 @@ public class InputManager : MonoBehaviour
             var position = RaycastGround();
             if (position != null)
             {
-                //Debug.Log("OnMouseHold");
                 OnMouseHold?.Invoke(position.Value);
             }
         }

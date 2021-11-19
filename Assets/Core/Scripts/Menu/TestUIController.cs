@@ -3,46 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class TestUIController : MonoBehaviour
 {
-    public Action OnRoadPlacement, OnHousePlacement, OnSpecialPlacement, OnBigStructurePlacement;
-    public Button placeRoadButton, placeHouseButton, placeSpecialButton, placeBigStructureButton;
+    public Action OnRoadPlacement;
+    public Action<Structure> OnHousePlacement;
+
+    public StructureIcon placeRoadButton;
+    public StructureIcon[] structureIcons;
+
+    [Inject] [SerializeField] private StructureManager structureManager;
+
+    //public Button placeRoadButton, placeHouseButton, placeSpecialButton, placeBigStructureButton;
 
     public Color outlineColor;
-    List<Button> buttonList;
 
     private void Start()
     {
-        buttonList = new List<Button> { placeHouseButton, placeRoadButton, placeSpecialButton, placeBigStructureButton };
-
-        placeRoadButton.onClick.AddListener(() =>
+        placeRoadButton.button.onClick.AddListener(() =>
         {
             ResetButtonColor();
-            ModifyOutline(placeRoadButton);
+            ModifyOutline(placeRoadButton.button);
             OnRoadPlacement?.Invoke();
-
         });
-        placeHouseButton.onClick.AddListener(() =>
+        foreach (StructureIcon structureIcon in structureIcons)
         {
-            ResetButtonColor();
-            ModifyOutline(placeHouseButton);
-            OnHousePlacement?.Invoke();
-
-        });
-        placeSpecialButton.onClick.AddListener(() =>
-        {
-            ResetButtonColor();
-            ModifyOutline(placeSpecialButton);
-            OnSpecialPlacement?.Invoke();
-
-        });
-        placeBigStructureButton.onClick.AddListener(() =>
-        {
-            ResetButtonColor();
-            ModifyOutline(placeBigStructureButton);
-            OnBigStructurePlacement?.Invoke();
-        });
+            structureIcon.button.onClick.AddListener(() =>
+            {
+                ResetButtonColor();
+                ModifyOutline(structureIcon.button);
+                structureManager.SetSelectedStructure(structureIcon.structure);
+                OnHousePlacement?.Invoke(structureIcon.structure);
+            });
+        }
     }
 
     private void ModifyOutline(Button button)
@@ -54,9 +48,11 @@ public class TestUIController : MonoBehaviour
 
     private void ResetButtonColor()
     {
-        foreach (Button button in buttonList)
+        placeRoadButton.button.GetComponent<Outline>().enabled = false;
+
+        foreach (StructureIcon structureIcon in structureIcons)
         {
-            button.GetComponent<Outline>().enabled = false;
+            structureIcon.button.GetComponent<Outline>().enabled = false;
         }
     }
 }

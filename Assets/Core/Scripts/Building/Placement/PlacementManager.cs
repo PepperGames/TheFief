@@ -40,6 +40,7 @@ public class PlacementManager : MonoBehaviour
     {
         StructureModel structureModel = CreateANewStructureModel(position, structure.prefab, type);
 
+
         foreach (Vector2Int item in structure.Points)
         {
             var newPosition = position + new Vector2Int(item.x, item.y);
