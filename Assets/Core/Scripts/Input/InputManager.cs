@@ -23,6 +23,14 @@ public class InputManager : MonoBehaviour
         get { return cameraMovementVector; }
     }
 
+    private void Start()
+    {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
+    }
+
     private void Update()
     {
         CheckClickDownEvent();

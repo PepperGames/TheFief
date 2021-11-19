@@ -31,7 +31,7 @@ public class StructureManager : MonoBehaviour
                 if (CheckStructurePosition(position, selectedStructure))
                 {
                     resourcesManager.SpendResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild());
-                    placementManager.PlaceObjectOnTheMap(position, selectedStructure, CellType.Structure);
+                    placementManager.PlaceStructureOnTheMap(position, selectedStructure, CellType.Structure);
                 }
             }
         }

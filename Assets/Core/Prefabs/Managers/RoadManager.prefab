@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1055691212652546847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1055691212652546844}
+  - component: {fileID: 1055691212652546850}
+  - component: {fileID: 1055691212652546845}
+  m_Layer: 0
+  m_Name: RoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1055691212652546844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055691212652546847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1055691212652546850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055691212652546847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa815fc62c192146ada1b67852039f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementManager: {fileID: 0}
+  roadFixer: {fileID: 1055691212652546845}
+  roads: []
+  temporaryPlacementPositions: []
+  roadPositionsToRecheck: []
+--- !u!114 &1055691212652546845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055691212652546847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f27a72ef094d242aedd692a3404bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEnd: {fileID: 7363646940578073402, guid: cd85bd08b34fe9347b040f48ea1f430d, type: 3}
+  roadStraight: {fileID: -4773805715401937014, guid: bee99a56302b0ce4385c031e1631621c, type: 3}
+  corner: {fileID: -7365675492642949964, guid: 336425b74f20d254e811c3edefc66dd4, type: 3}
+  threeWay: {fileID: 974915561571688242, guid: 11cea1618bcc41d4e9a28f0ede5cf09c, type: 3}
+  fourWay: {fileID: -3966282219752244501, guid: 956817a5bde771d4d947cbb42a4bff8d, type: 3}

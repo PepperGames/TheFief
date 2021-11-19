@@ -10,8 +10,8 @@ public class PlacementManager : MonoBehaviour
 
     private Grid placementGrid;
 
-    [SerializeField] private Dictionary<Vector2Int, StructureModel> temporaryRoadObject = new Dictionary<Vector2Int, StructureModel>();
-    [SerializeField] private Dictionary<Vector2Int, StructureModel> structureDictionary = new Dictionary<Vector2Int, StructureModel>();
+    [SerializeField] private Dictionary<Vector2Int, BasicStructure> temporaryRoadObject = new Dictionary<Vector2Int, BasicStructure>();
+    [SerializeField] private Dictionary<Vector2Int, BasicStructure> structureDictionary = new Dictionary<Vector2Int, BasicStructure>();
 
     private void Start()
     {
@@ -36,16 +36,15 @@ public class PlacementManager : MonoBehaviour
         return neighbours;
     }
 
-    internal void PlaceObjectOnTheMap(Vector2Int position, Structure structure, CellType type)
+    internal void PlaceStructureOnTheMap(Vector2Int position, BasicStructure basicStructure, CellType type)
     {
-        StructureModel structureModel = CreateANewStructureModel(position, structure.prefab, type);
+        CreateANewStructureModel(position, basicStructure, type);
 
-
-        foreach (Vector2Int item in structure.Points)
+        foreach (Vector2Int item in basicStructure.Points)
         {
             var newPosition = position + new Vector2Int(item.x, item.y);
             placementGrid[newPosition.x, newPosition.y] = type;
-            structureDictionary.Add(newPosition, structureModel);
+            structureDictionary.Add(newPosition, basicStructure);
             DestroyNatureAt(newPosition);
         }
     }
@@ -111,33 +110,34 @@ public class PlacementManager : MonoBehaviour
         return placementGrid[position.x, position.y] == type;
     }
 
-    internal void PlaceTemporaryStructure(Vector2Int position, GameObject structurePrefab, CellType type)
+    internal void PlaceTemporaryRoad(Vector2Int position, BasicStructure basicStructure, CellType type)
     {
         placementGrid[position.x, position.y] = type;
-        StructureModel structure = CreateANewStructureModel(position, structurePrefab, type);
-        temporaryRoadObject.Add(position, structure);
+        BasicStructure bs = CreateANewStructureModel(position, basicStructure, type);
+        temporaryRoadObject.Add(position, bs);
     }
 
-    private StructureModel CreateANewStructureModel(Vector2Int position, GameObject structurePrefab, CellType type)
+    private BasicStructure CreateANewStructureModel(Vector2Int position, BasicStructure basicStructure, CellType type)
     {
-        GameObject structure = new GameObject(type.ToString());
-        structure.transform.SetParent(transform);
+        GameObject structure = basicStructure.model;
         structure.transform.localPosition = new Vector3(position.x, position.y);
-        var structureModel = structure.AddComponent<StructureModel>();
-        structureModel.CreateModel(structurePrefab);
 
-        return structureModel;
+        BasicStructure bs = Instantiate(structure, transform).GetComponent<BasicStructure>();
+
+        bs.Initialize();
+
+        return bs;
     }
 
     public void ModifyStructureModel(Vector2Int position, GameObject newModel, Quaternion rotation)
     {
         if (temporaryRoadObject.ContainsKey(position))
         {
-            temporaryRoadObject[position].SwapModel(newModel, rotation);
+            temporaryRoadObject[position].SwapModelView(newModel, rotation);
         }
         else if (structureDictionary.ContainsKey(position))
         {
-            structureDictionary[position].SwapModel(newModel, rotation);
+            structureDictionary[position].SwapModelView(newModel, rotation);
         }
     }
 }
