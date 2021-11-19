@@ -9,22 +9,22 @@ public class TestUIController : MonoBehaviour
 {
     public Action OnRoadPlacement;
     public Action<Structure> OnHousePlacement;
+    public Action OnStructureDemolish;
 
-    public StructureIcon placeRoadButton;
+    public Button placeRoadButton;
     public StructureIcon[] structureIcons;
+    public Button demolishButton;
 
     [Inject] [SerializeField] private StructureManager structureManager;
-
-    //public Button placeRoadButton, placeHouseButton, placeSpecialButton, placeBigStructureButton;
 
     public Color outlineColor;
 
     private void Start()
     {
-        placeRoadButton.button.onClick.AddListener(() =>
+        placeRoadButton.onClick.AddListener(() =>
         {
             ResetButtonColor();
-            ModifyOutline(placeRoadButton.button);
+            ModifyOutline(placeRoadButton);
             OnRoadPlacement?.Invoke();
         });
         foreach (StructureIcon structureIcon in structureIcons)
@@ -37,6 +37,12 @@ public class TestUIController : MonoBehaviour
                 OnHousePlacement?.Invoke(structureIcon.structure);
             });
         }
+        demolishButton.onClick.AddListener(() =>
+        {
+            ResetButtonColor();
+            ModifyOutline(demolishButton);
+            OnStructureDemolish?.Invoke();
+        });
     }
 
     private void ModifyOutline(Button button)
@@ -48,7 +54,7 @@ public class TestUIController : MonoBehaviour
 
     private void ResetButtonColor()
     {
-        placeRoadButton.button.GetComponent<Outline>().enabled = false;
+        placeRoadButton.GetComponent<Outline>().enabled = false;
 
         foreach (StructureIcon structureIcon in structureIcons)
         {

@@ -36,6 +36,11 @@ public class StructureManager : MonoBehaviour
         }
     }
 
+    public void Demolish(Vector2Int position)
+    {
+        placementManager.Demolish(position);
+    }
+
     private bool CheckCost()
     {
         if (resourcesManager.EnoughResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild()))

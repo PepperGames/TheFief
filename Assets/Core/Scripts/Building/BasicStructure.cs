@@ -4,7 +4,7 @@ using UnityEngine;
 using Zenject;
 using static Zenject.ZenAutoInjecter;
 
-public abstract class BasicStructure : MonoBehaviour, IDemolishable
+public abstract class BasicStructure : MonoBehaviour
 {
     public GameObject model; //в теории это обжект у которого дети это арт  || или это и  есть сам обьект
     public GameObject modelView;
@@ -22,7 +22,6 @@ public abstract class BasicStructure : MonoBehaviour, IDemolishable
 
     public void Initialize()
     {
-        //var structure = Instantiate(model, transform);
         ZenAutoInjecter zenAutoInjecter = gameObject.AddComponent<ZenAutoInjecter>();
         zenAutoInjecter.ContainerSource = ContainerSources.SceneContext;
     }
@@ -36,11 +35,6 @@ public abstract class BasicStructure : MonoBehaviour, IDemolishable
         var structure = Instantiate(model, transform);
         structure.transform.localPosition = new Vector3(0, 0, 0);
         structure.transform.localRotation = rotation;
-    }
-
-    public virtual void Demolish()
-    {
-        gameObject.transform.localScale /= 3f;
     }
 
     private void OnDrawGizmos()

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3147695156220778769}
   - component: {fileID: 7368430050881027723}
   - component: {fileID: 3026606056004974380}
-  - component: {fileID: 8516885892900118070}
   - component: {fileID: 8687909222669621226}
   m_Layer: 5
   m_Name: RoadIcon
@@ -123,20 +122,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8516885892900118070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2323318234912328462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042542fb632ab814098a3a429de2be46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 3026606056004974380}
-  structure: {fileID: 0}
 --- !u!114 &8687909222669621226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +229,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 2
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1

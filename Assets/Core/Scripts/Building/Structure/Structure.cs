@@ -16,7 +16,7 @@ public abstract class Structure : BasicStructure, IImprovable
     {
         maxLvl = structureCost.GetMaxLvl();
         //StartCoroutine("WaitForImprove");
-        StartCoroutine("WaitForDemolish");
+        //StartCoroutine("WaitForDemolish");
         lvl = 1;
     }
 
@@ -42,12 +42,12 @@ public abstract class Structure : BasicStructure, IImprovable
         resourcesManager.SpendResources(structureCost.GetAmountOfResourcesForUpdate(lvl));
     }
 
-    IEnumerator WaitForDemolish() //TODO удалить
-    {
-        yield return new WaitForSeconds(4f);
-        Demolish();
-        Debug.Log("Demolish");
-    }
+    //IEnumerator WaitForDemolish() //TODO удалить
+    //{
+    //    yield return new WaitForSeconds(4f);
+    //    Demolish();
+    //    Debug.Log("Demolish");
+    //}
     IEnumerator WaitForImprove() //TODO удалить
     {
         yield return new WaitForSeconds(4f);

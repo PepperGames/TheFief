@@ -83,6 +83,26 @@ public class RoadManager : MonoBehaviour
         }
     }
 
+    private void FixRoadPrefabs(Vector2Int positions)
+    {
+        roadFixer.FixRoadAtPosition(positions);
+        var neighbours = placementManager.GetNeighboursOfTypeFor(positions, CellType.Road);
+
+        roadPositionsToRecheck.Clear();
+
+        foreach (var roadPosition in neighbours)
+        {
+            if (roadPositionsToRecheck.Contains(roadPosition) == false)
+            {
+                roadPositionsToRecheck.Add(roadPosition);
+            }
+        }
+        foreach (var positionToFix in roadPositionsToRecheck)
+        {
+            roadFixer.FixRoadAtPosition(positionToFix);
+        }
+    }
+
     public void FinishPlacingRoad()
     {
         placementMode = false;
@@ -95,5 +115,11 @@ public class RoadManager : MonoBehaviour
         startPosition = Vector2Int.zero;
 
         //Debug.Log("FinishPlacingRoad");
+    }
+
+    public void Demolish(Vector2Int position)
+    {
+        placementManager.Demolish(position);
+        FixRoadPrefabs(position);
     }
 }

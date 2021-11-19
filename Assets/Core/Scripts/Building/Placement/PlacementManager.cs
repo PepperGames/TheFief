@@ -38,13 +38,13 @@ public class PlacementManager : MonoBehaviour
 
     internal void PlaceStructureOnTheMap(Vector2Int position, BasicStructure basicStructure, CellType type)
     {
-        CreateANewStructureModel(position, basicStructure, type);
+        BasicStructure createdBasicStructure = CreateANewStructureModel(position, basicStructure, type);
 
-        foreach (Vector2Int item in basicStructure.Points)
+        foreach (Vector2Int item in createdBasicStructure.Points)
         {
             var newPosition = position + new Vector2Int(item.x, item.y);
             placementGrid[newPosition.x, newPosition.y] = type;
-            structureDictionary.Add(newPosition, basicStructure);
+            structureDictionary.Add(newPosition, createdBasicStructure);
             DestroyNatureAt(newPosition);
         }
     }
@@ -101,6 +101,25 @@ public class PlacementManager : MonoBehaviour
         temporaryStructureObject.Clear();
     }
 
+    public void Demolish(Vector2Int position)
+    {
+        if (structureDictionary.ContainsKey(position) == false)
+            return;
+
+        BasicStructure structure = structureDictionary[position];
+
+        foreach (Vector2Int point in structure.Points)
+        {
+            var structurePosition = Vector2Int.RoundToInt(structure.transform.position);
+            var newPosition = structurePosition + new Vector2Int(point.x, point.y);
+            placementGrid[newPosition.x, newPosition.y] = CellType.Empty;
+        }
+
+        Destroy(structure.gameObject);
+
+        structureDictionary.Remove(position);
+    }
+
     private void DestroyNatureAt(Vector2Int position)
     {
         RaycastHit2D[] hits = Physics2D.BoxCastAll((Vector2Int)position, new Vector3(0.5f, 0.5f), 0, Vector2.zero, Mathf.Infinity, 1 << LayerMask.NameToLayer("Nature"));
@@ -117,27 +136,28 @@ public class PlacementManager : MonoBehaviour
 
     internal void PlaceTemporaryObject(Vector2Int position, BasicStructure basicStructure, CellType type)
     {
-        BasicStructure bs = CreateANewStructureModel(position, basicStructure, type);
+        BasicStructure createdBasicStructure = CreateANewStructureModel(position, basicStructure, type);
 
-        foreach (Vector2Int item in basicStructure.Points)
+        foreach (Vector2Int item in createdBasicStructure.Points)
         {
             var newPosition = position + new Vector2Int(item.x, item.y);
             placementGrid[newPosition.x, newPosition.y] = type;
 
-            temporaryStructureObject.Add(position, bs);
+            temporaryStructureObject.Add(position, createdBasicStructure);
         }
     }
 
     private BasicStructure CreateANewStructureModel(Vector2Int position, BasicStructure basicStructure, CellType type)
     {
-        GameObject structure = basicStructure.model;
-        structure.transform.localPosition = new Vector3(position.x, position.y);
+        GameObject structureModel = basicStructure.model;
+        structureModel.transform.localPosition = new Vector3(position.x, position.y);
 
-        BasicStructure bs = Instantiate(structure, transform).GetComponent<BasicStructure>();
+        GameObject createdGameObject = Instantiate(structureModel, transform);
+        BasicStructure createdBasicStructure = createdGameObject.GetComponent<BasicStructure>();
 
-        bs.Initialize();
+        createdBasicStructure.Initialize();
 
-        return bs;
+        return createdBasicStructure;
     }
 
     public void ModifyStructureModel(Vector2Int position, GameObject viewModel, Quaternion rotation)

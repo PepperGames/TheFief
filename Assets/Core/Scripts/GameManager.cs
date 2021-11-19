@@ -14,11 +14,12 @@ public class GameManager : MonoBehaviour
 
     [Inject] [SerializeField] private StructureManager structureManager;
 
-    public TestUIController uiController;
+    [Inject] [SerializeField] public TestUIController uiController;
     private void Start()
     {
         uiController.OnRoadPlacement += RoadPlacementHandler;
         uiController.OnHousePlacement += HousePlacementHandler;
+        uiController.OnStructureDemolish += StructureDemolishHandler;
     }
 
     private void HousePlacementHandler(Structure structure)
@@ -34,6 +35,13 @@ public class GameManager : MonoBehaviour
         inputManager.OnMouseClick += roadManager.PlaceRoad;
         inputManager.OnMouseHold += roadManager.PlaceRoad;
         inputManager.OnMouseUp += roadManager.FinishPlacingRoad;
+    }
+
+    private void StructureDemolishHandler()
+    {
+        ClearInputActions();
+        inputManager.OnMouseClick += roadManager.Demolish;
+        inputManager.OnMouseClick += structureManager.Demolish;
     }
 
     private void ClearInputActions()
