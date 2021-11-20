@@ -171,4 +171,10 @@ public class PlacementManager : MonoBehaviour
             structureDictionary[position].SwapModelView(viewModel, rotation);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0, 0, 1f, 1f);
+        Gizmos.DrawWireCube(new Vector3(width / 2f - 0.5f, height / 2f - 0.5f), new Vector3(width, height, 0));
+    }
 }

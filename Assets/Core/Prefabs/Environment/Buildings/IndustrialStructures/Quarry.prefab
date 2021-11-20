@@ -81,9 +81,9 @@ MonoBehaviour:
   drawGizmo: 1
   points:
   - {x: 0, y: 0}
+  structureCost: {fileID: 4007570405046644930}
   lvl: 1
   maxLvl: 0
-  structureCost: {fileID: 4007570405046644930}
   resourcesManager: {fileID: 0}
 --- !u!114 &4007570405046644930
 MonoBehaviour:
@@ -97,8 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b63a8892d89b14e8f729ab98b9325e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resources:
-  - money: 1
+  constructionCost:
+    money: 10
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
+  upgradeCost:
+  - money: 2
     food: 0
     wood: 0
     stone: 0
@@ -108,7 +114,8 @@ MonoBehaviour:
     wood: 0
     stone: 0
     metal: 0
-  - money: 3
+  currentCost:
+    money: 0
     food: 0
     wood: 0
     stone: 0

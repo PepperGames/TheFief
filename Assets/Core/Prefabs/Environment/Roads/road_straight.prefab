@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6810169970054711050}
   - component: {fileID: -4773805715401937014}
+  - component: {fileID: -3436374389180546618}
   m_Layer: 0
   m_Name: road_straight
   m_TagString: Untagged
@@ -49,6 +50,32 @@ MonoBehaviour:
   drawGizmo: 1
   points:
   - {x: 0, y: 0}
+  structureCost: {fileID: 0}
+--- !u!114 &-3436374389180546618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810169970054711048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b63a8892d89b14e8f729ab98b9325e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constructionCost:
+    money: 0
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
+  upgradeCost: []
+  currentCost:
+    money: 0
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
 --- !u!1 &7234945177344588703
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +100,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7234945177344588703}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

@@ -1,57 +1,52 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(StructureCost))]
-public abstract class Structure : BasicStructure, IImprovable
+public abstract class Structure : BasicStructure, IUpgradable
 {
     [SerializeField] protected int lvl;
     [SerializeField] protected int maxLvl;
 
-    public StructureCost structureCost;
-
     [Inject] [SerializeField] protected ResourcesManager resourcesManager;
 
+    public Action OnUpgrade;
     protected virtual void Start()
     {
         maxLvl = structureCost.GetMaxLvl();
-        //StartCoroutine("WaitForImprove");
-        //StartCoroutine("WaitForDemolish");
+        StartCoroutine("WaitForUpgrade");
         lvl = 1;
     }
 
-    public bool CanBeImprove()
+    IEnumerator WaitForUpgrade() //TODO удалить
+    {
+        yield return new WaitForSeconds(2f);
+        Upgrade();
+        Debug.Log("WaitForUpgrade Done");
+    }
+
+    public bool CanBeUpgrade()
     {
         int newLvl = lvl + 1;
-        print(newLvl);
+
         if (newLvl <= maxLvl)
         {
             if (resourcesManager.EnoughResources(structureCost.GetAmountOfResourcesForUpdate(newLvl)))
             {
-                Debug.Log("CanBeImprove");
+                Debug.Log("Can Be Upgrade");
                 return true;
             }
         }
-        Debug.Log("Not CanBeImprove");
+        Debug.Log("Can Not Be Upgrade");
         return false;
     }
 
-    public virtual void Improve()
+    public virtual void Upgrade()
     {
         lvl++;
-        resourcesManager.SpendResources(structureCost.GetAmountOfResourcesForUpdate(lvl));
-    }
-
-    //IEnumerator WaitForDemolish() //TODO удалить
-    //{
-    //    yield return new WaitForSeconds(4f);
-    //    Demolish();
-    //    Debug.Log("Demolish");
-    //}
-    IEnumerator WaitForImprove() //TODO удалить
-    {
-        yield return new WaitForSeconds(4f);
-        Improve();
-        Debug.Log("Improve");
+        int nexLvl = lvl;
+        resourcesManager.SpendResources(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
+        structureCost.IncreaseCurrentCost(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
     }
 }

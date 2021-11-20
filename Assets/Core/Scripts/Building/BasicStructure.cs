@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using static Zenject.ZenAutoInjecter;
 
 public abstract class BasicStructure : MonoBehaviour
 {
-    public GameObject model; //в теории это обжект у которого дети это арт  || или это и  есть сам обьект
+    public GameObject model; //обжект у которого дети это арт
     public GameObject modelView;
 
     [SerializeField] private bool drawGizmo = true;
@@ -20,21 +21,27 @@ public abstract class BasicStructure : MonoBehaviour
         }
     }
 
+    [HideInInspector] public StructureCost structureCost;
+
+    public Action OnInitialize;
     public void Initialize()
     {
         ZenAutoInjecter zenAutoInjecter = gameObject.AddComponent<ZenAutoInjecter>();
         zenAutoInjecter.ContainerSource = ContainerSources.SceneContext;
+        structureCost = gameObject.GetComponent<StructureCost>();
+        structureCost.IncreaseCurrentCost(structureCost.GetAmountOfResourcesForBuild());
     }
 
-    public void SwapModelView(GameObject model, Quaternion rotation)
+    public void SwapModelView(GameObject newModel, Quaternion rotation)
     {
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
-        var structure = Instantiate(model, transform);
-        structure.transform.localPosition = new Vector3(0, 0, 0);
-        structure.transform.localRotation = rotation;
+
+        var currentModelView = Instantiate(newModel, transform);
+        currentModelView.transform.localPosition = new Vector3(0, 0, 0);
+        currentModelView.transform.localRotation = rotation;
     }
 
     private void OnDrawGizmos()

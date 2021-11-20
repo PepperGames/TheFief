@@ -5,27 +5,20 @@ using Zenject;
 
 public abstract class IndustrialStructure : Structure
 {
-    //[Inject] [SerializeField] protected ResourcesManager resourcesManager;
-
-    //TODO удалить
-    private void Update()
-    {
-        ProduceResource();
-    }
+    ////TODO удалить
+    //private void Update()
+    //{
+    //    ProduceResource();
+    //}
 
     public abstract void ProduceResource();
 
-    public override void Improve()
+    public override void Upgrade()
     {
-        if (CanBeImprove())
+        if (CanBeUpgrade())
         {
-            base.Improve();
+            base.Upgrade();
         }
     }
 
-    //IEnumerator WaitForImprove()
-    //{
-    //    yield return new WaitForSeconds(4f);
-    //    Improve();
-    //}
 }
