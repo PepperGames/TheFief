@@ -5,11 +5,11 @@ using Zenject;
 
 public abstract class IndustrialStructure : Structure
 {
-    ////TODO удалить
-    //private void Update()
-    //{
-    //    ProduceResource();
-    //}
+    //TODO удалить
+    private void Update()
+    {
+        ProduceResource();
+    }
 
     public abstract void ProduceResource();
 

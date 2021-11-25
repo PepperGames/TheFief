@@ -23,25 +23,34 @@ public abstract class BasicStructure : MonoBehaviour
 
     [HideInInspector] public StructureCost structureCost;
 
+    [Inject] [HideInInspector] protected ResourcesManager resourcesManager;
+
     public Action OnInitialize;
+
     public void Initialize()
     {
         ZenAutoInjecter zenAutoInjecter = gameObject.AddComponent<ZenAutoInjecter>();
         zenAutoInjecter.ContainerSource = ContainerSources.SceneContext;
         structureCost = gameObject.GetComponent<StructureCost>();
         structureCost.IncreaseCurrentCost(structureCost.GetAmountOfResourcesForBuild());
+
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.name == "ModelView")
+            {
+                modelView = child.gameObject;
+                break;
+            }
+        }
     }
 
     public void SwapModelView(GameObject newModel, Quaternion rotation)
     {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
+        Destroy(modelView);
 
-        var currentModelView = Instantiate(newModel, transform);
-        currentModelView.transform.localPosition = new Vector3(0, 0, 0);
-        currentModelView.transform.localRotation = rotation;
+        modelView = Instantiate(newModel, transform);
+        modelView.transform.localPosition = new Vector3(0, 0, 0);
+        modelView.transform.localRotation = rotation;
     }
 
     private void OnDrawGizmos()

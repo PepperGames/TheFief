@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6766789996925685761}
   - component: {fileID: 7370552179297963114}
   - component: {fileID: 6022193824322414582}
+  - component: {fileID: 7176285286778534221}
   m_Layer: 11
   m_Name: Sawmill
   m_TagString: Untagged
@@ -53,7 +54,6 @@ MonoBehaviour:
   structureCost: {fileID: 6022193824322414582}
   lvl: 1
   maxLvl: 0
-  resourcesManager: {fileID: 0}
 --- !u!114 &6022193824322414582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +89,18 @@ MonoBehaviour:
     wood: 0
     stone: 0
     metal: 0
+--- !u!114 &7176285286778534221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436385156467146161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6855df92872e7bf40b6f703ca82df8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3790370307241491907
 GameObject:
   m_ObjectHideFlags: 0

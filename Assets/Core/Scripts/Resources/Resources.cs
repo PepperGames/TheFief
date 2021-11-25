@@ -145,5 +145,23 @@ public struct Resources
         return a < r;
     }
 
-    
+    public static Resources operator *(Resources a, float b)
+    {
+        return new Resources(a.Money * b, a.Food * b, a.Wood * b, a.Stone * b, a.Metal * b);
+    }
+
+    public static Resources operator /(Resources a, float b)
+    {
+        return new Resources(a.Money / b, a.Food / b, a.Wood / b, a.Stone / b, a.Metal / b);
+    }
+
+    public static Resources operator *(float a, Resources b)
+    {
+        return b * a;
+    }
+
+    public static Resources operator /(float a, Resources b)
+    {
+        return b / a;
+    }
 }

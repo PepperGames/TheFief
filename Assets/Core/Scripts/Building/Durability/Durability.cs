@@ -1,11 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Durability
+public class Durability : MonoBehaviour
 {
-    private float durability;
-    private float maxDurability;
+    [SerializeField] private float currentDurability;
+    [SerializeField] private float maxDurability;
 
+    public float CurrentDurability
+    {
+        get { return currentDurability; }
 
+        set
+        {
+            if (value >= 0)
+            {
+                currentDurability = value;
+            }
+        }
+    }
+
+    public float MaxDurability
+    {
+        get { return maxDurability; }
+        private set { maxDurability = value; }
+    }
+    public float MissingStrength
+    {
+        get { return maxDurability - currentDurability; }
+    }
+
+    private void Start()
+    {
+        maxDurability = 100;
+        currentDurability = maxDurability;
+    }
 }

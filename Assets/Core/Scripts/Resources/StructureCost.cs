@@ -8,6 +8,7 @@ public class StructureCost : MonoBehaviour
     [SerializeField] protected Resources[] upgradeCost;
 
     [SerializeField] protected Resources currentCost;
+
     public Resources CurrentCost
     {
         get { return currentCost; }
@@ -24,7 +25,6 @@ public class StructureCost : MonoBehaviour
     {
         int index = nextLvl - 2;
         int maxIndex = GetMaxLvl() - 2;
-        print(index);
 
         if (index >= 0 && index <= maxIndex)
         {

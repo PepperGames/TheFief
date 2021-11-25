@@ -4,12 +4,14 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(StructureCost))]
-public abstract class Structure : BasicStructure, IUpgradable
+[RequireComponent(typeof(Durability))]
+public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 {
     [SerializeField] protected int lvl;
     [SerializeField] protected int maxLvl;
 
-    [Inject] [SerializeField] protected ResourcesManager resourcesManager;
+    protected Durability durability;
+
 
     public Action OnUpgrade;
     protected virtual void Start()
@@ -17,6 +19,7 @@ public abstract class Structure : BasicStructure, IUpgradable
         maxLvl = structureCost.GetMaxLvl();
         StartCoroutine("WaitForUpgrade");
         lvl = 1;
+        durability = GetComponent<Durability>();
     }
 
     IEnumerator WaitForUpgrade() //TODO удалить
@@ -48,5 +51,29 @@ public abstract class Structure : BasicStructure, IUpgradable
         int nexLvl = lvl;
         resourcesManager.SpendResources(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
         structureCost.IncreaseCurrentCost(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
+    }
+
+    public void Break(float percent)
+    {
+        durability.CurrentDurability -= percent;
+    }
+
+    public bool Repair(float percent)
+    {
+        if (resourcesManager.EnoughResources(0.75f * (percent / 100) * structureCost.CurrentCost))
+        {
+            resourcesManager.SpendResources(0.75f * (percent / 100) * structureCost.CurrentCost);
+            durability.CurrentDurability += percent;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool RepairCompletely()
+    {
+        return Repair(durability.MissingStrength);
     }
 }
