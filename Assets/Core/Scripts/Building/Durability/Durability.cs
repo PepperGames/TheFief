@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Durability : MonoBehaviour
@@ -5,6 +6,7 @@ public class Durability : MonoBehaviour
     [SerializeField] private float currentDurability;
     [SerializeField] private float maxDurability;
 
+    public Action<float> OnDurabilityChange;
     public float CurrentDurability
     {
         get { return currentDurability; }
@@ -14,6 +16,7 @@ public class Durability : MonoBehaviour
             if (value >= 0)
             {
                 currentDurability = value;
+                OnDurabilityChange?.Invoke(value);
             }
         }
     }

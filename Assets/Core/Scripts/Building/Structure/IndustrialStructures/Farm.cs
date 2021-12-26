@@ -8,7 +8,7 @@ public class Farm : IndustrialStructure
     public override void ProduceResource()
     {
         resourcesManager.AddResources(new Resources { Food = 1 });
-        Break(1f);
-        Repair(1f);
+        Break(0.1f);
+        //Repair(1f);
     }
 }

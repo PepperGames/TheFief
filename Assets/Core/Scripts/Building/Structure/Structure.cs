@@ -12,7 +12,6 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     protected Durability durability;
 
-
     public Action OnUpgrade;
     protected virtual void Start()
     {
@@ -72,8 +71,8 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
         }
     }
 
-    public bool RepairCompletely()
+    public void RepairCompletely()
     {
-        return Repair(durability.MissingStrength);
+        Repair(durability.MissingStrength);
     }
 }

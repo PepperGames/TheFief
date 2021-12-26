@@ -5,6 +5,22 @@ using Zenject;
 
 public abstract class IndustrialStructure : Structure
 {
+    [SerializeField] private GameObject ui;
+    public void OnMouseDown()
+    {
+
+        if (ui == null)
+            return;
+
+        if (ui.activeInHierarchy)
+        {
+            ui.SetActive(false);
+        }
+        else
+        {
+            ui.SetActive(true);
+        }
+    }
     //TODO удалить
     private void Update()
     {
