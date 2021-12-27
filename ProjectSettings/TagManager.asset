@@ -47,6 +47,9 @@ TagManager:
   - name: StructureInfo
     uniqueID: 3043538679
     locked: 0
+  - name: Character
+    uniqueID: 467018173
+    locked: 0
   - name: UI
     uniqueID: 1973151691
     locked: 0

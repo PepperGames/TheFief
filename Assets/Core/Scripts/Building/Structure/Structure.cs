@@ -16,17 +16,17 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
     protected virtual void Start()
     {
         maxLvl = structureCost.GetMaxLvl();
-        StartCoroutine("WaitForUpgrade");
+        //StartCoroutine("WaitForUpgrade");
         lvl = 1;
         durability = GetComponent<Durability>();
     }
 
-    IEnumerator WaitForUpgrade() //TODO удалить
-    {
-        yield return new WaitForSeconds(2f);
-        Upgrade();
-        Debug.Log("WaitForUpgrade Done");
-    }
+    //IEnumerator WaitForUpgrade() //TODO удалить
+    //{
+    //    yield return new WaitForSeconds(2f);
+    //    Upgrade();
+    //    Debug.Log("WaitForUpgrade Done");
+    //}
 
     public bool CanBeUpgrade()
     {

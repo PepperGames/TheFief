@@ -25,8 +25,7 @@ public class IndustrialStructureInfo : MonoBehaviour
 
     private void OnDurabilityChange(float newDurability)
     {
-        Debug.Log(newDurability);
-        durabilitySlider.value = newDurability/100;
+        durabilitySlider.value = newDurability / 100;
     }
 
     private void DestroyStructure()
