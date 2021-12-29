@@ -10,7 +10,7 @@ public class RoadManager : MonoBehaviour
     [Inject] [SerializeField] private PlacementManager placementManager;
     [Inject] [SerializeField] private RoadFixer roadFixer;
 
-    [SerializeField] private List<Road> roads = new List<Road>();
+    [SerializeField] private List<Vector2Int> roadsPositions = new List<Vector2Int>();
 
     [SerializeField] private List<Vector2Int> temporaryPlacementPositions = new List<Vector2Int>();
     public List<Vector2Int> roadPositionsToRecheck = new List<Vector2Int>();
@@ -111,15 +111,28 @@ public class RoadManager : MonoBehaviour
         {
             //AudioPlayer.instance.PlayPlacementSound();
         }
+        roadsPositions.AddRange(temporaryPlacementPositions);
         temporaryPlacementPositions.Clear();
         startPosition = Vector2Int.zero;
 
         //Debug.Log("FinishPlacingRoad");
     }
 
+    public Vector2Int GetRandomRoadPosition()
+    {
+        if (roadsPositions == null || roadsPositions.Count <= 0)
+            return Vector2Int.zero;
+
+        int randomIndex = UnityEngine.Random.Range(0, roadsPositions.Count);
+
+        Vector2Int position = roadsPositions[randomIndex];
+        return position;
+    }
+
     public void Demolish(Vector2Int position)
     {
         placementManager.Demolish(position);
+        roadsPositions.Remove(position);
         FixRoadPrefabs(position);
     }
 }

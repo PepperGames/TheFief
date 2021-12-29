@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class AiAgent : MonoBehaviour
 {
-    public event Action OnDeath;
+    public event Action<AiAgent> OnReachedFinalPoint;
 
     public float speed = 0.2f;
-    public float rotationSpeed = 10f;
 
     List<Vector2> pathToGo = new List<Vector2>();
     bool moveFlag = false;
@@ -20,7 +19,14 @@ public class AiAgent : MonoBehaviour
         pathToGo = path;
         index = 1;
         moveFlag = true;
-        endPosition = pathToGo[index];
+        if (pathToGo.Count > 1)
+        {
+            endPosition = pathToGo[index];
+        }
+        else
+        {
+            OnReachedFinalPoint?.Invoke(this);
+        }
     }
 
     private void Update()
@@ -42,8 +48,7 @@ public class AiAgent : MonoBehaviour
                 if (index >= pathToGo.Count)
                 {
                     moveFlag = false;
-                    Debug.Log("end");
-                    //Destroy(gameObject);
+                    OnReachedFinalPoint?.Invoke(this);
                     return;
                 }
                 endPosition = pathToGo[index];
@@ -57,13 +62,6 @@ public class AiAgent : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, endPosition, step);
 
-        //var lookDirection = endPosition - new Vector2(transform.position.x, transform.position.y);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * rotationSpeed);
         return Vector3.Distance(transform.position, endPosition);
-    }
-
-    private void OnDestroy()
-    {
-        OnDeath?.Invoke();
     }
 }

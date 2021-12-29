@@ -10,6 +10,8 @@ namespace Zenject
             Container.Bind<InputManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<StructureManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ResourcesManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<CharacterManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<AiDirector>().FromComponentInHierarchy().AsSingle();
             Container.Bind<TestUIController>().FromComponentInHierarchy().AsSingle();//TODO удалить/заменить
         }
     }

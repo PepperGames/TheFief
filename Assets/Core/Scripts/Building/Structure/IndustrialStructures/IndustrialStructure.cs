@@ -8,7 +8,6 @@ public abstract class IndustrialStructure : Structure
     [SerializeField] private GameObject ui;
     public void OnMouseDown()
     {
-
         if (ui == null)
             return;
 

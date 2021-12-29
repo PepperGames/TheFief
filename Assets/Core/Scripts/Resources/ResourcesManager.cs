@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ResourcesManager : MonoBehaviour
 {
-    [SerializeField] private Resources resources = new Resources() { Money = 100, Food = 100, Wood = 100, Stone = 100, Metal = 100 };
+    [SerializeField] private Resources resources;
 
     public Action<float> OnMoneyChangeFor;
     public Action<float> OnFoodChangeFor;

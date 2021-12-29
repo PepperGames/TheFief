@@ -8,6 +8,5 @@ public class Quarry : IndustrialStructure
     {
         resourcesManager.AddResources(new Resources { Stone = 1 });
         Break(1f);
-        Repair(1f);
     }
 }

@@ -8,6 +8,5 @@ public class Mine : IndustrialStructure
     {
         resourcesManager.AddResources(new Resources { Metal = 1 });
         Break(1f);
-        Repair(1f);
     }
 }

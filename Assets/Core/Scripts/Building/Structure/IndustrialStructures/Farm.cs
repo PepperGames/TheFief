@@ -9,6 +9,6 @@ public class Farm : IndustrialStructure
     {
         resourcesManager.AddResources(new Resources { Food = 1 });
         Break(0.1f);
-        //Repair(1f);
     }
 }
+    
