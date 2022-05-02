@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6022193824322414582}
   - component: {fileID: 7176285286778534221}
   - component: {fileID: 5058425565060574779}
+  - component: {fileID: 851039649812629626}
   m_Layer: 11
   m_Name: Sawmill
   m_TagString: Untagged
@@ -59,6 +60,7 @@ MonoBehaviour:
   structureCost: {fileID: 6022193824322414582}
   lvl: 1
   maxLvl: 0
+  durability: {fileID: 7176285286778534221}
   ui: {fileID: 8950348609755841803}
 --- !u!114 &6022193824322414582
 MonoBehaviour:
@@ -135,6 +137,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &851039649812629626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436385156467146161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 0
 --- !u!1 &3790370307241491907
 GameObject:
   m_ObjectHideFlags: 0

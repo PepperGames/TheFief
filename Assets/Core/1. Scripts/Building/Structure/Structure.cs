@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using Zenject;
 
 [RequireComponent(typeof(StructureCost))]
 [RequireComponent(typeof(Durability))]
@@ -10,25 +8,20 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
     [SerializeField] protected int lvl;
     [SerializeField] protected int maxLvl;
 
-    protected Durability durability;
+    [SerializeField] protected Durability durability;
+
+    public Durability Durability => durability;
 
     public Action OnUpgrade;
+
     protected virtual void Start()
     {
         maxLvl = structureCost.GetMaxLvl();
-        //StartCoroutine("WaitForUpgrade");
-        lvl = 1;
-        durability = GetComponent<Durability>();
+        //lvl = 1;
+        //durability = GetComponent<Durability>();
     }
 
-    //IEnumerator WaitForUpgrade() //TODO удалить
-    //{
-    //    yield return new WaitForSeconds(2f);
-    //    Upgrade();
-    //    Debug.Log("WaitForUpgrade Done");
-    //}
-
-    public bool CanBeUpgrade()
+    public virtual bool CanBeUpgrade()
     {
         int newLvl = lvl + 1;
 

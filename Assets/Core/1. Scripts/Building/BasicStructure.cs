@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-using static Zenject.ZenAutoInjecter;
 
 public abstract class BasicStructure : MonoBehaviour
 {
@@ -29,8 +27,6 @@ public abstract class BasicStructure : MonoBehaviour
 
     public void Initialize()
     {
-        ZenAutoInjecter zenAutoInjecter = gameObject.AddComponent<ZenAutoInjecter>();
-        zenAutoInjecter.ContainerSource = ContainerSources.SceneContext;
         structureCost = gameObject.GetComponent<StructureCost>();
         structureCost.IncreaseCurrentCost(structureCost.GetAmountOfResourcesForBuild());
 

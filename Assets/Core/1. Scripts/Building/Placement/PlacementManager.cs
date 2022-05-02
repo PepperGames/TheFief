@@ -109,10 +109,9 @@ public class PlacementManager : MonoBehaviour
 
         foreach (Vector2Int point in structure.Points)
         {
-            Debug.Log(point);
             var structurePosition = Vector2Int.RoundToInt(structure.transform.position);
             var newPosition = structurePosition + new Vector2Int(point.x, point.y);
-            Debug.Log(newPosition);
+            
             placementGrid[newPosition.x, newPosition.y] = CellType.Empty;
             structureDictionary.Remove(newPosition);
         }

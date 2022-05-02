@@ -13,13 +13,12 @@ public class IndustrialStructureInfo : MonoBehaviour
     [SerializeField] private Button destroyButton;
 
     [SerializeField] private IndustrialStructure industrialStructure;
-    [SerializeField] private Durability durability;
 
     private void Start()
     {
         upgradeButton.onClick.AddListener(industrialStructure.Upgrade);
         repairButton.onClick.AddListener(industrialStructure.RepairCompletely);
-        durability.OnDurabilityChange += OnDurabilityChange;
+        industrialStructure.Durability.OnDurabilityChange += OnDurabilityChange;
         destroyButton.onClick.AddListener(DestroyStructure);
     }
 
@@ -31,6 +30,6 @@ public class IndustrialStructureInfo : MonoBehaviour
     private void DestroyStructure()
     {
         Vector3 structurePosition = industrialStructure.transform.position;
-        services. PlacementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
+        services.PlacementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
     }
 }

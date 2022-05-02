@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class TestScrollVievAdd : MonoBehaviour
 {
     public GameObject ScrollViewGameObject;
 
     public GameObject[] cards;
+
     private void Start()
     {
         for (int i = 0; i < cards.Length; i++)

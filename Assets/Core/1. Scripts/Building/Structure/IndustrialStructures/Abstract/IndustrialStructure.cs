@@ -1,11 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 public abstract class IndustrialStructure : Structure
 {
     [SerializeField] private GameObject ui;
+
+    protected Resources accumulatedResources;
+
+    protected override void Start()
+    {
+        base.Start();
+        accumulatedResources = new Resources();
+    }
+
     public void OnMouseDown()
     {
         if (ui == null)
@@ -20,6 +26,7 @@ public abstract class IndustrialStructure : Structure
             ui.SetActive(true);
         }
     }
+
     //TODO удалить
     private void Update()
     {
@@ -27,6 +34,11 @@ public abstract class IndustrialStructure : Structure
     }
 
     public abstract void ProduceResource();
+
+    public virtual void IssueAccumulatedResource()
+    {
+        services.ResourcesManager.AddResources(accumulatedResources);
+    }
 
     public override void Upgrade()
     {
