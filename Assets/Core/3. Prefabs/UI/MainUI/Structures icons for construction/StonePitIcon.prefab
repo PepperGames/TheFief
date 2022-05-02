@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8516885892900118070}
   - component: {fileID: -2123866633163067309}
   m_Layer: 5
-  m_Name: QuarryIcon
+  m_Name: StonePitIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

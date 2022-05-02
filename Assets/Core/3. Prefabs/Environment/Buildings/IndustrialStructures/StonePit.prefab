@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5899133219541778350}
   - component: {fileID: 1759499912641829649}
   m_Layer: 11
-  m_Name: Quarry
+  m_Name: StonePit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

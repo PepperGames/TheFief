@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quarry : IndustrialStructure
+public class StonePit : IndustrialStructure
 {
     public override void ProduceResource()
     {
