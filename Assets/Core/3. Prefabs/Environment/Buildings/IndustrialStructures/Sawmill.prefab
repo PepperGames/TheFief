@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3436385156467146161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 4, z: 0}
+  m_LocalPosition: {x: 4, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8683612201555742271}
@@ -62,6 +62,12 @@ MonoBehaviour:
   maxLvl: 0
   durability: {fileID: 7176285286778534221}
   ui: {fileID: 8950348609755841803}
+  accumulatedResources:
+    money: 0
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
 --- !u!114 &6022193824322414582
 MonoBehaviour:
   m_ObjectHideFlags: 0

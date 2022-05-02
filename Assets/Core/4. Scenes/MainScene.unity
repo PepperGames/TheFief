@@ -341,6 +341,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54228ce7394088f4f943a73262860578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &921172820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4524089773129231548, guid: 8c61563b688d0c847a061967e9adcc4f, type: 3}
+  m_PrefabInstance: {fileID: 6905108383122594120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3c074c09dfa154886345b9d0dd47a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &986434559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58712,6 +58723,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneContext
       objectReference: {fileID: 0}
+    - target: {fileID: 6833730608480869243, guid: b2df5e9dcf4826e4eb2bd4522e3577c8, type: 3}
+      propertyPath: _grid
+      value: 
+      objectReference: {fileID: 921172820}
     - target: {fileID: 6833730608480869243, guid: b2df5e9dcf4826e4eb2bd4522e3577c8, type: 3}
       propertyPath: _roadFixer
       value: 

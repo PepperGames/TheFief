@@ -36,6 +36,7 @@ public abstract class IndustrialStructure : Structure
     }
 
     public abstract void ProduceResource();
+
     public virtual void TryIssueAccumulatedResource()
     {
         if (InGameTime.Hour == ConstantValues.endWorkingDayTime)
@@ -43,6 +44,7 @@ public abstract class IndustrialStructure : Structure
             IssueAccumulatedResource();
         }
     }
+
     public virtual void IssueAccumulatedResource()
     {
         services.ResourcesManager.AddResources(accumulatedResources);

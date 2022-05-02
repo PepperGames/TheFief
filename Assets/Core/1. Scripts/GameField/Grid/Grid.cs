@@ -1,22 +1,23 @@
-using System;
+using Random = System.Random;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class Grid
+public class Grid : MonoBehaviour
 {
     private CellType[,] _grid;
-    private int _width;
+
+    [SerializeField] private int _width;
+    [SerializeField] private int _height;
+
     public int Width { get { return _width; } }
-    private int _height;
     public int Height { get { return _height; } }
 
     private List<Point> _roadList = new List<Point>();
     private List<Point> _specialStructure = new List<Point>();
 
-    public Grid(int width, int height)
+    private void Awake()
     {
-        _width = width;
-        _height = height;
-        _grid = new CellType[width, height];
+        _grid = new CellType[_width, _height];
     }
 
     // Adding index operator to our Grid class so that we can use grid[][] to access specific cell from our grid. 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Source https://github.com/lordjesus/Packt-Introduction-to-graph-algorithms-for-game-developers
@@ -33,11 +34,16 @@ public class GridSearch
             if (current.Equals(endPosition))
             {
                 path = GeneratePath(parentsDictionary, current);
+                foreach (var i in path)
+                {
+                    Debug.Log(i);
+                }
                 return path;
             }
 
             foreach (Point neighbour in grid.GetAdjacentCells(current, isAgent))
             {
+                Debug.Log("foreach");
                 float newCost = costDictionary[current] + grid.GetCostOfEnteringCell(neighbour);
                 if (!costDictionary.ContainsKey(neighbour) || newCost < costDictionary[neighbour])
                 {
@@ -51,6 +57,11 @@ public class GridSearch
                 }
             }
         }
+        foreach (var i in path)
+        {
+            Debug.Log(i);
+        }
+
         return path;
     }
 

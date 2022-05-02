@@ -11,8 +11,9 @@ public class Services : MonoBehaviour
     [SerializeField] private CharacterManager _characterManager;
     [SerializeField] private AiDirector _aiDirector;
     [SerializeField] private UIController _UIController;
+    [SerializeField] private Grid _grid;
 
-
+    public Grid Grid => _grid;
     public PlacementManager PlacementManager => _placementManager;
     public RoadManager RoadManager => _roadManager;
     public RoadFixer RoadFixer => _roadFixer;

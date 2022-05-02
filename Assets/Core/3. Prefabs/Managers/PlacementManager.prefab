@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6905108382391655463}
   - component: {fileID: 6905108382391655462}
+  - component: {fileID: 4524089773129231548}
   m_Layer: 0
   m_Name: PlacementManager
   m_TagString: Untagged
@@ -45,3 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 40
   height: 40
+  services: {fileID: 0}
+--- !u!114 &4524089773129231548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905108382391655461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3c074c09dfa154886345b9d0dd47a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _width: 40
+  _height: 40

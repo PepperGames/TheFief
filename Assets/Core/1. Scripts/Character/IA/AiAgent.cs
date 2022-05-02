@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AiAgent : MonoBehaviour
 {
-    public event Action<AiAgent> OnReachedFinalPoint;
+    public event Action<AiAgent, Action<bool>> OnReachedFinalPoint;
 
     public float speed = 0.2f;
 
@@ -24,7 +24,7 @@ public class AiAgent : MonoBehaviour
         }
         else
         {
-            OnReachedFinalPoint?.Invoke(this);
+            OnReachedFinalPoint?.Invoke(this, null);
         }
     }
 
@@ -47,7 +47,7 @@ public class AiAgent : MonoBehaviour
                 if (index >= pathToGo.Count)
                 {
                     moveFlag = false;
-                    OnReachedFinalPoint?.Invoke(this);
+                    OnReachedFinalPoint?.Invoke(this, null);
                     return;
                 }
                 endPosition = pathToGo[index];

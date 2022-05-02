@@ -1,30 +1,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class PlacementManager : MonoBehaviour
 {
     public int width;
     public int height;
 
-    private Grid placementGrid;
+   [Inject] [SerializeField] private Services services;
 
     [SerializeField] private Dictionary<Vector2Int, BasicStructure> temporaryStructureObject = new Dictionary<Vector2Int, BasicStructure>();
     [SerializeField] private Dictionary<Vector2Int, BasicStructure> structureDictionary = new Dictionary<Vector2Int, BasicStructure>();
 
-    private void Start()
-    {
-        placementGrid = new Grid(width, height);
-    }
-
     internal CellType[] GetNeighbourTypesFor(Vector2Int temporaryPosition)
     {
-        return placementGrid.GetAllAdjacentCellTypes(temporaryPosition.x, temporaryPosition.y);
+        return services.Grid.GetAllAdjacentCellTypes(temporaryPosition.x, temporaryPosition.y);
     }
 
     internal List<Vector2Int> GetNeighboursOfTypeFor(Vector2Int position, CellType type)
     {
-        var neighbourVerticles = placementGrid.GetAdjacentCellsOfType(position.x, position.y, type);
+        var neighbourVerticles = services.Grid.GetAdjacentCellsOfType(position.x, position.y, type);
 
         List<Vector2Int> neighbours = new List<Vector2Int>();
 
@@ -42,7 +38,7 @@ public class PlacementManager : MonoBehaviour
         foreach (Vector2Int item in createdBasicStructure.Points)
         {
             var newPosition = position + new Vector2Int(item.x, item.y);
-            placementGrid[newPosition.x, newPosition.y] = type;
+            services.Grid[newPosition.x, newPosition.y] = type;
             structureDictionary.Add(newPosition, createdBasicStructure);
             DestroyNatureAt(newPosition);
         }
@@ -64,7 +60,7 @@ public class PlacementManager : MonoBehaviour
 
     internal List<Vector2Int> GetPathBetween(Vector2Int startPosition, Vector2Int endPosition)
     {
-        var resultPath = GridSearch.AStarSearch(placementGrid, new Point(startPosition.x, startPosition.y), new Point(endPosition.x, endPosition.y));
+        var resultPath = GridSearch.AStarSearch(services.Grid, new Point(startPosition.x, startPosition.y), new Point(endPosition.x, endPosition.y));
 
         List<Vector2Int> path = new List<Vector2Int>();
         foreach (Point point in resultPath)
@@ -82,7 +78,7 @@ public class PlacementManager : MonoBehaviour
             {
                 var position = Vector2Int.RoundToInt(structure.transform.position);
                 var newPosition = position + new Vector2Int(point.x, point.y);
-                placementGrid[newPosition.x, newPosition.y] = CellType.Empty;
+                services.Grid[newPosition.x, newPosition.y] = CellType.Empty;
             }
 
             Destroy(structure.gameObject);
@@ -112,7 +108,7 @@ public class PlacementManager : MonoBehaviour
             var structurePosition = Vector2Int.RoundToInt(structure.transform.position);
             var newPosition = structurePosition + new Vector2Int(point.x, point.y);
             
-            placementGrid[newPosition.x, newPosition.y] = CellType.Empty;
+            services.Grid[newPosition.x, newPosition.y] = CellType.Empty;
             structureDictionary.Remove(newPosition);
         }
 
@@ -130,7 +126,7 @@ public class PlacementManager : MonoBehaviour
 
     private bool CheckIfPositionIsOfType(Vector2Int position, CellType type)
     {
-        return placementGrid[position.x, position.y] == type;
+        return services.Grid[position.x, position.y] == type;
     }
 
     internal void PlaceTemporaryObject(Vector2Int position, BasicStructure basicStructure, CellType type)
@@ -140,7 +136,7 @@ public class PlacementManager : MonoBehaviour
         foreach (Vector2Int item in createdBasicStructure.Points)
         {
             var newPosition = position + new Vector2Int(item.x, item.y);
-            placementGrid[newPosition.x, newPosition.y] = type;
+            services.Grid[newPosition.x, newPosition.y] = type;
 
             temporaryStructureObject.Add(position, createdBasicStructure);
         }
