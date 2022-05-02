@@ -1,15 +1,9 @@
-using SVS;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
 public class StructureManager : MonoBehaviour
 {
-    [Inject] [SerializeField] private PlacementManager placementManager;
-    [Inject] [SerializeField] private ResourcesManager resourcesManager;
+    [Inject] private Services services;
 
     [SerializeField] private Structure selectedStructure;
 
@@ -29,8 +23,8 @@ public class StructureManager : MonoBehaviour
             {
                 if (CheckStructurePosition(position, selectedStructure))
                 {
-                    resourcesManager.SpendResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild());
-                    placementManager.PlaceStructureOnTheMap(position, selectedStructure, CellType.Structure);
+                    services.ResourcesManager.SpendResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild());
+                    services.PlacementManager.PlaceStructureOnTheMap(position, selectedStructure, CellType.Structure);
                 }
             }
         }
@@ -38,12 +32,12 @@ public class StructureManager : MonoBehaviour
 
     public void Demolish(Vector2Int position)
     {
-        placementManager.Demolish(position);
+        services.PlacementManager.Demolish(position);
     }
 
     private bool CheckCost()
     {
-        if (resourcesManager.EnoughResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild()))
+        if (services.ResourcesManager.EnoughResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild()))
         {
             return true;
         }
@@ -73,7 +67,7 @@ public class StructureManager : MonoBehaviour
 
     private bool RoadCheck(Vector2Int position)
     {
-        if (placementManager.GetNeighboursOfTypeFor(position, CellType.Road).Count <= 0)
+        if (services.PlacementManager.GetNeighboursOfTypeFor(position, CellType.Road).Count <= 0)
         {
             Debug.Log("Must be placed near a road");
             return false;
@@ -83,12 +77,12 @@ public class StructureManager : MonoBehaviour
 
     private bool DefaultCheck(Vector2Int position)
     {
-        if (placementManager.CheckIfPositionInBound(position) == false)
+        if (services.PlacementManager.CheckIfPositionInBound(position) == false)
         {
             Debug.Log("This position is out of bounds");
             return false;
         }
-        if (placementManager.CheckIfPositionIsFree(position) == false)
+        if (services.PlacementManager.CheckIfPositionIsFree(position) == false)
         {
             Debug.Log("This position is not EMPTY");
             return false;

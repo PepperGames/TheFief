@@ -71,7 +71,7 @@ public class Grid
 
     public List<Point> GetAdjacentCells(Point cell, bool isAgent)
     {
-        return GetWakableAdjacentCells((int)cell.X, (int)cell.Y, isAgent);
+        return GetWakableAdjacentCells(cell.X, cell.Y, isAgent);
     }
 
     public float GetCostOfEnteringCell(Point cell)

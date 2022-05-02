@@ -1,7 +1,4 @@
 using SVS;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -9,50 +6,46 @@ public class GameManager : MonoBehaviour
 {
     public CameraMovement cameraMovement;
 
-    [Inject] [SerializeField] private RoadManager roadManager;
-    [Inject] [SerializeField] private InputManager inputManager;
+    [Inject] private Services services;
 
-    [Inject] [SerializeField] private StructureManager structureManager;
-
-    [Inject] [SerializeField] public TestUIController uiController;
     private void Start()
     {
-        uiController.OnRoadPlacement += RoadPlacementHandler;
-        uiController.OnHousePlacement += HousePlacementHandler;
-        uiController.OnStructureDemolish += StructureDemolishHandler;
+        services.UIController.OnRoadPlacement += RoadPlacementHandler;
+        services.UIController.OnHousePlacement += HousePlacementHandler;
+        services.UIController.OnStructureDemolish += StructureDemolishHandler;
     }
 
     private void HousePlacementHandler(Structure structure)
     {
         ClearInputActions();
-        inputManager.OnMouseClick += structureManager.PlaceHouse;
+        services.InputManager.OnMouseClick += services.StructureManager.PlaceHouse;
     }
 
     private void RoadPlacementHandler()
     {
         ClearInputActions();
 
-        inputManager.OnMouseClick += roadManager.PlaceRoad;
-        inputManager.OnMouseHold += roadManager.PlaceRoad;
-        inputManager.OnMouseUp += roadManager.FinishPlacingRoad;
+        services.InputManager.OnMouseClick += services.RoadManager.PlaceRoad;
+        services.InputManager.OnMouseHold += services.RoadManager.PlaceRoad;
+        services.InputManager.OnMouseUp += services.RoadManager.FinishPlacingRoad;
     }
 
     private void StructureDemolishHandler()
     {
         ClearInputActions();
-        inputManager.OnMouseClick += roadManager.Demolish;
-        inputManager.OnMouseClick += structureManager.Demolish;
+        services.InputManager.OnMouseClick += services.RoadManager.Demolish;
+        services.InputManager.OnMouseClick += services.StructureManager.Demolish;
     }
 
     private void ClearInputActions()
     {
-        inputManager.OnMouseClick = null;
-        inputManager.OnMouseHold = null;
-        inputManager.OnMouseUp = null;
+        services.InputManager.OnMouseClick = null;
+        services.InputManager.OnMouseHold = null;
+        services.InputManager.OnMouseUp = null;
     }
 
     private void Update()
     {
-        cameraMovement.MoveCamera(new Vector3(inputManager.CameraMovementVector.x, inputManager.CameraMovementVector.y, 0));
+        cameraMovement.MoveCamera(new Vector3(services.InputManager.CameraMovementVector.x, services.InputManager.CameraMovementVector.y, 0));
     }
 }

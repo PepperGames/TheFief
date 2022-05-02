@@ -6,7 +6,7 @@ public class Mine : IndustrialStructure
 {
     public override void ProduceResource()
     {
-        resourcesManager.AddResources(new Resources { Metal = 1 });
+        services.ResourcesManager.AddResources(new Resources { Metal = 1 });
         Break(1f);
     }
 }

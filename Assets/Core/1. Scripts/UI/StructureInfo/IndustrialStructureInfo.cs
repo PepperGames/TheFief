@@ -4,7 +4,7 @@ using Zenject;
 
 public class IndustrialStructureInfo : MonoBehaviour
 {
-    [Inject] [HideInInspector] protected PlacementManager placementManager;
+    [Inject] protected Services services;
 
     [SerializeField] private Slider durabilitySlider;
 
@@ -31,6 +31,6 @@ public class IndustrialStructureInfo : MonoBehaviour
     private void DestroyStructure()
     {
         Vector3 structurePosition = industrialStructure.transform.position;
-        placementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
+        services. PlacementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
     }
 }

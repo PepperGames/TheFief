@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -111,14 +109,15 @@ public class PlacementManager : MonoBehaviour
 
         foreach (Vector2Int point in structure.Points)
         {
+            Debug.Log(point);
             var structurePosition = Vector2Int.RoundToInt(structure.transform.position);
             var newPosition = structurePosition + new Vector2Int(point.x, point.y);
+            Debug.Log(newPosition);
             placementGrid[newPosition.x, newPosition.y] = CellType.Empty;
+            structureDictionary.Remove(newPosition);
         }
 
         Destroy(structure.gameObject);
-
-        structureDictionary.Remove(position);
     }
 
     private void DestroyNatureAt(Vector2Int position)
@@ -175,7 +174,7 @@ public class PlacementManager : MonoBehaviour
 
     public BasicStructure GetRandomStructure()
     {
-        int randomIndex = UnityEngine.Random.Range(0, structureDictionary.Count-1);
+        int randomIndex = UnityEngine.Random.Range(0, structureDictionary.Count - 1);
 
         BasicStructure structure = structureDictionary.ElementAt(randomIndex).Value;
         return structure;

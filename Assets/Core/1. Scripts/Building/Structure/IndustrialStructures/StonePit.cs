@@ -6,7 +6,7 @@ public class StonePit : IndustrialStructure
 {
     public override void ProduceResource()
     {
-        resourcesManager.AddResources(new Resources { Stone = 1 });
+        services.ResourcesManager.AddResources(new Resources { Stone = 1 });
         Break(1f);
     }
 }

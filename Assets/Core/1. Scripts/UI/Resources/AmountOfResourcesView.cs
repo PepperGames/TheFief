@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
 public abstract class AmountOfResourcesView : MonoBehaviour
 {
-    [Inject] [SerializeField] protected ResourcesManager resourcesManager;
+    [Inject] protected Services services;
+
     [SerializeField] protected TMP_Text text;
+
     private void Start()
     {
-        resourcesManager.OnResourcesChange += DisplayAmountOfResources;
+        services.ResourcesManager.OnResourcesChange += DisplayAmountOfResources;
     }
 
     protected abstract void DisplayAmountOfResources(Resources resources);

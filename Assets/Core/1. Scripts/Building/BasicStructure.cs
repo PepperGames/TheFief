@@ -23,7 +23,7 @@ public abstract class BasicStructure : MonoBehaviour
 
     [HideInInspector] public StructureCost structureCost;
 
-    [Inject] [HideInInspector] protected ResourcesManager resourcesManager;
+    [Inject] protected Services services;
 
     public Action OnInitialize;
 

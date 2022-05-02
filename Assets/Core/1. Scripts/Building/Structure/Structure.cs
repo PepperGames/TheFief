@@ -34,7 +34,7 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
         if (newLvl <= maxLvl)
         {
-            if (resourcesManager.EnoughResources(structureCost.GetAmountOfResourcesForUpdate(newLvl)))
+            if (services.ResourcesManager.EnoughResources(structureCost.GetAmountOfResourcesForUpdate(newLvl)))
             {
                 Debug.Log("Can Be Upgrade");
                 return true;
@@ -48,7 +48,7 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
     {
         lvl++;
         int nexLvl = lvl;
-        resourcesManager.SpendResources(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
+        services.ResourcesManager.SpendResources(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
         structureCost.IncreaseCurrentCost(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
     }
 
@@ -59,9 +59,9 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     public bool Repair(float percent)
     {
-        if (resourcesManager.EnoughResources(0.75f * (percent / 100) * structureCost.CurrentCost))
+        if (services.ResourcesManager.EnoughResources(0.75f * (percent / 100) * structureCost.CurrentCost))
         {
-            resourcesManager.SpendResources(0.75f * (percent / 100) * structureCost.CurrentCost);
+            services.ResourcesManager.SpendResources(0.75f * (percent / 100) * structureCost.CurrentCost);
             durability.CurrentDurability += percent;
             return true;
         }

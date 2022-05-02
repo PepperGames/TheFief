@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,11 +5,11 @@ using Zenject;
 
 public class AiDirector : MonoBehaviour
 {
-    [Inject] [SerializeField] private PlacementManager placementManager;
+    [Inject] protected Services services;
 
     public List<Vector2> GetPath(Vector2Int start, Vector2Int end)
     {
-        var path = placementManager.GetPathBetween(start, end);
+        var path = services.PlacementManager.GetPathBetween(start, end);
         if (path.Count > 0)
         {
             path.Reverse();

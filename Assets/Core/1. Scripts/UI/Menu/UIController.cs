@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class TestUIController : MonoBehaviour
+public class UIController : MonoBehaviour
 {
     public Action OnRoadPlacement;
     public Action<Structure> OnHousePlacement;
@@ -15,7 +13,7 @@ public class TestUIController : MonoBehaviour
     public StructureIcon[] structureIcons;
     public Button demolishButton;
 
-    [Inject] [SerializeField] private StructureManager structureManager;
+    [Inject] private Services services;
 
     public Color outlineColor;
 
@@ -33,7 +31,7 @@ public class TestUIController : MonoBehaviour
             {
                 ResetButtonColor();
                 ModifyOutline(structureIcon.button);
-                structureManager.SetSelectedStructure(structureIcon.structure);
+                services.StructureManager.SetSelectedStructure(structureIcon.structure);
                 OnHousePlacement?.Invoke(structureIcon.structure);
             });
         }
