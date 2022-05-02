@@ -4,7 +4,7 @@ public abstract class IndustrialStructure : Structure
 {
     [SerializeField] private GameObject ui;
 
-    protected Resources accumulatedResources;
+    [SerializeField] protected Resources accumulatedResources;
 
     protected override void Start()
     {
@@ -27,17 +27,26 @@ public abstract class IndustrialStructure : Structure
         }
     }
 
-    //TODO удалить
-    private void Update()
+    public virtual void TryProduceResource()
     {
-        ProduceResource();
+        if (InGameTime.Hour > ConstantValues.beginingWorkDayTime && InGameTime.Hour <= ConstantValues.endWorkingDayTime)
+        {
+            ProduceResource();
+        }
     }
 
     public abstract void ProduceResource();
-
+    public virtual void TryIssueAccumulatedResource()
+    {
+        if (InGameTime.Hour == ConstantValues.endWorkingDayTime)
+        {
+            IssueAccumulatedResource();
+        }
+    }
     public virtual void IssueAccumulatedResource()
     {
         services.ResourcesManager.AddResources(accumulatedResources);
+        accumulatedResources.Reset();
     }
 
     public override void Upgrade()
@@ -48,4 +57,17 @@ public abstract class IndustrialStructure : Structure
         }
     }
 
+    protected override void OnEventsSubscribe()
+    {
+        base.OnEventsSubscribe();
+        InGameTime.OnHourChange += TryProduceResource;
+        InGameTime.OnHourChange += TryIssueAccumulatedResource;
+    }
+
+    protected override void OnEventsUnscribe()
+    {
+        base.OnEventsUnscribe();
+        InGameTime.OnHourChange -= TryProduceResource;
+        InGameTime.OnHourChange -= TryIssueAccumulatedResource;
+    }
 }

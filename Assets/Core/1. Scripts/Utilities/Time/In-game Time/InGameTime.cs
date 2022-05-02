@@ -8,15 +8,15 @@ public class InGameTime : MonoBehaviour
     [SerializeField] private float durationOfOneInGameMinute;
 
     [SerializeField] private static int day;
-    [SerializeField] private static int hour;
+    [SerializeField] private static int hour = 6;
     [SerializeField] private static int minute;
 
     private float counter = 0;
 
     //private static Action<InGameTimeDate> ;
-    private static Action OnDayChange;
-    private static Action OnHourChange;
-    private static Action OnMinuteChange;
+    public static Action OnDayChange;
+    public static Action OnHourChange;
+    public static Action OnMinuteChange;
 
     public static int Day
     {
@@ -44,8 +44,8 @@ public class InGameTime : MonoBehaviour
             {
                 Day++;
                 hour -= 24;
-                OnHourChange?.Invoke();
             }
+            OnHourChange?.Invoke();
         }
     }
     public static int Minute
@@ -61,8 +61,8 @@ public class InGameTime : MonoBehaviour
             {
                 Hour++;
                 minute -= 60;
-                OnMinuteChange?.Invoke();
             }
+            OnMinuteChange?.Invoke();
         }
     }
 

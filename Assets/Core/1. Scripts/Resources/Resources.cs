@@ -99,6 +99,15 @@ public struct Resources
         this.metal = metal;
     }
 
+    public void Reset()
+    {
+        money = 0;
+        food = 0;
+        wood = 0;
+        stone = 0;
+        metal = 0;
+    }
+
     public static Resources operator +(Resources a, Resources b)
     {
         return new Resources(a.Money + b.Money, a.Food + b.Food, a.Wood + b.Wood, a.Stone + b.Stone, a.Metal + b.Metal);

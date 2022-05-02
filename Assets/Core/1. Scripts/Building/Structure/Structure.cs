@@ -19,6 +19,7 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
         maxLvl = structureCost.GetMaxLvl();
         //lvl = 1;
         //durability = GetComponent<Durability>();
+        OnEventsSubscribe();
     }
 
     public virtual bool CanBeUpgrade()
@@ -67,5 +68,20 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
     public void RepairCompletely()
     {
         Repair(durability.MissingStrength);
+    }
+
+    protected virtual void OnEventsSubscribe()
+    {
+
+    }
+
+    protected virtual void OnEventsUnscribe()
+    {
+
+    }
+
+    private void OnDestroy()
+    {
+        OnEventsUnscribe();
     }
 }

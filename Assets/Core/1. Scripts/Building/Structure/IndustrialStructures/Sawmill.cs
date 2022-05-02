@@ -2,7 +2,7 @@ public class Sawmill : IndustrialStructure
 {
     public override void ProduceResource()
     {
-        services.ResourcesManager.AddResources(new Resources { Wood = 1 });
-        Break(1f);
+        accumulatedResources += new Resources { Wood = 1 };
+        Break(0.1f);
     }
 }
