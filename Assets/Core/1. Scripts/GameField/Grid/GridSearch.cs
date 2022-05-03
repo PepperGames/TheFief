@@ -49,11 +49,25 @@ public class GridSearch
                 {
                     costDictionary[neighbour] = newCost;
 
+                    //if (isAgent)
+                    //{
+                    //    if (Math.Abs(current.X - neighbour.X) != 1 && Math.Abs(current.Y - neighbour.Y) != 1)
+                    //    {
+                    //        float priority = newCost + ManhattanDiscance(endPosition, neighbour);
+                    //        positionsTocheck.Add(neighbour);
+                    //        priorityDictionary[neighbour] = priority;
+
+                    //        parentsDictionary[neighbour] = current;
+                    //    }
+                    //}
+                    //else
+                    //{
                     float priority = newCost + ManhattanDiscance(endPosition, neighbour);
                     positionsTocheck.Add(neighbour);
                     priorityDictionary[neighbour] = priority;
 
                     parentsDictionary[neighbour] = current;
+                    //}
                 }
             }
         }

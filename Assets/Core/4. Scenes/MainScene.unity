@@ -59076,6 +59076,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7233499394226695365, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
+      propertyPath: pedestrianPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1796537531702237250, guid: ff08344273520e949b2b7152f2a6e2c1, type: 3}
     - target: {fileID: 7233499394226695367, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
       propertyPath: m_Name
       value: CharacterManager
