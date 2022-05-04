@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   durationOfOneInGameDay: 0
-  durationOfOneInGameHour: 3
+  durationOfOneInGameHour: 25
   durationOfOneInGameMinute: 0
 --- !u!114 &6635506523410607846
 MonoBehaviour:

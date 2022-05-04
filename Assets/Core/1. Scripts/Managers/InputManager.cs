@@ -73,18 +73,14 @@ public class InputManager : MonoBehaviour
 
     private bool PositionInGridBounds(Vector2Int? position)
     {
-        Debug.Log(position);
         if (position != null)
         {
             if ((position.Value.x >= 0 && position.Value.x < services.Grid.Width) && (position.Value.y >= 0 && position.Value.y < services.Grid.Height))
             {
-                Debug.Log("+");
                 return true;
             }
-            Debug.Log("-");
             return false;
         }
-        Debug.Log("-");
         return false;
     }
 
