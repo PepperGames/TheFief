@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class InputManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class InputManager : MonoBehaviour
     private Vector2 cameraMovementVector;
 
     [SerializeField] private Camera mainCamera;
+    [Inject] [SerializeField] private Services services;
 
     public LayerMask groundMask;
 
@@ -61,12 +63,29 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             var position = RaycastGround();
-            if (position != null)
+            if (PositionInGridBounds(position))
             {
                 OnMouseClick?.Invoke(position.Value);
                 isMouseDown = true;
             }
         }
+    }
+
+    private bool PositionInGridBounds(Vector2Int? position)
+    {
+        Debug.Log(position);
+        if (position != null)
+        {
+            if ((position.Value.x >= 0 && position.Value.x < services.Grid.Width) && (position.Value.y >= 0 && position.Value.y < services.Grid.Height))
+            {
+                Debug.Log("+");
+                return true;
+            }
+            Debug.Log("-");
+            return false;
+        }
+        Debug.Log("-");
+        return false;
     }
 
     private void CheckClickHoldEvent()
@@ -77,7 +96,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             var position = RaycastGround();
-            if (position != null)
+            if (PositionInGridBounds(position))
             {
                 OnMouseHold?.Invoke(position.Value);
             }
