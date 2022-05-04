@@ -11,7 +11,7 @@ public class AiDirector : MonoBehaviour
     public List<Vector2> GetPath(Vector2Int start, Vector2Int end, Action<bool> action = null)
     {
         var path = GetPathBetween(start, end);
-        Debug.Log(path.Count);
+        //Debug.Log(path.Count);
         if (path.Count > 0)
         {
             path.Reverse();

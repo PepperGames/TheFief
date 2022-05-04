@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840e3820cd759c94189f186a6461c072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 3436385156467146161}
   modelView: {fileID: 3663728446556159979}
   drawGizmo: 1
   points:

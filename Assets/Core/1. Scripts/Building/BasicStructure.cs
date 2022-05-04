@@ -5,7 +5,7 @@ using Zenject;
 
 public abstract class BasicStructure : MonoBehaviour
 {
-    public GameObject model; //обжект у которого дети это арт
+    //public GameObject model; //обжект у которого дети это арт
     public GameObject modelView;
 
     [SerializeField] private bool drawGizmo = true;
