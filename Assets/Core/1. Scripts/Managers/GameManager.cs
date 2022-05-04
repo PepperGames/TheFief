@@ -4,8 +4,6 @@ using Zenject;
 
 public class GameManager : MonoBehaviour
 {
-    public CameraMovement cameraMovement;
-
     [Inject] private Services services;
 
     private void Start()
@@ -42,10 +40,5 @@ public class GameManager : MonoBehaviour
         services.InputManager.OnMouseClick = null;
         services.InputManager.OnMouseHold = null;
         services.InputManager.OnMouseUp = null;
-    }
-
-    private void Update()
-    {
-        cameraMovement.MoveCamera(new Vector3(services.InputManager.CameraMovementVector.x, services.InputManager.CameraMovementVector.y, 0));
     }
 }
