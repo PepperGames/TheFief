@@ -19,8 +19,8 @@ public class CharacterManager : MonoBehaviour
             Character character = Instantiate(GetRandomPedestrian(), new Vector3(start.x, start.y, 0), Quaternion.identity);
             characters.Add(character);
 
-            character.aiAgent.OnReachedFinalPoint += services.AiDirector.SelectNewRandomPath;
-            services.AiDirector.SelectNewRandomPath(character.aiAgent);
+            character.AiAgent.OnReachedFinalPoint += services.AiDirector.SelectNewRandomPath;
+            services.AiDirector.SelectNewRandomPath(character.AiAgent);
         }
     }
 

@@ -3,8 +3,11 @@ using UnityEngine;
 public abstract class IndustrialStructure : Structure
 {
     [SerializeField] private GameObject ui;
+    [SerializeField] private CharacterPlacesInIndustrialStructure characterPlaces;
 
     [SerializeField] protected Resources accumulatedResources;
+
+    public CharacterPlacesInIndustrialStructure CharacterPlaces => characterPlaces;
 
     protected override void Start()
     {
