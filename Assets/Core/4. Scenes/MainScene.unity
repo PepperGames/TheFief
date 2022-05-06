@@ -934,8 +934,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bc4acfa4deab34ebe873a292f8c1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minOrthographicSize: 1
   gameCamera: {fileID: 1221260227}
   camerMovementSpeed: 20
+  zoomSpeed: 10
 --- !u!81 &1221260229
 AudioListener:
   m_ObjectHideFlags: 0
