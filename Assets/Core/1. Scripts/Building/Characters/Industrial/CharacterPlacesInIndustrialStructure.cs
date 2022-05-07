@@ -17,14 +17,15 @@ public class CharacterPlacesInIndustrialStructure : MonoBehaviour
 
     public void AddCharacter(Character character)
     {
+        Debug.Log("AddCharacter");
         characters.Add(character);
         character.SetWorkplace(structure);
     }
 
     public void KickOut(Character character)
     {
+        Debug.Log("KickOut");
         characters.Remove(character);
         character.KickOutFromLivingPlace(structure);
     }
-
 }

@@ -17,10 +17,6 @@ public class CharacterPlacesInIndustrialStructureView : MonoBehaviour
 
         ClearContent();
 
-        //Debug.Log(characterPlaces.numberOfPlaces);
-        //Debug.Log(characterPlaces.Characters);
-        //Debug.Log(characterPlaces.Characters.Count);
-
         for (int i = 0; i < industrialStructure.CharacterPlaces.numberOfPlaces; i++)
         {
             if (industrialStructure.CharacterPlaces.Characters.Count > i)

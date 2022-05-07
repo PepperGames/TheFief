@@ -24,6 +24,7 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
     public void Open(IndustrialStructure industrialStructure)
     {
         this.industrialStructure = industrialStructure;
+        Initialize();
         gameObject.SetActive(true);
     }
 
@@ -50,10 +51,11 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
     {
         Debug.Log("ClearContent");
 
-        foreach (AblebodiedCharactersView child in ablebodiedCharactersViews)
+        for (int i = 0; i < ablebodiedCharactersViews.Count; i++)
         {
-            ablebodiedCharactersViews.Remove(child);
-            Destroy(child.gameObject);
+            AblebodiedCharactersView ablebodiedCharacter= ablebodiedCharactersViews[i];
+            ablebodiedCharactersViews.Remove(ablebodiedCharacter);
+            Destroy(ablebodiedCharacter.gameObject);
         }
     }
 
@@ -64,6 +66,7 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
         AblebodiedCharactersView ablebodiedCharactersView = Instantiate(ablebodiedCharactersViewPrefab, content);
         ablebodiedCharactersView.Initialize(character);
 
+        Debug.Log(ablebodiedCharactersViews);
         ablebodiedCharactersViews.Add(ablebodiedCharactersView);
     }
 

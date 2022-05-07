@@ -16,6 +16,7 @@ public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
     private Services services;
 
     private IndustrialStructure industrialStructure;
+    private Character character;
 
     public void Initialize(Services services, IndustrialStructure industrialStructure)
     {
@@ -45,6 +46,8 @@ public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
 
             kikoutCharacterButton.gameObject.SetActive(true);
             addCharacterButton.gameObject.SetActive(false);
+
+            kikoutCharacterButton.onClick.AddListener(KikoutCharacter);
         }
         else
         {
@@ -55,5 +58,10 @@ public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
     private void WaitForCharacterSelect()
     {
         services.UIController.ListOfAblebodiedCharacters.Open(industrialStructure);
+    }
+    
+    private void KikoutCharacter()
+    {
+        industrialStructure.CharacterPlaces.KickOut(character);
     }
 }
