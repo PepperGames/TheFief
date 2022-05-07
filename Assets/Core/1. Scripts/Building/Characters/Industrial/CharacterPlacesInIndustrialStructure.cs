@@ -25,7 +25,12 @@ public class CharacterPlacesInIndustrialStructure : MonoBehaviour
     public void KickOut(Character character)
     {
         Debug.Log("KickOut");
+        Debug.Log(character);
+        Debug.Log(structure);
         characters.Remove(character);
-        character.KickOutFromLivingPlace(structure);
+        Debug.Log(character);
+        Debug.Log(structure);
+        character.KickOutFromWorkplace(structure);
+
     }
 }

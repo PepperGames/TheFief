@@ -51,12 +51,12 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
     {
         Debug.Log("ClearContent");
 
-        for (int i = 0; i < ablebodiedCharactersViews.Count; i++)
+        foreach (AblebodiedCharactersView ablebodiedCharacter in ablebodiedCharactersViews)
         {
-            AblebodiedCharactersView ablebodiedCharacter= ablebodiedCharactersViews[i];
-            ablebodiedCharactersViews.Remove(ablebodiedCharacter);
+
             Destroy(ablebodiedCharacter.gameObject);
         }
+        ablebodiedCharactersViews.Clear();
     }
 
     private void FillAblebodiedCharactersView(Character character)
@@ -64,7 +64,7 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
         Debug.Log("FillCharacterPlace");
 
         AblebodiedCharactersView ablebodiedCharactersView = Instantiate(ablebodiedCharactersViewPrefab, content);
-        ablebodiedCharactersView.Initialize(character);
+        ablebodiedCharactersView.Initialize(industrialStructure, character);
 
         Debug.Log(ablebodiedCharactersViews);
         ablebodiedCharactersViews.Add(ablebodiedCharactersView);

@@ -15,14 +15,13 @@ public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
 
     private Services services;
 
-    private IndustrialStructure industrialStructure;
-    private Character character;
+    private IndustrialStructure _industrialStructure;
+    private Character _character;
 
     public void Initialize(Services services, IndustrialStructure industrialStructure)
     {
         this.services = services;
-        this.industrialStructure = industrialStructure;
-
+        _industrialStructure = industrialStructure;
         portrait.sprite = unknownPortrait;
         nameText.text = unknownName;
 
@@ -39,7 +38,8 @@ public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
         if (character != null)
         {
             this.services = services;
-            this.industrialStructure = industrialStructure;
+            _industrialStructure = industrialStructure;
+            _character = character;
 
             portrait.sprite = character.Portrait;
             nameText.text = character.CharacterName;
@@ -57,11 +57,11 @@ public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
 
     private void WaitForCharacterSelect()
     {
-        services.UIController.ListOfAblebodiedCharacters.Open(industrialStructure);
+        services.UIController.ListOfAblebodiedCharacters.Open(_industrialStructure);
     }
-    
+
     private void KikoutCharacter()
     {
-        industrialStructure.CharacterPlaces.KickOut(character);
+        _industrialStructure.CharacterPlaces.KickOut(_character);
     }
 }

@@ -38,13 +38,13 @@ public class Character : MonoBehaviour
 
     public void KickOutFromWorkplace(Structure workplace)
     {
+        OnCharacterKickOutFromWorkplace?.Invoke(workplace);
         this.workplace = null;
-        OnCharacterAddToWorkplace?.Invoke(workplace);
     }
 
     public void KickOutFromLivingPlace(Structure livingPlace)
     {
+        OnCharacterKickOutFromLivingPlace?.Invoke(livingPlace);
         this.livingPlace = null;
-        OnCharacterAddToLivingPlace?.Invoke(livingPlace);
     }
 }
