@@ -3,13 +3,19 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private Structure workplace;
-    [SerializeField] private Structure livingPlace;
+    [SerializeField] private string characterName;
+    public string CharacterName => characterName;
+
+    [SerializeField] private Sprite portrait;
+    public Sprite Portrait => portrait;   
 
     [SerializeField] private AiAgent aiAgent;
-
     public AiAgent AiAgent => aiAgent;
+
+    [SerializeField] private Structure workplace;
     public Structure Workplace => workplace;
+
+    [SerializeField] private Structure livingPlace;
     public Structure LivingPlace => livingPlace;
 
     public Action<Structure> OnCharacterAddToWorkplace;

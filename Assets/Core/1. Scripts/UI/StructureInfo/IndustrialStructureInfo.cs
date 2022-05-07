@@ -13,6 +13,7 @@ public class IndustrialStructureInfo : MonoBehaviour
     [SerializeField] private Button destroyButton;
 
     [SerializeField] private IndustrialStructure industrialStructure;
+    [SerializeField] private CharacterPlacesInIndustrialStructureView InIndustrialStructureView;
 
     private void Start()
     {
@@ -26,12 +27,23 @@ public class IndustrialStructureInfo : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            gameObject.SetActive(false);
+            Hide();
         }
         else
         {
-            gameObject.SetActive(true);
+            Show();
         }
+    }
+
+    public void Show()
+    {
+        InIndustrialStructureView.Initialize(industrialStructure.CharacterPlaces); 
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
     }
 
     private void OnDurabilityChange(float newDurability)

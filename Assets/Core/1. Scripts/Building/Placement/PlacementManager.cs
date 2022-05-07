@@ -173,7 +173,7 @@ public class PlacementManager : MonoBehaviour
 
     public BasicStructure GetRandomStructure()
     {
-        int randomIndex = UnityEngine.Random.Range(0, structureDictionary.Count - 1);
+        int randomIndex = Random.Range(0, structureDictionary.Count - 1);
 
         BasicStructure structure = structureDictionary.ElementAt(randomIndex).Value;
         return structure;

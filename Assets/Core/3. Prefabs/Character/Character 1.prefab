@@ -109,7 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211503e52b0ba0d4887ad0550a3a56db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: 
+  portrait: {fileID: 0}
   aiAgent: {fileID: 817407958477453995}
+  workplace: {fileID: 0}
+  livingPlace: {fileID: 0}
 --- !u!1 &5723643368559694228
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,4 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211503e52b0ba0d4887ad0550a3a56db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: name 1
+  portrait: {fileID: 21300000, guid: 3b0cda3a54c19f4498ef33795f541a0d, type: 3}
   aiAgent: {fileID: 3403284272604921992}
+  workplace: {fileID: 0}
+  livingPlace: {fileID: 0}

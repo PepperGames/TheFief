@@ -202,6 +202,7 @@ MonoBehaviour:
   repairButton: {fileID: 3526952027086524451}
   destroyButton: {fileID: 4755656105452008360}
   industrialStructure: {fileID: 0}
+  InIndustrialStructureView: {fileID: 2537622861863430781}
 --- !u!1 &1481475470726899284
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,6 +849,7 @@ GameObject:
   - component: {fileID: 9155019195586727017}
   - component: {fileID: 5315733460202378294}
   - component: {fileID: 4993962799854451693}
+  - component: {fileID: 2537622861863430781}
   m_Layer: 12
   m_Name: Scroll View
   m_TagString: Untagged
@@ -943,6 +945,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2537622861863430781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227150619375413989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd2557cb6fb33d43bf45eed148a650e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPlacePrefab: {fileID: 6089212911709911147, guid: 4bf0afaa6bc59be42bf39e7007c25fef, type: 3}
+  content: {fileID: 1685432553067632813}
 --- !u!1 &5977657166176335780
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -6,6 +7,8 @@ public class StructureManager : MonoBehaviour
     [Inject] private Services services;
 
     [SerializeField] private Structure selectedStructure;
+
+    public Action OnPlaceHouse;
 
     public void SetSelectedStructure(Structure newSelectedStructure)
     {

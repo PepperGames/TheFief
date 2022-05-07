@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3715416083001289806}
   - component: {fileID: 234576739278942125}
   - component: {fileID: 6443772379821775401}
+  - component: {fileID: 6089212911709911147}
   m_Layer: 11
   m_Name: Character Cell In Structure (1)
   m_TagString: Untagged
@@ -166,6 +167,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614aa55e2baee6541800a80c28f95db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6089212911709911147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059527828369118154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fca64b808d9d3547b1eaa4a6cdb2066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unknownPortrait: {fileID: 21300000, guid: 1849d021dff51354e95181bc02f89da8, type: 3}
+  unknownName: ...
+  portrait: {fileID: 6635799628745825473}
+  nameText: {fileID: 7116333194697500610}
 --- !u!1 &4264355502295640811
 GameObject:
   m_ObjectHideFlags: 0

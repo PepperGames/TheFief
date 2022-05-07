@@ -13,6 +13,7 @@ public abstract class IndustrialStructure : Structure
     {
         base.Start();
         accumulatedResources = new Resources();
+        //characterPlaces = new CharacterPlacesInIndustrialStructure();
     }
 
     public void OnMouseDown()
@@ -52,6 +53,7 @@ public abstract class IndustrialStructure : Structure
         if (CanBeUpgrade())
         {
             base.Upgrade();
+            CharacterPlaces.numberOfPlaces += 2;
         }
     }
 

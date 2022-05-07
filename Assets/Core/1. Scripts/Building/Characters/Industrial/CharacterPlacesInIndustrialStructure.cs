@@ -5,8 +5,15 @@ public class CharacterPlacesInIndustrialStructure : MonoBehaviour
 {
     [SerializeField] private Structure structure;
 
-    private List<Character> characters;
+    [SerializeField] private List<Character> characters;
     public List<Character> Characters => characters;
+
+    public int numberOfPlaces = 3;
+
+    private void Start()
+    {
+        characters = new List<Character>();
+    }
 
     public void AddCharacter(Character character)
     {
