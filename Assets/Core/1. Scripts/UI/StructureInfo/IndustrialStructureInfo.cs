@@ -37,7 +37,7 @@ public class IndustrialStructureInfo : MonoBehaviour
 
     public void Show()
     {
-        InIndustrialStructureView.Initialize(industrialStructure.CharacterPlaces); 
+        InIndustrialStructureView.Initialize(services, industrialStructure.CharacterPlaces); 
         gameObject.SetActive(true);
     }
 

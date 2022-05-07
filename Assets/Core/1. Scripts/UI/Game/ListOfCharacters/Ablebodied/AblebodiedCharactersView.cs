@@ -6,6 +6,7 @@ public class AblebodiedCharactersView : MonoBehaviour
 {
     public Image portrait;
     public TMP_Text nameText;
+    public TMP_Text workplaceText;
 
     public void Initialize(Character character)
     {
