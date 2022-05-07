@@ -22,6 +22,18 @@ public class IndustrialStructureInfo : MonoBehaviour
         destroyButton.onClick.AddListener(DestroyStructure);
     }
 
+    public void ShowOrHide()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+    }
+
     private void OnDurabilityChange(float newDurability)
     {
         durabilitySlider.value = newDurability / 100;

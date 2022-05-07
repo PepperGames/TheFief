@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 public class InputManager : MonoBehaviour
@@ -32,12 +33,16 @@ public class InputManager : MonoBehaviour
 
     private Vector2Int? RaycastGround()
     {
-        Vector2 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero, Mathf.Infinity, groundMask);
-        if (hit.collider != null)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            Vector2Int positionInt = Vector2Int.RoundToInt(hit.point);
-            return positionInt;
+            Vector2 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero, Mathf.Infinity, groundMask);
+            if (hit.collider != null)
+            {
+                Vector2Int positionInt = Vector2Int.RoundToInt(hit.point);
+                return positionInt;
+            }
+            return null;
         }
         return null;
     }

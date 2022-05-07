@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class IndustrialStructure : Structure
 {
-    [SerializeField] private GameObject ui;
+    [SerializeField] private IndustrialStructureInfo ui;
     [SerializeField] private CharacterPlacesInIndustrialStructure characterPlaces;
 
     [SerializeField] protected Resources accumulatedResources;
@@ -20,14 +20,7 @@ public abstract class IndustrialStructure : Structure
         if (ui == null)
             return;
 
-        if (ui.activeInHierarchy)
-        {
-            ui.SetActive(false);
-        }
-        else
-        {
-            ui.SetActive(true);
-        }
+        ui.ShowOrHide();
     }
 
     public virtual void TryProduceResource()
