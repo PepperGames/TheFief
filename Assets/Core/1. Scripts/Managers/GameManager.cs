@@ -1,4 +1,3 @@
-using SVS;
 using UnityEngine;
 using Zenject;
 
@@ -8,9 +7,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        services.UIController.OnRoadPlacement += RoadPlacementHandler;
-        services.UIController.OnHousePlacement += HousePlacementHandler;
-        services.UIController.OnStructureDemolish += StructureDemolishHandler;
+        services.UIController.BuildingUIController.OnRoadPlacement += RoadPlacementHandler;
+        services.UIController.BuildingUIController.OnHousePlacement += HousePlacementHandler;
+        services.UIController.BuildingUIController.OnStructureDemolish += StructureDemolishHandler;
     }
 
     private void HousePlacementHandler(Structure structure)

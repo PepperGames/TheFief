@@ -2,19 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
+public class AblebodiedCharactersView : MonoBehaviour
 {
-    public Sprite unknownPortrait;
-    public string unknownName;
-
     public Image portrait;
     public TMP_Text nameText;
-
-    public void Initialize()
-    {
-        portrait.sprite = unknownPortrait;
-        nameText.text = unknownName;
-    }
 
     public void Initialize(Character character)
     {
@@ -23,10 +14,6 @@ public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
         {
             portrait.sprite = character.Portrait;
             nameText.text = character.CharacterName;
-        }
-        else
-        {
-            Initialize();
         }
     }
 }

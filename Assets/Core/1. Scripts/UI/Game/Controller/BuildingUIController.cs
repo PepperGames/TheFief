@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class UIController : MonoBehaviour
+public class BuildingUIController : MonoBehaviour
 {
     public Action OnRoadPlacement;
     public Action<Structure> OnHousePlacement;

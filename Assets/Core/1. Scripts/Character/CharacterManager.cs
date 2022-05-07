@@ -5,6 +5,7 @@ using Zenject;
 public class CharacterManager : MonoBehaviour
 {
     [SerializeField] private List<Character> characters;
+    public List<Character> Characters => characters;
 
     [Inject] private Services services;
 
@@ -17,7 +18,7 @@ public class CharacterManager : MonoBehaviour
         if (start != null)
         {
             Character character = Instantiate(GetRandomPedestrian(), new Vector3(start.x, start.y, 0), Quaternion.identity, transform);
-            characters.Add(character);
+            Characters.Add(character);
 
             character.AiAgent.OnReachedFinalPoint += services.AiDirector.SelectNewRandomPath;
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
