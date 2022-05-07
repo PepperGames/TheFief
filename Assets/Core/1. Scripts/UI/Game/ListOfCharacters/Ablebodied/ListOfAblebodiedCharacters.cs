@@ -5,7 +5,7 @@ using Zenject;
 
 public class ListOfAblebodiedCharacters : MonoBehaviour
 {
-    [Inject] private CharacterManager characterManager;
+    [SerializeField] private CharacterManager characterManager;
 
     [SerializeField] private AblebodiedCharactersView ablebodiedCharactersViewPrefab;
     [SerializeField] private Transform content;

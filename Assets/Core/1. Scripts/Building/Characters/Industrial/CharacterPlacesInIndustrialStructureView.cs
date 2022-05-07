@@ -7,23 +7,25 @@ public class CharacterPlacesInIndustrialStructureView : MonoBehaviour
 
     [SerializeField] private Services services;
 
-    public void Initialize(Services services, CharacterPlacesInIndustrialStructure characterPlaces)
+    [SerializeField] private IndustrialStructure industrialStructure;
+    public void Initialize(Services services, IndustrialStructure industrialStructure)
     {
         this.services = services;
+        this.industrialStructure = industrialStructure;
 
         Debug.Log("Initialize");
-        
+
         ClearContent();
-        
-        Debug.Log(characterPlaces.numberOfPlaces);
-        Debug.Log(characterPlaces.Characters);
-        Debug.Log(characterPlaces.Characters.Count);
-        
-        for (int i = 0; i < characterPlaces.numberOfPlaces; i++)
+
+        //Debug.Log(characterPlaces.numberOfPlaces);
+        //Debug.Log(characterPlaces.Characters);
+        //Debug.Log(characterPlaces.Characters.Count);
+
+        for (int i = 0; i < industrialStructure.CharacterPlaces.numberOfPlaces; i++)
         {
-            if (characterPlaces.Characters.Count > i)
+            if (industrialStructure.CharacterPlaces.Characters.Count > i)
             {
-                Character character = characterPlaces.Characters[i];
+                Character character = industrialStructure.CharacterPlaces.Characters[i];
                 FillCharacterPlace(character);
             }
             else
@@ -46,13 +48,13 @@ public class CharacterPlacesInIndustrialStructureView : MonoBehaviour
     {
         Debug.Log("FillCharacterPlace");
         CharacterPlaceInIndustrialStructureView characterPlace = Instantiate(characterPlacePrefab, content);
-        characterPlace.Initialize(services, character);
+        characterPlace.Initialize(services, industrialStructure, character);
     }
 
     private void EmptyCharacterPlace()
     {
         Debug.Log("EmptyCharacterPlace");
         CharacterPlaceInIndustrialStructureView characterPlace = Instantiate(characterPlacePrefab, content);
-        characterPlace.Initialize(services);
+        characterPlace.Initialize(services, industrialStructure);
     }
 }
