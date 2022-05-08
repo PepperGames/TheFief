@@ -1,29 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class ListOfAblebodiedCharacters : MonoBehaviour
 {
-    [SerializeField] private CharacterManager characterManager;
+    [SerializeField] private CharacterManager _characterManager;
 
     [SerializeField] private AblebodiedCharactersView ablebodiedCharactersViewPrefab;
     [SerializeField] private Transform content;
 
     [SerializeField] private List<AblebodiedCharactersView> ablebodiedCharactersViews;
 
-    private IndustrialStructure industrialStructure;
+    private IndustrialStructure _industrialStructure;
 
-    [SerializeField] private Button closeButton;
+    [SerializeField] private Button _closeButton;
 
     private void Start()
     {
-        closeButton.onClick.AddListener(Close);
+        _closeButton.onClick.AddListener(Close);
+        _characterManager.OnCharacterListChange += Initialize;
     }
 
     public void Open(IndustrialStructure industrialStructure)
     {
-        this.industrialStructure = industrialStructure;
+        _industrialStructure = industrialStructure;
         Initialize();
         gameObject.SetActive(true);
     }
@@ -41,7 +41,7 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
 
         ClearContent();
 
-        foreach (Character character in characterManager.Characters)
+        foreach (Character character in _characterManager.Characters)
         {
             FillAblebodiedCharactersView(character);
         }
@@ -64,7 +64,7 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
         Debug.Log("FillCharacterPlace");
 
         AblebodiedCharactersView ablebodiedCharactersView = Instantiate(ablebodiedCharactersViewPrefab, content);
-        ablebodiedCharactersView.Initialize(industrialStructure, character);
+        ablebodiedCharactersView.Initialize(_industrialStructure, character);
 
         Debug.Log(ablebodiedCharactersViews);
         ablebodiedCharactersViews.Add(ablebodiedCharactersView);

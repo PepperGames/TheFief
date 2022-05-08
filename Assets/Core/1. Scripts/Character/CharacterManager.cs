@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] private Character[] pedestrianPrefabs;
 
+    public Action OnCharacterListChange;
+
     public void SpawnCharacter()
     {
         Vector2Int start = services.RoadManager.GetRandomRoadPosition();
@@ -19,6 +23,7 @@ public class CharacterManager : MonoBehaviour
         {
             Character character = Instantiate(GetRandomPedestrian(), new Vector3(start.x, start.y, 0), Quaternion.identity, transform);
             Characters.Add(character);
+            OnCharacterListChange?.Invoke();
 
             character.AiAgent.OnReachedFinalPoint += services.AiDirector.SelectNewRandomPath;
             services.AiDirector.SelectNewRandomPath(character.AiAgent);

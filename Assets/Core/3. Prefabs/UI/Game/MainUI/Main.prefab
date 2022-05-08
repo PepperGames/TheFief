@@ -930,7 +930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4069221452412315232
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1003,11 +1003,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382c951558202c94aba0120fb715e506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterManager: {fileID: 0}
+  _characterManager: {fileID: 0}
   ablebodiedCharactersViewPrefab: {fileID: 5848453991786163167, guid: 444c708bb42ea9345a86a949402bcedc, type: 3}
   content: {fileID: 4154643803142912802}
   ablebodiedCharactersViews: []
-  closeButton: {fileID: 7970056864005884915}
+  _closeButton: {fileID: 7970056864005884915}
 --- !u!1 &1633484378427540693
 GameObject:
   m_ObjectHideFlags: 0
@@ -5726,8 +5726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPlacePrefab: {fileID: 6089212911709911147, guid: 4bf0afaa6bc59be42bf39e7007c25fef, type: 3}
   content: {fileID: 4154643803142912802}
-  services: {fileID: 0}
-  industrialStructure: {fileID: 0}
+  _services: {fileID: 0}
+  _industrialStructure: {fileID: 0}
 --- !u!1 &8251600595938174769
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,12 +18,17 @@ public class CharacterPlacesInIndustrialStructure : MonoBehaviour
         characters = new List<Character>();
     }
 
-    public void AddCharacter(Character character)
+    public bool AddCharacter(Character character)
     {
         Debug.Log("AddCharacter");
-        characters.Add(character);
-        character.SetWorkplace(structure);
-        OnCharacterListChange?.Invoke();
+        if (Characters.Count < numberOfPlaces)
+        {
+            characters.Add(character);
+            character.SetWorkplace(structure);
+            OnCharacterListChange?.Invoke();
+            return true;
+        }
+        return false;
     }
 
     public void KickOut(Character character)

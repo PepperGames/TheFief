@@ -18,7 +18,6 @@ public class AblebodiedCharactersView : MonoBehaviour
 
     public void Initialize(IndustrialStructure industrialStructure, Character character)
     {
-        Debug.Log("character" + character);
         if (character != null)
         {
             _character = character;
@@ -51,12 +50,10 @@ public class AblebodiedCharactersView : MonoBehaviour
 
     private void AddToWorkplace()
     {
-        Debug.Log(_character);
-        Debug.Log(_industrialStructure);
-        Debug.Log(_industrialStructure.CharacterPlaces);
-        _industrialStructure.CharacterPlaces.AddCharacter(_character);
-
-        InitializeUI();
+        if (_industrialStructure.CharacterPlaces.AddCharacter(_character))
+        {
+            InitializeUI();
+        }
     }
 
     private void OnEventsSubscribe()
