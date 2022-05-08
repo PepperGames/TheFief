@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 4006772608506244089}
   - component: {fileID: 6300876648861046128}
   m_Layer: 12
-  m_Name: Workplace Background
+  m_Name: Livingplace  Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2962014699392955875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -323,8 +323,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 386.17, y: 124.4619}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -378,10 +378,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cd94c278a52ab47ac7338eed5c51e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portrait: {fileID: 8122948131774663568}
-  nameText: {fileID: 5651966428514463891}
-  workplaceText: {fileID: 353009030064510655}
-  addCharacterButton: {fileID: 6718545969313391409}
+  _portrait: {fileID: 8122948131774663568}
+  _nameText: {fileID: 5651966428514463891}
+  _livingPlaceText: {fileID: 353009030064510655}
+  _addCharacterButton: {fileID: 6718545969313391409}
 --- !u!1 &3002470279874646026
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 5343489198832761216}
   - component: {fileID: 353009030064510655}
   m_Layer: 12
-  m_Name: Workspace Text (TMP)
+  m_Name: Livingplace Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

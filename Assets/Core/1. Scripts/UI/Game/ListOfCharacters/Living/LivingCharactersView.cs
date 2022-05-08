@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class LivingCharactersView : MonoBehaviour
 {
-    public Image portrait;
-    public TMP_Text nameText;
-    public TMP_Text workplaceText;
+    [SerializeField] private Image _portrait;
+    [SerializeField] private TMP_Text _nameText;
+    [SerializeField] private TMP_Text _livingPlaceText;
 
-    public Button addCharacterButton;
+    [SerializeField] private Button _addCharacterButton;
 
     private ResidentialStructure _residentialStructure;
     private Character _character;
@@ -30,16 +30,16 @@ public class LivingCharactersView : MonoBehaviour
 
     public void InitializeUI()
     {
-        portrait.sprite = _character.Portrait;
-        nameText.text = _character.CharacterName;
+        _portrait.sprite = _character.Portrait;
+        _nameText.text = _character.CharacterName;
 
         if (_character.Workplace == null)
         {
-            addCharacterButton.gameObject.SetActive(true);
+            _addCharacterButton.gameObject.SetActive(true);
         }
         else
         {
-            addCharacterButton.gameObject.SetActive(false);
+            _addCharacterButton.gameObject.SetActive(false);
         }
     }
 
@@ -60,7 +60,7 @@ public class LivingCharactersView : MonoBehaviour
     {
         if (_character.Workplace == null)
         {
-            addCharacterButton.onClick.AddListener(AddToWorkplace);
+            _addCharacterButton.onClick.AddListener(AddToWorkplace);
         }
 
         _character.OnChangeWorkplace += InitializeUI;
@@ -71,6 +71,6 @@ public class LivingCharactersView : MonoBehaviour
     {
         _character.OnChangeWorkplace -= InitializeUI;
         _residentialStructure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
-        addCharacterButton.onClick.RemoveAllListeners();
+        _addCharacterButton.onClick.RemoveAllListeners();
     }
 }

@@ -3,17 +3,13 @@ using UnityEngine;
 public abstract class IndustrialStructure : Structure
 {
     [SerializeField] private IndustrialStructureInfo ui;
-    [SerializeField] private CharacterPlacesInIndustrialStructure characterPlaces;
 
-    [SerializeField] protected Resources accumulatedResources;
-
-    public CharacterPlacesInIndustrialStructure CharacterPlaces => characterPlaces;
+     [SerializeField] protected Resources accumulatedResources;
 
     protected override void Start()
     {
         base.Start();
         accumulatedResources = new Resources();
-        //characterPlaces = new CharacterPlacesInIndustrialStructure();
     }
 
     public void OnMouseDown()

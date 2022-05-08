@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class IndustrialStructureInfo : MonoBehaviour
+public class IndustrialStructureInfo : StructureInfo
 {
     [Inject] protected Services services;
 

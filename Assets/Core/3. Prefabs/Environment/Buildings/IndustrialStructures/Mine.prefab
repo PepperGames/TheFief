@@ -87,11 +87,12 @@ MonoBehaviour:
   - {x: 1, y: 0}
   - {x: 0, y: 1}
   - {x: 1, y: 1}
-  structureCost: {fileID: 1135176369845367142}
+  _structureCost: {fileID: 1135176369845367142}
   lvl: 1
   maxLvl: 0
   durability: {fileID: 1017822457422546871}
-  ui: {fileID: 4998792785273898559}
+  ui: {fileID: 0}
+  characterPlaces: {fileID: 0}
   accumulatedResources:
     money: 0
     food: 0
@@ -397,11 +398,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68bb740c20b200e4a8e69ce77caa130f, type: 3}
---- !u!1 &4998792785273898559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 543082778494411034, guid: 68bb740c20b200e4a8e69ce77caa130f, type: 3}
-  m_PrefabInstance: {fileID: 4816086765209380645}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1742975847630408897 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6550035034703358948, guid: 68bb740c20b200e4a8e69ce77caa130f, type: 3}

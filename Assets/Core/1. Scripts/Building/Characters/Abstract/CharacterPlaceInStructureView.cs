@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterPlaceInResidentialStructureView : MonoBehaviour
+public class CharacterPlaceInStructureView : MonoBehaviour
 {
     public Sprite unknownPortrait;
     public string unknownName;
@@ -15,14 +15,13 @@ public class CharacterPlaceInResidentialStructureView : MonoBehaviour
 
     private Services services;
 
-    private ResidentialStructure _residentialStructure;
+    private IndustrialStructure _industrialStructure;
     private Character _character;
 
-    public void Initialize(Services services, ResidentialStructure residentialStructure)
+    public void Initialize(Services services, IndustrialStructure industrialStructure)
     {
         this.services = services;
-        _residentialStructure = residentialStructure;
-
+        _industrialStructure = industrialStructure;
         portrait.sprite = unknownPortrait;
         nameText.text = unknownName;
 
@@ -32,12 +31,12 @@ public class CharacterPlaceInResidentialStructureView : MonoBehaviour
         addCharacterButton.onClick.AddListener(WaitForCharacterSelect);
     }
 
-    public void Initialize(Services services, ResidentialStructure residentialStructure, Character character)
+    public void Initialize(Services services, IndustrialStructure industrialStructure, Character character)
     {
         if (character != null)
         {
             this.services = services;
-            _residentialStructure = residentialStructure;
+            _industrialStructure = industrialStructure;
             _character = character;
 
             portrait.sprite = character.Portrait;
@@ -50,17 +49,17 @@ public class CharacterPlaceInResidentialStructureView : MonoBehaviour
         }
         else
         {
-            Initialize(services, residentialStructure);
+            Initialize(services, industrialStructure);
         }
     }
 
     private void WaitForCharacterSelect()
     {
-        services.UIController.ListOfLivingCharacters.Open(_residentialStructure);
+        services.UIController.ListOfAblebodiedCharacters.Open(_industrialStructure);
     }
 
     private void KikoutCharacter()
     {
-        _residentialStructure.CharacterPlaces.KickOut(_character);
+        _industrialStructure.CharacterPlaces.KickOut(_character);
     }
 }

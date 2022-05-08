@@ -26,7 +26,7 @@ public class StructureManager : MonoBehaviour
             {
                 if (CheckStructurePosition(position, selectedStructure))
                 {
-                    services.ResourcesManager.SpendResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild());
+                    services.ResourcesManager.SpendResources(selectedStructure.StructureCost.GetAmountOfResourcesForBuild());
                     services.PlacementManager.PlaceStructureOnTheMap(position, selectedStructure, CellType.Structure);
                 }
             }
@@ -40,7 +40,11 @@ public class StructureManager : MonoBehaviour
 
     private bool CheckCost()
     {
-        if (services.ResourcesManager.EnoughResources(selectedStructure.structureCost.GetAmountOfResourcesForBuild()))
+        Debug.Log(services);
+        Debug.Log(services.ResourcesManager);
+        Debug.Log(selectedStructure.StructureCost);
+        Debug.Log(selectedStructure);
+        if (services.ResourcesManager.EnoughResources(selectedStructure.StructureCost.GetAmountOfResourcesForBuild()))
         {
             return true;
         }

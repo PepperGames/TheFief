@@ -2,21 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class ResidentialStructuresInfo : MonoBehaviour
+public class ResidentialStructuresInfo : StructureInfo
 {
-    [Inject] protected Services services;
 
-    [SerializeField] private Slider durabilitySlider;
-
-    [SerializeField] private Button _upgradeButton;
-    [SerializeField] private Button _repairButton;
-    [SerializeField] private Button _destroyButton;
-
+   
     [SerializeField] private ResidentialStructure _residentialStructure;
+
     [SerializeField] private CharacterPlacesInResidentialStructureView _residentialStructureView;
-
-    //[SerializeField] private CharacterPlacesInIndustrialStructureView _inIndustrialStructureView;
-
 
     private void Start()
     {

@@ -12,11 +12,14 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     public Durability Durability => durability;
 
+    [SerializeField] protected CharacterPlacesInStructure _characterPlaces;
+    public CharacterPlacesInStructure CharacterPlaces => _characterPlaces;
+
     public Action OnUpgrade;
 
     protected virtual void Start()
     {
-        maxLvl = structureCost.GetMaxLvl();
+        maxLvl = StructureCost.GetMaxLvl();
         //lvl = 1;
         //durability = GetComponent<Durability>();
         OnEventsSubscribe();
@@ -28,7 +31,7 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
         if (newLvl <= maxLvl)
         {
-            if (services.ResourcesManager.EnoughResources(structureCost.GetAmountOfResourcesForUpdate(newLvl)))
+            if (services.ResourcesManager.EnoughResources(StructureCost.GetAmountOfResourcesForUpdate(newLvl)))
             {
                 Debug.Log("Can Be Upgrade");
                 return true;
@@ -42,8 +45,8 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
     {
         lvl++;
         int nexLvl = lvl;
-        services.ResourcesManager.SpendResources(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
-        structureCost.IncreaseCurrentCost(structureCost.GetAmountOfResourcesForUpdate(nexLvl));
+        services.ResourcesManager.SpendResources(StructureCost.GetAmountOfResourcesForUpdate(nexLvl));
+        StructureCost.IncreaseCurrentCost(StructureCost.GetAmountOfResourcesForUpdate(nexLvl));
     }
 
     public void Break(float percent)
@@ -53,9 +56,9 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     public bool Repair(float percent)
     {
-        if (services.ResourcesManager.EnoughResources(0.75f * (percent / 100) * structureCost.CurrentCost))
+        if (services.ResourcesManager.EnoughResources(0.75f * (percent / 100) * StructureCost.CurrentCost))
         {
-            services.ResourcesManager.SpendResources(0.75f * (percent / 100) * structureCost.CurrentCost);
+            services.ResourcesManager.SpendResources(0.75f * (percent / 100) * StructureCost.CurrentCost);
             durability.CurrentDurability += percent;
             return true;
         }

@@ -19,7 +19,8 @@ public abstract class BasicStructure : MonoBehaviour
         }
     }
 
-    [HideInInspector] public StructureCost structureCost;
+    [SerializeField] protected StructureCost _structureCost;
+    public StructureCost StructureCost => _structureCost;
 
     [Inject] protected Services services;
 
@@ -27,8 +28,8 @@ public abstract class BasicStructure : MonoBehaviour
 
     public void Initialize()
     {
-        structureCost = gameObject.GetComponent<StructureCost>();
-        structureCost.IncreaseCurrentCost(structureCost.GetAmountOfResourcesForBuild());
+        //structureCost = gameObject.GetComponent<StructureCost>();
+        _structureCost.IncreaseCurrentCost(_structureCost.GetAmountOfResourcesForBuild());
 
         foreach (Transform child in transform)
         {

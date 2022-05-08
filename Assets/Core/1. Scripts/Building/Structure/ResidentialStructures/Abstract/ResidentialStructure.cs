@@ -1,11 +1,8 @@
 using UnityEngine;
+
 public abstract class ResidentialStructure : Structure
 {
-    [SerializeField] private IndustrialStructureInfo ui;
-
-    [SerializeField] private CharacterPlacesInResidentialStructure characterPlaces;
-
-    public CharacterPlacesInResidentialStructure CharacterPlaces => characterPlaces;
+    [SerializeField] private ResidentialStructuresInfo ui;
 
     protected override void Start()
     {

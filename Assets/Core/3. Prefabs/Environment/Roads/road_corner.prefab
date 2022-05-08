@@ -127,12 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3d3ee2fbdbeed49a2a97898ec6e59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 6934434420463851127}
   modelView: {fileID: 3149156879683851999}
   drawGizmo: 1
   points:
   - {x: 0, y: 0}
-  structureCost: {fileID: 0}
+  _structureCost: {fileID: 7512990687487941843}
 --- !u!114 &7512990687487941843
 MonoBehaviour:
   m_ObjectHideFlags: 0

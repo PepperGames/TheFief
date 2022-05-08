@@ -57,12 +57,12 @@ MonoBehaviour:
   - {x: 1, y: 0}
   - {x: 0, y: 1}
   - {x: 1, y: 1}
-  structureCost: {fileID: 161658102896801185}
+  _structureCost: {fileID: 161658102896801185}
   lvl: 1
   maxLvl: 0
   durability: {fileID: 8247359131477045881}
+  _characterPlaces: {fileID: 2148502737487644695}
   ui: {fileID: 7373415935594607304}
-  characterPlaces: {fileID: 2148502737487644695}
   accumulatedResources:
     money: 0
     food: 0
