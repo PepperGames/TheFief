@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6550035034703358948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -199,8 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   durabilitySlider: {fileID: 7067534784313999805}
   _upgradeButton: {fileID: 684693749603714370}
-  _repairButton: {fileID: 4755656105452008360}
-  _destroyButton: {fileID: 3526952027086524451}
+  _repairButton: {fileID: 3526952027086524451}
+  _destroyButton: {fileID: 4755656105452008360}
   _industrialStructure: {fileID: 0}
   _inIndustrialStructureView: {fileID: 2537622861863430781}
 --- !u!1 &1481475470726899284
@@ -235,8 +235,8 @@ RectTransform:
   m_Father: {fileID: 8510462861584937885}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -437,7 +437,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -959,8 +959,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPlacePrefab: {fileID: 6089212911709911147, guid: 4bf0afaa6bc59be42bf39e7007c25fef, type: 3}
   content: {fileID: 1685432553067632813}
-  services: {fileID: 0}
-  industrialStructure: {fileID: 0}
+  _services: {fileID: 0}
+  _industrialStructure: {fileID: 0}
 --- !u!1 &5977657166176335780
 GameObject:
   m_ObjectHideFlags: 0

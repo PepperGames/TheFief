@@ -70,4 +70,11 @@ public abstract class IndustrialStructure : Structure
         InGameTime.OnHourChange -= TryProduceResource;
         InGameTime.OnHourChange -= TryIssueAccumulatedResource;
     }
+
+    protected override void OnDemolish()
+    {
+        Debug.Log("OnDemolish");
+        base.OnDemolish();
+        CharacterPlaces.KickOutAll();
+    }
 }

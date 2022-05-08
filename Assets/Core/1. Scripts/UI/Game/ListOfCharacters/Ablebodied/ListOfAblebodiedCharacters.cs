@@ -30,15 +30,11 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
 
     public void Close()
     {
-        Debug.Log("Close");
-
         gameObject.SetActive(false);
     }
 
     public void Initialize()
     {
-        Debug.Log("Initialize");
-
         ClearContent();
 
         foreach (Character character in _characterManager.Characters)
@@ -49,8 +45,6 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
 
     private void ClearContent()
     {
-        Debug.Log("ClearContent");
-
         foreach (AblebodiedCharactersView ablebodiedCharacter in ablebodiedCharactersViews)
         {
             ablebodiedCharacter.Disable();
@@ -61,12 +55,9 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
 
     private void FillAblebodiedCharactersView(Character character)
     {
-        Debug.Log("FillCharacterPlace");
-
         AblebodiedCharactersView ablebodiedCharactersView = Instantiate(ablebodiedCharactersViewPrefab, content);
         ablebodiedCharactersView.Initialize(_industrialStructure, character);
 
-        Debug.Log(ablebodiedCharactersViews);
         ablebodiedCharactersViews.Add(ablebodiedCharactersView);
     }
 

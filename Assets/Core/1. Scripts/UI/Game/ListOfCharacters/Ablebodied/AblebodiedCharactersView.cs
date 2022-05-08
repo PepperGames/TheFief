@@ -63,11 +63,13 @@ public class AblebodiedCharactersView : MonoBehaviour
             addCharacterButton.onClick.AddListener(AddToWorkplace);
         }
 
+        _character.OnChangeWorkplace += InitializeUI;
         _industrialStructure.CharacterPlaces.OnCharacterListChange += InitializeUI;
     }
 
     private void OnEventsUnscribe()
     {
+        _character.OnChangeWorkplace -= InitializeUI;
         _industrialStructure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
         addCharacterButton.onClick.RemoveAllListeners();
     }

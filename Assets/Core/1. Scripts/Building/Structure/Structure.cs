@@ -80,8 +80,9 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     }
 
-    private void OnDestroy()
+    protected override void OnDemolish()
     {
+        base.OnDemolish();
         OnEventsUnscribe();
     }
 }

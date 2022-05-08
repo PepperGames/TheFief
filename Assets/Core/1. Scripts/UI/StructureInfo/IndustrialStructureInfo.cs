@@ -54,7 +54,9 @@ public class IndustrialStructureInfo : MonoBehaviour
 
     private void DestroyStructure()
     {
-        Vector3 structurePosition = _industrialStructure.transform.position;
-        services.PlacementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
+        _industrialStructure.Demolish();
+
+        //Vector3 structurePosition = _industrialStructure.transform.position;
+        //services.PlacementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
     }
 }

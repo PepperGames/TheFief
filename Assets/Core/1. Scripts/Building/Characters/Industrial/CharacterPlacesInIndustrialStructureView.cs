@@ -16,8 +16,6 @@ public class CharacterPlacesInIndustrialStructureView : MonoBehaviour
 
         OnEventsSubscribe();
 
-        Debug.Log("Initialize");
-
         FillContent();
     }
 
@@ -46,7 +44,6 @@ public class CharacterPlacesInIndustrialStructureView : MonoBehaviour
 
     private void ClearContent()
     {
-        Debug.Log("ClearContent");
         foreach (Transform child in content)
         {
             Destroy(child.gameObject);
@@ -55,14 +52,12 @@ public class CharacterPlacesInIndustrialStructureView : MonoBehaviour
 
     private void FillCharacterPlace(Character character)
     {
-        Debug.Log("FillCharacterPlace");
         CharacterPlaceInIndustrialStructureView characterPlace = Instantiate(characterPlacePrefab, content);
         characterPlace.Initialize(_services, _industrialStructure, character);
     }
 
     private void EmptyCharacterPlace()
     {
-        Debug.Log("EmptyCharacterPlace");
         CharacterPlaceInIndustrialStructureView characterPlace = Instantiate(characterPlacePrefab, content);
         characterPlace.Initialize(_services, _industrialStructure);
     }

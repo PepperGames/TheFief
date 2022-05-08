@@ -33,8 +33,6 @@ public class CharacterPlaceInIndustrialStructureView : MonoBehaviour
 
     public void Initialize(Services services, IndustrialStructure industrialStructure, Character character)
     {
-        Debug.Log("character" + character);
-
         if (character != null)
         {
             this.services = services;

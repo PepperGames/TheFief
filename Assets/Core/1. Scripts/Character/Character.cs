@@ -24,27 +24,40 @@ public class Character : MonoBehaviour
     public Action<Structure> OnCharacterKickOutFromWorkplace;
     public Action<Structure> OnCharacterKickOutFromLivingPlace;
 
+    public Action OnChangeWorkplace;
+    public Action OnChangeLivingPlace;
+
     public void SetWorkplace(Structure workplace)
     {
         this.workplace = workplace;
+
+        OnChangeWorkplace?.Invoke();
         OnCharacterAddToWorkplace?.Invoke(workplace);
     }
 
     public void SetLivingPlace(Structure livingPlace)
     {
         this.livingPlace = livingPlace;
+
+        OnChangeLivingPlace?.Invoke();
         OnCharacterAddToLivingPlace?.Invoke(livingPlace);
     }
 
     public void KickOutFromWorkplace(Structure workplace)
     {
         OnCharacterKickOutFromWorkplace?.Invoke(workplace);
+
         this.workplace = null;
+
+        OnChangeWorkplace?.Invoke();
     }
 
     public void KickOutFromLivingPlace(Structure livingPlace)
     {
         OnCharacterKickOutFromLivingPlace?.Invoke(livingPlace);
+
         this.livingPlace = null;
+
+        OnChangeLivingPlace?.Invoke();
     }
 }

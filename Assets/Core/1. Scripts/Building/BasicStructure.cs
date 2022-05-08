@@ -49,6 +49,14 @@ public abstract class BasicStructure : MonoBehaviour
         modelView.transform.localRotation = rotation;
     }
 
+    public virtual void Demolish()
+    {
+        Vector3 structurePosition = transform.position;
+        services.PlacementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
+    }
+
+    protected virtual void OnDemolish() { }
+
     private void OnDrawGizmos()
     {
         if (drawGizmo)
@@ -59,5 +67,10 @@ public abstract class BasicStructure : MonoBehaviour
                 Gizmos.DrawCube(new Vector3(item.x, item.y), new Vector3(1, 1, 0));
             }
         }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        OnDemolish();
     }
 }
