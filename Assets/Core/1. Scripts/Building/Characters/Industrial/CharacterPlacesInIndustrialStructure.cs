@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class CharacterPlacesInIndustrialStructure : MonoBehaviour
 
     public int numberOfPlaces = 3;
 
+    public Action OnCharacterListChange;
+
     private void Start()
     {
         characters = new List<Character>();
@@ -20,6 +23,7 @@ public class CharacterPlacesInIndustrialStructure : MonoBehaviour
         Debug.Log("AddCharacter");
         characters.Add(character);
         character.SetWorkplace(structure);
+        OnCharacterListChange?.Invoke();
     }
 
     public void KickOut(Character character)
@@ -31,6 +35,7 @@ public class CharacterPlacesInIndustrialStructure : MonoBehaviour
         Debug.Log(character);
         Debug.Log(structure);
         character.KickOutFromWorkplace(structure);
+        OnCharacterListChange?.Invoke();
 
     }
 }

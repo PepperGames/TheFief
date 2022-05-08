@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class AblebodiedCharactersView : MonoBehaviour
 {
@@ -10,37 +11,67 @@ public class AblebodiedCharactersView : MonoBehaviour
 
     public Button addCharacterButton;
 
-    private Services services;
+    private IndustrialStructure _industrialStructure;
+    private Character _character;
 
-    private IndustrialStructure industrialStructure;
-    private Character character;
+    public Action<AblebodiedCharactersView> OnSelectCharacter;
 
     public void Initialize(IndustrialStructure industrialStructure, Character character)
     {
         Debug.Log("character" + character);
         if (character != null)
         {
-            this.character = character;
-            this.industrialStructure = industrialStructure;
-            portrait.sprite = character.Portrait;
-            nameText.text = character.CharacterName;
-            if (character.Workplace == null)
-            {
-                addCharacterButton.gameObject.SetActive(true);
-                addCharacterButton.onClick.AddListener(AddToWorkplace);
-            }
-            else
-            {
-                addCharacterButton.gameObject.SetActive(false);
-            }
+            _character = character;
+            _industrialStructure = industrialStructure;
+
+            InitializeUI();
+            OnEventsSubscribe();
         }
+    }
+
+    public void InitializeUI()
+    {
+        portrait.sprite = _character.Portrait;
+        nameText.text = _character.CharacterName;
+
+        if (_character.Workplace == null)
+        {
+            addCharacterButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            addCharacterButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void Disable()
+    {
+        OnEventsUnscribe();
     }
 
     private void AddToWorkplace()
     {
-        Debug.Log(character);
-        Debug.Log(industrialStructure);
-        Debug.Log(industrialStructure.CharacterPlaces);
-        industrialStructure.CharacterPlaces.AddCharacter(character);
+        Debug.Log(_character);
+        Debug.Log(_industrialStructure);
+        Debug.Log(_industrialStructure.CharacterPlaces);
+        _industrialStructure.CharacterPlaces.AddCharacter(_character);
+
+        InitializeUI();
+    }
+
+    private void OnEventsSubscribe()
+    {
+        if (_character.Workplace == null)
+        {
+            addCharacterButton.onClick.AddListener(AddToWorkplace);
+        }
+
+        _industrialStructure.CharacterPlaces.OnCharacterListChange += InitializeUI;
+    }
+
+    private void OnEventsUnscribe()
+    {
+        _industrialStructure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
+        addCharacterButton.onClick.RemoveAllListeners();
     }
 }

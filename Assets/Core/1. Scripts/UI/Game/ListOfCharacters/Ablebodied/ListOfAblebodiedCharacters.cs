@@ -53,7 +53,7 @@ public class ListOfAblebodiedCharacters : MonoBehaviour
 
         foreach (AblebodiedCharactersView ablebodiedCharacter in ablebodiedCharactersViews)
         {
-
+            ablebodiedCharacter.Disable();
             Destroy(ablebodiedCharacter.gameObject);
         }
         ablebodiedCharactersViews.Clear();

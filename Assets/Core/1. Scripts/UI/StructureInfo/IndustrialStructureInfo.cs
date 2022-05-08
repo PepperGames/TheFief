@@ -8,19 +8,19 @@ public class IndustrialStructureInfo : MonoBehaviour
 
     [SerializeField] private Slider durabilitySlider;
 
-    [SerializeField] private Button upgradeButton;
-    [SerializeField] private Button repairButton;
-    [SerializeField] private Button destroyButton;
+    [SerializeField] private Button _upgradeButton;
+    [SerializeField] private Button _repairButton;
+    [SerializeField] private Button _destroyButton;
 
-    [SerializeField] private IndustrialStructure industrialStructure;
-    [SerializeField] private CharacterPlacesInIndustrialStructureView InIndustrialStructureView;
+    [SerializeField] private IndustrialStructure _industrialStructure;
+    [SerializeField] private CharacterPlacesInIndustrialStructureView _inIndustrialStructureView;
 
     private void Start()
     {
-        upgradeButton.onClick.AddListener(industrialStructure.Upgrade);
-        repairButton.onClick.AddListener(industrialStructure.RepairCompletely);
-        industrialStructure.Durability.OnDurabilityChange += OnDurabilityChange;
-        destroyButton.onClick.AddListener(DestroyStructure);
+        _upgradeButton.onClick.AddListener(_industrialStructure.Upgrade);
+        _repairButton.onClick.AddListener(_industrialStructure.RepairCompletely);
+        _industrialStructure.Durability.OnDurabilityChange += OnDurabilityChange;
+        _destroyButton.onClick.AddListener(DestroyStructure);
     }
 
     public void ShowOrHide()
@@ -37,13 +37,14 @@ public class IndustrialStructureInfo : MonoBehaviour
 
     public void Show()
     {
-        InIndustrialStructureView.Initialize(services, industrialStructure); 
+        _inIndustrialStructureView.Initialize(services, _industrialStructure); 
         gameObject.SetActive(true);
     }
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        _inIndustrialStructureView.Disable();
+        gameObject.SetActive(false); 
     }
 
     private void OnDurabilityChange(float newDurability)
@@ -53,7 +54,7 @@ public class IndustrialStructureInfo : MonoBehaviour
 
     private void DestroyStructure()
     {
-        Vector3 structurePosition = industrialStructure.transform.position;
+        Vector3 structurePosition = _industrialStructure.transform.position;
         services.PlacementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
     }
 }
