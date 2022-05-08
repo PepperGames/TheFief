@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 3715416083001289806}
   - component: {fileID: 234576739278942125}
   - component: {fileID: 6089212911709911147}
-  - component: {fileID: 5019917597353188919}
   m_Layer: 11
   m_Name: CharacterPlaceInIndustrialStructureView (1)
   m_TagString: Untagged
@@ -173,25 +172,7 @@ MonoBehaviour:
   portrait: {fileID: 6635799628745825473}
   nameText: {fileID: 7116333194697500610}
   addCharacterButton: {fileID: 8183193514755290208}
-  kikoutCharacterButton: {fileID: 1785065472509553494}
---- !u!114 &5019917597353188919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059527828369118154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fca64b808d9d3547b1eaa4a6cdb2066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unknownPortrait: {fileID: 0}
-  unknownName: 
-  portrait: {fileID: 0}
-  nameText: {fileID: 0}
-  addCharacterButton: {fileID: 0}
-  kikoutCharacterButton: {fileID: 0}
+  _kikoutCharacterButton: {fileID: 1785065472509553494}
 --- !u!1 &4264355502295640811
 GameObject:
   m_ObjectHideFlags: 0

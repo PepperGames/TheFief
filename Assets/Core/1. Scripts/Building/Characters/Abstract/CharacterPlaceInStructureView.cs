@@ -4,62 +4,63 @@ using UnityEngine.UI;
 
 public class CharacterPlaceInStructureView : MonoBehaviour
 {
-    public Sprite unknownPortrait;
-    public string unknownName;
+    [SerializeField] protected Sprite unknownPortrait;
+    [SerializeField] protected string unknownName;
 
-    public Image portrait;
-    public TMP_Text nameText;
+    [SerializeField] protected Image portrait;
+    [SerializeField] protected TMP_Text nameText;
 
-    public Button addCharacterButton;
-    public Button kikoutCharacterButton;
+    [SerializeField] protected Button addCharacterButton;
+    [SerializeField] protected Button _kikoutCharacterButton;
 
-    private Services services;
+    protected Services _services;
 
-    private IndustrialStructure _industrialStructure;
-    private Character _character;
+    protected Structure _structure;
+    protected Character _character;
 
-    public void Initialize(Services services, IndustrialStructure industrialStructure)
+    public virtual void Initialize(Services services, Structure structure)
     {
-        this.services = services;
-        _industrialStructure = industrialStructure;
+        _services = services;
+        _structure = structure;
+
         portrait.sprite = unknownPortrait;
         nameText.text = unknownName;
 
         addCharacterButton.gameObject.SetActive(true);
-        kikoutCharacterButton.gameObject.SetActive(false);
+        _kikoutCharacterButton.gameObject.SetActive(false);
 
         addCharacterButton.onClick.AddListener(WaitForCharacterSelect);
     }
 
-    public void Initialize(Services services, IndustrialStructure industrialStructure, Character character)
+    public virtual void Initialize(Services services, Structure structure, Character character)
     {
         if (character != null)
         {
-            this.services = services;
-            _industrialStructure = industrialStructure;
+            _services = services;
+            _structure = structure;
             _character = character;
 
             portrait.sprite = character.Portrait;
             nameText.text = character.CharacterName;
 
-            kikoutCharacterButton.gameObject.SetActive(true);
+            _kikoutCharacterButton.gameObject.SetActive(true);
             addCharacterButton.gameObject.SetActive(false);
 
-            kikoutCharacterButton.onClick.AddListener(KikoutCharacter);
+            _kikoutCharacterButton.onClick.AddListener(KikoutCharacter);
         }
         else
         {
-            Initialize(services, industrialStructure);
+            Initialize(services, structure);
         }
     }
 
-    private void WaitForCharacterSelect()
+    protected virtual void WaitForCharacterSelect()
     {
-        services.UIController.ListOfAblebodiedCharacters.Open(_industrialStructure);
+        _services.UIController.ListOfAblebodiedCharacters.Open(_structure);
     }
 
-    private void KikoutCharacter()
+    protected virtual void KikoutCharacter()
     {
-        _industrialStructure.CharacterPlaces.KickOut(_character);
+        _structure.CharacterPlaces.KickOut(_character);
     }
 }

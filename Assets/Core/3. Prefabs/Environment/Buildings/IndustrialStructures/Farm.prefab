@@ -297,7 +297,7 @@ PrefabInstance:
       value: IndustrialStructureInfo
       objectReference: {fileID: 0}
     - target: {fileID: 1247016185031432216, guid: 68bb740c20b200e4a8e69ce77caa130f, type: 3}
-      propertyPath: _industrialStructure
+      propertyPath: _structure
       value: 
       objectReference: {fileID: 5834884874822571305}
     - target: {fileID: 6550035034703358948, guid: 68bb740c20b200e4a8e69ce77caa130f, type: 3}

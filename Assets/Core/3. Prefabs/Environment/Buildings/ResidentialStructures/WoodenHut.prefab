@@ -283,14 +283,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4483512436429841494}
     m_Modifications:
-    - target: {fileID: 829890725502854874, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 829890725502854874, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3551576345852020923, guid: 85c815536f83d0745964e757aa43316b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -376,48 +368,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5734766038160375424, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: _residentialStructure
-      value: 
-      objectReference: {fileID: 9121247229526038227}
-    - target: {fileID: 6693831726807837967, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128291650812196404, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128291650812196404, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128291650812196404, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128291650812196404, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7553288604208184406, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: _residentialStructure
+      propertyPath: _structure
       value: 
       objectReference: {fileID: 9121247229526038227}
     - target: {fileID: 7793117550545551941, guid: 85c815536f83d0745964e757aa43316b, type: 3}
       propertyPath: m_Name
       value: ResidentialStructuresInfo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630588156858096204, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630588156858096204, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630588156858096204, guid: 85c815536f83d0745964e757aa43316b, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85c815536f83d0745964e757aa43316b, type: 3}

@@ -1,39 +1,11 @@
-using System;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class LivingCharactersView : MonoBehaviour
+public class LivingCharactersView : CharactersView
 {
-    [SerializeField] private Image _portrait;
-    [SerializeField] private TMP_Text _nameText;
-    [SerializeField] private TMP_Text _livingPlaceText;
-
-    [SerializeField] private Button _addCharacterButton;
-
-    private ResidentialStructure _residentialStructure;
-    private Character _character;
-
-    public Action<AblebodiedCharactersView> OnSelectCharacter;
-
-    public void Initialize(ResidentialStructure residentialStructure, Character character)
-    {
-        if (character != null)
-        {
-            _character = character;
-            _residentialStructure = residentialStructure;
-
-            InitializeUI();
-            OnEventsSubscribe();
-        }
-    }
-
-    public void InitializeUI()
+    public override void InitializeUI()
     {
         _portrait.sprite = _character.Portrait;
         _nameText.text = _character.CharacterName;
 
-        if (_character.Workplace == null)
+        if (_character.LivingPlace == null)
         {
             _addCharacterButton.gameObject.SetActive(true);
         }
@@ -43,34 +15,12 @@ public class LivingCharactersView : MonoBehaviour
         }
     }
 
-    public void Disable()
+    protected override void OnEventsSubscribe()
     {
-        OnEventsUnscribe();
-    }
-
-    private void AddToWorkplace()
-    {
-        if (_residentialStructure.CharacterPlaces.AddCharacter(_character))
+        if (_character.LivingPlace == null)
         {
-            InitializeUI();
+            _addCharacterButton.onClick.AddListener(AddToStructure);
         }
-    }
-
-    private void OnEventsSubscribe()
-    {
-        if (_character.Workplace == null)
-        {
-            _addCharacterButton.onClick.AddListener(AddToWorkplace);
-        }
-
-        _character.OnChangeWorkplace += InitializeUI;
-        _residentialStructure.CharacterPlaces.OnCharacterListChange += InitializeUI;
-    }
-
-    private void OnEventsUnscribe()
-    {
-        _character.OnChangeWorkplace -= InitializeUI;
-        _residentialStructure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
-        _addCharacterButton.onClick.RemoveAllListeners();
+        base.OnEventsSubscribe();
     }
 }
