@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] private BuildingUIController buildingUIController;
-    [SerializeField] private ListOfAblebodiedCharacters listOfAblebodiedCharacters;
+    [SerializeField] private BuildingUIController _buildingUIController;
+    [SerializeField] private ListOfAblebodiedCharacters _listOfAblebodiedCharacters;
+    [SerializeField] private ListOfLivingCharacters _listOfLivingCharacters;
 
-    [SerializeField] public BuildingUIController BuildingUIController => buildingUIController;
-    [SerializeField] public ListOfAblebodiedCharacters ListOfAblebodiedCharacters => listOfAblebodiedCharacters;
+    [SerializeField] public BuildingUIController BuildingUIController => _buildingUIController;
+    [SerializeField] public ListOfAblebodiedCharacters ListOfAblebodiedCharacters => _listOfAblebodiedCharacters;
+    [SerializeField] public ListOfLivingCharacters ListOfLivingCharacters => _listOfLivingCharacters;
     
 }

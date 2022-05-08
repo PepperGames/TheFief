@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterPlacesInIndustrialStructure : CharacterPlacesInStructure
+public class CharacterPlacesInResidentialStructure : CharacterPlacesInStructure
 {
     public override bool AddCharacter(Character character)
     {
@@ -8,7 +8,7 @@ public class CharacterPlacesInIndustrialStructure : CharacterPlacesInStructure
         if (Characters.Count < numberOfPlaces)
         {
             characters.Add(character);
-            character.SetWorkplace(structure);
+            character.SetLivingPlace(structure);
             OnCharacterListChange?.Invoke();
             return true;
         }
@@ -20,7 +20,7 @@ public class CharacterPlacesInIndustrialStructure : CharacterPlacesInStructure
         Debug.Log("KickOut");
 
         characters.Remove(character);
-        character.KickOutFromWorkplace(structure);
+        character.KickOutFromLivingPlace(structure);
 
         OnCharacterListChange?.Invoke();
     }
@@ -30,8 +30,9 @@ public class CharacterPlacesInIndustrialStructure : CharacterPlacesInStructure
         Debug.Log("KickOutAll");
         foreach (Character character in characters)
         {
-            character.KickOutFromWorkplace(structure);
+            character.KickOutFromLivingPlace(structure);
         }
+
         characters.Clear();
         OnCharacterListChange?.Invoke();
     }

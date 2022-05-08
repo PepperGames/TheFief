@@ -1,18 +1,26 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterPlacesInStructure : MonoBehaviour
+public abstract class CharacterPlacesInStructure : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected Structure structure;
+
+    [SerializeField] protected List<Character> characters;
+    public List<Character> Characters => characters;
+
+    public int numberOfPlaces = 3;
+
+    public Action OnCharacterListChange;
+
+    protected void Start()
     {
-        
+        characters = new List<Character>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract bool AddCharacter(Character character);
+
+    public abstract void KickOut(Character character);
+
+    public abstract void KickOutAll();
 }
