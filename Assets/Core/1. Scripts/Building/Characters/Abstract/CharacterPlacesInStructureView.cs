@@ -69,10 +69,6 @@ public class CharacterPlacesInStructureView : MonoBehaviour
 
     protected virtual void OnEventsUnscribe()
     {
-        Debug.Log(_structure);
-        Debug.Log(_structure.CharacterPlaces);
-        Debug.Log(_structure.CharacterPlaces.OnCharacterListChange);
-
         _structure.CharacterPlaces.OnCharacterListChange -= FillContent;
     }
 }
