@@ -19,10 +19,13 @@ public class CharacterPlacesInResidentialStructure : CharacterPlacesInStructure
     {
         Debug.Log("KickOut");
 
-        characters.Remove(character);
-        character.KickOutFromLivingPlace(structure);
+        if (character.LivingPlace != null)
+        {
+            characters.Remove(character);
+            character.KickOutFromLivingPlace(structure);
 
-        OnCharacterListChange?.Invoke();
+            OnCharacterListChange?.Invoke();
+        }
     }
 
     public override void KickOutAll()

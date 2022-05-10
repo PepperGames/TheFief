@@ -6,14 +6,17 @@ using Random = UnityEngine.Random;
 
 public class CharacterManager : MonoBehaviour
 {
-    [SerializeField] private Sprite _defaultPortrait;
-
-    [SerializeField] private List<Character> _characters;
-    public List<Character> Characters => _characters;
+    [SerializeField] private DeathPopup _deathPopupPrefab;
 
     [Inject] private Services services;
 
+    [SerializeField] private PortraitGenerator _portraitGenerator;
+
+    [SerializeField] private List<Character> _characters;
+
     [SerializeField] private Character[] pedestrianPrefabs;
+
+    public List<Character> Characters => _characters;
 
     public Action OnCharacterListChange;
 
@@ -25,7 +28,7 @@ public class CharacterManager : MonoBehaviour
         {
             Character character = Instantiate(GetRandomPedestrian(), new Vector3(start.x, start.y, 0), Quaternion.identity, transform);
 
-            CharacterData characterData = new CharacterData(NameGenerator.GetRandomName(), _defaultPortrait);
+            CharacterData characterData = GenerateRandomCharacterData();
             character.Initialize(characterData);
 
             Characters.Add(character);
@@ -35,6 +38,17 @@ public class CharacterManager : MonoBehaviour
 
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
         }
+    }
+
+    private CharacterData GenerateRandomCharacterData()
+    {
+        string characterName = NameGenerator.GetRandomName();
+        Age age = new Age();
+        Genders gender = GenderGenerator.GetRandomGender();
+        Sprite portrait = _portraitGenerator.GetPortrait(gender);
+        Estates estates = EstatesGenerator.GetRandomEstates();
+
+        return new CharacterData(characterName, portrait, age, gender, estates);
     }
 
     private Character GetRandomPedestrian()
@@ -50,7 +64,11 @@ public class CharacterManager : MonoBehaviour
 
     private void RemoveCharacter(Character character)
     {
-        _characters.Remove(character);
+        DeathPopup deathPopup = services.UIController.AlertList.Create(_deathPopupPrefab.gameObject).GetComponent<DeathPopup>();
+        deathPopup.Initialize(character.CharacterData.Portrait, character.CharacterData.CharacterName, character.CharacterData.Age.years);
+
         character.OnDie -= RemoveCharacter;
+        character.AiAgent.OnReachedFinalPoint -= services.AiDirector.SelectNewRandomPath;
+        _characters.Remove(character);
     }
 }

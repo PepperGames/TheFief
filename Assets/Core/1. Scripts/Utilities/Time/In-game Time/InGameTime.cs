@@ -5,11 +5,12 @@ public class InGameTime : MonoBehaviour
 {
     //[SerializeField] private float durationOfOneInGameYear;
     //[SerializeField] private float durationOfOneInGameDay;
-    [SerializeField] private float durationOfOneInGameHour;
+    [SerializeField] private float durationOfOneInGameHour=25;
     [SerializeField] private float durationOfOneInGameMinute;
 
-    [SerializeField] private static int _numberOfDaysInYear = 20;
-    public static int NumberOfDaysInYear = 20;
+    [SerializeField] private int _initialNumberOfDaysInYear = 2;
+    private static int _numberOfDaysInYear;
+    public static int NumberOfDaysInYear = 10;
 
     [SerializeField] private static int _year;
     [SerializeField] private static int _dayInThisYear;
@@ -29,8 +30,7 @@ public class InGameTime : MonoBehaviour
     private void Start()
     {
         durationOfOneInGameMinute = durationOfOneInGameHour / 60;
-        Age age = new Age();
-        age.Test();
+        _numberOfDaysInYear = _initialNumberOfDaysInYear;
     }
 
     public static int Year

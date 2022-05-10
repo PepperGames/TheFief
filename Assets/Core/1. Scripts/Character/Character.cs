@@ -5,13 +5,13 @@ public class Character : MonoBehaviour
 {
     [SerializeField] private CharacterData _characterData;
     [SerializeField] private AiAgent aiAgent;
-    [SerializeField] private Structure workPlace;
-    [SerializeField] private Structure livingPlace;
+    [SerializeField] private Structure _workPlace;
+    [SerializeField] private Structure _livingPlace;
 
     public CharacterData CharacterData => _characterData;
     public AiAgent AiAgent => aiAgent;
-    public Structure WorkPlace => workPlace;
-    public Structure LivingPlace => livingPlace;
+    public Structure WorkPlace => _workPlace;
+    public Structure LivingPlace => _livingPlace;
 
     public Action<Structure> OnCharacterAddToWorkplace;
     public Action<Structure> OnCharacterAddToLivingPlace;
@@ -24,14 +24,15 @@ public class Character : MonoBehaviour
 
     public Action<Character> OnDie;
 
-    public void Initialize(CharacterData characterData )
+    public void Initialize(CharacterData characterData)
     {
         _characterData = characterData;
+        _characterData.Age.OnDeathFromOldAge += Die;
     }
 
     public void SetWorkplace(Structure workplace)
     {
-        this.workPlace = workplace;
+        _workPlace = workplace;
 
         OnChangeWorkplace?.Invoke();
         OnCharacterAddToWorkplace?.Invoke(workplace);
@@ -39,7 +40,7 @@ public class Character : MonoBehaviour
 
     public void SetLivingPlace(Structure livingPlace)
     {
-        this.livingPlace = livingPlace;
+        _livingPlace = livingPlace;
 
         OnChangeLivingPlace?.Invoke();
         OnCharacterAddToLivingPlace?.Invoke(livingPlace);
@@ -49,7 +50,7 @@ public class Character : MonoBehaviour
     {
         OnCharacterKickOutFromWorkplace?.Invoke(workplace);
 
-        this.workPlace = null;
+        _workPlace = null;
 
         OnChangeWorkplace?.Invoke();
     }
@@ -58,16 +59,30 @@ public class Character : MonoBehaviour
     {
         OnCharacterKickOutFromLivingPlace?.Invoke(livingPlace);
 
-        this.livingPlace = null;
+        _livingPlace = null;
 
         OnChangeLivingPlace?.Invoke();
     }
 
     public void Die()
     {
-        LivingPlace.CharacterPlaces.KickOut(this);
-        WorkPlace.CharacterPlaces.KickOut(this);
+        Debug.Log("Die");
+
+        if (LivingPlace != null)
+        {
+            LivingPlace.CharacterPlaces.KickOut(this);
+
+        }
+
+        if (WorkPlace != null)
+        {
+            WorkPlace.CharacterPlaces.KickOut(this);
+        }
+
+        _characterData.Age.OnDeathFromOldAge -= Die;
 
         OnDie?.Invoke(this);
+
+        Destroy(gameObject);
     }
 }

@@ -19,10 +19,13 @@ public class CharacterPlacesInIndustrialStructure : CharacterPlacesInStructure
     {
         Debug.Log("KickOut");
 
-        characters.Remove(character);
-        character.KickOutFromWorkplace(structure);
+        if (character.WorkPlace != null)
+        {
+            characters.Remove(character);
+            character.KickOutFromWorkplace(structure);
 
-        OnCharacterListChange?.Invoke();
+            OnCharacterListChange?.Invoke();
+        }
     }
 
     public override void KickOutAll()

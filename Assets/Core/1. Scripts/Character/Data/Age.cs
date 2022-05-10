@@ -9,18 +9,18 @@ public class Age
     private const float c = -0.001f;
 
     public int years = 0;
-    //public int years = 0;
 
-    public void Test()
+    public Action OnDeathFromOldAge;
+
+    public Age() : this(Random.Range(1, 50)) { }
+
+    public Age(int years)
     {
-        for (int i = 0; i < 100; i++)
-        {
-            years++;
-            GrowOld();
-        }
+        this.years = years;
+        InGameTime.OnYearChange += GrowOld;
     }
 
-    private bool GrowOld()
+    private void GrowOld()
     {
         float probabilityToDie = ProbabilityToDie();
         float chance = Random.Range(0, 1f);
@@ -28,11 +28,9 @@ public class Age
         Debug.Log("chance " + chance);
         if (probabilityToDie >= chance)
         {
-            Debug.Log("years" + years);
-            Debug.Log("Die");
-            return true;
+            OnDeathFromOldAge?.Invoke();
         }
-        return false;
+            OnDeathFromOldAge?.Invoke();
     }
 
     private float ProbabilityToDie()
