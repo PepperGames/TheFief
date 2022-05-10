@@ -12,7 +12,7 @@ public class DeathPopup : MonoBehaviour, IClosable
     {
         _closeButton.onClick.AddListener(Close);
         _portraitImage.sprite = portrait;
-        _description.text = $"{name} died at the age {age}. Our condolebces";
+        _description.text = $"<b>{name}</b> died at the age <b>{age}</b>. <br> Our condolebces";
     }
 
     public void Close()
