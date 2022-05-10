@@ -25,18 +25,18 @@ public class Age
         float probabilityToDie = ProbabilityToDie();
         float chance = Random.Range(0, 1f);
 
-        Debug.Log("chance " + chance);
+        //Debug.Log("chance " + chance);
         if (probabilityToDie >= chance)
         {
             OnDeathFromOldAge?.Invoke();
         }
-            OnDeathFromOldAge?.Invoke();
+            //OnDeathFromOldAge?.Invoke();
     }
 
     private float ProbabilityToDie()
     {
         float result = (float)(a * Math.Pow(years, 2) + b * years + c);
-        Debug.Log("result " + result);
+        //Debug.Log("result " + result);
         return result;
     }
 }

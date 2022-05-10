@@ -4,7 +4,9 @@ public abstract class IndustrialStructure : Structure
 {
     [SerializeField] private IndustrialStructureInfo ui;
 
-     [SerializeField] protected Resources accumulatedResources;
+    [SerializeField] protected Resources accumulatedResources;
+
+    [SerializeField] protected float _overallPerformance;
 
     protected override void Start()
     {
@@ -20,12 +22,19 @@ public abstract class IndustrialStructure : Structure
         ui.ShowOrHide();
     }
 
-   protected float CalculateProductivityPerHour()
+    protected float CalculateProductivityPerHour()
     {
         float result = 0;
+        float _performancePerWorker = _overallPerformance / CharacterPlaces.numberOfPlaces;
 
+        foreach (Character characters in CharacterPlaces.Characters)
+        {
+            float t = _performancePerWorker * MatrixEstateToPrestige.GetCoefficient(characters.CharacterData.Estates, Estate);
+            result += t;
+            Debug.Log("t " + t);
+        }
 
-
+        Debug.Log(result);
         return result;
     }
 

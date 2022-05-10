@@ -7,13 +7,15 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 {
     [SerializeField] protected int lvl;
     [SerializeField] protected int maxLvl;
+    [SerializeField] protected Estates _estate;  
 
-    [SerializeField] protected Durability durability;
+      [SerializeField] protected Durability durability;
 
     public Durability Durability => durability;
 
     [SerializeField] protected CharacterPlacesInStructure _characterPlaces;
     public CharacterPlacesInStructure CharacterPlaces => _characterPlaces;
+    public virtual Estates Estate => _estate;
 
     public Action OnUpgrade;
 
