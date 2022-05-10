@@ -3,19 +3,14 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private string characterName;
-    public string CharacterName => characterName;
-
-    [SerializeField] private Sprite portrait;
-    public Sprite Portrait => portrait;   
-
+    [SerializeField] private CharacterData _characterData;
     [SerializeField] private AiAgent aiAgent;
-    public AiAgent AiAgent => aiAgent;
-
-    [SerializeField] private Structure workplace;
-    public Structure Workplace => workplace;
-
+    [SerializeField] private Structure workPlace;
     [SerializeField] private Structure livingPlace;
+
+    public CharacterData CharacterData => _characterData;
+    public AiAgent AiAgent => aiAgent;
+    public Structure WorkPlace => workPlace;
     public Structure LivingPlace => livingPlace;
 
     public Action<Structure> OnCharacterAddToWorkplace;
@@ -27,9 +22,14 @@ public class Character : MonoBehaviour
     public Action OnChangeWorkplace;
     public Action OnChangeLivingPlace;
 
+    public void Initialize(CharacterData characterData )
+    {
+        _characterData = characterData;
+    }
+
     public void SetWorkplace(Structure workplace)
     {
-        this.workplace = workplace;
+        this.workPlace = workplace;
 
         OnChangeWorkplace?.Invoke();
         OnCharacterAddToWorkplace?.Invoke(workplace);
@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
     {
         OnCharacterKickOutFromWorkplace?.Invoke(workplace);
 
-        this.workplace = null;
+        this.workPlace = null;
 
         OnChangeWorkplace?.Invoke();
     }
@@ -59,5 +59,11 @@ public class Character : MonoBehaviour
         this.livingPlace = null;
 
         OnChangeLivingPlace?.Invoke();
+    }
+
+    public void Die()
+    {
+        LivingPlace.CharacterPlaces.KickOut(this);
+        WorkPlace.CharacterPlaces.KickOut(this);
     }
 }

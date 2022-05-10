@@ -2,8 +2,8 @@ public class LivingCharactersView : CharactersView
 {
     public override void InitializeUI()
     {
-        _portrait.sprite = _character.Portrait;
-        _nameText.text = _character.CharacterName;
+        _portrait.sprite = _character.CharacterData.Portrait;
+        _nameText.text = _character.CharacterData.CharacterName;
 
         if (_character.LivingPlace == null)
         {

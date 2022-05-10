@@ -40,8 +40,8 @@ public class CharacterPlaceInStructureView : MonoBehaviour
             _structure = structure;
             _character = character;
 
-            portrait.sprite = character.Portrait;
-            nameText.text = character.CharacterName;
+            portrait.sprite = character.CharacterData.Portrait;
+            nameText.text = character.CharacterData.CharacterName;
 
             _kikoutCharacterButton.gameObject.SetActive(true);
             addCharacterButton.gameObject.SetActive(false);

@@ -28,6 +28,7 @@ public class CharacterPlacesInResidentialStructure : CharacterPlacesInStructure
     public override void KickOutAll()
     {
         Debug.Log("KickOutAll");
+
         foreach (Character character in characters)
         {
             character.KickOutFromLivingPlace(structure);

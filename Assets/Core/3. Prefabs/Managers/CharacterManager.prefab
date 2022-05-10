@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7233499394226695364}
   - component: {fileID: 7233499394226695365}
   - component: {fileID: 7233499394226695370}
+  - component: {fileID: 5837635638430528555}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -45,11 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characters: []
-  roadManager: {fileID: 0}
-  aiDirector: {fileID: 7233499394226695370}
   pedestrianPrefabs:
   - {fileID: 1565306974487778968, guid: 46f0be4542198fb47be24310079a413a, type: 3}
-  - {fileID: 5619120868061099302, guid: ff08344273520e949b2b7152f2a6e2c1, type: 3}
+  - {fileID: 1796537531702237250, guid: ff08344273520e949b2b7152f2a6e2c1, type: 3}
 --- !u!114 &7233499394226695370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,4 +61,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54228ce7394088f4f943a73262860578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementManager: {fileID: 0}
+--- !u!114 &5837635638430528555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233499394226695367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef4bb8ee5aed674ca2d18e549a8561d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

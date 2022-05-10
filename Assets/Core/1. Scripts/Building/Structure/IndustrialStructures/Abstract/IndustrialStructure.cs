@@ -20,6 +20,15 @@ public abstract class IndustrialStructure : Structure
         ui.ShowOrHide();
     }
 
+   protected float CalculateProductivityPerHour()
+    {
+        float result = 0;
+
+
+
+        return result;
+    }
+
     public virtual void TryProduceResource()
     {
         if (InGameTime.Hour > ConstantValues.beginingWorkDayTime && InGameTime.Hour <= ConstantValues.endWorkingDayTime)

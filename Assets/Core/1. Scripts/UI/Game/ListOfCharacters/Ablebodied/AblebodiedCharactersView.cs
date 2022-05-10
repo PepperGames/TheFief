@@ -2,10 +2,10 @@ public class AblebodiedCharactersView : CharactersView
 {
     public override void InitializeUI()
     {
-        _portrait.sprite = _character.Portrait;
-        _nameText.text = _character.CharacterName;
+        _portrait.sprite = _character.CharacterData.Portrait;
+        _nameText.text = _character.CharacterData.CharacterName;
 
-        if (_character.Workplace == null)
+        if (_character.WorkPlace == null)
         {
             _addCharacterButton.gameObject.SetActive(true);
         }
@@ -17,7 +17,7 @@ public class AblebodiedCharactersView : CharactersView
 
     protected override void OnEventsSubscribe()
     {
-        if (_character.Workplace == null)
+        if (_character.WorkPlace == null)
         {
             _addCharacterButton.onClick.AddListener(AddToStructure);
         }

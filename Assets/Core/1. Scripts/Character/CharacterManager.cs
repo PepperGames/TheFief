@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class CharacterManager : MonoBehaviour
 {
+    [SerializeField] private Sprite _defaultPortrait;
+
     [SerializeField] private List<Character> characters;
     public List<Character> Characters => characters;
 
@@ -22,6 +24,10 @@ public class CharacterManager : MonoBehaviour
         if (start != null)
         {
             Character character = Instantiate(GetRandomPedestrian(), new Vector3(start.x, start.y, 0), Quaternion.identity, transform);
+
+            CharacterData characterData = new CharacterData(NameGenerator.GetRandomName(), _defaultPortrait);
+            character.Initialize(characterData);
+
             Characters.Add(character);
             OnCharacterListChange?.Invoke();
 
