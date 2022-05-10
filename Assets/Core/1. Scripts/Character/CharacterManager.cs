@@ -8,8 +8,8 @@ public class CharacterManager : MonoBehaviour
 {
     [SerializeField] private Sprite _defaultPortrait;
 
-    [SerializeField] private List<Character> characters;
-    public List<Character> Characters => characters;
+    [SerializeField] private List<Character> _characters;
+    public List<Character> Characters => _characters;
 
     [Inject] private Services services;
 
@@ -31,7 +31,8 @@ public class CharacterManager : MonoBehaviour
             Characters.Add(character);
             OnCharacterListChange?.Invoke();
 
-            character.AiAgent.OnReachedFinalPoint += services.AiDirector.SelectNewRandomPath;
+            OnCharacterEventsSubscribe(character);
+
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
         }
     }
@@ -39,5 +40,17 @@ public class CharacterManager : MonoBehaviour
     private Character GetRandomPedestrian()
     {
         return pedestrianPrefabs[Random.Range(0, pedestrianPrefabs.Length)];
+    }
+
+    private void OnCharacterEventsSubscribe(Character character)
+    {
+        character.AiAgent.OnReachedFinalPoint += services.AiDirector.SelectNewRandomPath;
+        character.OnDie += RemoveCharacter;
+    }
+
+    private void RemoveCharacter(Character character)
+    {
+        _characters.Remove(character);
+        character.OnDie -= RemoveCharacter;
     }
 }

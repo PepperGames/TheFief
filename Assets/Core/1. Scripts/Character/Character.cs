@@ -22,6 +22,8 @@ public class Character : MonoBehaviour
     public Action OnChangeWorkplace;
     public Action OnChangeLivingPlace;
 
+    public Action<Character> OnDie;
+
     public void Initialize(CharacterData characterData )
     {
         _characterData = characterData;
@@ -65,5 +67,7 @@ public class Character : MonoBehaviour
     {
         LivingPlace.CharacterPlaces.KickOut(this);
         WorkPlace.CharacterPlaces.KickOut(this);
+
+        OnDie?.Invoke(this);
     }
 }
