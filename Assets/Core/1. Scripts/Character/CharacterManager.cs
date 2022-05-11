@@ -20,7 +20,13 @@ public class CharacterManager : MonoBehaviour
 
     public Action OnCharacterListChange;
 
-    public void SpawnCharacter()
+    public void SpawnRandomCharacter()
+    {
+        CharacterData characterData = GenerateRandomCharacterData();
+        SpawnCharacter(characterData);
+    }
+
+    public void SpawnCharacter(CharacterData characterData)
     {
         Vector2Int start = services.RoadManager.GetRandomRoadPosition();
 
@@ -28,7 +34,6 @@ public class CharacterManager : MonoBehaviour
         {
             Character character = Instantiate(GetRandomPedestrian(), new Vector3(start.x, start.y, 0), Quaternion.identity, transform);
 
-            CharacterData characterData = GenerateRandomCharacterData();
             character.Initialize(characterData);
 
             Characters.Add(character);
@@ -39,6 +44,7 @@ public class CharacterManager : MonoBehaviour
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
         }
     }
+
 
     private CharacterData GenerateRandomCharacterData()
     {
