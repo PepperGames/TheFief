@@ -7,9 +7,9 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 {
     [SerializeField] protected int lvl;
     [SerializeField] protected int maxLvl;
-    [SerializeField] protected Estates _estate;  
+    [SerializeField] protected Estates _estate;
 
-      [SerializeField] protected Durability durability;
+    [SerializeField] protected Durability durability;
 
     public Durability Durability => durability;
 
