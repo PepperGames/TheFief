@@ -89,6 +89,7 @@ public abstract class IndustrialStructure : Structure
     {
         Debug.Log("OnDemolish");
         base.OnDemolish();
+        IssueAccumulatedResource();
         CharacterPlaces.KickOutAll();
     }
 }

@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class CharacterManager : MonoBehaviour
 {
     [SerializeField] private DeathPopup _deathPopupPrefab;
+    [SerializeField] private NewCharacterInTownPopup _newCharacterInTownPopupPrefabs;
 
     [Inject] private Services services;
 
@@ -42,11 +43,14 @@ public class CharacterManager : MonoBehaviour
             OnCharacterEventsSubscribe(character);
 
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
+
+            NewCharacterInTownPopup newCharacterInTownPopup = services.UIController.AlertList.Create(_newCharacterInTownPopupPrefabs.gameObject).GetComponent<NewCharacterInTownPopup>();
+            newCharacterInTownPopup.Initialize(characterData);
         }
     }
 
 
-    private CharacterData GenerateRandomCharacterData()
+    public CharacterData GenerateRandomCharacterData()
     {
         string characterName = NameGenerator.GetRandomName();
         Age age = new Age();

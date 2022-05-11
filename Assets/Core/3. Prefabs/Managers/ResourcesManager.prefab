@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5340241599351045990}
   - component: {fileID: 5340241599351045991}
+  - component: {fileID: 6838684471892504657}
   m_Layer: 0
   m_Name: ResourcesManager
   m_TagString: Untagged
@@ -44,8 +45,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resources:
-    money: 100
-    food: 100
-    wood: 100
-    stone: 100
-    metal: 100
+    money: 1000
+    food: 1000
+    wood: 1000
+    stone: 1000
+    metal: 1000
+--- !u!114 &6838684471892504657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340241599351045989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f1cef6ced73e54a9918677d2668603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
