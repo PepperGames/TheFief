@@ -13,11 +13,22 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] private PortraitGenerator _portraitGenerator;
 
-    [SerializeField] private List<Character> _characters;
-
     [SerializeField] private Character[] pedestrianPrefabs;
 
-    public List<Character> Characters => _characters;
+
+
+    [SerializeField] private List<Character> _allCharacters;
+    [SerializeField] private List<Character> _peasantsCharacters;
+    [SerializeField] private List<Character> _merchantsCharacters;
+    [SerializeField] private List<Character> _priestsCharacters;
+    [SerializeField] private List<Character> _peersCharacters;
+
+    public List<Character> AllCharacters => _allCharacters;
+    public List<Character> PeasantsCharacters => _peasantsCharacters;
+    public List<Character> MerchantsCharacters => _merchantsCharacters;
+    public List<Character> PriestsCharacters => _priestsCharacters;
+    public List<Character> PeersCharacters => _peersCharacters;
+
 
     public Action OnCharacterListChange;
 
@@ -37,7 +48,7 @@ public class CharacterManager : MonoBehaviour
 
             character.Initialize(characterData);
 
-            Characters.Add(character);
+            AllCharacters.Add(character);
             OnCharacterListChange?.Invoke();
 
             OnCharacterEventsSubscribe(character);
@@ -79,6 +90,6 @@ public class CharacterManager : MonoBehaviour
 
         character.OnDie -= RemoveCharacter;
         character.AiAgent.OnReachedFinalPoint -= services.AiDirector.SelectNewRandomPath;
-        _characters.Remove(character);
+        _allCharacters.Remove(character);
     }
 }

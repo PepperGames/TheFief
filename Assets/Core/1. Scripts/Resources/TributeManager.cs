@@ -43,7 +43,7 @@ public class TributeManager : MonoBehaviour
     {
         float result = 0;
 
-        foreach (Character characters in _services.CharacterManager.Characters)
+        foreach (Character characters in _services.CharacterManager.AllCharacters)
         {
             float t = GetQuantityFromEstate(characters.CharacterData.Estates);
             result += t;

@@ -34,11 +34,13 @@ public abstract class IndustrialStructure : Structure
         }
 
         Debug.Log("1 " + result);
+
         float performancePercentageFromWear = 0;
         if (Durability.CurrentDurability >= 1)
         {
             performancePercentageFromWear = Mathf.Log(Durability.CurrentDurability, Durability.MaxDurability);
         }
+
         Debug.Log("performancePercentageFromWear " + performancePercentageFromWear);
         result *= performancePercentageFromWear;
         Debug.Log("2 " + result);

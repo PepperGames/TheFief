@@ -40,6 +40,8 @@ public class Durability : MonoBehaviour
     {
         _maxDurability = 100;
         _currentDurability = _maxDurability;
+
+        StartCoroutine(BreakDownOverTime());
     }
 
     public void Break(float percent)
@@ -47,12 +49,16 @@ public class Durability : MonoBehaviour
         CurrentDurability -= percent;
     }
 
-    private IEnumerable BreakDownOverTime()
+    private IEnumerator BreakDownOverTime()
     {
         while (true)
         {
             yield return new WaitForSeconds(_breakdownFrequency);
             Break(1f);
         }
+    }
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }
