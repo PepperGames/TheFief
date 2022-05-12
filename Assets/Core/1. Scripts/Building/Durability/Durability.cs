@@ -1,22 +1,25 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Durability : MonoBehaviour
 {
-    [SerializeField] private float currentDurability;
-    [SerializeField] private float maxDurability;
+    [SerializeField] private float _currentDurability;
+    [SerializeField] private float _maxDurability;
+
+    [SerializeField] private float _breakdownFrequency;
 
     public Action<float> OnDurabilityChange;
 
     public float CurrentDurability
     {
-        get { return currentDurability; }
+        get { return _currentDurability; }
 
         set
         {
             if (value >= 0)
             {
-                currentDurability = value;
+                _currentDurability = value;
                 OnDurabilityChange?.Invoke(value);
             }
         }
@@ -24,18 +27,32 @@ public class Durability : MonoBehaviour
 
     public float MaxDurability
     {
-        get { return maxDurability; }
-        private set { maxDurability = value; }
+        get { return _maxDurability; }
+        private set { _maxDurability = value; }
     }
 
     public float MissingStrength
     {
-        get { return maxDurability - currentDurability; }
+        get { return _maxDurability - _currentDurability; }
     }
 
     private void Start()
     {
-        maxDurability = 100;
-        currentDurability = maxDurability;
+        _maxDurability = 100;
+        _currentDurability = _maxDurability;
+    }
+
+    public void Break(float percent)
+    {
+        CurrentDurability -= percent;
+    }
+
+    private IEnumerable BreakDownOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_breakdownFrequency);
+            Break(1f);
+        }
     }
 }

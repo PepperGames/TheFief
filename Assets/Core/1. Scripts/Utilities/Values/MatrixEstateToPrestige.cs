@@ -16,7 +16,6 @@ public static class MatrixEstateToPrestige
     public static float GetCoefficient(Estates characterEstate, Estates structureEstate)
     {
         float result = _matrix[(int)characterEstate, (int)structureEstate];
-        Debug.Log("GetCoefficient " + result);
         return result;
     }
 }

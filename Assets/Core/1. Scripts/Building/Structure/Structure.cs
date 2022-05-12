@@ -53,7 +53,7 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     public void Break(float percent)
     {
-        durability.CurrentDurability -= percent;
+        durability.Break(percent);
     }
 
     public bool Repair(float percent)

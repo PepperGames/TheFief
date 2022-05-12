@@ -133,8 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6855df92872e7bf40b6f703ca82df8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDurability: 100
-  maxDurability: 100
+  _currentDurability: 0
+  _maxDurability: 100
+  _breakdownFrequency: 120
 --- !u!61 &412829227278515441
 BoxCollider2D:
   m_ObjectHideFlags: 0

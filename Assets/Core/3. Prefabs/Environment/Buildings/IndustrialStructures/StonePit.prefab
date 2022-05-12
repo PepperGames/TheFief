@@ -90,15 +90,17 @@ MonoBehaviour:
   _structureCost: {fileID: 4007570405046644930}
   lvl: 1
   maxLvl: 0
+  _estate: 0
   durability: {fileID: 5899133219541778350}
+  _characterPlaces: {fileID: 0}
   ui: {fileID: 0}
-  characterPlaces: {fileID: 0}
   accumulatedResources:
     money: 0
     food: 0
     wood: 0
     stone: 0
     metal: 0
+  _overallPerformance: 0
 --- !u!114 &4007570405046644930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,8 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6855df92872e7bf40b6f703ca82df8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDurability: 100
-  maxDurability: 100
+  _currentDurability: 0
+  _maxDurability: 100
+  _breakdownFrequency: 120
 --- !u!61 &1759499912641829649
 BoxCollider2D:
   m_ObjectHideFlags: 0

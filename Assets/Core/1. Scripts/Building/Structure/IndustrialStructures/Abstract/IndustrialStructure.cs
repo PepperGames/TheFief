@@ -31,10 +31,17 @@ public abstract class IndustrialStructure : Structure
         {
             float t = _performancePerWorker * MatrixEstateToPrestige.GetCoefficient(characters.CharacterData.Estates, Estate);
             result += t;
-            Debug.Log("t " + t);
         }
 
-        Debug.Log(result);
+        Debug.Log("1 " + result);
+        float performancePercentageFromWear = 0;
+        if (Durability.CurrentDurability >= 1)
+        {
+            performancePercentageFromWear = Mathf.Log(Durability.CurrentDurability, Durability.MaxDurability);
+        }
+        Debug.Log("performancePercentageFromWear " + performancePercentageFromWear);
+        result *= performancePercentageFromWear;
+        Debug.Log("2 " + result);
         return result;
     }
 

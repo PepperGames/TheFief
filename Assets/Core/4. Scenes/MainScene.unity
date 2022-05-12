@@ -1391,25 +1391,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5340241599351045991, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
-      propertyPath: resources.food
-      value: 1000
+    - target: {fileID: 6838684471892504657, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
+      propertyPath: _peersTribute
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 5340241599351045991, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
-      propertyPath: resources.wood
-      value: 1000
+    - target: {fileID: 6838684471892504657, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
+      propertyPath: _priestsTribute
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5340241599351045991, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
-      propertyPath: resources.metal
-      value: 1000
+    - target: {fileID: 6838684471892504657, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
+      propertyPath: _peasantsTribute
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5340241599351045991, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
-      propertyPath: resources.money
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5340241599351045991, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
-      propertyPath: resources.stone
-      value: 1000
+    - target: {fileID: 6838684471892504657, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
+      propertyPath: _merchantsTribute
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e8ccfc0d384e654d86e4ed8c7f516b8, type: 3}
