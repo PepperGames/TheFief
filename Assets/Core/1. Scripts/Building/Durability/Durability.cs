@@ -57,6 +57,7 @@ public class Durability : MonoBehaviour
             Break(1f);
         }
     }
+
     private void OnDestroy()
     {
         StopAllCoroutines();
