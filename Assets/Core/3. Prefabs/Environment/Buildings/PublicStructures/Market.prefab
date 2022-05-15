@@ -371,9 +371,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4504385584740641023, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504385584740641023, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810009151040017513, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810009151040017513, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810009151040017513, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404530345558046767, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
+      propertyPath: m_text
+      value: Market
+      objectReference: {fileID: 0}
     - target: {fileID: 6422169328606989408, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
       propertyPath: m_Name
       value: MarketStructureInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422169328606989408, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6761094990106178163, guid: 2d5c5124b18e7c8469d3d9fa9b3eb074, type: 3}
       propertyPath: _characterPlaceInStructureViewPrefab
