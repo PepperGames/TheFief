@@ -172,5 +172,10 @@ public struct Resources
     public static Resources operator /(float a, Resources b)
     {
         return b / a;
+    } 
+    
+    public static Resources operator /(Resources a, Resources b)
+    {
+        return new Resources(a.Money / b.Money, a.Food / b.Food, a.Wood / b.Wood, a.Stone / b.Stone, a.Metal / b.Metal);
     }
 }

@@ -40,10 +40,10 @@ public class StructureManager : MonoBehaviour
 
     private bool CheckCost()
     {
-        Debug.Log(services);
-        Debug.Log(services.ResourcesManager);
-        Debug.Log(selectedStructure.StructureCost);
-        Debug.Log(selectedStructure);
+        //Debug.Log(services);
+        //Debug.Log(services.ResourcesManager);
+        //Debug.Log(selectedStructure.StructureCost);
+        //Debug.Log(selectedStructure);
         if (services.ResourcesManager.EnoughResources(selectedStructure.StructureCost.GetAmountOfResourcesForBuild()))
         {
             return true;

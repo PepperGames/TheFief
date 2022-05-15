@@ -18,10 +18,8 @@ public class CharacterAttractor : MonoBehaviour
     private void TryToAttract()
     {
         float chance = Random.Range(0, 1f);
-        Debug.Log("chance " + chance);
         if (chance <= _attractionRate)
         {
-            Debug.Log("CreateAlert");
             CreateAlert();
         }
     }

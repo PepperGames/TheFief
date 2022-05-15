@@ -29,7 +29,6 @@ public static class EstatesGenerator
             result = Estates.Peers;
         }
 
-        Debug.Log("Estates " + result);
         return result;
     }
 }

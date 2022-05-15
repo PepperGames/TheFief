@@ -11,6 +11,8 @@ public class ResourcesManager : MonoBehaviour
     public Action<float> OnStoneChangeFor;
     public Action<float> OnMetalChangeFor;
 
+    public Resources Resources => resources;
+
     public Action<Resources> OnResourcesChange;
 
     //private Resources testResources = new Resources() { Money = 100, Food = 100, Wood = 100, Stone = 100, Metal = 100 };

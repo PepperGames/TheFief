@@ -9,15 +9,12 @@ public static class GenderGenerator
     {
         float chance = Random.Range(0, 1f);
 
-        Debug.Log("chance " + chance);
         if (chance <= _femaleChance)
         {
-            Debug.Log(Genders.Female);
             return Genders.Female;
         }
         else
         {
-            Debug.Log(Genders.Male);
             return Genders.Male;
         }
     }

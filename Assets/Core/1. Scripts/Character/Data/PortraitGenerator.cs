@@ -13,13 +13,11 @@ public class PortraitGenerator : MonoBehaviour
         if (gender == Genders.Female)
         {
             index = Random.Range(0, _femalePortraits.Length);
-            Debug.Log("Female index " + index);
             return _femalePortraits[index];
         }
         else
         {
             index = Random.Range(0, _malePortraits.Length);
-            Debug.Log("Male index " + index);
             return _malePortraits[index];
         }
     }
