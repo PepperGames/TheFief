@@ -21,7 +21,7 @@ public class TributeManager : MonoBehaviour
 
     public virtual void TryProduceResource()
     {
-        if (InGameTime.Hour == 21)
+        if (InGameTime.Hour == ConstantValues.tributeCollectionTime)
         {
             ProduceResource();
             IssueAccumulatedResource();
@@ -43,7 +43,7 @@ public class TributeManager : MonoBehaviour
     {
         float result = 0;
 
-        foreach (Character characters in _services.CharacterManager.AllCharacters)
+        foreach (Character characters in _services.CharacterManager.AliveCharacters)
         {
             float t = GetQuantityFromEstate(characters.CharacterData.Estates);
             result += t;

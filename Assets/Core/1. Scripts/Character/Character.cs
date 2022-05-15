@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [SerializeField] private CharacterStatuses _characterStatus = CharacterStatuses.Alive;
+
     [SerializeField] private CharacterData _characterData;
     [SerializeField] private AiAgent aiAgent;
     [SerializeField] private Structure _workPlace;
     [SerializeField] private Structure _livingPlace;
+
+    public CharacterStatuses CharacterStatus => _characterStatus;
 
     public CharacterData CharacterData => _characterData;
     public AiAgent AiAgent => aiAgent;
@@ -26,6 +30,7 @@ public class Character : MonoBehaviour
 
     public void Initialize(CharacterData characterData)
     {
+        _characterStatus = CharacterStatuses.Alive;
         _characterData = characterData;
         _characterData.Age.OnDeathFromOldAge += Die;
     }
@@ -67,6 +72,7 @@ public class Character : MonoBehaviour
     public void Die()
     {
         Debug.Log("Die");
+        _characterStatus = CharacterStatuses.Dead;
 
         if (LivingPlace != null)
         {
@@ -85,4 +91,11 @@ public class Character : MonoBehaviour
 
         Destroy(gameObject);
     }
+}
+
+public enum CharacterStatuses
+{
+    Alive = 0,
+    Dead = 1,
+    LeftTown = 2
 }

@@ -11,10 +11,14 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     [SerializeField] protected Durability durability;
 
+    [SerializeField] protected CharacterPlacesInStructure _characterPlaces;
+
+    [SerializeField] protected StructureInfo ui;
+
     public Durability Durability => durability;
 
-    [SerializeField] protected CharacterPlacesInStructure _characterPlaces;
     public CharacterPlacesInStructure CharacterPlaces => _characterPlaces;
+
     public virtual Estates Estate => _estate;
 
     public Action OnUpgrade;

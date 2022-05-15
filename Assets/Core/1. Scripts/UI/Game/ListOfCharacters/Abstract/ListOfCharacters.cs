@@ -37,7 +37,7 @@ public class ListOfCharacters : MonoBehaviour
     {
         ClearContent();
 
-        foreach (Character character in _characterManager.AllCharacters)
+        foreach (Character character in _characterManager.AliveCharacters)
         {
             FillCharactersView(character);
         }

@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ResidentialStructure : Structure
+public class PublicStructure : Structure
 {
     protected override void Start()
     {
@@ -13,7 +15,7 @@ public abstract class ResidentialStructure : Structure
             return;
 
         ui.ShowOrHide();
-    } 
+    }
 
     public override void Upgrade()
     {

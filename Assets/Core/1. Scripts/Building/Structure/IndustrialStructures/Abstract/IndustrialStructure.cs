@@ -2,8 +2,6 @@ using UnityEngine;
 
 public abstract class IndustrialStructure : Structure
 {
-    [SerializeField] private IndustrialStructureInfo ui;
-
     [SerializeField] protected Resources accumulatedResources;
 
     [SerializeField] protected float _overallPerformance;
