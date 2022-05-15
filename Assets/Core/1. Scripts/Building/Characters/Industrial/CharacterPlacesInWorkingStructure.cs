@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterPlacesInIndustrialStructure : CharacterPlacesInStructure
+public class CharacterPlacesInWorkingStructure : CharacterPlacesInStructure
 {
     public override bool AddCharacter(Character character)
     {

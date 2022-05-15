@@ -1,4 +1,4 @@
-public class CharacterPlaceInIndustrialStructureView : CharacterPlaceInStructureView
+public class CharacterPlaceInWorkingStructureView : CharacterPlaceInStructureView
 {
     protected override void WaitForCharacterSelect()
     {
