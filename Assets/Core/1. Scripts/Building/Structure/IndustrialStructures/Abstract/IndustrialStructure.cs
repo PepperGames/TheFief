@@ -12,18 +12,10 @@ public abstract class IndustrialStructure : Structure
         accumulatedResources = new Resources();
     }
 
-    public void OnMouseDown()
-    {
-        if (ui == null)
-            return;
-
-        ui.ShowOrHide();
-    }
-
     protected float CalculateProductivityPerHour()
     {
         float result = 0;
-        float _performancePerWorker = _overallPerformance / CharacterPlaces.numberOfPlaces;
+        float _performancePerWorker = _overallPerformance / CharacterPlaces.NumberOfPlaces;
 
         foreach (Character characters in CharacterPlaces.Characters)
         {
@@ -74,7 +66,7 @@ public abstract class IndustrialStructure : Structure
         if (CanBeUpgrade())
         {
             base.Upgrade();
-            CharacterPlaces.numberOfPlaces += 2;
+            CharacterPlaces.IncreaseNumberOfPlaces(2);
         }
     }
 
@@ -97,6 +89,5 @@ public abstract class IndustrialStructure : Structure
         Debug.Log("OnDemolish");
         base.OnDemolish();
         IssueAccumulatedResource();
-        CharacterPlaces.KickOutAll();
     }
 }

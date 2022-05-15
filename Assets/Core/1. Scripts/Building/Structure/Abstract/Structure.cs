@@ -31,6 +31,14 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
         OnEventsSubscribe();
     }
 
+    public virtual void OnMouseDown()
+    {
+        if (ui == null)
+            return;
+
+        ui.ShowOrHide();
+    }
+
     public virtual bool CanBeUpgrade()
     {
         int newLvl = lvl + 1;
@@ -91,7 +99,9 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     protected override void OnDemolish()
     {
+        Debug.Log("OnDemolish");
         base.OnDemolish();
         OnEventsUnscribe();
+        CharacterPlaces.KickOutAll();
     }
 }

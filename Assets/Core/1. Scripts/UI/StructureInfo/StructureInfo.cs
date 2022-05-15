@@ -23,6 +23,7 @@ public abstract class StructureInfo : MonoBehaviour
         _repairButton.onClick.AddListener(_structure.RepairCompletely);
         _structure.Durability.OnDurabilityChange += OnDurabilityChange;
         _destroyButton.onClick.AddListener(DestroyStructure);
+        _structure.CharacterPlaces.OnCNumberOfPlacesChange += _characterPlacesInStructureView.FillContent;
     }
 
     public virtual void ShowOrHide()

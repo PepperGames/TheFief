@@ -5,7 +5,7 @@ public class CharacterPlacesInIndustrialStructure : CharacterPlacesInStructure
     public override bool AddCharacter(Character character)
     {
         Debug.Log("AddCharacter");
-        if (Characters.Count < numberOfPlaces)
+        if (Characters.Count < NumberOfPlaces)
         {
             characters.Add(character);
             character.SetWorkplace(structure);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterPlacesInStructureView : MonoBehaviour
+public abstract class CharacterPlacesInStructureView : MonoBehaviour
 {
     [SerializeField] protected CharacterPlaceInStructureView _characterPlaceInStructureViewPrefab;
     [SerializeField] protected Transform content;
@@ -19,11 +19,11 @@ public class CharacterPlacesInStructureView : MonoBehaviour
         FillContent();
     }
 
-    protected virtual void FillContent()
+    public virtual void FillContent()
     {
         ClearContent();
 
-        for (int i = 0; i < _structure.CharacterPlaces.numberOfPlaces; i++)
+        for (int i = 0; i < _structure.CharacterPlaces.NumberOfPlaces; i++)
         {
             if (_structure.CharacterPlaces.Characters.Count > i)
             {
