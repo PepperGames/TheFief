@@ -8,7 +8,7 @@ public class PlacementManager : MonoBehaviour
     public int width;
     public int height;
 
-   [Inject] [SerializeField] private Services services;
+    [Inject] [SerializeField] private Services services;
 
     [SerializeField] private Dictionary<Vector2Int, BasicStructure> temporaryStructureObject = new Dictionary<Vector2Int, BasicStructure>();
     [SerializeField] private Dictionary<Vector2Int, BasicStructure> structureDictionary = new Dictionary<Vector2Int, BasicStructure>();
@@ -107,7 +107,7 @@ public class PlacementManager : MonoBehaviour
         {
             var structurePosition = Vector2Int.RoundToInt(structure.transform.position);
             var newPosition = structurePosition + new Vector2Int(point.x, point.y);
-            
+
             services.Grid[newPosition.x, newPosition.y] = CellType.Empty;
             structureDictionary.Remove(newPosition);
         }
@@ -173,10 +173,14 @@ public class PlacementManager : MonoBehaviour
 
     public BasicStructure GetRandomStructure()
     {
-        int randomIndex = Random.Range(0, structureDictionary.Count - 1);
+        if (structureDictionary.Count > 0)
+        {
+            int randomIndex = Random.Range(0, structureDictionary.Count - 1);
 
-        BasicStructure structure = structureDictionary.ElementAt(randomIndex).Value;
-        return structure;
+            BasicStructure structure = structureDictionary.ElementAt(randomIndex).Value;
+            return structure;
+        }
+        return null;
     }
 
     private void OnDrawGizmos()

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FamilyTies : MonoBehaviour
+public class FamilyTies 
 {
     public Character mother = null;
     public Character father = null;

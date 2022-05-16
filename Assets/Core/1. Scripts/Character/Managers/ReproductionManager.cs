@@ -1,10 +1,14 @@
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 public class ReproductionManager : MonoBehaviour
 {
-    [SerializeField] private float _minDelay = 10f;
-    [SerializeField] private float _maxDelay = 50f;
+    [Inject] private Services _services;
+
+
+    [SerializeField] private float _minDelay;
+    [SerializeField] private float _maxDelay;
 
     [SerializeField] private float _delay;
 
@@ -15,12 +19,35 @@ public class ReproductionManager : MonoBehaviour
 
     private float GetRandomDelay()
     {
-        return Random.Range(_minDelay, _maxDelay);
+        float randomDelay = Random.Range(_minDelay, _maxDelay);
+        Debug.Log("GetRandomDelay " + randomDelay);
+        return randomDelay;
     }
 
     public void Reproduce()
     {
+        Debug.Log("Reproduce");
+        if (GetResidentialStructure()!=null)
+        {
 
+            CharacterData characterData = _services.CharacterManager.GenerateRandomCharacterData();
+            _services.CharacterManager.SpawnCharacter(characterData);
+        }
+    }
+
+    private ResidentialStructure GetResidentialStructure(int i = 0)
+    {
+        ResidentialStructure residentialStructure = _services.PlacementManager.GetRandomStructure() as ResidentialStructure;
+        Debug.Log("+ " + residentialStructure);
+        if (i < 20)
+        {
+            if (residentialStructure == null)
+            {
+                return GetResidentialStructure(++i);
+            }
+        }
+        Debug.Log("- " + residentialStructure);
+        return residentialStructure;
     }
 
     private void Update()
