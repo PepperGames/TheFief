@@ -64,6 +64,19 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
+    public CharacterData GenerateRandomCharacterData(Character mother, Character father)
+    {
+        string characterName = NameGenerator.GetRandomName();
+        Age age = new Age();
+        Genders gender = GenderGenerator.GetRandomGender();
+        Sprite portrait = _portraitGenerator.GetPortrait(gender);
+        Estates estates = EstatesGenerator.GetRandomEstates();
+        Happiness happiness = new Happiness();
+        FamilyTies familyTies = new FamilyTies(mother, father);
+
+        return new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
+    }
+
     public CharacterData GenerateRandomCharacterData()
     {
         string characterName = NameGenerator.GetRandomName();
@@ -72,8 +85,9 @@ public class CharacterManager : MonoBehaviour
         Sprite portrait = _portraitGenerator.GetPortrait(gender);
         Estates estates = EstatesGenerator.GetRandomEstates();
         Happiness happiness = new Happiness();
+        FamilyTies familyTies = new FamilyTies();
 
-        return new CharacterData(characterName, portrait, age, gender, estates, happiness);
+        return new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
     }
 
     private Character GetRandomPedestrian()
@@ -84,7 +98,7 @@ public class CharacterManager : MonoBehaviour
     private void OnCharacterEventsSubscribe(Character character)
     {
         character.AiAgent.OnReachedFinalPoint += services.AiDirector.SelectNewRandomPath;
-        
+
         character.OnDie += OnCharacterDie;
         character.OnLeaveFromTown += OnCharacterLeaveFromTown;
     }
@@ -162,20 +176,20 @@ public class CharacterManager : MonoBehaviour
     {
         DeathPopup deathPopup = services.UIController.AlertList.Create(_deathPopupPrefab.gameObject).GetComponent<DeathPopup>();
         deathPopup.Initialize(character.CharacterData.Portrait, character.CharacterData.CharacterName, character.CharacterData.Age.years);
-    } 
-    
+    }
+
     private void CreateLeaveFromTownPopup(Character character)
     {
         LeaveFromTownPopup leaveFromTownPopup = services.UIController.AlertList.Create(_leaveFromTownPopupPrefabs.gameObject).GetComponent<LeaveFromTownPopup>();
         leaveFromTownPopup.Initialize(character.CharacterData.Portrait, character.CharacterData.CharacterName);
     }
-    
+
     private void OnCharacterDie(Character character)
     {
         RemoveCharacter(character);
         CreateDeathPopup(character);
     }
-    
+
     private void OnCharacterLeaveFromTown(Character character)
     {
         RemoveCharacter(character);

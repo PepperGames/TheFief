@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7233499394226695364}
   - component: {fileID: 7233499394226695365}
   - component: {fileID: 7233499394226695370}
+  - component: {fileID: 2165008681696615921}
   - component: {fileID: 4346574864123428708}
   - component: {fileID: 5837635638430528555}
   - component: {fileID: 7201600073025155685}
@@ -49,11 +50,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathPopupPrefab: {fileID: 6701465621234801314, guid: 8103215c42f6fc546bfd15a1c829dd38, type: 3}
   _newCharacterInTownPopupPrefabs: {fileID: 4259817602280148481, guid: 9e20d25aa8a96114786f4845fa6a5292, type: 3}
+  _leaveFromTownPopupPrefabs: {fileID: 0}
   _portraitGenerator: {fileID: 7201600073025155685}
-  _characters: []
   pedestrianPrefabs:
   - {fileID: 1565306974487778968, guid: 46f0be4542198fb47be24310079a413a, type: 3}
   - {fileID: 1796537531702237250, guid: ff08344273520e949b2b7152f2a6e2c1, type: 3}
+  _allCharacters: []
+  _aliveCharacters: []
+  _peasantsCharacters: []
+  _merchantsCharacters: []
+  _priestsCharacters: []
+  _peersCharacters: []
 --- !u!114 &7233499394226695370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +71,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54228ce7394088f4f943a73262860578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2165008681696615921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233499394226695367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8532f1beeb7fc1c428733b407159867c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4346574864123428708
@@ -78,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a85e56902676942bf6f8ffaa4b4593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterManager: {fileID: 7233499394226695365}
   _attractedToTownCharacterPopupPrefab: {fileID: 6972721102873965342, guid: 478939c1b5982f24bbfcdbe3b3388d9f, type: 3}
   _attractionRate: 0.1
 --- !u!114 &5837635638430528555
