@@ -27,12 +27,14 @@ public class Character : MonoBehaviour
     public Action OnChangeLivingPlace;
 
     public Action<Character> OnDie;
+    public Action<Character> OnLeaveFromTown;
 
     public void Initialize(CharacterData characterData)
     {
         _characterStatus = CharacterStatuses.Alive;
         _characterData = characterData;
         _characterData.Age.OnDeathFromOldAge += Die;
+        _characterData.Happiness.OnLowHappiness += LeaveFromTown;
     }
 
     public void SetWorkplace(Structure workplace)
@@ -69,11 +71,8 @@ public class Character : MonoBehaviour
         OnChangeLivingPlace?.Invoke();
     }
 
-    public void Die()
+    private void KickOutFromAll()
     {
-        Debug.Log("Die");
-        _characterStatus = CharacterStatuses.Dead;
-
         if (LivingPlace != null)
         {
             LivingPlace.CharacterPlaces.KickOut(this);
@@ -84,12 +83,41 @@ public class Character : MonoBehaviour
         {
             WorkPlace.CharacterPlaces.KickOut(this);
         }
+    }
+
+    public void Die()
+    {
+        Debug.Log("Die");
+        _characterStatus = CharacterStatuses.Dead;
+
+        KickOutFromAll();
 
         _characterData.Age.OnDeathFromOldAge -= Die;
 
-        OnDie?.Invoke(this);
+        OnEventsUnscribe();
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    public void LeaveFromTown()
+    {
+        Debug.Log("LeaveFromTown");
+        _characterStatus = CharacterStatuses.LeftTown;
+
+        KickOutFromAll();
+
+        OnEventsUnscribe();
+
+        OnLeaveFromTown?.Invoke(this);
+
+        gameObject.SetActive(false);
+    }
+
+    private void OnEventsUnscribe()
+    {
+        _characterData.Age.OnDeathFromOldAge -= Die;
+        _characterData.Happiness.OnLowHappiness -= LeaveFromTown;
+
     }
 }
 

@@ -8,6 +8,7 @@ public class CharacterManager : MonoBehaviour
 {
     [SerializeField] private DeathPopup _deathPopupPrefab;
     [SerializeField] private NewCharacterInTownPopup _newCharacterInTownPopupPrefabs;
+    [SerializeField] private LeaveFromTownPopup _leaveFromTownPopupPrefabs;
 
     [Inject] private Services services;
 
@@ -31,6 +32,11 @@ public class CharacterManager : MonoBehaviour
     public List<Character> PeersCharacters => _peersCharacters;
 
     public Action OnCharacterListChange;
+
+    private void Start()
+    {
+        StartCoroutine(Test());
+    }
 
     public void SpawnRandomCharacter()
     {
@@ -58,7 +64,6 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-
     public CharacterData GenerateRandomCharacterData()
     {
         string characterName = NameGenerator.GetRandomName();
@@ -66,8 +71,9 @@ public class CharacterManager : MonoBehaviour
         Genders gender = GenderGenerator.GetRandomGender();
         Sprite portrait = _portraitGenerator.GetPortrait(gender);
         Estates estates = EstatesGenerator.GetRandomEstates();
+        Happiness happiness = new Happiness();
 
-        return new CharacterData(characterName, portrait, age, gender, estates);
+        return new CharacterData(characterName, portrait, age, gender, estates, happiness);
     }
 
     private Character GetRandomPedestrian()
@@ -78,7 +84,9 @@ public class CharacterManager : MonoBehaviour
     private void OnCharacterEventsSubscribe(Character character)
     {
         character.AiAgent.OnReachedFinalPoint += services.AiDirector.SelectNewRandomPath;
-        character.OnDie += RemoveCharacter;
+        
+        character.OnDie += OnCharacterDie;
+        character.OnLeaveFromTown += OnCharacterLeaveFromTown;
     }
 
     private void AddCharacterToLists(Character character)
@@ -107,6 +115,7 @@ public class CharacterManager : MonoBehaviour
 
         OnCharacterListChange?.Invoke();
     }
+
     private void RemoveCharacterFromAliveList(Character character)
     {
         AliveCharacters.Remove(character);
@@ -135,10 +144,12 @@ public class CharacterManager : MonoBehaviour
 
     private void RemoveCharacter(Character character)
     {
-        CreateDeathPopup(character);
+        CreateLeaveFromTownPopup(character);
 
-        character.OnDie -= RemoveCharacter;
         character.AiAgent.OnReachedFinalPoint -= services.AiDirector.SelectNewRandomPath;
+
+        character.OnDie -= OnCharacterDie;
+        character.OnLeaveFromTown -= OnCharacterLeaveFromTown;
 
         RemoveCharacterFromAliveList(character);
     }
@@ -153,5 +164,35 @@ public class CharacterManager : MonoBehaviour
     {
         DeathPopup deathPopup = services.UIController.AlertList.Create(_deathPopupPrefab.gameObject).GetComponent<DeathPopup>();
         deathPopup.Initialize(character.CharacterData.Portrait, character.CharacterData.CharacterName, character.CharacterData.Age.years);
+    } 
+    
+    private void CreateLeaveFromTownPopup(Character character)
+    {
+        LeaveFromTownPopup leaveFromTownPopup = services.UIController.AlertList.Create(_leaveFromTownPopupPrefabs.gameObject).GetComponent<LeaveFromTownPopup>();
+        leaveFromTownPopup.Initialize(character.CharacterData.Portrait, character.CharacterData.CharacterName);
+    }
+    
+    private void OnCharacterDie(Character character)
+    {
+        RemoveCharacter(character);
+        CreateDeathPopup(character);
+    }
+    
+    private void OnCharacterLeaveFromTown(Character character)
+    {
+        RemoveCharacter(character);
+        CreateLeaveFromTownPopup(character);
+    }
+
+    private System.Collections.IEnumerator Test()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            for (int i = 0; i < AliveCharacters.Count; i++)
+            {
+                AliveCharacters[i].CharacterData.Happiness.IndexOfHappiness = 10;
+            }
+        }
     }
 }

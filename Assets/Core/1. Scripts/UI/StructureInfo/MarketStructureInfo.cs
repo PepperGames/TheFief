@@ -40,23 +40,23 @@ public class MarketStructureInfo : StructureInfo
     private void Update()
     {
         SetMaxPurchaseOfGoldSliderValues();
-        _purchaseOfGoldCountText.text = _market.CalculateTheGoldReceived(GetResourcesForSale()).ToString();
+        _purchaseOfGoldCountText.text = _market.CalculateTheGoldReceived(GetResourcesForGoldSale()).ToString();
 
 
         SetMaxSellSliderValues();
-        _goldSaleCountText.text = _market.CalculateTheGoldSpent(GetMoneyForSale()).ToString();
+        _goldSaleCountText.text = _market.CalculateTheGoldSpent(GetMoneyForResourcesSale()).ToString();
     }
 
     private void ConfirmPurchaseOfGold()
     {
-        _market.ConfirmPurchaseOfGold(GetResourcesForSale());
+        _market.ConfirmPurchaseOfGold(GetResourcesForGoldSale());
         _sellFoodSlider.value = 0;
         _sellWoodSlider.value = 0;
         _sellStoneSlider.value = 0;
         _sellMetalSlider.value = 0;
     }
 
-    private Resources GetResourcesForSale()
+    private Resources GetResourcesForGoldSale()
     {
         Resources resources = new Resources() { Food = _sellFoodSlider.value, Wood = _sellWoodSlider.value, Stone = _sellStoneSlider.value, Metal = _sellMetalSlider.value };
         return resources;
@@ -75,14 +75,14 @@ public class MarketStructureInfo : StructureInfo
 
     private void ConfirmConfirmGoldSale()
     {
-        _market.ConfirmGoldSale(GetMoneyForSale());
+        _market.ConfirmGoldSale(GetMoneyForResourcesSale());
         _buyFoodSlider.value = 0;
         _buyWoodSlider.value = 0;
         _buyStoneSlider.value = 0;
         _buyMetalSlider.value = 0;
     }
 
-    private Resources GetMoneyForSale()
+    private Resources GetMoneyForResourcesSale()
     {
         Resources resources = new Resources() { Food = _buyFoodSlider.value, Wood = _buyWoodSlider.value, Stone = _buyStoneSlider.value, Metal = _buyMetalSlider.value };
         return resources;
@@ -90,9 +90,11 @@ public class MarketStructureInfo : StructureInfo
 
     private void SetMaxSellSliderValues()
     {
-        _buyFoodSlider.maxValue = _services.ResourcesManager.Resources.Food;
-        _buyWoodSlider.maxValue = _services.ResourcesManager.Resources.Wood;
-        _buyStoneSlider.maxValue = _services.ResourcesManager.Resources.Stone;
-        _buyMetalSlider.maxValue = _services.ResourcesManager.Resources.Metal;
+        Resources saleResources = new Resources() { Food = _buyFoodSlider.value, Wood = _buyWoodSlider.value, Stone = _buyStoneSlider.value, Metal = _buyMetalSlider.value };
+        Resources resources = _market.CalculateResourcesCanBeBoughtWithTheRemainingGold(saleResources);
+        _buyFoodSlider.maxValue = resources.Food;
+        _buyWoodSlider.maxValue = resources.Wood;
+        _buyStoneSlider.maxValue = resources.Stone;
+        _buyMetalSlider.maxValue = resources.Metal;
     }
 }
