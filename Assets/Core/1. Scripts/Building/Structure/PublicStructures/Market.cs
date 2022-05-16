@@ -11,7 +11,7 @@ public class Market : PublicStructure
 
     public float CalculateTheGoldReceived(Resources resourcesForSale)
     {
-        Resources resources = resourcesForSale / GoldValue.sellingPriceOfGold;
+        Resources resources = resourcesForSale / GoldValue.purchasePriceOfGold;
         float result = resources.Food + resources.Wood + resources.Stone + resources.Metal;
         return result;
     }
@@ -26,8 +26,23 @@ public class Market : PublicStructure
         }
     }
 
-    public void ConfirmGoldSale() //золото на ресы
-    {
+    //..................................................................................................................
 
+    public float CalculateTheGoldSpent(Resources resourcesForBuy)
+    {
+        Resources resources = resourcesForBuy / GoldValue.sellingPriceOfGold;
+        float result = resources.Food + resources.Wood + resources.Stone + resources.Metal;
+        return result;
+    }
+
+    public void ConfirmGoldSale(Resources resourcesForBuy) //золото на ресы
+    {
+        Resources money = new Resources() { Money = CalculateTheGoldSpent(resourcesForBuy) };
+        Debug.Log("money  " + money);
+        if (_services.ResourcesManager.EnoughResources(money))
+        {
+            _services.ResourcesManager.SpendResources(money);
+            _services.ResourcesManager.AddResources(resourcesForBuy);
+        }
     }
 }
