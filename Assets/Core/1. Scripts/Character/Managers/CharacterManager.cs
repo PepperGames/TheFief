@@ -144,8 +144,6 @@ public class CharacterManager : MonoBehaviour
 
     private void RemoveCharacter(Character character)
     {
-        CreateLeaveFromTownPopup(character);
-
         character.AiAgent.OnReachedFinalPoint -= services.AiDirector.SelectNewRandomPath;
 
         character.OnDie -= OnCharacterDie;

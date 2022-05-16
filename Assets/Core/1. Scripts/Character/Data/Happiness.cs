@@ -19,6 +19,7 @@ public class Happiness
         set
         {
             _happiness = value;
+            OnHappinessChange?.Invoke();
             if (_happiness <= ConstantValues.LowIndexOfHappiness)
             {
                 Debug.Log("OnLowHappiness");
@@ -28,6 +29,7 @@ public class Happiness
     }
 
     public Action OnLowHappiness;
+    public Action OnHappinessChange;
 
     public Happiness() : this(Random.Range(35, 70)) { }
 
