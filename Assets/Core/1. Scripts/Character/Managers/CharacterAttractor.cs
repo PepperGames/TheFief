@@ -4,9 +4,7 @@ using Random = UnityEngine.Random;
 
 public class CharacterAttractor : MonoBehaviour
 {
-    [SerializeField] private AttractedToTownCharacterPopup _attractedToTownCharacterPopupPrefab;
-
-    [SerializeField] private float _attractionRate = 0.1f;
+        [SerializeField] private float _attractionRate = 0.1f;
 
     [Inject] private Services services;
 
@@ -20,14 +18,8 @@ public class CharacterAttractor : MonoBehaviour
         float chance = Random.Range(0, 1f);
         if (chance <= _attractionRate)
         {
-            CreateAlert();
+            services.UIController.AlertList.CreateAttractedToTownCharacterPopup(services);
         }
-    }
-
-    private void CreateAlert()
-    {
-        AttractedToTownCharacterPopup attractedToTownCharacter = services.UIController.AlertList.Create(_attractedToTownCharacterPopupPrefab.gameObject).GetComponent<AttractedToTownCharacterPopup>();
-        attractedToTownCharacter.Initialize(services, services.CharacterManager.GenerateRandomCharacterData());
     }
 
     private void OnDestroy()

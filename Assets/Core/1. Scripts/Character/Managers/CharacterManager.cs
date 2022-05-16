@@ -6,10 +6,6 @@ using Random = UnityEngine.Random;
 
 public class CharacterManager : MonoBehaviour
 {
-    [SerializeField] private DeathPopup _deathPopupPrefab;
-    [SerializeField] private NewCharacterInTownPopup _newCharacterInTownPopupPrefabs;
-    [SerializeField] private LeaveFromTownPopup _leaveFromTownPopupPrefabs;
-
     [Inject] private Services services;
 
     [SerializeField] private PortraitGenerator _portraitGenerator;
@@ -60,7 +56,7 @@ public class CharacterManager : MonoBehaviour
 
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
 
-            CreateNewCharacterInTownPopup(characterData);
+            services.UIController.AlertList.CreateNewCharacterInTownPopup(characterData);
         }
     }
 
@@ -166,34 +162,17 @@ public class CharacterManager : MonoBehaviour
         RemoveCharacterFromAliveList(character);
     }
 
-    private void CreateNewCharacterInTownPopup(CharacterData characterData)
-    {
-        NewCharacterInTownPopup newCharacterInTownPopup = services.UIController.AlertList.Create(_newCharacterInTownPopupPrefabs.gameObject).GetComponent<NewCharacterInTownPopup>();
-        newCharacterInTownPopup.Initialize(characterData);
-    }
-
-    private void CreateDeathPopup(Character character)
-    {
-        DeathPopup deathPopup = services.UIController.AlertList.Create(_deathPopupPrefab.gameObject).GetComponent<DeathPopup>();
-        deathPopup.Initialize(character.CharacterData.Portrait, character.CharacterData.CharacterName, character.CharacterData.Age.years);
-    }
-
-    private void CreateLeaveFromTownPopup(Character character)
-    {
-        LeaveFromTownPopup leaveFromTownPopup = services.UIController.AlertList.Create(_leaveFromTownPopupPrefabs.gameObject).GetComponent<LeaveFromTownPopup>();
-        leaveFromTownPopup.Initialize(character.CharacterData.Portrait, character.CharacterData.CharacterName);
-    }
 
     private void OnCharacterDie(Character character)
     {
         RemoveCharacter(character);
-        CreateDeathPopup(character);
+        services.UIController.AlertList.CreateDeathPopup(character);
     }
 
     private void OnCharacterLeaveFromTown(Character character)
     {
         RemoveCharacter(character);
-        CreateLeaveFromTownPopup(character);
+        services.UIController.AlertList.CreateLeaveFromTownPopup(character);
     }
 
     private System.Collections.IEnumerator Test()
