@@ -56,7 +56,6 @@ public class CharacterManager : MonoBehaviour
 
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
 
-            services.UIController.AlertList.CreateNewCharacterInTownPopup(characterData);
         }
     }
 
@@ -70,7 +69,11 @@ public class CharacterManager : MonoBehaviour
         Happiness happiness = new Happiness(50);
         FamilyTies familyTies = new FamilyTies(mother, father);
 
-        return new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
+        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
+
+        services.UIController.AlertList.CreateBabyWasBornPopup(mother.CharacterData, father.CharacterData, characterData);
+
+        return characterData;
     }
 
     public CharacterData GenerateRandomCharacterData()
@@ -83,7 +86,11 @@ public class CharacterManager : MonoBehaviour
         Happiness happiness = new Happiness();
         FamilyTies familyTies = new FamilyTies();
 
-        return new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
+        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
+
+        services.UIController.AlertList.CreateNewCharacterInTownPopup(characterData);
+
+        return characterData;
     }
 
     private Character GetRandomPedestrian()

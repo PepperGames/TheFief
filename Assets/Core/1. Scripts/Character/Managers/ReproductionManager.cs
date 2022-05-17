@@ -91,6 +91,11 @@ public class ReproductionManager : MonoBehaviour
     private FamilyPair GetFamilyPair(ResidentialStructure residentialStructure, FamilyPair familyPair, Genders desiredPartnerGender, List<int> unverifiedIndexes)
     {
         Debug.Log("GetFamilyPair2");
+        if (unverifiedIndexes.Count <= 0)
+        {
+            return null;
+        }
+
         int randomIndex = Random.Range(0, residentialStructure.CharacterPlaces.Characters.Count);
         while (!unverifiedIndexes.Contains(randomIndex))
         {
@@ -106,7 +111,7 @@ public class ReproductionManager : MonoBehaviour
         {
             if (desiredPartnerGender == Genders.Female)
             {
-                if (familyPair.father.CharacterData.FamilyTies.IsKinsman(character))
+                if (!familyPair.father.CharacterData.FamilyTies.IsKinsman(character))
                 {
                     familyPair.mother = character;
                     return familyPair;
@@ -114,14 +119,15 @@ public class ReproductionManager : MonoBehaviour
             }
             else
             {
-                if (familyPair.mother.CharacterData.FamilyTies.IsKinsman(character))
+                if (!familyPair.mother.CharacterData.FamilyTies.IsKinsman(character))
                 {
                     familyPair.father = character;
                     return familyPair;
                 }
             }
         }
-        else if (unverifiedIndexes.Count <= 0)
+
+        if (unverifiedIndexes.Count <= 0)
         {
             return null;
         }

@@ -32,7 +32,10 @@ public class Character : MonoBehaviour
     public void Initialize(CharacterData characterData)
     {
         _characterStatus = CharacterStatuses.Alive;
+
         _characterData = characterData;
+        characterData.FamilyTies.SetYourselfUpAsAChild(this);
+
         _characterData.Age.OnDeathFromOldAge += Die;
         _characterData.Happiness.OnLowHappiness += LeaveFromTown;
     }
@@ -91,8 +94,6 @@ public class Character : MonoBehaviour
         _characterStatus = CharacterStatuses.Dead;
 
         KickOutFromAll();
-
-        _characterData.Age.OnDeathFromOldAge -= Die;
 
         OnEventsUnscribe();
 

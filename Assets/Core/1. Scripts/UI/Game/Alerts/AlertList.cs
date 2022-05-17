@@ -7,6 +7,7 @@ public class AlertList : MonoBehaviour
     [Header("CharacterManager")]
     [SerializeField] private DeathPopup _deathPopupPrefab;
     [SerializeField] private NewCharacterInTownPopup _newCharacterInTownPopupPrefabs;
+    [SerializeField] private BabyWasBornPopup _babyWasBornPopupPrefabs;
     [SerializeField] private LeaveFromTownPopup _leaveFromTownPopupPrefabs;
 
     [Header("CharacterAttractor")]
@@ -52,5 +53,12 @@ public class AlertList : MonoBehaviour
         AttractedToTownCharacterPopup attractedToTownCharacter = Instantiate(_attractedToTownCharacterPopupPrefab, content);
         attractedToTownCharacter.Initialize(services, services.CharacterManager.GenerateRandomCharacterData());
         return attractedToTownCharacter;
+    }
+
+    public BabyWasBornPopup CreateBabyWasBornPopup(CharacterData motherData, CharacterData fatherData, CharacterData childData)
+    {
+        BabyWasBornPopup babyWasBornPopup = Instantiate(_babyWasBornPopupPrefabs, content);
+        babyWasBornPopup.Initialize(motherData, fatherData, childData);
+        return babyWasBornPopup;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Age
@@ -27,6 +28,7 @@ public class Age
         if (InGameTime.DayInThisYear == _dayOfBorn)
         {
             years++;
+            Debug.Log("years++ " + years);
             GrowOld();
         }
     }

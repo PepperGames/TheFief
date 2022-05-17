@@ -15,6 +15,24 @@ public class FamilyTies
         this.father = father;
     }
 
+    public void SetYourselfUpAsAChild(Character character)
+    {
+        if (mother != null)
+        {
+            mother.CharacterData.FamilyTies.AddChild(character);
+        }
+        if (father != null)
+        {
+            father.CharacterData.FamilyTies.AddChild(character);
+        }
+    }
+
+    public void AddChild(Character child)
+    {
+        children.Add(child);
+        Debug.Log("children.Count " + children.Count);
+    }
+
     public bool IsChildren(Character character)
     {
         if (children.Contains(character))
