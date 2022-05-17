@@ -11,12 +11,24 @@ public class Age
 
     public Action OnDeathFromOldAge;
 
+    private int _dayOfBorn = 0;
+
     public Age() : this(Random.Range(1, 50)) { }
 
     public Age(int years)
     {
         this.years = years;
-        InGameTime.OnYearChange += GrowOld;
+        _dayOfBorn = InGameTime.DayInThisYear;
+        InGameTime.OnDayChange += OdDayChange;
+    }
+
+    private void OdDayChange()
+    {
+        if (InGameTime.DayInThisYear == _dayOfBorn)
+        {
+            years++;
+            GrowOld();
+        }
     }
 
     private void GrowOld()
@@ -29,7 +41,7 @@ public class Age
         {
             OnDeathFromOldAge?.Invoke();
         }
-            //OnDeathFromOldAge?.Invoke();
+        //OnDeathFromOldAge?.Invoke();
     }
 
     private float ProbabilityToDie()

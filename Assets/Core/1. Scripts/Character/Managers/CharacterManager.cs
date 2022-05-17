@@ -60,14 +60,14 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    public CharacterData GenerateRandomCharacterData(Character mother, Character father)
+    public CharacterData GenerateBornedCharacterData(Character mother, Character father)
     {
         string characterName = NameGenerator.GetRandomName();
-        Age age = new Age();
+        Age age = new Age(1);
         Genders gender = GenderGenerator.GetRandomGender();
         Sprite portrait = _portraitGenerator.GetPortrait(gender);
-        Estates estates = EstatesGenerator.GetRandomEstates();
-        Happiness happiness = new Happiness();
+        Estates estates = father.CharacterData.Estates;
+        Happiness happiness = new Happiness(50);
         FamilyTies familyTies = new FamilyTies(mother, father);
 
         return new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);

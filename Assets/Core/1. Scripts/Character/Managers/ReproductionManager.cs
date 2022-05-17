@@ -27,21 +27,43 @@ public class ReproductionManager : MonoBehaviour
     public void Reproduce()
     {
         Debug.Log("Reproduce");
-        if (GetResidentialStructure() != null)
+        if (GetFamilyPair() != null)
         {
-
-            CharacterData characterData = _services.CharacterManager.GenerateRandomCharacterData();
+            CharacterData characterData = _services.CharacterManager.GenerateBornedCharacterData();
             _services.CharacterManager.SpawnCharacter(characterData);
         }
     }
 
     private ResidentialStructure GetResidentialStructure()
     {
-        ResidentialStructure residentialStructure = _services.StructureManager.woodenHutList[0];
-        Debug.Log("+ " + residentialStructure);
-        
-        Debug.Log("- " + residentialStructure);
-        return residentialStructure;
+        if (_services.StructureManager.woodenHutList.Count > 0)
+        {
+            int randomIndex = Random.Range(0, _services.StructureManager.woodenHutList.Count);
+            ResidentialStructure residentialStructure = _services.StructureManager.woodenHutList[randomIndex];
+            Debug.Log("+ " + residentialStructure);
+
+
+
+            Debug.Log("- " + residentialStructure);
+            return residentialStructure;
+        }
+        return null;
+    }
+
+    private FamilyPair GetFamilyPair()
+    {
+        //if (_services.StructureManager.woodenHutList.Count > 0)
+        //{
+        //    int randomIndex = Random.Range(0, _services.StructureManager.woodenHutList.Count);
+        //    ResidentialStructure residentialStructure = _services.StructureManager.woodenHutList[randomIndex];
+        //    Debug.Log("+ " + residentialStructure);
+
+
+
+        //    Debug.Log("- " + residentialStructure);
+        //    return residentialStructure;
+        //}
+        return null;
     }
 
     private void Update()
@@ -51,6 +73,18 @@ public class ReproductionManager : MonoBehaviour
         {
             Reproduce();
             _delay = GetRandomDelay();
+        }
+    }
+
+    private class FamilyPair
+    {
+        public Character father;
+        public Character mother;
+
+        public FamilyPair(Character father, Character mother)
+        {
+            this.father = father;
+            this.mother = mother;
         }
     }
 }
