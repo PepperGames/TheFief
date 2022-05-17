@@ -91,6 +91,7 @@ MonoBehaviour:
   lvl: 1
   maxLvl: 0
   _estate: 0
+  _structireName: 3
   durability: {fileID: 5899133219541778350}
   _characterPlaces: {fileID: 0}
   ui: {fileID: 0}

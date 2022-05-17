@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +8,15 @@ public class StructureManager : MonoBehaviour
     [Inject] private Services services;
 
     [SerializeField] private Structure selectedStructure;
+
+
+    [SerializeField] public List<Farm> farmList = new List<Farm>();
+    [SerializeField] public List<Mine> mineList = new List<Mine>();
+    [SerializeField] public List<Sawmill> sawmillList = new List<Sawmill>();
+    [SerializeField] public List<StonePit> stonePitList = new List<StonePit>();
+    [SerializeField] public List<Church> churchList = new List<Church>();
+    [SerializeField] public List<Market> marketList = new List<Market>();
+    [SerializeField] public List<WoodenHut> woodenHutList = new List<WoodenHut>();
 
     public Action OnPlaceHouse;
 
@@ -27,7 +37,8 @@ public class StructureManager : MonoBehaviour
                 if (CheckStructurePosition(position, selectedStructure))
                 {
                     services.ResourcesManager.SpendResources(selectedStructure.StructureCost.GetAmountOfResourcesForBuild());
-                    services.PlacementManager.PlaceStructureOnTheMap(position, selectedStructure, CellType.Structure);
+                    Structure structure = services.PlacementManager.PlaceStructureOnTheMap(position, selectedStructure, CellType.Structure) as Structure;
+                    AddToStructuserList(structure);
                 }
             }
         }
@@ -96,4 +107,36 @@ public class StructureManager : MonoBehaviour
         }
         return true;
     }
+
+
+    private void AddToStructuserList(Structure basicStructure)
+    {
+        switch (basicStructure.StructireName)
+        {
+            case StructireName.Farm:
+                farmList.Add(basicStructure as Farm);
+                break;
+            case StructireName.Mine:
+                mineList.Add(basicStructure as Mine);
+                break;
+            case StructireName.Sawmill:
+                sawmillList.Add(basicStructure as Sawmill);
+                break;
+            case StructireName.StonePit:
+                stonePitList.Add(basicStructure as StonePit);
+                break;
+            case StructireName.Church:
+                churchList.Add(basicStructure as Church);
+                break;
+            case StructireName.Market:
+                marketList.Add(basicStructure as Market);
+                break;
+            case StructireName.WoodenHut:
+                woodenHutList.Add(basicStructure as WoodenHut);
+                break;
+            default:
+                break;
+        }
+    }
+
 }

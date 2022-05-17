@@ -8,6 +8,7 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
     [SerializeField] protected int lvl;
     [SerializeField] protected int maxLvl;
     [SerializeField] protected Estates _estate;
+    [SerializeField] protected StructireName _structireName;
 
     [SerializeField] protected Durability durability;
 
@@ -20,6 +21,7 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
     public CharacterPlacesInStructure CharacterPlaces => _characterPlaces;
 
     public virtual Estates Estate => _estate;
+    public virtual StructireName StructireName => _structireName;
 
     public Action OnUpgrade;
 
@@ -104,4 +106,15 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
         OnEventsUnscribe();
         CharacterPlaces.KickOutAll();
     }
+}
+
+public enum StructireName
+{
+    Farm,
+    Mine,
+    Sawmill,
+    StonePit,
+    Church,
+    Market,
+    WoodenHut
 }

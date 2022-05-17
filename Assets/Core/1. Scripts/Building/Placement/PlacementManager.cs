@@ -31,7 +31,7 @@ public class PlacementManager : MonoBehaviour
         return neighbours;
     }
 
-    internal void PlaceStructureOnTheMap(Vector2Int position, BasicStructure basicStructure, CellType type)
+    internal BasicStructure PlaceStructureOnTheMap(Vector2Int position, BasicStructure basicStructure, CellType type)
     {
         BasicStructure createdBasicStructure = CreateANewStructureModel(position, basicStructure, type);
 
@@ -42,6 +42,7 @@ public class PlacementManager : MonoBehaviour
             structureDictionary.Add(newPosition, createdBasicStructure);
             DestroyNatureAt(newPosition);
         }
+        return createdBasicStructure;
     }
 
     internal bool CheckIfPositionInBound(Vector2Int position)
@@ -90,6 +91,7 @@ public class PlacementManager : MonoBehaviour
     {
         foreach (var structure in temporaryStructureObject)
         {
+
             structureDictionary.Add(structure.Key, structure.Value);
             DestroyNatureAt(structure.Key);
         }

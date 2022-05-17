@@ -27,7 +27,7 @@ public class ReproductionManager : MonoBehaviour
     public void Reproduce()
     {
         Debug.Log("Reproduce");
-        if (GetResidentialStructure()!=null)
+        if (GetResidentialStructure() != null)
         {
 
             CharacterData characterData = _services.CharacterManager.GenerateRandomCharacterData();
@@ -35,17 +35,11 @@ public class ReproductionManager : MonoBehaviour
         }
     }
 
-    private ResidentialStructure GetResidentialStructure(int i = 0)
+    private ResidentialStructure GetResidentialStructure()
     {
-        ResidentialStructure residentialStructure = _services.PlacementManager.GetRandomStructure() as ResidentialStructure;
+        ResidentialStructure residentialStructure = _services.StructureManager.woodenHutList[0];
         Debug.Log("+ " + residentialStructure);
-        if (i < 20)
-        {
-            if (residentialStructure == null)
-            {
-                return GetResidentialStructure(++i);
-            }
-        }
+        
         Debug.Log("- " + residentialStructure);
         return residentialStructure;
     }
