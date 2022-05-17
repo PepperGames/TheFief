@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class CharacterAttractor : MonoBehaviour
 {
-        [SerializeField] private float _attractionRate = 0.1f;
+    [SerializeField] private float _attractionRate = 0.1f;
 
     [Inject] private Services services;
 

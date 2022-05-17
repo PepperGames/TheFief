@@ -104,25 +104,29 @@ public class ReproductionManager : MonoBehaviour
 
         if (character.CharacterData.Gender == desiredPartnerGender)
         {
-            switch (character.CharacterData.Gender)
+            if (desiredPartnerGender == Genders.Female)
             {
-                case Genders.Female:
+                if (familyPair.father.CharacterData.FamilyTies.IsKinsman(character))
+                {
                     familyPair.mother = character;
-                    break;
-                case Genders.Male:
-                    familyPair.father = character;
-                    break;
+                    return familyPair;
+                }
             }
-            return familyPair;
+            else
+            {
+                if (familyPair.mother.CharacterData.FamilyTies.IsKinsman(character))
+                {
+                    familyPair.father = character;
+                    return familyPair;
+                }
+            }
         }
         else if (unverifiedIndexes.Count <= 0)
         {
             return null;
         }
-        else
-        {
-            return GetFamilyPair(residentialStructure, familyPair, desiredPartnerGender, unverifiedIndexes);
-        }
+
+        return GetFamilyPair(residentialStructure, familyPair, desiredPartnerGender, unverifiedIndexes);
     }
 
     private void Update()
