@@ -1500,7 +1500,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2165008681696615921, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
       propertyPath: _maxDelay
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2165008681696615921, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
       propertyPath: _minDelay

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -20,7 +21,6 @@ public class ReproductionManager : MonoBehaviour
     private float GetRandomDelay()
     {
         float randomDelay = Random.Range(_minDelay, _maxDelay);
-        Debug.Log("GetRandomDelay " + randomDelay);
         return randomDelay;
     }
 
@@ -29,22 +29,22 @@ public class ReproductionManager : MonoBehaviour
         Debug.Log("Reproduce");
         if (GetFamilyPair() != null)
         {
-            CharacterData characterData = _services.CharacterManager.GenerateBornedCharacterData();
-            _services.CharacterManager.SpawnCharacter(characterData);
+            FamilyPair familyPair = GetFamilyPair();
+            if (familyPair != null)
+            {
+                CharacterData characterData = _services.CharacterManager.GenerateBornedCharacterData(familyPair.mother, familyPair.father);
+                _services.CharacterManager.SpawnCharacter(characterData);
+            }
         }
     }
 
     private ResidentialStructure GetResidentialStructure()
     {
+        Debug.Log("GetResidentialStructure");
         if (_services.StructureManager.woodenHutList.Count > 0)
         {
             int randomIndex = Random.Range(0, _services.StructureManager.woodenHutList.Count);
             ResidentialStructure residentialStructure = _services.StructureManager.woodenHutList[randomIndex];
-            Debug.Log("+ " + residentialStructure);
-
-
-
-            Debug.Log("- " + residentialStructure);
             return residentialStructure;
         }
         return null;
@@ -52,18 +52,77 @@ public class ReproductionManager : MonoBehaviour
 
     private FamilyPair GetFamilyPair()
     {
-        //if (_services.StructureManager.woodenHutList.Count > 0)
-        //{
-        //    int randomIndex = Random.Range(0, _services.StructureManager.woodenHutList.Count);
-        //    ResidentialStructure residentialStructure = _services.StructureManager.woodenHutList[randomIndex];
-        //    Debug.Log("+ " + residentialStructure);
+        Debug.Log("GetFamilyPair");
+        ResidentialStructure residentialStructure = GetResidentialStructure();
 
+        if (residentialStructure != null)
+        {
+            if (residentialStructure.CharacterPlaces.Characters.Count >= 2)
+            {
+                List<int> unverifiedIndexes = new List<int>(residentialStructure.CharacterPlaces.Characters.Count);
+                for (int i = 0; i < residentialStructure.CharacterPlaces.Characters.Count; i++)
+                {
+                    unverifiedIndexes.Add(i);
+                }
 
+                int randomIndex = Random.Range(0, residentialStructure.CharacterPlaces.Characters.Count);
+                unverifiedIndexes.Remove(randomIndex);
 
-        //    Debug.Log("- " + residentialStructure);
-        //    return residentialStructure;
-        //}
+                Character character = residentialStructure.CharacterPlaces.Characters[randomIndex];
+                FamilyPair familyPair = new FamilyPair();
+                Genders desiredPartnerGender;
+                if (character.CharacterData.Gender == Genders.Female)
+                {
+                    familyPair.mother = character;
+                    desiredPartnerGender = Genders.Male;
+                }
+                else
+                {
+                    familyPair.father = character;
+                    desiredPartnerGender = Genders.Female;
+                }
+
+                return GetFamilyPair(residentialStructure, familyPair, desiredPartnerGender, unverifiedIndexes);
+            }
+        }
         return null;
+    }
+
+    private FamilyPair GetFamilyPair(ResidentialStructure residentialStructure, FamilyPair familyPair, Genders desiredPartnerGender, List<int> unverifiedIndexes)
+    {
+        Debug.Log("GetFamilyPair2");
+        int randomIndex = Random.Range(0, residentialStructure.CharacterPlaces.Characters.Count);
+        while (!unverifiedIndexes.Contains(randomIndex))
+        {
+            Debug.Log("+");
+            randomIndex = Random.Range(0, residentialStructure.CharacterPlaces.Characters.Count);
+        }
+
+        unverifiedIndexes.Remove(randomIndex);
+
+        Character character = residentialStructure.CharacterPlaces.Characters[randomIndex];
+
+        if (character.CharacterData.Gender == desiredPartnerGender)
+        {
+            switch (character.CharacterData.Gender)
+            {
+                case Genders.Female:
+                    familyPair.mother = character;
+                    break;
+                case Genders.Male:
+                    familyPair.father = character;
+                    break;
+            }
+            return familyPair;
+        }
+        else if (unverifiedIndexes.Count <= 0)
+        {
+            return null;
+        }
+        else
+        {
+            return GetFamilyPair(residentialStructure, familyPair, desiredPartnerGender, unverifiedIndexes);
+        }
     }
 
     private void Update()
@@ -80,6 +139,12 @@ public class ReproductionManager : MonoBehaviour
     {
         public Character father;
         public Character mother;
+
+        public FamilyPair()
+        {
+            father = null;
+            mother = null;
+        }
 
         public FamilyPair(Character father, Character mother)
         {
