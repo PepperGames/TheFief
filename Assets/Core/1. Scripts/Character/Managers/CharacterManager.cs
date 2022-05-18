@@ -8,13 +8,17 @@ public class CharacterManager : MonoBehaviour
 {
     [Inject] private Services services;
 
+    [Header("Generators")]
     [SerializeField] private PortraitGenerator _portraitGenerator;
 
+    [Header("Prefabs")]
     [SerializeField] private Character[] pedestrianPrefabs;
 
+    [Header("Characters")]
     [SerializeField] private List<Character> _allCharacters;
     [SerializeField] private List<Character> _aliveCharacters;
 
+    [Header("Characters by estate")]
     [SerializeField] private List<Character> _peasantsCharacters;
     [SerializeField] private List<Character> _merchantsCharacters;
     [SerializeField] private List<Character> _priestsCharacters;
