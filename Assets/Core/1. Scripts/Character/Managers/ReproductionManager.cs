@@ -69,6 +69,10 @@ public class ReproductionManager : MonoBehaviour
                 unverifiedIndexes.Remove(randomIndex);
 
                 Character character = residentialStructure.CharacterPlaces.Characters[randomIndex];
+                if (character.CharacterData.Happiness.IndexOfHappiness < 80)
+                {
+                    return null;
+                }
                 FamilyPair familyPair = new FamilyPair();
                 Genders desiredPartnerGender;
                 if (character.CharacterData.Gender == Genders.Female)
