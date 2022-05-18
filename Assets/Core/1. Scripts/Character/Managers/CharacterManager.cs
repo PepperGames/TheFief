@@ -172,6 +172,7 @@ public class CharacterManager : MonoBehaviour
 
         character.OnDie -= OnCharacterDie;
         character.OnLeaveFromTown -= OnCharacterLeaveFromTown;
+        character.CharacterData.Happiness.OnHappinessChange -= _happinessManager.Recalculate;
 
         RemoveCharacterFromAliveList(character);
         _happinessManager.Recalculate(character.CharacterData.Estates);
