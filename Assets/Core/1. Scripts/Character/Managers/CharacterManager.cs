@@ -194,10 +194,10 @@ public class CharacterManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             for (int i = 0; i < AliveCharacters.Count; i++)
             {
-                //AliveCharacters[i].CharacterData.Happiness.IndexOfHappiness = 10;
+                AliveCharacters[i].CharacterData.Happiness.IndexOfHappiness = 10;
             }
         }
     }

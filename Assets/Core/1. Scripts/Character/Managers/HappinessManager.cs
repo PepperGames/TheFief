@@ -100,15 +100,19 @@ public class HappinessManager : MonoBehaviour
                 PeasantsHappiness = Recalculate(services.CharacterManager.PeasantsCharacters);
                 break;
             case Estates.Merchants:
-                MerchantsHappiness = Recalculate(services.CharacterManager.PeasantsCharacters);
+                MerchantsHappiness = Recalculate(services.CharacterManager.MerchantsCharacters);
                 break;
             case Estates.Priests:
-                PriestsHappiness = Recalculate(services.CharacterManager.PeasantsCharacters);
+                PriestsHappiness = Recalculate(services.CharacterManager.PriestsCharacters);
                 break;
             case Estates.Peers:
-                PeersHappiness = Recalculate(services.CharacterManager.PeasantsCharacters);
+                PeersHappiness = Recalculate(services.CharacterManager.PeersCharacters);
+                break;
+            default:
+                Debug.LogError("Error");
                 break;
         }
+
         Debug.Log("Recalculate");
     }
 
@@ -119,7 +123,11 @@ public class HappinessManager : MonoBehaviour
         {
             result += character.CharacterData.Happiness.IndexOfHappiness;
         }
-        result /= characters.Count;
+        if (characters.Count!=0)
+        {
+            result /= characters.Count;
+        }
+
         return result;
         Debug.Log("Recalculate");
     }
