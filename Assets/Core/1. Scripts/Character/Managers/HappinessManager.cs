@@ -4,7 +4,7 @@ using Zenject;
 
 public class HappinessManager : MonoBehaviour
 {
-    [Inject] private CharacterManager _characterManager;
+    [Inject] private Services services;
 
     [SerializeField] private float _peasantsHappiness = 0;
     [SerializeField] private float _merchantsHappiness = 0;
@@ -73,11 +73,13 @@ public class HappinessManager : MonoBehaviour
         Recalculate(Estates.Merchants);
         Recalculate(Estates.Priests);
         Recalculate(Estates.Peers);
+        Debug.Log("Recalculate");
     }
 
     public void Recalculate(Character character)
     {
         Recalculate(character.CharacterData.Estates);
+        Debug.Log("Recalculate");
     }
 
     public void Recalculate(Estates estate)
@@ -85,18 +87,19 @@ public class HappinessManager : MonoBehaviour
         switch (estate)
         {
             case Estates.Peasants:
-                PeasantsHappiness = Recalculate(_characterManager.PeasantsCharacters);
+                PeasantsHappiness = Recalculate(services.CharacterManager.PeasantsCharacters);
                 break;
             case Estates.Merchants:
-                MerchantsHappiness = Recalculate(_characterManager.PeasantsCharacters);
+                MerchantsHappiness = Recalculate(services.CharacterManager.PeasantsCharacters);
                 break;
             case Estates.Priests:
-                PriestsHappiness = Recalculate(_characterManager.PeasantsCharacters);
+                PriestsHappiness = Recalculate(services.CharacterManager.PeasantsCharacters);
                 break;
             case Estates.Peers:
-                PeersHappiness = Recalculate(_characterManager.PeasantsCharacters);
+                PeersHappiness = Recalculate(services.CharacterManager.PeasantsCharacters);
                 break;
         }
+        Debug.Log("Recalculate");
     }
 
     public float Recalculate(List<Character> characters)
@@ -108,5 +111,6 @@ public class HappinessManager : MonoBehaviour
         }
         result /= characters.Count;
         return result;
+        Debug.Log("Recalculate");
     }
 }

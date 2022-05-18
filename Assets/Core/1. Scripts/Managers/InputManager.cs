@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     public Action OnMouseUp;
 
     [SerializeField] private Camera mainCamera;
-    [Inject] [SerializeField] private Services services;
+    [Inject] private Services services;
 
     public LayerMask groundMask;
 

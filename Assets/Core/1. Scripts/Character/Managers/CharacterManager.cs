@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class CharacterManager : MonoBehaviour
 {
     [Inject] private Services services;
+    [SerializeField] private HappinessManager _happinessManager;
 
     [Header("Generators")]
     [SerializeField] private PortraitGenerator _portraitGenerator;
@@ -59,7 +60,7 @@ public class CharacterManager : MonoBehaviour
             OnCharacterEventsSubscribe(character);
 
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
-
+            _happinessManager.Recalculate(character.CharacterData.Estates);
         }
     }
 
@@ -108,6 +109,8 @@ public class CharacterManager : MonoBehaviour
 
         character.OnDie += OnCharacterDie;
         character.OnLeaveFromTown += OnCharacterLeaveFromTown;
+
+        character.CharacterData.Happiness.OnHappinessChange += _happinessManager.Recalculate;
     }
 
     private void AddCharacterToLists(Character character)
@@ -171,6 +174,7 @@ public class CharacterManager : MonoBehaviour
         character.OnLeaveFromTown -= OnCharacterLeaveFromTown;
 
         RemoveCharacterFromAliveList(character);
+        _happinessManager.Recalculate(character.CharacterData.Estates);
     }
 
 

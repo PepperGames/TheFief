@@ -8,7 +8,7 @@ public class PlacementManager : MonoBehaviour
     public int width;
     public int height;
 
-    [Inject] [SerializeField] private Services services;
+    [Inject] private Services services;
 
     [SerializeField] private Dictionary<Vector2Int, BasicStructure> temporaryStructureObject = new Dictionary<Vector2Int, BasicStructure>();
     [SerializeField] private Dictionary<Vector2Int, BasicStructure> structureDictionary = new Dictionary<Vector2Int, BasicStructure>();
