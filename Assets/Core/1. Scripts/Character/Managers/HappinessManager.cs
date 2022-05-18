@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -22,6 +23,7 @@ public class HappinessManager : MonoBehaviour
         private set
         {
             _peasantsHappiness = value;
+            OnPeasantsHappinessChange?.Invoke();
         }
     }
 
@@ -36,6 +38,7 @@ public class HappinessManager : MonoBehaviour
         private set
         {
             _merchantsHappiness = value;
+            OnMerchantsHappinessChange?.Invoke();
         }
     }
 
@@ -50,6 +53,7 @@ public class HappinessManager : MonoBehaviour
         private set
         {
             _priestsHappiness = value;
+            OnPriestsHappinessChange?.Invoke();
         }
     }
 
@@ -64,8 +68,14 @@ public class HappinessManager : MonoBehaviour
         private set
         {
             _peersHappiness = value;
+            OnPeersHappinessChange?.Invoke();
         }
     }
+
+    public Action OnPeasantsHappinessChange;
+    public Action OnMerchantsHappinessChange;
+    public Action OnPriestsHappinessChange;
+    public Action OnPeersHappinessChange;
 
     public void Recalculate()
     {
