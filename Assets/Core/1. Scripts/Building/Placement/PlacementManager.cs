@@ -146,12 +146,6 @@ public class PlacementManager : MonoBehaviour
 
     private BasicStructure CreateANewStructureModel(Vector2Int position, BasicStructure basicStructure, CellType type)
     {
-        //GameObject structureModel = basicStructure.model;
-        //structureModel.transform.localPosition = new Vector3(position.x, position.y);
-
-        //GameObject createdGameObject = Instantiate(structureModel, transform);
-        //BasicStructure createdBasicStructure = createdGameObject.GetComponent<BasicStructure>();
-        //======================================
         Vector3 position3 = new Vector3(position.x, position.y);
 
         BasicStructure createdBasicStructure = Instantiate(basicStructure, position3, Quaternion.identity, transform);

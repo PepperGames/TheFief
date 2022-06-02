@@ -5,7 +5,6 @@ using Zenject;
 
 public abstract class BasicStructure : MonoBehaviour
 {
-    //public GameObject model; //обжект у которого дети это арт
     public GameObject modelView;
 
     [SerializeField] private bool drawGizmo = true;
@@ -28,7 +27,6 @@ public abstract class BasicStructure : MonoBehaviour
 
     public void Initialize()
     {
-        //structureCost = gameObject.GetComponent<StructureCost>();
         _structureCost.IncreaseCurrentCost(_structureCost.GetAmountOfResourcesForBuild());
 
         foreach (Transform child in transform)

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelView: {fileID: 4261896078557345778}
-  drawGizmo: 1
+  drawGizmo: 0
   points:
   - {x: 0, y: 0}
   _structureCost: {fileID: -4254722516106336964}
