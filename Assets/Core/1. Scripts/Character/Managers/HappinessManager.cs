@@ -128,7 +128,7 @@ public class HappinessManager : MonoBehaviour
             result /= characters.Count;
         }
 
-        return result;
         Debug.Log("Recalculate");
+        return result;
     }
 }
