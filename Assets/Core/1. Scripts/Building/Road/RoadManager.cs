@@ -119,7 +119,7 @@ public class RoadManager : MonoBehaviour
         if (roadsPositions == null || roadsPositions.Count <= 0)
             return Vector2Int.zero;
 
-        int randomIndex = UnityEngine.Random.Range(0, roadsPositions.Count);
+        int randomIndex = Random.Range(0, roadsPositions.Count);
 
         Vector2Int position = roadsPositions[randomIndex];
         return position;

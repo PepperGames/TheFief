@@ -10,6 +10,11 @@ public abstract class BasicStructure : MonoBehaviour
     [SerializeField] private bool drawGizmo = true;
 
     [SerializeField] private List<Vector2Int> points;
+
+    [SerializeField] protected StructureCost _structureCost;
+
+    [Inject] protected Services services;
+
     public List<Vector2Int> Points
     {
         get
@@ -18,10 +23,7 @@ public abstract class BasicStructure : MonoBehaviour
         }
     }
 
-    [SerializeField] protected StructureCost _structureCost;
     public StructureCost StructureCost => _structureCost;
-
-    [Inject] protected Services services;
 
     public Action OnInitialize;
 
@@ -63,7 +65,7 @@ public abstract class BasicStructure : MonoBehaviour
             foreach (Vector2Int item in Points)
             {
                 Gizmos.color = new Color(1, 0, 0, 0.5f);
-                Gizmos.DrawCube(new Vector3(item.x, item.y), new Vector3(1, 1, 0));
+                Gizmos.DrawCube(new Vector3(transform.position.x + item.x, transform.position.y + item.y), new Vector3(1, 1, 0));
             }
         }
     }

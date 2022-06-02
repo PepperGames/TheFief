@@ -9,7 +9,6 @@ public class StructureManager : MonoBehaviour
 
     [SerializeField] private Structure selectedStructure;
 
-
     [SerializeField] public List<Farm> farmList = new List<Farm>();
     [SerializeField] public List<Mine> mineList = new List<Mine>();
     [SerializeField] public List<Sawmill> sawmillList = new List<Sawmill>();
@@ -51,10 +50,6 @@ public class StructureManager : MonoBehaviour
 
     private bool CheckCost()
     {
-        //Debug.Log(services);
-        //Debug.Log(services.ResourcesManager);
-        //Debug.Log(selectedStructure.StructureCost);
-        //Debug.Log(selectedStructure);
         if (services.ResourcesManager.EnoughResources(selectedStructure.StructureCost.GetAmountOfResourcesForBuild()))
         {
             return true;
@@ -138,5 +133,4 @@ public class StructureManager : MonoBehaviour
                 break;
         }
     }
-
 }
