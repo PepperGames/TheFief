@@ -33,11 +33,6 @@ public class CharacterManager : MonoBehaviour
 
     public Action OnCharacterListChange;
 
-    private void Start()
-    {
-        StartCoroutine(Test());
-    }
-
     public void SpawnRandomCharacter()
     {
         CharacterData characterData = GenerateRandomCharacterData();
@@ -188,17 +183,5 @@ public class CharacterManager : MonoBehaviour
     {
         RemoveCharacter(character);
         services.UIController.AlertList.CreateLeaveFromTownPopup(character);
-    }
-
-    private System.Collections.IEnumerator Test()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(3f);
-            for (int i = 0; i < AliveCharacters.Count; i++)
-            {
-                AliveCharacters[i].CharacterData.Happiness.IndexOfHappiness = 10;
-            }
-        }
     }
 }

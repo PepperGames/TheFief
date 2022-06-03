@@ -4,4 +4,9 @@ public class AmountOfMoneyView : AmountOfResourcesView
     {
         text.text = resources.Money.ToString();
     }
+
+    protected override void DisplayAmountOfResources()
+    {
+        text.text = services.ResourcesManager.Resources.Money.ToString();
+    }
 }

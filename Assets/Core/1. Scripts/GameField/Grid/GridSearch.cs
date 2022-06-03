@@ -1,10 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-/// <summary>
-/// Source https://github.com/lordjesus/Packt-Introduction-to-graph-algorithms-for-game-developers
-/// </summary>
 public class GridSearch
 {
 
@@ -34,47 +30,24 @@ public class GridSearch
             if (current.Equals(endPosition))
             {
                 path = GeneratePath(parentsDictionary, current);
-                //foreach (var i in path)
-                //{
-                //    Debug.Log(i);
-                //}
                 return path;
             }
 
             foreach (Point neighbour in grid.GetAdjacentCells(current, isAgent))
             {
-                //Debug.Log("foreach");
                 float newCost = costDictionary[current] + grid.GetCostOfEnteringCell(neighbour);
                 if (!costDictionary.ContainsKey(neighbour) || newCost < costDictionary[neighbour])
                 {
                     costDictionary[neighbour] = newCost;
 
-                    //if (isAgent)
-                    //{
-                    //    if (Math.Abs(current.X - neighbour.X) != 1 && Math.Abs(current.Y - neighbour.Y) != 1)
-                    //    {
-                    //        float priority = newCost + ManhattanDiscance(endPosition, neighbour);
-                    //        positionsTocheck.Add(neighbour);
-                    //        priorityDictionary[neighbour] = priority;
-
-                    //        parentsDictionary[neighbour] = current;
-                    //    }
-                    //}
-                    //else
-                    //{
                     float priority = newCost + ManhattanDiscance(endPosition, neighbour);
                     positionsTocheck.Add(neighbour);
                     priorityDictionary[neighbour] = priority;
 
                     parentsDictionary[neighbour] = current;
-                    //}
                 }
             }
         }
-        //foreach (var i in path)
-        //{
-        //    Debug.Log(i);
-        //}
 
         return path;
     }

@@ -4,4 +4,9 @@ public class AmountOfFoodView : AmountOfResourcesView
     {
         text.text = resources.Food.ToString();
     }
+
+    protected override void DisplayAmountOfResources()
+    {
+        text.text =services.ResourcesManager.Resources.Food.ToString();
+    }
 }

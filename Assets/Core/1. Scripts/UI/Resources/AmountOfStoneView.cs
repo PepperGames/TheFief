@@ -4,4 +4,10 @@ public class AmountOfStoneView : AmountOfResourcesView
     {
         text.text = resources.Stone.ToString();
     }
+
+    protected override void DisplayAmountOfResources()
+    {
+        text.text = services.ResourcesManager.Resources.Stone.ToString();
+    }
 }
+

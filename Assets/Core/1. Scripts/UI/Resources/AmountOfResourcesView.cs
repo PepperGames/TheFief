@@ -11,8 +11,10 @@ public abstract class AmountOfResourcesView : MonoBehaviour
     private void Start()
     {
         services.ResourcesManager.OnResourcesChange += DisplayAmountOfResources;
+        DisplayAmountOfResources();
     }
-
+    protected abstract void DisplayAmountOfResources();
+    
     protected abstract void DisplayAmountOfResources(Resources resources);
 
     private void OnDestroy()

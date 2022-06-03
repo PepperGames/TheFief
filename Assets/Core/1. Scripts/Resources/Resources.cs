@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public struct Resources
 {
-    [SerializeField] float money, food, wood, stone, metal;
+    [SerializeField] private float money, food, wood, stone, metal;
 
     #region PROPERTIES
 
@@ -135,6 +135,7 @@ public struct Resources
 
         return true;
     }
+
     public static bool operator <(Resources a, Resources b)
     {
         return b > a;

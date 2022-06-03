@@ -15,15 +15,6 @@ public class ResourcesManager : MonoBehaviour
 
     public Action<Resources> OnResourcesChange;
 
-    //private Resources testResources = new Resources() { Money = 100, Food = 100, Wood = 100, Stone = 100, Metal = 100 };
-    //private void Start()
-    //{
-    //    resources += testResources;
-    //    resources += testResources;
-    //    resources += testResources;
-    //    PrintDebug();
-    //}
-
     public void AddResources(Resources addedResources)
     {
         resources += addedResources;

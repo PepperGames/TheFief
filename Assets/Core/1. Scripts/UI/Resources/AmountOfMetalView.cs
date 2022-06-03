@@ -4,4 +4,9 @@ public class AmountOfMetalView : AmountOfResourcesView
     {
         text.text = resources.Metal.ToString();
     }
+
+    protected override void DisplayAmountOfResources()
+    {
+        text.text = services.ResourcesManager.Resources.Wood.ToString();
+    }
 }
