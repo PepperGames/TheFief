@@ -33,6 +33,8 @@ public class CharacterManager : MonoBehaviour
 
     public Action OnCharacterListChange;
 
+
+    //GenerateRandomCharacterData попап вызывается при генерации даты а не пи создании самого чела
     public void SpawnRandomCharacter()
     {
         CharacterData characterData = GenerateRandomCharacterData();
