@@ -336,7 +336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>{name}</b> died at the age <b>{age}</b>. <br> Our condolebces
+  m_text: '<b>Bob</b> died at the age <b>40</b>. <br> Our condolebces
 
 '
   m_isRightToLeft: 0

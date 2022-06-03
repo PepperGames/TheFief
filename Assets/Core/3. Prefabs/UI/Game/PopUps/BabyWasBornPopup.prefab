@@ -112,9 +112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>{name}</b> died at the age <b>{age}</b>. <br> Our condolebces
-
-'
+  m_text: Congratulations, <b>Matty</b> and <b>John</b> had a baby <b>Tom</b>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5939ec85e015bfb4b83cf091b1c6f006, type: 2}
   m_sharedMaterial: {fileID: 1335164558807666084, guid: 5939ec85e015bfb4b83cf091b1c6f006, type: 2}
