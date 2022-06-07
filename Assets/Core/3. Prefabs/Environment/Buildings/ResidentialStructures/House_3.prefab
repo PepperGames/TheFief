@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4007735919163008529}
   - component: {fileID: 4007735919163008534}
   m_Layer: 11
-  m_Name: WoodenHut_3
+  m_Name: House_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
