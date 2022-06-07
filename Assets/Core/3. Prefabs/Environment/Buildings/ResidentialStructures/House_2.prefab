@@ -170,7 +170,7 @@ MonoBehaviour:
   _structureCost: {fileID: 8232166671001847955}
   lvl: 3
   maxLvl: 3
-  _estate: 0
+  _estate: 2
   _structireName: 6
   durability: {fileID: 176860463472660299}
   _characterPlaces: {fileID: 3758752605357925587}

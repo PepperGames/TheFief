@@ -17,13 +17,13 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
     [SerializeField] protected StructureInfo ui;
 
     public Durability Durability => durability;
-
+    public int LVL => lvl;
     public CharacterPlacesInStructure CharacterPlaces => _characterPlaces;
 
     public virtual Estates Estate => _estate;
     public virtual StructireName StructireName => _structireName;
 
-    public Action OnUpgrade;
+    public Action OnLvlUpgrade;
 
     protected virtual void Start()
     {
@@ -63,6 +63,8 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
         int nexLvl = lvl;
         services.ResourcesManager.SpendResources(StructureCost.GetAmountOfResourcesForUpdate(nexLvl));
         StructureCost.IncreaseCurrentCost(StructureCost.GetAmountOfResourcesForUpdate(nexLvl));
+
+        OnLvlUpgrade?.Invoke();
     }
 
     public void Break(float percent)

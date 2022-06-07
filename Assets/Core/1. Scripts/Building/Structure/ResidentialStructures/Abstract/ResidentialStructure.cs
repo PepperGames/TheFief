@@ -5,7 +5,6 @@ public abstract class ResidentialStructure : Structure
         if (CanBeUpgrade())
         {
             base.Upgrade();
-            CharacterPlaces.IncreaseNumberOfPlaces(2);
         }
     }
 }

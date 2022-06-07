@@ -84,20 +84,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constructionCost:
-    money: 10
+    money: 15
     food: 0
-    wood: 0
+    wood: 100
     stone: 0
     metal: 0
   upgradeCost:
-  - money: 2
+  - money: 0
     food: 0
-    wood: 0
+    wood: 100
     stone: 0
     metal: 0
-  - money: 2
+  - money: 0
     food: 0
-    wood: 0
+    wood: 150
     stone: 0
     metal: 0
   currentCost:

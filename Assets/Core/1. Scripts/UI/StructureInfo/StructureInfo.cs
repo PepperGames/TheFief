@@ -1,13 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-
+using TMPro;
 
 public abstract class StructureInfo : MonoBehaviour
 {
     [Inject] protected Services services;
 
     [SerializeField] protected Slider durabilitySlider;
+
+    [SerializeField] protected TMP_Text _lvlText;
 
     [SerializeField] protected Button _upgradeButton;
     [SerializeField] protected Button _repairButton;
@@ -24,6 +26,7 @@ public abstract class StructureInfo : MonoBehaviour
         _structure.Durability.OnDurabilityChange += OnDurabilityChange;
         _destroyButton.onClick.AddListener(DestroyStructure);
         _structure.CharacterPlaces.OnCNumberOfPlacesChange += _characterPlacesInStructureView.FillContent;
+        _structure.OnLvlUpgrade += DisplayLvl;
     }
 
     public virtual void ShowOrHide()
@@ -41,7 +44,14 @@ public abstract class StructureInfo : MonoBehaviour
     public virtual void Show()
     {
         _characterPlacesInStructureView.Initialize(services, _structure);
+        DisplayLvl();
+
         gameObject.SetActive(true);
+    }
+
+    private void DisplayLvl()
+    {
+        _lvlText.text = _structure.LVL.ToString() + " lvl";
     }
 
     public virtual void Hide()
