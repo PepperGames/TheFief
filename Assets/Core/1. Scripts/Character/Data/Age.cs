@@ -20,10 +20,10 @@ public class Age
     {
         this.years = years;
         _dayOfBorn = InGameTime.DayInThisYear;
-        InGameTime.OnDayChange += OdDayChange;
+        InGameTime.OnDayChange += OnDayChange;
     }
 
-    private void OdDayChange()
+    private void OnDayChange()
     {
         if (InGameTime.DayInThisYear == _dayOfBorn)
         {
