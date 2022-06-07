@@ -5,7 +5,6 @@ public class PublicStructure : Structure
         if (CanBeUpgrade())
         {
             base.Upgrade();
-            CharacterPlaces.IncreaseNumberOfPlaces(2);
         }
     }
 

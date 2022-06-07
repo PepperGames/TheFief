@@ -6,12 +6,12 @@ public class WoodenHut : ResidentialStructure
         {
             case 2:
                 _estate = Estates.Priests;
-                CharacterPlaces.IncreaseNumberOfPlaces(2);
+                CharacterPlaces.NumberOfPlaces = 10;
                 break;
 
             case 3:
                 _estate = Estates.Peers;
-                CharacterPlaces.IncreaseNumberOfPlaces(2);
+                CharacterPlaces.NumberOfPlaces = 15;
                 break;
 
             default:

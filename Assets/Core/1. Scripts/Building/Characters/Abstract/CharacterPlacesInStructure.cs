@@ -6,12 +6,23 @@ public abstract class CharacterPlacesInStructure : MonoBehaviour
 {
     [SerializeField] protected Structure structure;
 
+    [SerializeField] protected int _numberOfPlaces = 3;
+
     [SerializeField] protected List<Character> characters;
 
-    protected int _numberOfPlaces = 3;
-
     public List<Character> Characters => characters;
-    public int NumberOfPlaces => _numberOfPlaces;
+    public int NumberOfPlaces
+    {
+        get { return _numberOfPlaces; }
+        set {
+            int oldNumberOfPlaces = _numberOfPlaces;
+            _numberOfPlaces = value;
+            if (oldNumberOfPlaces!= _numberOfPlaces)
+            {
+                OnNumberOfPlacesChange?.Invoke();
+            }
+        }
+    }
 
     public Action OnCharacterListChange;
     public Action OnNumberOfPlacesChange;
@@ -19,12 +30,6 @@ public abstract class CharacterPlacesInStructure : MonoBehaviour
     protected void Start()
     {
         characters = new List<Character>();
-    }
-
-    public void IncreaseNumberOfPlaces(int additionalQuantity)
-    {
-        _numberOfPlaces += additionalQuantity;
-        OnNumberOfPlacesChange?.Invoke();
     }
 
     public abstract bool AddCharacter(Character character);

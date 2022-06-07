@@ -23,4 +23,19 @@ public class LivingCharactersView : CharactersView
         }
         base.OnEventsSubscribe();
     }
+
+    protected override void OnEventsSubscribe()
+    {
+        base.OnEventsSubscribe();
+        _character.OnChangeWorkplace += InitializeUI;
+        _structure.CharacterPlaces.OnCharacterListChange += InitializeUI;
+    }
+
+    protected override void OnEventsUnscribe()
+    {
+        base.OnEventsUnscribe();
+        _character.OnChangeWorkplace -= InitializeUI;
+        _structure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
+        _addCharacterButton.onClick.RemoveAllListeners();
+    }
 }

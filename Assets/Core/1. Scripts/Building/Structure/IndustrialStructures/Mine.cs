@@ -11,12 +11,12 @@ public class Mine : IndustrialStructure
         {
             case 2:
                 _overallPerformancePerHouse = 20;
-                CharacterPlaces.IncreaseNumberOfPlaces(2);
+                CharacterPlaces.NumberOfPlaces += 2;
                 break;
 
             case 3:
                 _overallPerformancePerHouse = 30;
-                CharacterPlaces.IncreaseNumberOfPlaces(2);
+                CharacterPlaces.NumberOfPlaces += 2;
                 break;
 
             default:

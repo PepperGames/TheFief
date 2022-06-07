@@ -93,12 +93,12 @@ public class Market : IndustrialStructure
         {
             case 2:
                 _overallPerformancePerHouse = 10;
-                CharacterPlaces.IncreaseNumberOfPlaces(2);
+                CharacterPlaces.NumberOfPlaces += 2;
                 break;
 
             case 3:
                 _overallPerformancePerHouse = 15;
-                CharacterPlaces.IncreaseNumberOfPlaces(2);
+                CharacterPlaces.NumberOfPlaces += 2;
                 break;
 
             default:

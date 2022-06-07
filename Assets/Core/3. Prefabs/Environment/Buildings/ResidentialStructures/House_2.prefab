@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structure: {fileID: 7873751922022162358}
+  _numberOfPlaces: 10
   characters: []
 --- !u!61 &8483230520028660163
 BoxCollider2D:
@@ -293,6 +294,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2511246787836540657, guid: 85c815536f83d0745964e757aa43316b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511246787836540657, guid: 85c815536f83d0745964e757aa43316b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3446628268802142061, guid: 85c815536f83d0745964e757aa43316b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e4cee42f9712f741a7d9788f4ae3311, type: 3}
     - target: {fileID: 3551576345852020923, guid: 85c815536f83d0745964e757aa43316b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -359,11 +372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3551576345852020923, guid: 85c815536f83d0745964e757aa43316b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3551576345852020923, guid: 85c815536f83d0745964e757aa43316b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.868
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 3551576345852020923, guid: 85c815536f83d0745964e757aa43316b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -377,10 +390,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4176697588350827348, guid: 85c815536f83d0745964e757aa43316b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605102969712926719, guid: 85c815536f83d0745964e757aa43316b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605102969712926719, guid: 85c815536f83d0745964e757aa43316b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5734766038160375424, guid: 85c815536f83d0745964e757aa43316b, type: 3}
       propertyPath: _structure
       value: 
       objectReference: {fileID: 7873751922022162358}
+    - target: {fileID: 5852598979058701518, guid: 85c815536f83d0745964e757aa43316b, type: 3}
+      propertyPath: m_text
+      value: House
+      objectReference: {fileID: 0}
     - target: {fileID: 7793117550545551941, guid: 85c815536f83d0745964e757aa43316b, type: 3}
       propertyPath: m_Name
       value: ResidentialStructuresInfo
