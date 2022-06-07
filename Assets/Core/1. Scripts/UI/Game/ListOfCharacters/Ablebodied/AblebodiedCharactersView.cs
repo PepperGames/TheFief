@@ -22,5 +22,15 @@ public class AblebodiedCharactersView : CharactersView
             _addCharacterButton.onClick.AddListener(AddToStructure);
         }
         base.OnEventsSubscribe();
+        _character.OnChangeWorkplace += InitializeUI;
+        _structure.CharacterPlaces.OnCharacterListChange += InitializeUI;
+    }
+
+    protected override void OnEventsUnscribe()
+    {
+        base.OnEventsUnscribe();
+        _character.OnChangeWorkplace -= InitializeUI;
+        _structure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
+        _addCharacterButton.onClick.RemoveAllListeners();
     }
 }

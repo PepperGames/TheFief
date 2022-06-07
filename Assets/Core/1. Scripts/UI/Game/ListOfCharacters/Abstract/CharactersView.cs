@@ -45,14 +45,14 @@ public abstract class CharactersView : MonoBehaviour
 
     protected virtual void OnEventsSubscribe()
     {
-        _character.OnChangeWorkplace += InitializeUI;
+        //_character.OnChangeWorkplace += InitializeUI;
         _structure.CharacterPlaces.OnCharacterListChange += InitializeUI;
     }
 
     protected virtual void OnEventsUnscribe()
     {
-        _character.OnChangeWorkplace -= InitializeUI;
-        _structure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
+        //_character.OnChangeWorkplace -= InitializeUI;
+        //_structure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
         _addCharacterButton.onClick.RemoveAllListeners();
     }
 }

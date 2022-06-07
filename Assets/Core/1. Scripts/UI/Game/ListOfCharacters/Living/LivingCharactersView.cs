@@ -22,19 +22,14 @@ public class LivingCharactersView : CharactersView
             _addCharacterButton.onClick.AddListener(AddToStructure);
         }
         base.OnEventsSubscribe();
-    }
-
-    protected override void OnEventsSubscribe()
-    {
-        base.OnEventsSubscribe();
-        _character.OnChangeWorkplace += InitializeUI;
+        _character.OnChangeLivingPlace += InitializeUI;
         _structure.CharacterPlaces.OnCharacterListChange += InitializeUI;
     }
 
     protected override void OnEventsUnscribe()
     {
         base.OnEventsUnscribe();
-        _character.OnChangeWorkplace -= InitializeUI;
+        _character.OnChangeLivingPlace -= InitializeUI;
         _structure.CharacterPlaces.OnCharacterListChange -= InitializeUI;
         _addCharacterButton.onClick.RemoveAllListeners();
     }

@@ -496,7 +496,6 @@ GameObject:
   - component: {fileID: 3515493838868852119}
   - component: {fileID: 7467551442861745439}
   - component: {fileID: 709256530917321526}
-  - component: {fileID: 7797168988655819110}
   - component: {fileID: 7659540029394188711}
   m_Layer: 12
   m_Name: Scroll View
@@ -593,20 +592,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7797168988655819110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3955251599737522395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffd2557cb6fb33d43bf45eed148a650e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterPlaceInStructureViewPrefab: {fileID: 6089212911709911147, guid: 4bf0afaa6bc59be42bf39e7007c25fef, type: 3}
-  content: {fileID: 4176697588350827348}
 --- !u!114 &7659540029394188711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,7 +1012,7 @@ MonoBehaviour:
   _repairButton: {fileID: 1890736625799400909}
   _destroyButton: {fileID: 7943887115588861544}
   _structure: {fileID: 0}
-  _characterPlacesInStructureView: {fileID: 7797168988655819110}
+  _characterPlacesInStructureView: {fileID: 7659540029394188711}
 --- !u!1 &7903288950453850049
 GameObject:
   m_ObjectHideFlags: 0
