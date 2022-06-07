@@ -58,7 +58,7 @@ MonoBehaviour:
   - {x: 1, y: 1}
   _structureCost: {fileID: 6022193824322414582}
   lvl: 1
-  maxLvl: 0
+  maxLvl: 3
   _estate: 0
   _structireName: 2
   durability: {fileID: 7176285286778534221}
@@ -70,7 +70,7 @@ MonoBehaviour:
     wood: 0
     stone: 0
     metal: 0
-  _overallPerformance: 0
+  _overallPerformancePerHouse: 40
 --- !u!114 &6022193824322414582
 MonoBehaviour:
   m_ObjectHideFlags: 0

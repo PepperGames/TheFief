@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class Market : PublicStructure
+public class Market : IndustrialStructure
 {
     [Inject] private Services _services;
 
@@ -79,6 +79,31 @@ public class Market : PublicStructure
         {
             _services.ResourcesManager.SpendResources(money);
             _services.ResourcesManager.AddResources(resourcesForBuy);
+        }
+    }
+
+    public override void ProduceResource()
+    {
+        accumulatedResources += new Resources { Money = CalculateProductivityPerHour() };
+    }
+
+    public override void Upgrade()
+    {
+        base.Upgrade();
+        switch (lvl)
+        {
+            case 2:
+                _overallPerformancePerHouse = 10;
+                CharacterPlaces.IncreaseNumberOfPlaces(2);
+                break;
+
+            case 3:
+                _overallPerformancePerHouse = 15;
+                CharacterPlaces.IncreaseNumberOfPlaces(2);
+                break;
+
+            default:
+                break;
         }
     }
 }

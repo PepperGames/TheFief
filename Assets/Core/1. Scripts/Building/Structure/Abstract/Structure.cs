@@ -27,7 +27,7 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     protected virtual void Start()
     {
-        maxLvl = StructureCost.GetMaxLvl();
+        //maxLvl = StructureCost.GetMaxLvl();
         //lvl = 1;
         //durability = GetComponent<Durability>();
         OnEventsSubscribe();

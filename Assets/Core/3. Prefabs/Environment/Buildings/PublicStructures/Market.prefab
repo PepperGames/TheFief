@@ -90,12 +90,19 @@ MonoBehaviour:
   - {x: 1, y: 1}
   _structureCost: {fileID: 4354521875603076276}
   lvl: 1
-  maxLvl: 0
+  maxLvl: 3
   _estate: 1
   _structireName: 5
   durability: {fileID: 5486665054801916780}
   _characterPlaces: {fileID: 7238474811020712082}
   ui: {fileID: 8615573595964053329}
+  accumulatedResources:
+    money: 0
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
+  _overallPerformancePerHouse: 5
   _bonusForOneCharacter: 1
 --- !u!114 &4354521875603076276
 MonoBehaviour:

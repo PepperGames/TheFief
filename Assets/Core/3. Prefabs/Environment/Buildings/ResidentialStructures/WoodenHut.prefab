@@ -138,7 +138,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   _structureCost: {fileID: 7056725379542958582}
   lvl: 1
-  maxLvl: 0
+  maxLvl: 3
   _estate: 0
   _structireName: 6
   durability: {fileID: 1271233384233633326}

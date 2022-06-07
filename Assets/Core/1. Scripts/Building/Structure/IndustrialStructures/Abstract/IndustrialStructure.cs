@@ -4,7 +4,7 @@ public abstract class IndustrialStructure : Structure
 {
     [SerializeField] protected Resources accumulatedResources;
 
-    [SerializeField] protected float _overallPerformance;
+    [SerializeField] protected float _overallPerformancePerHouse;
 
     protected override void Start()
     {
@@ -15,7 +15,7 @@ public abstract class IndustrialStructure : Structure
     protected float CalculateProductivityPerHour()
     {
         float result = 0;
-        float _performancePerWorker = _overallPerformance / CharacterPlaces.NumberOfPlaces;
+        float _performancePerWorker = _overallPerformancePerHouse / CharacterPlaces.NumberOfPlaces;
 
         foreach (Character characters in CharacterPlaces.Characters)
         {
