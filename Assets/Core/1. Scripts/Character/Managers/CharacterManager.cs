@@ -37,6 +37,7 @@ public class CharacterManager : MonoBehaviour
     {
         CharacterData characterData = GenerateRandomCharacterData();
         SpawnCharacter(characterData);
+        services.UIController.AlertList.CreateNewCharacterInTownPopup(characterData);
     }
 
     private void SpawnCharacter(CharacterData characterData)
@@ -62,13 +63,13 @@ public class CharacterManager : MonoBehaviour
     public void SpawnComingCharacter(CharacterData characterData)
     {
         SpawnCharacter(characterData);
-        services.UIController.AlertList.CreateBabyWasBornPopup(characterData.FamilyTies.mother.CharacterData, characterData.FamilyTies.father.CharacterData, characterData);
+        services.UIController.AlertList.CreateNewCharacterInTownPopup(characterData);
     }
 
     public void SpawnBornedCharacter(CharacterData characterData)
     {
         SpawnCharacter(characterData);
-        services.UIController.AlertList.CreateNewCharacterInTownPopup(characterData);
+        services.UIController.AlertList.CreateBabyWasBornPopup(characterData.FamilyTies.mother.CharacterData, characterData.FamilyTies.father.CharacterData, characterData);
     }
 
     public CharacterData GenerateBornedCharacterData(Character mother, Character father)

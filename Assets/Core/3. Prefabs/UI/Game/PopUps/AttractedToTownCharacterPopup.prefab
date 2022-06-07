@@ -388,7 +388,6 @@ GameObject:
   - component: {fileID: 361601886743730044}
   - component: {fileID: 4316999865882646751}
   - component: {fileID: 1772602812450920319}
-  - component: {fileID: 1793362733778450594}
   - component: {fileID: 6972721102873965342}
   m_Layer: 0
   m_Name: AttractedToTownCharacterPopup
@@ -458,21 +457,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1793362733778450594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3369559725140848767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f99e59d516b8d5a45a979410f2c4cab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _portraitImage: {fileID: 8944915999122916393}
-  _closeButton: {fileID: 5245534286245175428}
-  _description: {fileID: 5521363550942160178}
 --- !u!114 &6972721102873965342
 MonoBehaviour:
   m_ObjectHideFlags: 0
