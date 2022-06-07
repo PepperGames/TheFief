@@ -7,7 +7,6 @@ public class AttractedToTownCharacterPopup : MonoBehaviour, IClosable
     [SerializeField] private TMP_Text _text;
     [SerializeField] private Image _portraitImage;
 
-
     [SerializeField] private Button _acceptButton;
     [SerializeField] private Button _closeButton;
 
@@ -37,7 +36,7 @@ public class AttractedToTownCharacterPopup : MonoBehaviour, IClosable
 
     public void Accept()
     {
-        _services.CharacterManager.SpawnCharacter(_characterData);
+        _services.CharacterManager.SpawnComingCharacter(_characterData);
         Destroy(gameObject);
     }
 }

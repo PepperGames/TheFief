@@ -5,9 +5,8 @@ public class Sawmill : IndustrialStructure
         accumulatedResources += new Resources { Wood = CalculateProductivityPerHour() };
     }
 
-    public override void Upgrade()
+    protected override void OnUpgrade()
     {
-        base.Upgrade();
         switch (lvl)
         {
             case 2:

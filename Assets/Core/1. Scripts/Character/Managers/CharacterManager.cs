@@ -33,15 +33,13 @@ public class CharacterManager : MonoBehaviour
 
     public Action OnCharacterListChange;
 
-
-    //GenerateRandomCharacterData попап вызывается при генерации даты а не пи создании самого чела
-    public void SpawnRandomCharacter()
+    private void SpawnRandomCharacter()
     {
         CharacterData characterData = GenerateRandomCharacterData();
         SpawnCharacter(characterData);
     }
 
-    public void SpawnCharacter(CharacterData characterData)
+    private void SpawnCharacter(CharacterData characterData)
     {
         Vector2Int start = services.RoadManager.GetRandomRoadPosition();
 
@@ -57,7 +55,20 @@ public class CharacterManager : MonoBehaviour
 
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
             services.HappinessManager.Recalculate(character.CharacterData.Estates);
+
         }
+    }
+
+    public void SpawnComingCharacter(CharacterData characterData)
+    {
+        SpawnCharacter(characterData);
+        services.UIController.AlertList.CreateBabyWasBornPopup(characterData.FamilyTies.mother.CharacterData, characterData.FamilyTies.father.CharacterData, characterData);
+    }
+
+    public void SpawnBornedCharacter(CharacterData characterData)
+    {
+        SpawnCharacter(characterData);
+        services.UIController.AlertList.CreateNewCharacterInTownPopup(characterData);
     }
 
     public CharacterData GenerateBornedCharacterData(Character mother, Character father)
@@ -71,8 +82,6 @@ public class CharacterManager : MonoBehaviour
         FamilyTies familyTies = new FamilyTies(mother, father);
 
         CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
-
-        services.UIController.AlertList.CreateBabyWasBornPopup(mother.CharacterData, father.CharacterData, characterData);
 
         return characterData;
     }
@@ -88,8 +97,6 @@ public class CharacterManager : MonoBehaviour
         FamilyTies familyTies = new FamilyTies();
 
         CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
-
-        services.UIController.AlertList.CreateNewCharacterInTownPopup(characterData);
 
         return characterData;
     }

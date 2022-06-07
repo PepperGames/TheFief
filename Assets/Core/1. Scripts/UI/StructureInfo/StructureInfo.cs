@@ -8,6 +8,7 @@ public abstract class StructureInfo : MonoBehaviour
     [Inject] protected Services services;
 
     [SerializeField] protected Slider durabilitySlider;
+    [SerializeField] protected Slider _fillSlider;
 
     [SerializeField] protected TMP_Text _lvlText;
 
@@ -23,10 +24,15 @@ public abstract class StructureInfo : MonoBehaviour
     {
         _upgradeButton.onClick.AddListener(_structure.Upgrade);
         _repairButton.onClick.AddListener(_structure.RepairCompletely);
-        _structure.Durability.OnDurabilityChange += OnDurabilityChange;
         _destroyButton.onClick.AddListener(DestroyStructure);
-        _structure.CharacterPlaces.OnCNumberOfPlacesChange += _characterPlacesInStructureView.FillContent;
+
+        _structure.Durability.OnDurabilityChange += OnDurabilityChange;
+        _structure.CharacterPlaces.OnNumberOfPlacesChange += _characterPlacesInStructureView.FillContent;
         _structure.OnLvlUpgrade += DisplayLvl;
+
+        _structure.OnLvlUpgrade += DisplayFullness;
+        _structure.CharacterPlaces.OnCharacterListChange += DisplayFullness;
+        _structure.CharacterPlaces.OnNumberOfPlacesChange += DisplayFullness;
     }
 
     public virtual void ShowOrHide()
@@ -44,7 +50,9 @@ public abstract class StructureInfo : MonoBehaviour
     public virtual void Show()
     {
         _characterPlacesInStructureView.Initialize(services, _structure);
+
         DisplayLvl();
+        DisplayFullness();
 
         gameObject.SetActive(true);
     }
@@ -52,6 +60,12 @@ public abstract class StructureInfo : MonoBehaviour
     private void DisplayLvl()
     {
         _lvlText.text = _structure.LVL.ToString() + " lvl";
+    }
+
+    private void DisplayFullness()
+    {
+        _fillSlider.maxValue = _structure.CharacterPlaces.NumberOfPlaces;
+        _fillSlider.value = _structure.CharacterPlaces.Characters.Count;
     }
 
     public virtual void Hide()

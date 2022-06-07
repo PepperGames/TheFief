@@ -26,21 +26,21 @@ public class ReproductionManager : MonoBehaviour
 
     public void Reproduce()
     {
-        Debug.Log("Reproduce");
+        //Debug.Log("Reproduce");
         if (GetFamilyPair() != null)
         {
             FamilyPair familyPair = GetFamilyPair();
             if (familyPair != null)
             {
                 CharacterData characterData = _services.CharacterManager.GenerateBornedCharacterData(familyPair.mother, familyPair.father);
-                _services.CharacterManager.SpawnCharacter(characterData);
+                _services.CharacterManager.SpawnBornedCharacter(characterData);
             }
         }
     }
 
     private ResidentialStructure GetResidentialStructure()
     {
-        Debug.Log("GetResidentialStructure");
+        //Debug.Log("GetResidentialStructure");
         if (_services.StructureManager.woodenHutList.Count > 0)
         {
             int randomIndex = Random.Range(0, _services.StructureManager.woodenHutList.Count);
@@ -52,7 +52,7 @@ public class ReproductionManager : MonoBehaviour
 
     private FamilyPair GetFamilyPair()
     {
-        Debug.Log("GetFamilyPair");
+        //Debug.Log("GetFamilyPair");
         ResidentialStructure residentialStructure = GetResidentialStructure();
 
         if (residentialStructure != null)
@@ -94,7 +94,7 @@ public class ReproductionManager : MonoBehaviour
 
     private FamilyPair GetFamilyPair(ResidentialStructure residentialStructure, FamilyPair familyPair, Genders desiredPartnerGender, List<int> unverifiedIndexes)
     {
-        Debug.Log("GetFamilyPair2");
+        //Debug.Log("GetFamilyPair2");
         if (unverifiedIndexes.Count <= 0)
         {
             return null;

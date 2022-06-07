@@ -67,6 +67,8 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
         OnLvlUpgrade?.Invoke();
     }
 
+    protected abstract void OnUpgrade();
+
     public void Break(float percent)
     {
         durability.Break(percent);
@@ -93,12 +95,12 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     protected virtual void OnEventsSubscribe()
     {
-
+        OnLvlUpgrade += OnUpgrade;
     }
 
     protected virtual void OnEventsUnscribe()
     {
-
+        OnLvlUpgrade -= OnUpgrade;
     }
 
     protected override void OnDemolish()

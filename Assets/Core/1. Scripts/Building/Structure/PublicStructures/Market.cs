@@ -87,9 +87,8 @@ public class Market : IndustrialStructure
         accumulatedResources += new Resources { Money = CalculateProductivityPerHour() };
     }
 
-    public override void Upgrade()
+    protected override void OnUpgrade()
     {
-        base.Upgrade();
         switch (lvl)
         {
             case 2:

@@ -5,9 +5,8 @@ public class StonePit : IndustrialStructure
         accumulatedResources += new Resources { Stone = CalculateProductivityPerHour() };
     }
 
-    public override void Upgrade()
+    protected override void OnUpgrade()
     {
-        base.Upgrade();
         switch (lvl)
         {
             case 2:

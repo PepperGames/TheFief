@@ -1,8 +1,7 @@
 public class WoodenHut : ResidentialStructure
 {
-    public override void Upgrade()
+    protected override void OnUpgrade()
     {
-        base.Upgrade();
         switch (lvl)
         {
             case 2:

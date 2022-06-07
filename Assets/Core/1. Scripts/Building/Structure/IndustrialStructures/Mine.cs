@@ -5,9 +5,8 @@ public class Mine : IndustrialStructure
         accumulatedResources += new Resources { Metal = CalculateProductivityPerHour() };
     }
 
-    public override void Upgrade()
+    protected override void OnUpgrade()
     {
-        base.Upgrade();
         switch (lvl)
         {
             case 2:

@@ -14,7 +14,7 @@ public abstract class CharacterPlacesInStructure : MonoBehaviour
     public int NumberOfPlaces => _numberOfPlaces;
 
     public Action OnCharacterListChange;
-    public Action OnCNumberOfPlacesChange;
+    public Action OnNumberOfPlacesChange;
 
     protected void Start()
     {
@@ -24,7 +24,7 @@ public abstract class CharacterPlacesInStructure : MonoBehaviour
     public void IncreaseNumberOfPlaces(int additionalQuantity)
     {
         _numberOfPlaces += additionalQuantity;
-        OnCNumberOfPlacesChange?.Invoke();
+        OnNumberOfPlacesChange?.Invoke();
     }
 
     public abstract bool AddCharacter(Character character);

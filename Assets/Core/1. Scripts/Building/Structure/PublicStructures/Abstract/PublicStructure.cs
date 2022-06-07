@@ -8,4 +8,9 @@ public class PublicStructure : Structure
             CharacterPlaces.IncreaseNumberOfPlaces(2);
         }
     }
+
+    protected override void OnUpgrade()
+    {
+        throw new System.NotImplementedException();
+    }
 }

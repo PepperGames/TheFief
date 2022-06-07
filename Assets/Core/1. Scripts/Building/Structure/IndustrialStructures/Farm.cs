@@ -5,9 +5,8 @@ public class Farm : IndustrialStructure
         accumulatedResources += new Resources { Food = CalculateProductivityPerHour() };
     }
 
-    public override void Upgrade()
+    protected override void OnUpgrade()
     {
-        base.Upgrade();
         switch (lvl)
         {
             case 2:
@@ -19,7 +18,7 @@ public class Farm : IndustrialStructure
                 _overallPerformancePerHouse = 150;
                 CharacterPlaces.IncreaseNumberOfPlaces(2);
                 break;
-            
+
             default:
                 break;
         }

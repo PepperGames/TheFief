@@ -12,7 +12,7 @@ public abstract class IndustrialStructure : Structure
         accumulatedResources = new Resources();
     }
 
-    protected float CalculateProductivityPerHour()
+    public float CalculateProductivityPerHour()
     {
         float result = 0;
         float _performancePerWorker = _overallPerformancePerHouse / CharacterPlaces.NumberOfPlaces;
