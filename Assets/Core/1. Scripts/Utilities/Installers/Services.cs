@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Services : MonoBehaviour
 {
+    [SerializeField] private GameManager _gameManager;
     [SerializeField] private PlacementManager _placementManager;
     [SerializeField] private RoadManager _roadManager;
     [SerializeField] private RoadFixer _roadFixer;
@@ -14,6 +15,7 @@ public class Services : MonoBehaviour
     [SerializeField] private UIController _UIController;
     [SerializeField] private Grid _grid;
 
+    public GameManager GameManager => _gameManager;
     public Grid Grid => _grid;
     public PlacementManager PlacementManager => _placementManager;
     public RoadManager RoadManager => _roadManager;

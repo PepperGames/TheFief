@@ -63,7 +63,6 @@ public abstract class IndustrialStructure : Structure
         if (CanBeUpgrade())
         {
             base.Upgrade();
-            CharacterPlaces.IncreaseNumberOfPlaces(2);
         }
     }
 
