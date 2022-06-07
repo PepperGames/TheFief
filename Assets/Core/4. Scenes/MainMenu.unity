@@ -215,7 +215,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 354240557}
-  - {fileID: 2074440307}
+  - {fileID: 787385291}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -364,13 +364,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073847651692160366, guid: 57c35a580fcc17848b41c26a1f497ded, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57c35a580fcc17848b41c26a1f497ded, type: 3}
---- !u!4 &354240557 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3975523168577036185, guid: 57c35a580fcc17848b41c26a1f497ded, type: 3}
+--- !u!224 &354240557 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1064670730177493189, guid: 57c35a580fcc17848b41c26a1f497ded, type: 3}
   m_PrefabInstance: {fileID: 354240556}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &787385290
@@ -380,6 +380,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 36908491}
     m_Modifications:
+    - target: {fileID: 3344653215767452694, guid: bf8b8131d491161429c57d184db91730, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4021489766668695736, guid: bf8b8131d491161429c57d184db91730, type: 3}
       propertyPath: m_Name
       value: ChoiceOfRuler
@@ -434,9 +438,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf8b8131d491161429c57d184db91730, type: 3}
---- !u!4 &2074440307 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4347156478237239130, guid: bf8b8131d491161429c57d184db91730, type: 3}
+--- !u!224 &787385291 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3344653215767452694, guid: bf8b8131d491161429c57d184db91730, type: 3}
   m_PrefabInstance: {fileID: 787385290}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2100307888
