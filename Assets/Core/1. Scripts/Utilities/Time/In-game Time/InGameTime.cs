@@ -5,7 +5,7 @@ public class InGameTime : MonoBehaviour
 {
     //[SerializeField] private float durationOfOneInGameYear;
     //[SerializeField] private float durationOfOneInGameDay;
-    [SerializeField] private float durationOfOneInGameHour=25;
+    [SerializeField] private float durationOfOneInGameHour = 25;
     [SerializeField] private float durationOfOneInGameMinute;
 
     [SerializeField] private int _initialNumberOfDaysInYear = 2;
@@ -119,7 +119,7 @@ public class InGameTime : MonoBehaviour
 
     private void Update()
     {
-        counter += Time.deltaTime;
+        counter += Time.deltaTime * InGameSpeed.Speed;
         CheckCounter();
     }
 

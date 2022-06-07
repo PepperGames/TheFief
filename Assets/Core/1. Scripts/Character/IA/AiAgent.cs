@@ -57,7 +57,7 @@ public class AiAgent : MonoBehaviour
 
     private float MoveTheAgent()
     {
-        float step = speed * Time.deltaTime;
+        float step = speed * Time.deltaTime * InGameSpeed.Speed;
 
         transform.position = Vector3.MoveTowards(transform.position, endPosition, step);
 

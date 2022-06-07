@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6233785340275452350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2681531134760086088}
+  - component: {fileID: 8986951901071051705}
+  m_Layer: 0
+  m_Name: GameSpeedManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2681531134760086088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6233785340275452350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6635506523410607847}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8986951901071051705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6233785340275452350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090d5300586034b42b59f15703ba358d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedX1Button: {fileID: 0}
+  _speedX2Button: {fileID: 0}
+  _speedX3Button: {fileID: 0}
+  _speedX1Image: {fileID: 0}
+  _speedX2Image: {fileID: 0}
+  _speedX3Image: {fileID: 0}
+  _speedX1Active: {fileID: -8920611788650855341, guid: 401ee5e117db7464f8103e38764fb5bd, type: 3}
+  _speedX2Active: {fileID: -338670259745879547, guid: 401ee5e117db7464f8103e38764fb5bd, type: 3}
+  _speedX3Active: {fileID: 7382551245872221851, guid: 401ee5e117db7464f8103e38764fb5bd, type: 3}
+  _speedX1NotActive: {fileID: 4205110244450036589, guid: befc217cfb6622a439b77304eec253a9, type: 3}
+  _speedX2NotActive: {fileID: 6889449214291823392, guid: befc217cfb6622a439b77304eec253a9, type: 3}
+  _speedX3NotActive: {fileID: 6676196322823382558, guid: befc217cfb6622a439b77304eec253a9, type: 3}
 --- !u!1 &6635506523410607864
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,7 +83,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2681531134760086088}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bfe8c6cbafc8644b1d4e523b3cf30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationOfOneInGameHour: 25
+  durationOfOneInGameHour: 1
   durationOfOneInGameMinute: 0
-  _initialNumberOfDaysInYear: 20
+  _initialNumberOfDaysInYear: 1
 --- !u!114 &6635506523410607846
 MonoBehaviour:
   m_ObjectHideFlags: 0

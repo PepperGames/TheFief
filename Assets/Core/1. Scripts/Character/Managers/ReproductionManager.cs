@@ -141,7 +141,7 @@ public class ReproductionManager : MonoBehaviour
 
     private void Update()
     {
-        _delay -= Time.deltaTime;
+        _delay -= Time.deltaTime * InGameSpeed.Speed;
         if (_delay <= 0)
         {
             Reproduce();

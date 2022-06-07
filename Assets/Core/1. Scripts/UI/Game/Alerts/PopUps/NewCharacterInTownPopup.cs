@@ -21,7 +21,7 @@ public class NewCharacterInTownPopup : MonoBehaviour, IClosable
 
     private void Update()
     {
-        _duration -= Time.deltaTime;
+        _duration -= Time.deltaTime * InGameSpeed.Speed; 
         if (_duration <= 0)
         {
             Close();
