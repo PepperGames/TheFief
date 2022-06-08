@@ -6,9 +6,14 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterStatuses _characterStatus = CharacterStatuses.Alive;
 
     [SerializeField] private CharacterData _characterData;
+    [SerializeField] private CharacterTraitsManager _characterTraitsManager;
+    [SerializeField] private EffectsManager _effectsManager;
+
     [SerializeField] private AiAgent aiAgent;
-    [SerializeField] private Structure _workPlace;
-    [SerializeField] private Structure _livingPlace;
+   /* [SerializeField]*/ private Structure _workPlace;
+   /* [SerializeField]*/ private Structure _livingPlace;
+
+    [SerializeField] protected CharacterInfo ui;
 
     public CharacterStatuses CharacterStatus => _characterStatus;
 
@@ -16,6 +21,8 @@ public class Character : MonoBehaviour
     public AiAgent AiAgent => aiAgent;
     public Structure WorkPlace => _workPlace;
     public Structure LivingPlace => _livingPlace;
+    public CharacterTraitsManager CharacterTraitsManager => _characterTraitsManager;
+    public EffectsManager EffectsManager => _effectsManager;
 
     public Action<Structure> OnCharacterAddToWorkplace;
     public Action<Structure> OnCharacterAddToLivingPlace;
@@ -38,6 +45,14 @@ public class Character : MonoBehaviour
 
         _characterData.Age.OnDeathFromOldAge += Die;
         _characterData.Happiness.OnLowHappiness += LeaveFromTown;
+    }
+
+    public virtual void OnMouseDown()
+    {
+        if (ui == null)
+            return;
+
+        ui.ShowOrHide();
     }
 
     public void SetWorkplace(Structure workplace)

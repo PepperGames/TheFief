@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class MarketStructureInfo : StructureInfo
+public class MarketStructureInfo : IndustrialStructureInfo
 {
     [Inject] private Services _services;
 

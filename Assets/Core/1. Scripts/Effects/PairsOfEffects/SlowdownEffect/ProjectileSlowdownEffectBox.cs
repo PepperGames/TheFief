@@ -5,11 +5,11 @@ public class ProjectileSlowdownEffectBox : RenewableEffectBox
     protected ProjectileSlowdownEffect _projectileSlowdownEffect;
     [Inject] readonly ProjectileSlowdownEffect.Factory _projectileSlowdownEffectFactory;
 
-    public override void Activate()
+    public override void Activate(Character character)
     {
         _projectileSlowdownEffect = _projectileSlowdownEffectFactory.Create();
         _projectileSlowdownEffect.Activate();
-        base.Activate();
+        base.Activate(character);
     }
 
     public override void Deactivate()

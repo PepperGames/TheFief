@@ -1,35 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Zenject;
 
 public class EffectsManager : MonoBehaviour
 {
-    //[Inject] private RewardManager _rewardManager;
-
     [SerializeField] private List<EffectBox> _effectBoxes;
+    [SerializeField] private Character _character;
 
-    [SerializeField] private EffectView _effectViewPrefab;
-    [SerializeField] private Transform _effectViewsContainer;
-
-    private void Awake()
-    {
-        //GameManager.OnStartGame += Restart;
-        //GameManager.OnStartGame += InitializeEffectsFromRewardManager;
-        //GameManager.OnEndGame += Restart;
-    }
+    public List<EffectBox> EffectBoxes => _effectBoxes;
 
     public void Restart()
     {
         ClearEffectsList();
-    }
-
-    private void InitializeEffectsFromRewardManager()
-    {
-        //foreach (RewardEffectBoxContainer item in _rewardManager.currentRewardEffectBoxContainers)
-        //{
-        //    InitializeEffect(item.effectBox);
-        //}
     }
 
     public void InitializeEffect(EffectBox effectBoxPrefab)
@@ -61,15 +43,9 @@ public class EffectsManager : MonoBehaviour
     {
         EffectBox effectBox = Instantiate(effectBoxPrefab, transform);
         _effectBoxes.Add(effectBox);
-        effectBox.Activate();
+        effectBox.Activate(_character);
         effectBox.OnEnd += RemoveEffectFromList;
-
-        if (effectBox.Duration > 0)
-        {
-            EffectView effectViewPrefab = Instantiate(_effectViewPrefab, _effectViewsContainer);
-            effectViewPrefab.Initialize(effectBox);
-        }
-    }
+            }
 
     private void ClearEffectsList()
     {
@@ -87,12 +63,5 @@ public class EffectsManager : MonoBehaviour
         effectBox.Deactivate();
         _effectBoxes.Remove(effectBox);
         Destroy(effectBox.gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        //GameManager.OnStartGame -= Restart;
-        //GameManager.OnStartGame -= InitializeEffectsFromRewardManager;
-        //GameManager.OnEndGame -= Restart;
     }
 }

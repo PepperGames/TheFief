@@ -10,6 +10,7 @@ public class CharacterManager : MonoBehaviour
 
     [Header("Generators")]
     [SerializeField] private PortraitGenerator _portraitGenerator;
+    [SerializeField] private CharacterTraitsGenerator _characterTraitsGenerator;
 
     [Header("Prefabs")]
     [SerializeField] private Character[] pedestrianPrefabs;
@@ -49,6 +50,7 @@ public class CharacterManager : MonoBehaviour
             Character character = Instantiate(GetRandomPedestrian(), new Vector3(start.x, start.y, 0), Quaternion.identity, transform);
 
             character.Initialize(characterData);
+            character.CharacterTraitsManager.InitializeTrait(_characterTraitsGenerator.GetCharacterTraits(2));
 
             AddCharacterToLists(character);
 
@@ -56,7 +58,6 @@ public class CharacterManager : MonoBehaviour
 
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
             services.HappinessManager.Recalculate(character.CharacterData.Estates);
-
         }
     }
 
@@ -81,8 +82,9 @@ public class CharacterManager : MonoBehaviour
         Estates estates = father.CharacterData.Estates;
         Happiness happiness = new Happiness(50);
         FamilyTies familyTies = new FamilyTies(mother, father);
+        //CharacterTraits traits = new CharacterTraits(_characterTraitsGenerator.GetCharacterTraits(2));
 
-        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
+        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies/*, traits*/);
 
         return characterData;
     }
@@ -96,8 +98,9 @@ public class CharacterManager : MonoBehaviour
         Estates estates = EstatesGenerator.GetRandomEstates();
         Happiness happiness = new Happiness();
         FamilyTies familyTies = new FamilyTies();
+        //CharacterTraits traits = new CharacterTraits(_characterTraitsGenerator.GetCharacterTraits(2));
 
-        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies);
+        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies/*, traits*/);
 
         return characterData;
     }

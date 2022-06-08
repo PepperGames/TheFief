@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Farm : IndustrialStructure
 {
     public override void ProduceResource()

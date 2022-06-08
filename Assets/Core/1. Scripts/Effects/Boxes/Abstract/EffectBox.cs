@@ -7,7 +7,7 @@ public abstract class EffectBox : MonoBehaviour
     [SerializeField] protected float _initialDuration;
     protected float _duration;
     [SerializeField] protected Sprite _sprite;
-
+    [SerializeField] protected Character _character;
     public Sprite Sprite => _sprite;
 
     public abstract EffectType EffectType { get; }
@@ -20,7 +20,11 @@ public abstract class EffectBox : MonoBehaviour
         protected set { _duration = value; }
     }
 
-    public abstract void Activate();
+    public virtual void Activate(Character character)
+    {
+        _character = character;
+    }
+
     protected abstract IEnumerator Timer();
     public abstract void Deactivate();
 }

@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class AntiPutinEffectBox : NonRenewableEffectBox
 {
-    [SerializeField] protected GameObject _antiPutinTurretPrefab;
     protected GameObject _antiPutinTurret;
 
-    public override void Activate()
+    public override void Activate(Character character)
     {
-        _antiPutinTurret = Instantiate(_antiPutinTurretPrefab, new Vector2(2.5f, -4f), Quaternion.identity);
-        base.Activate();
+        base.Activate(character);
     }
 
     public override void Deactivate()

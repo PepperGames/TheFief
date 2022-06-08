@@ -7,8 +7,9 @@ public abstract class RenewableEffectBox : EffectBox
 
     protected Coroutine _executable;
 
-    public override void Activate()
+    public override void Activate(Character character)
     {
+        base.Activate(character);
         _duration = _initialDuration;
 
         _executable = StartCoroutine(Timer());

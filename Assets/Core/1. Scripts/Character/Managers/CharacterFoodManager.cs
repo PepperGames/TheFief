@@ -1,15 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
-public class CharacterAttractor : MonoBehaviour
+public class CharacterFoodManager : MonoBehaviour
 {
     [Inject] private Services services;
-
-    [Range(0, 1)] [SerializeField] private float _baseAttractionRate = 0.05f;
-    public float _acquiredAttractionRate = 0;
-
-    public float AttractionRate => _baseAttractionRate + _acquiredAttractionRate;
+    [SerializeField] private float _attractionRate = 0.1f;
 
     private void Start()
     {
@@ -19,7 +16,7 @@ public class CharacterAttractor : MonoBehaviour
     private void TryToAttract()
     {
         float chance = Random.Range(0, 1f);
-        if (chance <= AttractionRate)
+        if (chance <= _attractionRate)
         {
             services.UIController.AlertList.CreateAttractedToTownCharacterPopup(services);
         }

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2165008681696615921}
   - component: {fileID: 4346574864123428708}
   - component: {fileID: 5919428532124809021}
+  - component: {fileID: 7233499394037950980}
+  - component: {fileID: 717621001151869728}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -49,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _portraitGenerator: {fileID: 7353065849217786058}
+  _characterTraitsGenerator: {fileID: 717621001151869728}
   pedestrianPrefabs:
   - {fileID: 1565306974487778968, guid: 46f0be4542198fb47be24310079a413a, type: 3}
   - {fileID: 1796537531702237250, guid: ff08344273520e949b2b7152f2a6e2c1, type: 3}
@@ -97,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a85e56902676942bf6f8ffaa4b4593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attractionRate: 0.1
+  _baseAttractionRate: 0.05
+  _acquiredAttractionRate: 0
 --- !u!114 &5919428532124809021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +118,32 @@ MonoBehaviour:
   _merchantsHappiness: 0
   _priestsHappiness: 0
   _peersHappiness: 0
+--- !u!114 &7233499394037950980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233499394226695367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74db8fa06e109645984f46a6d2046ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attractionRate: 0.1
+--- !u!114 &717621001151869728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233499394226695367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97df830495e093643b2a770177e70454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterTraits: []
 --- !u!1 &8914490332341538453
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,10 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _femalePortraits:
-  - {fileID: 21300000, guid: 0f18b8293eaecd845afd67c3e9bf239f, type: 3}
-  - {fileID: 21300000, guid: dd00f072e73586d46a25306859fd14a9, type: 3}
-  - {fileID: 21300000, guid: 5ff61ae3c751a3242aaf035481fbb994, type: 3}
+  - {fileID: 21300000, guid: 94a9bc08f483eeb488cadd7f0e836967, type: 3}
   _malePortraits:
-  - {fileID: 21300000, guid: 6d526d45e90498141a168c0d0bf3e70c, type: 3}
-  - {fileID: 21300000, guid: 0aa04cc3cbcea484593f9420a8cd14b6, type: 3}
-  - {fileID: 21300000, guid: 3b0cda3a54c19f4498ef33795f541a0d, type: 3}
+  - {fileID: 21300000, guid: 3d144b05c87eed641839da9cb10acc86, type: 3}

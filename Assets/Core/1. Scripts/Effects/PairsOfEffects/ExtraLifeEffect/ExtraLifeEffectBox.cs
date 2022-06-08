@@ -9,12 +9,12 @@ public class ExtraLifeEffectBox : PermanentEffectBox
 
     public int Lives => _lives;
 
-    public override void Activate()
+    public override void Activate(Character character)
     {
         _extraLifeEffect = _extraLifeEffectFactory.Create();
         Debug.Log(_extraLifeEffect);
         _extraLifeEffect.Activate(Lives);
-        base.Activate();
+        base.Activate(character);
     }
 
     public override void Deactivate()

@@ -9,6 +9,7 @@ public class CharacterData
     [SerializeField] private Estates _estates;
     [SerializeField] private Happiness _happiness;
     [SerializeField] private FamilyTies _familyTies;
+    //[SerializeField] private CharacterTraits characterTraits;
 
     public string CharacterName => _characterName;
     public Sprite Portrait => _portrait;
@@ -17,8 +18,9 @@ public class CharacterData
     public Estates Estates => _estates;
     public Happiness Happiness => _happiness;
     public FamilyTies FamilyTies => _familyTies;
+    //public CharacterTraits CharacterTraits => _characterTraits;
 
-    public CharacterData(string name, Sprite portrait, Age age, Genders genders, Estates estates, Happiness happiness, FamilyTies familyTies)
+    public CharacterData(string name, Sprite portrait, Age age, Genders genders, Estates estates, Happiness happiness, FamilyTies familyTies/*, CharacterTraits characterTraits*/)
     {
         _characterName = name;
         _portrait = portrait;
@@ -27,5 +29,6 @@ public class CharacterData
         _estates = estates;
         _happiness = happiness;
         _familyTies = familyTies;
+        //_characterTraits = characterTraits;
     }
 }

@@ -13,8 +13,9 @@ public class PermanentEffectBox : EffectBox
         OnEnd?.Invoke(this);
     }
 
-    public override void Activate()
+    public override void Activate(Character character)
     {
+        base.Activate(character);
         _duration = 1;
     }
 
