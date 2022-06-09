@@ -9,6 +9,8 @@ public class CharacterInfo : MonoBehaviour
 
     [SerializeField] protected Character _character;
 
+    [SerializeField] protected Button _closeButton;
+
     [SerializeField] private Image _portrait;
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _estatesText;
@@ -24,6 +26,8 @@ public class CharacterInfo : MonoBehaviour
 
     private void Start()
     {
+        _closeButton.onClick.AddListener(Hide);
+
         _character.CharacterData.Happiness.OnHappinessChange += DisplayHappines;
         _portrait.sprite = _character.CharacterData.Portrait;
         _nameText.text = _character.CharacterData.CharacterName;

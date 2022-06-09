@@ -16,6 +16,8 @@ public abstract class StructureInfo : MonoBehaviour
     [SerializeField] protected Button _repairButton;
     [SerializeField] protected Button _destroyButton;
 
+    [SerializeField] protected Button _closeButton;
+
     [SerializeField] protected Structure _structure;
 
     [SerializeField] protected CharacterPlacesInStructureView _characterPlacesInStructureView;
@@ -25,6 +27,7 @@ public abstract class StructureInfo : MonoBehaviour
         _upgradeButton.onClick.AddListener(_structure.Upgrade);
         _repairButton.onClick.AddListener(_structure.RepairCompletely);
         _destroyButton.onClick.AddListener(DestroyStructure);
+        _closeButton.onClick.AddListener(Hide);
 
         _structure.Durability.OnDurabilityChange += OnDurabilityChange;
         _structure.CharacterPlaces.OnNumberOfPlacesChange += _characterPlacesInStructureView.FillContent;

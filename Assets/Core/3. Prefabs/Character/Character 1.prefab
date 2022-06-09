@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 467018173
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5ff61ae3c751a3242aaf035481fbb994, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -238,11 +238,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 819755815890274588, guid: 598bbb71a69614e49aea2c82a203ff7d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -2100
+      value: -84
       objectReference: {fileID: 0}
     - target: {fileID: 819755815890274588, guid: 598bbb71a69614e49aea2c82a203ff7d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 804
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 819755815890274588, guid: 598bbb71a69614e49aea2c82a203ff7d, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -342,11 +342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7387424916508292079, guid: 598bbb71a69614e49aea2c82a203ff7d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -2100
+      value: -72
       objectReference: {fileID: 0}
     - target: {fileID: 7387424916508292079, guid: 598bbb71a69614e49aea2c82a203ff7d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 807
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7387424916508292079, guid: 598bbb71a69614e49aea2c82a203ff7d, type: 3}
       propertyPath: m_AnchoredPosition.x
