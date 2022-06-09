@@ -1620,6 +1620,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 838969113}
     - target: {fileID: 8986951901071051705, guid: ccc4075d52781f64ab4008839d0f7d95, type: 3}
+      propertyPath: _speedX0Active
+      value: 
+      objectReference: {fileID: 21300000, guid: e78adb8d2b9dbe748ba865bf59166b4a, type: 3}
+    - target: {fileID: 8986951901071051705, guid: ccc4075d52781f64ab4008839d0f7d95, type: 3}
       propertyPath: _speedX0Button
       value: 
       objectReference: {fileID: 292385654}
@@ -1635,6 +1639,10 @@ PrefabInstance:
       propertyPath: _speedX3Button
       value: 
       objectReference: {fileID: 838969112}
+    - target: {fileID: 8986951901071051705, guid: ccc4075d52781f64ab4008839d0f7d95, type: 3}
+      propertyPath: _speedX0NotActive
+      value: 
+      objectReference: {fileID: 7038500732874769975, guid: 5759782118027c94aa8b8a8f949c388a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc4075d52781f64ab4008839d0f7d95, type: 3}
 --- !u!1001 &6905108383122594120
