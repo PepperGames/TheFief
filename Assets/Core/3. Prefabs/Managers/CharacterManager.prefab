@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5919428532124809021}
   - component: {fileID: 7233499394037950980}
   - component: {fileID: 717621001151869728}
+  - component: {fileID: 1316516738}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -143,7 +144,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97df830495e093643b2a770177e70454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterTraits: []
+  _characterTraits:
+  - {fileID: 8756756719226667321, guid: c3e7b010e88c15f47854c89294f7c73a, type: 3}
+  - {fileID: 4316158691566704979, guid: 98e14018fb6d9d543851ceef1edfc739, type: 3}
+  - {fileID: 4298727994561833062, guid: da169843b48abc545ad38c07b89d2a0d, type: 3}
+  - {fileID: 1713295930356027471, guid: 6cadfe7d9dcff8d4094f3dc0089bd8df, type: 3}
+  - {fileID: 492970866173661150, guid: f2f845c39c18aba4da4d081755b43594, type: 3}
+  - {fileID: 4420836930999999208, guid: 48c6a481aeaec9a46a36c0e29ddca9bb, type: 3}
+--- !u!114 &1316516738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233499394226695367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e1d08d41fd5b443addf829f611912c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faith: 0
 --- !u!1 &8914490332341538453
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cf933fa27f39449a7f24f42ed2fcdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buildingAction: 0
 --- !u!1001 &1660253898610430748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +112,10 @@ PrefabInstance:
       propertyPath: _aiDirector
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6833730608480869243, guid: b2df5e9dcf4826e4eb2bd4522e3577c8, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 2669751217496181647}
     - target: {fileID: 6833730608480869243, guid: b2df5e9dcf4826e4eb2bd4522e3577c8, type: 3}
       propertyPath: _roadManager
       value: 

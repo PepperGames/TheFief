@@ -10,6 +10,7 @@ public class Services : MonoBehaviour
     [SerializeField] private StructureManager _structureManager;
     [SerializeField] private ResourcesManager _resourcesManager;
     [SerializeField] private HappinessManager _happinessManager;
+    [SerializeField] private FaithManager _faithManager;
     [SerializeField] private CharacterManager _characterManager;
     [SerializeField] private AiDirector _aiDirector;
     [SerializeField] private UIController _UIController;
@@ -24,6 +25,7 @@ public class Services : MonoBehaviour
     public StructureManager StructureManager => _structureManager;
     public ResourcesManager ResourcesManager => _resourcesManager;
     public HappinessManager HappinessManager => _happinessManager;
+    public FaithManager FaithManager => _faithManager;
     public CharacterManager CharacterManager => _characterManager;
     public AiDirector AiDirector => _aiDirector;
     public UIController UIController => _UIController;

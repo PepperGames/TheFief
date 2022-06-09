@@ -135,6 +135,7 @@ public class CharacterManager : MonoBehaviour
         character.OnLeaveFromTown += OnCharacterLeaveFromTown;
 
         character.CharacterData.Happiness.OnHappinessChange += services.HappinessManager.Recalculate;
+        character.CharacterData.Faith.OnHappinessChange += services.FaithManager.Recalculate;
     }
 
     private void AddCharacterToLists(Character character)

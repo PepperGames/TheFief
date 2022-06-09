@@ -6,6 +6,23 @@ public class Faith
 {
     private float _faith;
 
+    public int numberOfChurchesAround = 0;
+
+    public bool IsChurchNearby
+    {
+        get
+        {
+            if (numberOfChurchesAround > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
     public float IndexOfFaith
     {
         get
