@@ -14,6 +14,6 @@ public class FaithView : MonoBehaviour
 
     protected void DisplayFaith()
     {
-        _slider.value = services.HappinessManager.PeasantsHappiness / 100;
+        _slider.value = services.FaithManager.Faith / 100;
     }
 }

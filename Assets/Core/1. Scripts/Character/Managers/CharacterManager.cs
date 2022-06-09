@@ -73,6 +73,7 @@ public class CharacterManager : MonoBehaviour
 
             services.AiDirector.SelectNewRandomPath(character.AiAgent);
             services.HappinessManager.Recalculate(character.CharacterData.Estates);
+            services.FaithManager.Recalculate();
         }
     }
 
@@ -198,9 +199,12 @@ public class CharacterManager : MonoBehaviour
         character.OnDie -= OnCharacterDie;
         character.OnLeaveFromTown -= OnCharacterLeaveFromTown;
         character.CharacterData.Happiness.OnHappinessChange -= services.HappinessManager.Recalculate;
+        character.CharacterData.Faith.OnHappinessChange -= services.FaithManager.Recalculate;
 
         RemoveCharacterFromAliveList(character);
+
         services.HappinessManager.Recalculate(character.CharacterData.Estates);
+        services.FaithManager.Recalculate();
     }
 
 

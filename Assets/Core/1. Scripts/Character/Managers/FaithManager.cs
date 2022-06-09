@@ -20,6 +20,7 @@ public class FaithManager : MonoBehaviour
         private set
         {
             _faith = value;
+            Debug.Log(_faith);
             OnFaithChange?.Invoke();
         }
     }
@@ -28,13 +29,13 @@ public class FaithManager : MonoBehaviour
 
     public void Recalculate()
     {
-        Recalculate(services.CharacterManager.AliveCharacters);
+        Faith = Recalculate(services.CharacterManager.AliveCharacters);
         Debug.Log("Recalculate");
     }
 
     public void Recalculate(Character character)
     {
-        Recalculate(services.CharacterManager.AliveCharacters);
+        Faith = Recalculate(services.CharacterManager.AliveCharacters);
         Debug.Log("Recalculate");
     }
 
