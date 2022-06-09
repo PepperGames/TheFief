@@ -7,11 +7,17 @@ public class LivingCharactersView : CharactersView
 
         if (_character.LivingPlace == null)
         {
-            _addCharacterButton.gameObject.SetActive(true);
+            if (_addCharacterButton != null)
+            {
+                _addCharacterButton.gameObject.SetActive(true);
+            }
         }
         else
         {
-            _addCharacterButton.gameObject.SetActive(false);
+            if (_addCharacterButton != null)
+            {
+                _addCharacterButton.gameObject.SetActive(false);
+            }
         }
     }
 

@@ -6,21 +6,25 @@ public class InGameSpeed : MonoBehaviour
     private static int _speed = 1;
 
     [Header("Button")]
+    [SerializeField] private Button _speedX0Button;
     [SerializeField] private Button _speedX1Button;
     [SerializeField] private Button _speedX2Button;
     [SerializeField] private Button _speedX3Button;
 
     [Header("Image")]
+    [SerializeField] private Image _speedX0Image;
     [SerializeField] private Image _speedX1Image;
     [SerializeField] private Image _speedX2Image;
     [SerializeField] private Image _speedX3Image;
 
     [Header("Active Sprite")]
+    [SerializeField] private Sprite _speedX0Active;
     [SerializeField] private Sprite _speedX1Active;
     [SerializeField] private Sprite _speedX2Active;
     [SerializeField] private Sprite _speedX3Active;
 
     [Header("Not Active Sprite")]
+    [SerializeField] private Sprite _speedX0NotActive;
     [SerializeField] private Sprite _speedX1NotActive;
     [SerializeField] private Sprite _speedX2NotActive;
     [SerializeField] private Sprite _speedX3NotActive;
@@ -31,6 +35,7 @@ public class InGameSpeed : MonoBehaviour
     {
         ChangeSpeed(1);
 
+        _speedX0Button.onClick.AddListener(() => { ChangeSpeed(0); });
         _speedX1Button.onClick.AddListener(() => { ChangeSpeed(1); });
         _speedX2Button.onClick.AddListener(() => { ChangeSpeed(2); });
         _speedX3Button.onClick.AddListener(() => { ChangeSpeed(3); });
@@ -44,6 +49,7 @@ public class InGameSpeed : MonoBehaviour
 
     private void ClearAll()
     {
+        _speedX0Image.sprite = _speedX0NotActive;
         _speedX1Image.sprite = _speedX1NotActive;
         _speedX2Image.sprite = _speedX2NotActive;
         _speedX3Image.sprite = _speedX3NotActive;
@@ -54,6 +60,9 @@ public class InGameSpeed : MonoBehaviour
         ClearAll();
         switch (_speed)
         {
+            case 0:
+                _speedX0Image.sprite = _speedX0Active;
+                break;
             case 1:
                 _speedX1Image.sprite = _speedX1Active;
                 break;

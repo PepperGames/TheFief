@@ -43,15 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090d5300586034b42b59f15703ba358d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedX0Button: {fileID: 0}
   _speedX1Button: {fileID: 0}
   _speedX2Button: {fileID: 0}
   _speedX3Button: {fileID: 0}
+  _speedX0Image: {fileID: 0}
   _speedX1Image: {fileID: 0}
   _speedX2Image: {fileID: 0}
   _speedX3Image: {fileID: 0}
+  _speedX0Active: {fileID: -8920611788650855341, guid: 401ee5e117db7464f8103e38764fb5bd, type: 3}
   _speedX1Active: {fileID: -8920611788650855341, guid: 401ee5e117db7464f8103e38764fb5bd, type: 3}
   _speedX2Active: {fileID: -338670259745879547, guid: 401ee5e117db7464f8103e38764fb5bd, type: 3}
   _speedX3Active: {fileID: 7382551245872221851, guid: 401ee5e117db7464f8103e38764fb5bd, type: 3}
+  _speedX0NotActive: {fileID: 4205110244450036589, guid: befc217cfb6622a439b77304eec253a9, type: 3}
   _speedX1NotActive: {fileID: 4205110244450036589, guid: befc217cfb6622a439b77304eec253a9, type: 3}
   _speedX2NotActive: {fileID: 6889449214291823392, guid: befc217cfb6622a439b77304eec253a9, type: 3}
   _speedX3NotActive: {fileID: 6676196322823382558, guid: befc217cfb6622a439b77304eec253a9, type: 3}

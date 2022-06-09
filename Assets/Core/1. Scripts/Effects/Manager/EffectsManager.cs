@@ -30,10 +30,20 @@ public class EffectsManager : MonoBehaviour
                 break;
 
             case EffectType.NonRenewable:
+                foreach (var item in _effectBoxes)
+                {
+                    if (item.GetType() == effectBoxPrefab.GetType())
+                        return;
+                }
                 AddEffectToList(effectBoxPrefab);
                 break;
 
             case EffectType.Permanent:
+                foreach (var item in _effectBoxes)
+                {
+                    if (item.GetType() == effectBoxPrefab.GetType())
+                        return;
+                }
                 AddEffectToList(effectBoxPrefab);
                 break;
         }
@@ -45,7 +55,7 @@ public class EffectsManager : MonoBehaviour
         _effectBoxes.Add(effectBox);
         effectBox.Activate(_character);
         effectBox.OnEnd += RemoveEffectFromList;
-            }
+    }
 
     private void ClearEffectsList()
     {
@@ -55,6 +65,18 @@ public class EffectsManager : MonoBehaviour
             effectBox.Deactivate();
         }
         _effectBoxes = new List<EffectBox>();
+    }
+
+    public void RemoveEffectByType(EffectBox effectBox)
+    {
+        foreach (var item in _effectBoxes)
+        {
+            if (item.GetType() == effectBox.GetType())
+            {
+                RemoveEffectFromList(item);
+            }
+            break;
+        }
     }
 
     private void RemoveEffectFromList(EffectBox effectBox)

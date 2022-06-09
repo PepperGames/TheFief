@@ -10,8 +10,8 @@ public class Character : MonoBehaviour
     [SerializeField] private EffectsManager _effectsManager;
 
     [SerializeField] private AiAgent aiAgent;
-   /* [SerializeField]*/ private Structure _workPlace;
-   /* [SerializeField]*/ private Structure _livingPlace;
+    [SerializeField] private Structure _workPlace;
+    [SerializeField] private Structure _livingPlace;
 
     [SerializeField] protected CharacterInfo ui;
 

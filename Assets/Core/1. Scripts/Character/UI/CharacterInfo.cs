@@ -42,6 +42,7 @@ public class CharacterInfo : MonoBehaviour
 
     private void DisplayCharacterTraits()
     {
+        CleaerContainer(_characterTraitViewContainer);
         foreach (var characterTrait in _character.CharacterTraitsManager.CharacterTraits)
         {
             CharacterTraitView characterTraitViewPrefab = Instantiate(_characterTraitViewPrefab, _characterTraitViewContainer);
@@ -51,6 +52,7 @@ public class CharacterInfo : MonoBehaviour
 
     private void DisplayEffects()
     {
+        CleaerContainer(_effectViewsContainer);
         foreach (var effectBox in _character.EffectsManager.EffectBoxes)
         {
             if (effectBox.Duration > 0)
@@ -58,6 +60,14 @@ public class CharacterInfo : MonoBehaviour
                 EffectView effectViewPrefab = Instantiate(_effectViewPrefab, _effectViewsContainer);
                 effectViewPrefab.Initialize(effectBox);
             }
+        }
+    }
+
+    private void CleaerContainer(Transform container)
+    {
+        foreach (Transform child in container)
+        {
+            Destroy(child.gameObject);
         }
     }
 

@@ -20,7 +20,7 @@ public class Happiness
         {
             _happiness = value;
             OnHappinessChange?.Invoke();
-            if (_happiness <= ConstantValues.LowIndexOfHappiness)
+            if (_happiness < ConstantValues.LowIndexOfHappiness)
             {
                 Debug.Log("OnLowHappiness");
                 OnLowHappiness?.Invoke();

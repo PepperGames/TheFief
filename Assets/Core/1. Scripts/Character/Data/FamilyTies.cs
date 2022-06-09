@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,37 @@ public class FamilyTies
     public Character father = null;
     public List<Character> children = new List<Character>();
 
+    public int FamilySize
+    {
+        get
+        {
+            int result = 0;
+
+            if (mother != null && mother.CharacterStatus == CharacterStatuses.Alive)
+                result++; 
+
+            if (father != null && father.CharacterStatus == CharacterStatuses.Alive)
+                result++;
+
+            result += children.Count;
+
+            return result;
+        }
+    }
+
+    public Action OnFamilyChange;
+    public Action OnChildrenChange;
+    public Action OnParentChange;
+
     public FamilyTies() { }
 
     public FamilyTies(Character mother, Character father)
     {
         this.mother = mother;
         this.father = father;
+
+        OnParentChange?.Invoke();
+        OnFamilyChange?.Invoke();
     }
 
     public void SetYourselfUpAsAChild(Character character)
@@ -31,6 +57,9 @@ public class FamilyTies
     {
         children.Add(child);
         Debug.Log("children.Count " + children.Count);
+
+        OnChildrenChange?.Invoke();
+        OnFamilyChange?.Invoke();
     }
 
     public bool IsChildren(Character character)
@@ -60,5 +89,4 @@ public class FamilyTies
     {
         return IsChildren(character) || IsParent(character);
     }
-
 }
