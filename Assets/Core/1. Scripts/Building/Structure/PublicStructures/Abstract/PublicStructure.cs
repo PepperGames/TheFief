@@ -1,4 +1,4 @@
-public class PublicStructure : Structure
+public abstract class PublicStructure : Structure
 {
     public override void Upgrade()
     {
@@ -10,6 +10,6 @@ public class PublicStructure : Structure
 
     protected override void OnUpgrade()
     {
-        throw new System.NotImplementedException();
+
     }
 }
