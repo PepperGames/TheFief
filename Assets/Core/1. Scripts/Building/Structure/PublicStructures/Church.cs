@@ -15,6 +15,7 @@ public class Church : PublicStructure
         _circle.Initialize();
         UpdateStructuresList();
         services.StructureManager.OnPlaceHouse += UpdateStructuresList;
+        services.CharacterAttractor.acquiredAttractionRate += 0.01f;
     }
 
     protected override void OnUpgrade()
@@ -124,5 +125,6 @@ public class Church : PublicStructure
         base.OnDemolish();
         DebufFaith(structures);
         services.StructureManager.OnPlaceHouse -= UpdateStructuresList;
+        services.CharacterAttractor.acquiredAttractionRate -= 0.01f;
     }
 }

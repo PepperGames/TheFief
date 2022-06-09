@@ -7,9 +7,9 @@ public class CharacterAttractor : MonoBehaviour
     [Inject] private Services services;
 
     [Range(0, 1)] [SerializeField] private float _baseAttractionRate = 0.05f;
-    public float _acquiredAttractionRate = 0;
+    public float acquiredAttractionRate = 0;
 
-    public float AttractionRate => _baseAttractionRate + _acquiredAttractionRate;
+    public float AttractionRate => _baseAttractionRate + acquiredAttractionRate;
 
     private void Start()
     {

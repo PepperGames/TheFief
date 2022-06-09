@@ -1697,6 +1697,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1326976345}
     m_Modifications:
+    - target: {fileID: 7233499394037950980, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
+      propertyPath: _peersRequiresFood
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233499394037950980, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
+      propertyPath: _priestsRequiresFood
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233499394037950980, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
+      propertyPath: _peasantsRequiresFood
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233499394037950980, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
+      propertyPath: _merchantsRequiresFood
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7233499394226695364, guid: 53aebf3c04923f845b11192426fec1e9, type: 3}
       propertyPath: m_RootOrder
       value: 6

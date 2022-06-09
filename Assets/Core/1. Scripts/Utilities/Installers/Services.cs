@@ -15,6 +15,7 @@ public class Services : MonoBehaviour
     [SerializeField] private AiDirector _aiDirector;
     [SerializeField] private UIController _UIController;
     [SerializeField] private Grid _grid;
+    [SerializeField] private CharacterAttractor _characterAttractor;
 
     public GameManager GameManager => _gameManager;
     public Grid Grid => _grid;
@@ -29,5 +30,6 @@ public class Services : MonoBehaviour
     public CharacterManager CharacterManager => _characterManager;
     public AiDirector AiDirector => _aiDirector;
     public UIController UIController => _UIController;
+    public CharacterAttractor CharacterAttractor => _characterAttractor;
 
 }
