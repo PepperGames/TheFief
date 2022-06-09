@@ -18,7 +18,7 @@ public class CharacterAttractor : MonoBehaviour
 
     private void TryToAttract()
     {
-        float chance = Random.Range(0, 1f);
+        float chance = Random.Range(0, 1.5f);
         if (chance <= AttractionRate)
         {
             services.UIController.AlertList.CreateAttractedToTownCharacterPopup(services);
