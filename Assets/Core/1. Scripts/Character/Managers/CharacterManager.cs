@@ -96,10 +96,11 @@ public class CharacterManager : MonoBehaviour
         Sprite portrait = _portraitGenerator.GetPortrait(gender);
         Estates estates = father.CharacterData.Estates;
         Happiness happiness = new Happiness(50);
+        Faith faith = new Faith();
         FamilyTies familyTies = new FamilyTies(mother, father);
         //CharacterTraits traits = new CharacterTraits(_characterTraitsGenerator.GetCharacterTraits(2));
 
-        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies/*, traits*/);
+        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies, faith/*, traits*/);
 
         return characterData;
     }
@@ -112,10 +113,11 @@ public class CharacterManager : MonoBehaviour
         Sprite portrait = _portraitGenerator.GetPortrait(gender);
         Estates estates = EstatesGenerator.GetRandomEstates();
         Happiness happiness = new Happiness();
+        Faith faith = new Faith();
         FamilyTies familyTies = new FamilyTies();
         //CharacterTraits traits = new CharacterTraits(_characterTraitsGenerator.GetCharacterTraits(2));
 
-        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies/*, traits*/);
+        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies, faith/*, traits*/);
 
         return characterData;
     }
