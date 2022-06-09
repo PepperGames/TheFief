@@ -396,12 +396,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1581209759825523285, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1850709989760119812, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1985462807662936039, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
       propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457179931979007480, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3002979173842222680, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
@@ -524,6 +532,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4154643803142912802, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -398
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154643803142912802, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -739.59595
+      objectReference: {fileID: 0}
     - target: {fileID: 4335875615961148201, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
       propertyPath: _characterManager
       value: 
@@ -558,6 +574,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4852591950179359333, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165805101217371661, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5443384825642838986, guid: d699d91cc72454a40a9bb4d4bbe86ff0, type: 3}

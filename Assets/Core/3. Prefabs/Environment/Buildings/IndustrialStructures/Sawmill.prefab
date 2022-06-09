@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structure: {fileID: 7370552179297963114}
+  _numberOfPlaces: 3
   characters: []
 --- !u!114 &6022193824322414582
 MonoBehaviour:
