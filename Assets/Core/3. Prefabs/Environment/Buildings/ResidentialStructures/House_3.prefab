@@ -55,7 +55,7 @@ MonoBehaviour:
   points:
   - {x: 0, y: 0}
   _structureCost: {fileID: 4007735919163008530}
-  lvl: 1
+  lvl: 3
   maxLvl: 3
   _estate: 3
   _structireName: 6

@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class RoadManager : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class RoadManager : MonoBehaviour
 
     private Vector2Int startPosition;
     private bool placementMode = false;
+
+    public Action OnRoadPlaced;
 
     public void PlaceRoad(Vector2Int position)
     {
@@ -110,7 +114,7 @@ public class RoadManager : MonoBehaviour
         roadsPositions.AddRange(temporaryPlacementPositions);
         temporaryPlacementPositions.Clear();
         startPosition = Vector2Int.zero;
-
+        OnRoadPlaced?.Invoke();
         //Debug.Log("FinishPlacingRoad");
     }
 

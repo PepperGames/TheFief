@@ -57,3 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245f4fc58dfac5c459cc4a9c2db0c8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sprite: {fileID: 21300000, guid: 45cc307cff23fae459385ad2f183e30e, type: 3}
+  _character: {fileID: 0}
+  _effectBox: {fileID: 4945157193464677473, guid: 24d0e2438db330a418b5cc1cd6386ce9, type: 3}
+  visible: 1

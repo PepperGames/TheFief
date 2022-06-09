@@ -34,6 +34,21 @@ public class CharacterManager : MonoBehaviour
 
     public Action OnCharacterListChange;
 
+    private void Start()
+    {
+        services.RoadManager.OnRoadPlaced += SpawnFirstCharacter;
+    }
+
+    private void SpawnFirstCharacter()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            CharacterData characterData = GenerateRandomCharacterData();
+            SpawnComingCharacter(characterData);
+        }
+        services.RoadManager.OnRoadPlaced -= SpawnFirstCharacter;
+    }
+
     private void SpawnRandomCharacter()
     {
         CharacterData characterData = GenerateRandomCharacterData();
@@ -52,7 +67,7 @@ public class CharacterManager : MonoBehaviour
             character.Initialize(characterData);
             character.CharacterTraitsManager.InitializeTrait(_characterTraitsGenerator.GetCharacterTraits(2));
 
-            AddCharacterToLists(character); 
+            AddCharacterToLists(character);
 
             OnCharacterEventsSubscribe(character);
 

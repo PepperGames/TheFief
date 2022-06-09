@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class CharacterInfo : MonoBehaviour
@@ -14,11 +12,6 @@ public class CharacterInfo : MonoBehaviour
 
     [SerializeField] private EffectView _effectViewPrefab;
     [SerializeField] private Transform _effectViewsContainer;
-
-    protected virtual void Start()
-    {
-
-    }
 
     public virtual void ShowOrHide()
     {
@@ -45,8 +38,11 @@ public class CharacterInfo : MonoBehaviour
         CleaerContainer(_characterTraitViewContainer);
         foreach (var characterTrait in _character.CharacterTraitsManager.CharacterTraits)
         {
-            CharacterTraitView characterTraitViewPrefab = Instantiate(_characterTraitViewPrefab, _characterTraitViewContainer);
-            characterTraitViewPrefab.Initialize(characterTrait);
+            if (characterTrait.visible)
+            {
+                CharacterTraitView characterTraitViewPrefab = Instantiate(_characterTraitViewPrefab, _characterTraitViewContainer);
+                characterTraitViewPrefab.Initialize(characterTrait);
+            }
         }
     }
 

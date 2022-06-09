@@ -60,3 +60,4 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 773cbbdf51de31d4aa17d4b2a595ca28, type: 3}
   _character: {fileID: 0}
   _effectBox: {fileID: 0}
+  visible: 1
