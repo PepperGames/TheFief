@@ -11,6 +11,7 @@ public class Church : PublicStructure
     {
         base.Start();
         _circle.SetRange(_range);
+        _circle.Initialize();
     }
 
     protected override void OnUpgrade()

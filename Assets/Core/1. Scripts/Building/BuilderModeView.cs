@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,25 +13,40 @@ public class BuilderModeView : MonoBehaviour
     private static BuilderModeView _instance;
     private bool isActive = false;
 
-    public bool IsActive => isActive;
-    private static BuilderModeView Instance => _instance;
+    public bool IsActive
+    {
+        get
+        {
+            return isActive;
+        }
+        private set
+        {
+            isActive = value;
+            OnModeChange?.Invoke();
+        }
+    }
+    public static BuilderModeView Instance => _instance;
+
+    public Action OnModeChange;
 
     private void Start()
     {
         _instance = this;
         _button.onClick.AddListener(ChangeMod);
+        IsActive = false;
+        _buttonImage.sprite = _notActiveSprite;
     }
 
     private void ChangeMod()
     {
-        if (isActive == true)
+        if (IsActive == true)
         {
-            isActive = false;
+            IsActive = false;
             _buttonImage.sprite = _notActiveSprite;
         }
         else
         {
-            isActive = true;
+            IsActive = true;
             _buttonImage.sprite = _activeSprite;
         }
     }
