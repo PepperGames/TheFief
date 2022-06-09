@@ -15,6 +15,7 @@ public abstract class BasicStructure : MonoBehaviour
 
     [Inject] protected Services services;
 
+
     public List<Vector2Int> Points
     {
         get
@@ -56,7 +57,7 @@ public abstract class BasicStructure : MonoBehaviour
         services.PlacementManager.Demolish(new Vector2Int((int)structurePosition.x, (int)structurePosition.y));
     }
 
-    protected virtual void OnDemolish() { }
+    protected virtual void OnDemolish() {}
 
     private void OnDrawGizmos()
     {

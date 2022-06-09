@@ -20,6 +20,7 @@ public class FaithManager : MonoBehaviour
         private set
         {
             _faith = value;
+            Debug.Log("_faith " + _faith);
             OnFaithChange?.Invoke();
         }
     }

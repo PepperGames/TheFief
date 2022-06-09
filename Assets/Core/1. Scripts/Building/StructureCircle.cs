@@ -4,14 +4,12 @@ public class StructureCircle : MonoBehaviour
 {
     public void Initialize()
     {
-        Debug.Log("Initialize");
         BuilderModeView.Instance.OnModeChange += ChangeViewMode;
         ChangeViewMode();
     }
 
     private void ChangeViewMode()
     {
-        Debug.LogError("ChangeViewMode");
         Debug.LogError(BuilderModeView.Instance.IsActive);
         if (BuilderModeView.Instance.IsActive == false)
         {

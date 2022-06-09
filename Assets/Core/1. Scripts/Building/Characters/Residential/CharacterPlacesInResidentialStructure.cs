@@ -10,6 +10,7 @@ public class CharacterPlacesInResidentialStructure : CharacterPlacesInStructure
             characters.Add(character);
             character.SetLivingPlace(structure);
             OnCharacterListChange?.Invoke();
+            OnCharacterAdd?.Invoke(character);
             return true;
         }
         return false;
@@ -24,6 +25,7 @@ public class CharacterPlacesInResidentialStructure : CharacterPlacesInStructure
             characters.Remove(character);
             character.KickOutFromLivingPlace(structure);
 
+            OnCharacterKick?.Invoke(character);
             OnCharacterListChange?.Invoke();
         }
     }

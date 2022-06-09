@@ -24,6 +24,9 @@ public abstract class CharacterPlacesInStructure : MonoBehaviour
         }
     }
 
+    public Action<Character> OnCharacterAdd;
+    public Action<Character> OnCharacterKick;
+
     public Action OnCharacterListChange;
     public Action OnNumberOfPlacesChange;
 

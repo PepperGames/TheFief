@@ -83,13 +83,11 @@ public class HappinessManager : MonoBehaviour
         Recalculate(Estates.Merchants);
         Recalculate(Estates.Priests);
         Recalculate(Estates.Peers);
-        Debug.Log("Recalculate");
     }
 
     public void Recalculate(Character character)
     {
         Recalculate(character.CharacterData.Estates);
-        Debug.Log("Recalculate");
     }
 
     public void Recalculate(Estates estate)
@@ -113,7 +111,6 @@ public class HappinessManager : MonoBehaviour
                 break;
         }
 
-        Debug.Log("Recalculate");
     }
 
     public float Recalculate(List<Character> characters)
@@ -128,7 +125,6 @@ public class HappinessManager : MonoBehaviour
             result /= characters.Count;
         }
 
-        Debug.Log("Recalculate");
         return result;
     }
 }
