@@ -8,14 +8,16 @@ public abstract class CharacterTrait : MonoBehaviour
 
     protected bool _isActive = false;
 
-    public Sprite Sprite => _sprite;
+    public bool visible = true;
 
+    public Sprite Sprite => _sprite;
 
     public virtual void Initialiize(Character character)
     {
         _character = character;
         Subscribe();
     }
+
     protected abstract void Subscribe();
     protected abstract void Activate();
     protected abstract void Deactivate();

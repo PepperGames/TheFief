@@ -1,11 +1,5 @@
 public class FamilyLoverTrait : CharacterTrait
 {
-    public override void Initialiize(Character character)
-    {
-        base.Initialiize(character);
-        _character = character;
-    }
-
     protected override void Subscribe()
     {
         _character.CharacterData.FamilyTies.OnFamilyChange += Recheck;

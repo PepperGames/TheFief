@@ -2,12 +2,6 @@ using UnityEngine;
 
 public class ManHaterTrait : CharacterTrait
 {
-    public override void Initialiize(Character character)
-    {
-        base.Initialiize(character);
-        _character = character;
-    }
-
     protected override void Subscribe()
     {
         _character.OnChangeLivingPlace += OnChangeLivingPlace;

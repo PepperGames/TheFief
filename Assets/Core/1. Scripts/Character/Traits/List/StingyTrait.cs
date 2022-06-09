@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class StingyTrait : MonoBehaviour
+public class StingyTrait : CharacterTrait
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Initialiize(Character character)
     {
-        
+        base.Initialiize(character);
+        _character = character;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Activate()
     {
-        
+    }
+
+    protected override void Deactivate()
+    {
+    }
+
+    protected override void Subscribe()
+    {
     }
 }
