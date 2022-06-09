@@ -45,11 +45,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: StructureInfo
-    uniqueID: 3043538679
-    locked: 0
   - name: Character
     uniqueID: 467018173
+    locked: 0
+  - name: StructureInfo
+    uniqueID: 3043538679
     locked: 0
   - name: UI
     uniqueID: 1973151691

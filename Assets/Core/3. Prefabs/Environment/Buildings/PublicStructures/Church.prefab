@@ -847,7 +847,7 @@ GameObject:
   - component: {fileID: 4113727625318229144}
   - component: {fileID: 4827822937149837313}
   - component: {fileID: 5896092806194124206}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,6 +1074,7 @@ MonoBehaviour:
   ui: {fileID: 2271359735546104773}
   _range: 7
   _circle: {fileID: 5896092806194124206}
+  structures: []
 --- !u!114 &1552313407208889620
 MonoBehaviour:
   m_ObjectHideFlags: 0

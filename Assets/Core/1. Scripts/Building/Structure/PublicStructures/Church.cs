@@ -14,7 +14,7 @@ public class Church : PublicStructure
         _circle.SetRange(_range);
         _circle.Initialize();
         UpdateStructuresList();
-        services.StructureManager.OnPlaceHouse += OnUpgrade;
+        services.StructureManager.OnPlaceHouse += UpdateStructuresList;
     }
 
     protected override void OnUpgrade()
@@ -123,6 +123,6 @@ public class Church : PublicStructure
     {
         base.OnDemolish();
         DebufFaith(structures);
-        services.StructureManager.OnPlaceHouse -= OnUpgrade;
+        services.StructureManager.OnPlaceHouse -= UpdateStructuresList;
     }
 }

@@ -38,6 +38,7 @@ public class StructureManager : MonoBehaviour
                     services.ResourcesManager.SpendResources(selectedStructure.StructureCost.GetAmountOfResourcesForBuild());
                     Structure structure = services.PlacementManager.PlaceStructureOnTheMap(position, selectedStructure, CellType.Structure) as Structure;
                     AddToStructuserList(structure);
+                    OnPlaceHouse?.Invoke();
                 }
             }
         }
