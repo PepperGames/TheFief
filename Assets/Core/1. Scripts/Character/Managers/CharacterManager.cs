@@ -52,7 +52,7 @@ public class CharacterManager : MonoBehaviour
             character.Initialize(characterData);
             character.CharacterTraitsManager.InitializeTrait(_characterTraitsGenerator.GetCharacterTraits(2));
 
-            AddCharacterToLists(character);
+            AddCharacterToLists(character); 
 
             OnCharacterEventsSubscribe(character);
 
