@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2669751217496181644}
   - component: {fileID: 2669751217496181647}
+  - component: {fileID: 2124561431}
+  - component: {fileID: 2124561432}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +47,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buildingAction: 0
+--- !u!114 &2124561431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669751217496181645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbbcad3776277bb42be62003b68ec852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2124561432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669751217496181645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72155300ebd9ad040adbafa5fdc69121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _standartCursor: {fileID: 2800000, guid: 18683969f96db7b49bc8421df1a5622f, type: 3}
+  _errorcursor: {fileID: 2800000, guid: e3cf7bf7393c28643b6816311bf59199, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1001 &1660253898610430748
 PrefabInstance:
   m_ObjectHideFlags: 0
