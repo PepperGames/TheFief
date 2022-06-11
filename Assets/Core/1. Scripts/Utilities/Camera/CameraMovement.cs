@@ -23,6 +23,7 @@ public class CameraMovement : MonoBehaviour
             _instance = value;
         }
     }
+
     public Vector2 CameraMovementVector
     {
         get { return cameraMovementVector; }

@@ -56,6 +56,7 @@ public class StructureManager : MonoBehaviour
             return true;
         }
         Debug.Log("Not enough resources");
+        CursorManager.Instance.SetErrorcursor();
         return false;
     }
 
@@ -84,6 +85,7 @@ public class StructureManager : MonoBehaviour
         if (services.PlacementManager.GetNeighboursOfTypeFor(position, CellType.Road).Count <= 0)
         {
             Debug.Log("Must be placed near a road");
+            CursorManager.Instance.SetErrorcursor();
             return false;
         }
         return true;
@@ -94,11 +96,13 @@ public class StructureManager : MonoBehaviour
         if (services.PlacementManager.CheckIfPositionInBound(position) == false)
         {
             Debug.Log("This position is out of bounds");
+            CursorManager.Instance.SetErrorcursor();
             return false;
         }
         if (services.PlacementManager.CheckIfPositionIsFree(position) == false)
         {
             Debug.Log("This position is not EMPTY");
+            CursorManager.Instance.SetErrorcursor();
             return false;
         }
         return true;
