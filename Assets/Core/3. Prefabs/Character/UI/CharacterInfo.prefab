@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00030517578, y: 0.000061937295}
+  m_AnchoredPosition: {x: -0.020568848, y: 0.000061937295}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6665098763468159415
@@ -2345,7 +2345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00030517578, y: 0.000061937295}
+  m_AnchoredPosition: {x: -0.019958496, y: 0.000061937295}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &319137761529181053
@@ -2513,6 +2513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _character: {fileID: 0}
   _closeButton: {fileID: 6254690128185489303}
+  _zoomToWorkButton: {fileID: 1660258993502091292}
+  _zoomToHomeButton: {fileID: 3466012633726130410}
   _portrait: {fileID: 414701598833953631}
   _nameText: {fileID: 8623971419490811415}
   _estatesText: {fileID: 8639308405126745746}

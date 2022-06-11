@@ -4,5 +4,5 @@ public static class ConstantValues
     public static readonly int endWorkingDayTime = 18;
     public static readonly int tributeCollectionTime = 21;
 
-    public static readonly float LowIndexOfHappiness = 20;
+    public static readonly float LowIndexOfHappiness = 10;
 }

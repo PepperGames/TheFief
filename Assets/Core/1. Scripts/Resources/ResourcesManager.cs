@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ResourcesManager : MonoBehaviour
 {
-    [SerializeField] private Resources resources;
+    [SerializeField] private Resources _resources;
+    [SerializeField] private Resources _maxResources;
 
     public Action<float> OnMoneyChangeFor;
     public Action<float> OnFoodChangeFor;
@@ -11,13 +12,16 @@ public class ResourcesManager : MonoBehaviour
     public Action<float> OnStoneChangeFor;
     public Action<float> OnMetalChangeFor;
 
-    public Resources Resources => resources;
+    public Resources Resources => _resources;
 
     public Action<Resources> OnResourcesChange;
 
     public void AddResources(Resources addedResources)
     {
-        resources += addedResources;
+        _resources += addedResources;
+
+        FixOnMax();
+
 
         if (addedResources.Money > 0)
         {
@@ -42,7 +46,35 @@ public class ResourcesManager : MonoBehaviour
 
         if (addedResources > 0)
         {
-            OnResourcesChange?.Invoke(resources);
+            OnResourcesChange?.Invoke(_resources);
+        }
+    }
+
+    private void FixOnMax()
+    {
+        if (_resources.Money > _maxResources.Money)
+        {
+            _resources.Money = _maxResources.Money;
+        }
+
+        if (_resources.Food > _maxResources.Food)
+        {
+            _resources.Food = _maxResources.Food;
+        }
+
+        if (_resources.Wood > _maxResources.Wood)
+        {
+            _resources.Wood = _maxResources.Wood;
+        }
+
+        if (_resources.Stone > _maxResources.Stone)
+        {
+            _resources.Stone = _maxResources.Stone;
+        }
+
+        if (_resources.Metal > _maxResources.Metal)
+        {
+            _resources.Metal = _maxResources.Metal;
         }
     }
 
@@ -51,7 +83,7 @@ public class ResourcesManager : MonoBehaviour
         if (NotEnoughResources(neededResources))
             return false;
 
-        resources -= neededResources;
+        _resources -= neededResources;
 
         if (neededResources.Money > 0)
         {
@@ -76,7 +108,7 @@ public class ResourcesManager : MonoBehaviour
 
         if (neededResources > 0)
         {
-            OnResourcesChange?.Invoke(resources);
+            OnResourcesChange?.Invoke(_resources);
         }
 
         return true;
@@ -84,7 +116,7 @@ public class ResourcesManager : MonoBehaviour
 
     public bool EnoughResources(Resources neededResources)
     {
-        return resources > neededResources;
+        return _resources > neededResources;
     }
 
     private bool NotEnoughResources(Resources neededResources)
@@ -94,7 +126,7 @@ public class ResourcesManager : MonoBehaviour
 
     public void PrintDebug()
     {
-        Debug.Log("Money " + resources.Money + " Food " + resources.Food + "\n" +
-            "Wood " + resources.Wood + " Stone " + resources.Stone + " Metal " + resources.Metal);
+        Debug.Log("Money " + _resources.Money + " Food " + _resources.Food + "\n" +
+            "Wood " + _resources.Wood + " Stone " + _resources.Stone + " Metal " + _resources.Metal);
     }
 }

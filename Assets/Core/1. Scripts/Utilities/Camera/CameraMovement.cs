@@ -2,24 +2,37 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] private float minOrthographicSize;
-
     private Vector2 cameraMovementVector;
 
+    public Camera gameCamera;
+
+    [SerializeField] private float minOrthographicSize;
+    public float camerMovementSpeed = 5f;
+    public float zoomSpeed;
+
+    private static CameraMovement _instance;
+
+    public static CameraMovement Instance
+    {
+        get
+        {
+            return _instance;
+        }
+        private set
+        {
+            _instance = value;
+        }
+    }
     public Vector2 CameraMovementVector
     {
         get { return cameraMovementVector; }
     }
 
-    public Camera gameCamera;
-    public float camerMovementSpeed = 5f;
-    public float zoomSpeed;
-
     private void Start()
     {
         gameCamera = GetComponent<Camera>();
+        Instance = this;
     }
-
 
     private void CheckArrowInput()
     {
@@ -34,17 +47,21 @@ public class CameraMovement : MonoBehaviour
 
     private void Zoom()
     {
-        if (Input.mouseScrollDelta.y != 0)
+        //if (Input.mouseScrollDelta.y != 0)
+        //{
+        float orthographicSize = gameCamera.orthographicSize - Input.mouseScrollDelta.y * zoomSpeed / 100;
+
+        Zoom(orthographicSize);
+    }
+
+    private void Zoom(float orthographicSize)
+    {
+        if (orthographicSize < minOrthographicSize)
         {
-            float orthographicSize = gameCamera.orthographicSize - Input.mouseScrollDelta.y * zoomSpeed / 100;
-
-            if (orthographicSize < minOrthographicSize)
-            {
-                orthographicSize = minOrthographicSize;
-            }
-
-            gameCamera.orthographicSize = orthographicSize;
+            orthographicSize = minOrthographicSize;
         }
+        //}
+        gameCamera.orthographicSize = orthographicSize;
     }
 
     private void Update()
@@ -53,6 +70,12 @@ public class CameraMovement : MonoBehaviour
         Move(new Vector3(CameraMovementVector.x, CameraMovementVector.y, 0));
 
         Zoom();
+    }
+
+    public void ZoomOn(Vector2 finalPoint, float orthographicSize = 4)
+    {
+        gameCamera.transform.position = new Vector3(finalPoint.x, finalPoint.y, gameCamera.transform.position.z);
+        Zoom(orthographicSize);
     }
 }
 

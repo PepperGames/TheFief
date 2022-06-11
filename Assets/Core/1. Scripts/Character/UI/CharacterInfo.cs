@@ -11,6 +11,9 @@ public class CharacterInfo : MonoBehaviour
 
     [SerializeField] protected Button _closeButton;
 
+    [SerializeField] protected Button _zoomToWorkButton;
+    [SerializeField] protected Button _zoomToHomeButton;
+
     [SerializeField] private Image _portrait;
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _estatesText;
@@ -27,6 +30,8 @@ public class CharacterInfo : MonoBehaviour
     private void Start()
     {
         _closeButton.onClick.AddListener(Hide);
+        _zoomToWorkButton.onClick.AddListener(ZoomToWork);
+        _zoomToHomeButton.onClick.AddListener(ZoomToHome);
 
         _character.CharacterData.Happiness.OnHappinessChange += DisplayHappines;
         _portrait.sprite = _character.CharacterData.Portrait;
@@ -54,6 +59,21 @@ public class CharacterInfo : MonoBehaviour
         DisplayAge();
 
         gameObject.SetActive(true);
+    }
+
+    private void ZoomToWork()
+    {
+        if (_character.WorkPlace != null)
+        {
+            CameraMovement.Instance.ZoomOn(_character.WorkPlace.transform.position);
+        }
+    }
+    private void ZoomToHome()
+    {
+        if (_character.LivingPlace != null)
+        {
+            CameraMovement.Instance.ZoomOn(_character.LivingPlace.transform.position);
+        }
     }
 
     private void DisplayCharacterTraits()

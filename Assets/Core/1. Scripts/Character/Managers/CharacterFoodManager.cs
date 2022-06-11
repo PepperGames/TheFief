@@ -50,11 +50,11 @@ public class CharacterFoodManager : MonoBehaviour
         if (services.ResourcesManager.EnoughResources(resources))
         {
             services.ResourcesManager.SpendResources(resources);
-            character.CharacterData.Happiness.IndexOfHappiness += 0.2f;
+            character.CharacterData.Happiness.IndexOfHappiness += 2f;
         }
         else
         {
-            character.CharacterData.Happiness.IndexOfHappiness -= 0.3f;
+            character.CharacterData.Happiness.IndexOfHappiness -= 3f;
         }
     }
 

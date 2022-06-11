@@ -44,12 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00db84c83ae52b6469680b29c783b9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resources:
-    money: 1000
-    food: 1000
-    wood: 1000
-    stone: 1000
-    metal: 1000
+  _resources:
+    money: 500
+    food: 500
+    wood: 500
+    stone: 500
+    metal: 500
+  _maxResources:
+    money: 9999
+    food: 9999
+    wood: 9999
+    stone: 9999
+    metal: 9999
 --- !u!114 &6838684471892504657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,3 +68,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f1cef6ced73e54a9918677d2668603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accumulatedResources:
+    money: 0
+    food: 0
+    wood: 0
+    stone: 0
+    metal: 0
+  _peasantsTribute: 1
+  _merchantsTribute: 2
+  _priestsTribute: 3
+  _peersTribute: 4
