@@ -8,6 +8,11 @@ public class StructureBuildCostInfo : StructureCostInfo
     [SerializeField] protected TMP_Text _stoneText;
     [SerializeField] protected TMP_Text _metalText;
 
+    protected virtual void Start()
+    {
+        Hide();
+    }
+
     public override void Show(Resources resources)
     {
         base.Show(resources);

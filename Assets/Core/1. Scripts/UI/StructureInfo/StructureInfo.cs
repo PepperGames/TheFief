@@ -11,6 +11,8 @@ public abstract class StructureInfo : MonoBehaviour
     [SerializeField] protected Slider _fillSlider;
 
     [SerializeField] protected TMP_Text _lvlText;
+    [SerializeField] protected StructureUpgradeCostInfo _upgradeCostInfo;
+    [SerializeField] protected StructureRepairCostInfo _repairCostInfo;
 
     [SerializeField] protected Button _upgradeButton;
     [SerializeField] protected Button _repairButton;
@@ -38,6 +40,11 @@ public abstract class StructureInfo : MonoBehaviour
         _structure.CharacterPlaces.OnNumberOfPlacesChange += DisplayFullness;
     }
 
+    protected virtual void Update()
+    {
+        DisplayRepairInfo();
+    }
+
     public virtual void ShowOrHide()
     {
         if (gameObject.activeInHierarchy)
@@ -56,6 +63,8 @@ public abstract class StructureInfo : MonoBehaviour
 
         DisplayLvl();
         DisplayFullness();
+        DisplayUpgradeInfo();
+        DisplayRepairInfo();
 
         gameObject.SetActive(true);
     }
@@ -63,6 +72,25 @@ public abstract class StructureInfo : MonoBehaviour
     private void DisplayLvl()
     {
         _lvlText.text = _structure.LVL.ToString() + " lvl";
+        DisplayUpgradeInfo();
+    }
+
+    private void DisplayUpgradeInfo()
+    {
+        if (_structure.LVL >= _structure.MaxLvl)
+        {
+            _upgradeCostInfo.Hide();
+            _upgradeButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            _upgradeCostInfo.Show(_structure.StructureCost.GetAmountOfResourcesForUpdate(_structure.LVL + 1));
+        }
+    }
+
+    private void DisplayRepairInfo()
+    {
+        _repairCostInfo.Show(_structure.GetRepairCost());
     }
 
     private void DisplayFullness()

@@ -137,6 +137,7 @@ MonoBehaviour:
   _currentDurability: 0
   _maxDurability: 100
   _breakdownFrequency: 120
+  _currentBreakdownFrequency: 0
 --- !u!61 &412829227278515441
 BoxCollider2D:
   m_ObjectHideFlags: 0

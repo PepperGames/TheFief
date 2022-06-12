@@ -37,7 +37,7 @@ public class MarketStructureInfo : IndustrialStructureInfo
         _confirmGoldSaleButton.onClick.AddListener(ConfirmConfirmGoldSale);
     }
 
-    private void Update()
+    protected override void Update()
     {
         SetMaxPurchaseOfGoldSliderValues();
         _purchaseOfGoldCountText.text = _market.CalculateTheGoldReceived(GetResourcesForGoldSale()).ToString();

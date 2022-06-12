@@ -19,6 +19,8 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
 
     public Durability Durability => durability;
     public int LVL => lvl;
+    public int MaxLvl => maxLvl;
+
     public CharacterPlacesInStructure CharacterPlaces => _characterPlaces;
 
     public virtual Estates Estate => _estate;
@@ -78,11 +80,21 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
         durability.Break(percent);
     }
 
+    public Resources GetRepairCost()
+    {
+        return GetRepairCost(durability.MissingStrength);
+    }
+
+    public Resources GetRepairCost(float percent)
+    {
+        return 0.75f * (percent / 100) * StructureCost.CurrentCost;
+    }
+
     public bool Repair(float percent)
     {
-        if (services.ResourcesManager.EnoughResources(0.75f * (percent / 100) * StructureCost.CurrentCost))
+        if (services.ResourcesManager.EnoughResources(GetRepairCost(percent)))
         {
-            services.ResourcesManager.SpendResources(0.75f * (percent / 100) * StructureCost.CurrentCost);
+            services.ResourcesManager.SpendResources(GetRepairCost(percent));
             durability.CurrentDurability += percent;
             return true;
         }

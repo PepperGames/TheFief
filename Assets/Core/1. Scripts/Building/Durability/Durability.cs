@@ -8,6 +8,7 @@ public class Durability : MonoBehaviour
     [SerializeField] private float _maxDurability;
 
     [SerializeField] private float _breakdownFrequency;
+    [SerializeField] private float _currentBreakdownFrequency;
 
     public Action<float> OnDurabilityChange;
 
@@ -40,8 +41,9 @@ public class Durability : MonoBehaviour
     {
         _maxDurability = 100;
         _currentDurability = _maxDurability;
+        _currentBreakdownFrequency = _breakdownFrequency;
 
-        StartCoroutine(BreakDownOverTime());
+        //StartCoroutine(BreakDownOverTime());
     }
 
     public void Break(float percent)
@@ -49,17 +51,28 @@ public class Durability : MonoBehaviour
         CurrentDurability -= percent;
     }
 
-    private IEnumerator BreakDownOverTime()
+    private void Update()
     {
-        while (true)
+        _currentBreakdownFrequency -= Time.deltaTime * InGameSpeed.Speed;
+        if (_currentBreakdownFrequency <= 0)
         {
-            yield return new WaitForSeconds(_breakdownFrequency);
+            _currentBreakdownFrequency = _breakdownFrequency;
             Break(1f);
         }
     }
 
-    private void OnDestroy()
-    {
-        StopAllCoroutines();
-    }
+    //private IEnumerator BreakDownOverTime()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(_breakdownFrequency);
+    //        _currentBreakdownFrequency = _breakdownFrequency;
+    //        Break(1f);
+    //    }
+    //}
+
+    //private void OnDestroy()
+    //{
+    //    StopAllCoroutines();
+    //}
 }
