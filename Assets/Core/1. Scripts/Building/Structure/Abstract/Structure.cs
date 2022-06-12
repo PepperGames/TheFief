@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(StructureCost))]
 [RequireComponent(typeof(Durability))]
@@ -38,7 +39,10 @@ public abstract class Structure : BasicStructure, IUpgradable, IBreakable
         if (ui == null)
             return;
 
-        ui.ShowOrHide();
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            ui.ShowOrHide();
+        }
     }
 
     public virtual bool CanBeUpgrade()
