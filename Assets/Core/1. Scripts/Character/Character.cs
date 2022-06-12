@@ -111,6 +111,8 @@ public class Character : MonoBehaviour
         KickOutFromAll();
 
         OnEventsUnscribe();
+        
+        OnDie?.Invoke(this);
 
         gameObject.SetActive(false);
     }

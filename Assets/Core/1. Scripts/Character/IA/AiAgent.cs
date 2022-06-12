@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AiAgent : MonoBehaviour
 {
@@ -8,16 +9,16 @@ public class AiAgent : MonoBehaviour
 
     public float speed = 0.2f;
 
-    List<Vector2> pathToGo = new List<Vector2>();
-    bool moveFlag = false;
-    int index = 0;
-    Vector2 endPosition;
+    private List<Vector2> pathToGo = new List<Vector2>();
+    private bool moveFlag = true;
+    private int index = 0;
+    private Vector2 endPosition;
+    private float _idleTime = 0;
 
     public void Initialize(List<Vector2> path)
     {
         pathToGo = path;
         index = 1;
-        moveFlag = true;
         if (pathToGo.Count > 1)
         {
             endPosition = pathToGo[index];
@@ -34,6 +35,10 @@ public class AiAgent : MonoBehaviour
         {
             PerformMovement();
         }
+        else
+        {
+            Idle();
+        }
     }
 
     private void PerformMovement()
@@ -47,11 +52,21 @@ public class AiAgent : MonoBehaviour
                 if (index >= pathToGo.Count)
                 {
                     moveFlag = false;
+                    _idleTime = Random.Range(0.7f, 3f);
                     OnReachedFinalPoint?.Invoke(this, null);
                     return;
                 }
                 endPosition = pathToGo[index];
             }
+        }
+    }
+
+    private void Idle()
+    {
+        _idleTime -= Time.deltaTime;
+        if (_idleTime <= 0)
+        {
+            moveFlag = true;
         }
     }
 
