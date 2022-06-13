@@ -31,7 +31,7 @@ public class Happiness
     public Action OnLowHappiness;
     public Action OnHappinessChange;
 
-    public Happiness() : this(Random.Range(35, 70)) { }
+    public Happiness() : this(Random.Range(45, 70)) { }
 
     public Happiness(int happiness)
     {

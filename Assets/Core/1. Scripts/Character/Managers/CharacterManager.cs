@@ -66,6 +66,7 @@ public class CharacterManager : MonoBehaviour
 
             character.Initialize(characterData);
             character.CharacterTraitsManager.InitializeTrait(_characterTraitsGenerator.GetCharacterTraits(2));
+            character.CharacterTraitsManager.InitializeTrait(_characterTraitsGenerator.GetBumTrait());
 
             AddCharacterToLists(character);
 
@@ -96,12 +97,11 @@ public class CharacterManager : MonoBehaviour
         Genders gender = GenderGenerator.GetRandomGender();
         Sprite portrait = _portraitGenerator.GetPortrait(gender);
         Estates estates = father.CharacterData.Estates;
-        Happiness happiness = new Happiness(50);
+        Happiness happiness = new Happiness(65);
         Faith faith = new Faith();
         FamilyTies familyTies = new FamilyTies(mother, father);
-        //CharacterTraits traits = new CharacterTraits(_characterTraitsGenerator.GetCharacterTraits(2));
 
-        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies, faith/*, traits*/);
+        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies, faith);
 
         return characterData;
     }
@@ -116,9 +116,8 @@ public class CharacterManager : MonoBehaviour
         Happiness happiness = new Happiness();
         Faith faith = new Faith();
         FamilyTies familyTies = new FamilyTies();
-        //CharacterTraits traits = new CharacterTraits(_characterTraitsGenerator.GetCharacterTraits(2));
 
-        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies, faith/*, traits*/);
+        CharacterData characterData = new CharacterData(characterName, portrait, age, gender, estates, happiness, familyTies, faith);
 
         return characterData;
     }

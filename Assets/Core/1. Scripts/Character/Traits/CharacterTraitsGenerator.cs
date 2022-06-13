@@ -6,6 +6,13 @@ public class CharacterTraitsGenerator : MonoBehaviour
 {
     [SerializeField] private List<CharacterTrait> _characterTraits;
 
+    [SerializeField] private BumTrait _bumTrait;
+
+    public CharacterTrait GetBumTrait()
+    {
+        return _bumTrait;
+    }
+
     public CharacterTrait GetCharacterTrait()
     {
         int randomIndex = Random.Range(0, _characterTraits.Count);

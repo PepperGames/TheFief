@@ -7,13 +7,19 @@ public class FamilyTree : MonoBehaviour
     [SerializeField] private Button _closeButton;
 
     [SerializeField] private FamilyTreeNodeView _familyTreeNodeViewPrefab;
+    [SerializeField] private HardFamilyTree _hardFamilyTree;
+
+    [SerializeField] private Character _character;
 
     [SerializeField] private List<Character> _firstGeneration;
     [SerializeField] private List<Character> _secondGeneration;
     [SerializeField] private List<Character> thirdGeneration;
-    [SerializeField] private Character _character;
+
 
     [SerializeField] private List<FamilyTreeNodeView> _familyTreeNodeViews = new List<FamilyTreeNodeView>();
+
+    private static bool _hardFamilyTreeDisplayed = false;
+    private bool _hardFamilyTreeDisplayedHere = false;
 
     private void Start()
     {
@@ -22,14 +28,24 @@ public class FamilyTree : MonoBehaviour
 
     public void Initialize(Character character)
     {
-        Debug.Log("Initialize");
         gameObject.SetActive(true);
-        _character = character;
 
-        Clear();
+        if (_hardFamilyTreeDisplayed == false)
+        {
+            _hardFamilyTree.Initialize(character);
+            _hardFamilyTreeDisplayed = true;
+            _hardFamilyTreeDisplayedHere = true;
+        }
+        else if (_hardFamilyTreeDisplayedHere == false)
+        {
+            Debug.Log("Initialize");
+            _character = character;
 
-        SetGenerations();
-        DrawTree();
+            Clear();
+
+            SetGenerations();
+            DrawTree();
+        }
     }
 
     public void Close()
