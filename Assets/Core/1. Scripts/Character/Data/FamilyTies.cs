@@ -87,6 +87,7 @@ public class FamilyTies
     /// </summary>
     public bool IsKinsman(Character character)
     {
-        return IsChildren(character) || IsParent(character);
+        return false;
+        //return IsChildren(character) || IsParent(character);
     }
 }
