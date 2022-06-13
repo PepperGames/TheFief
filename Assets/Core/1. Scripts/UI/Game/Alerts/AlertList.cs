@@ -37,7 +37,7 @@ public class AlertList : MonoBehaviour
     public DeathPopup CreateDeathPopup(Character character)
     {
         DeathPopup deathPopup = Instantiate(_deathPopupPrefab, content);
-        deathPopup.Initialize(character.CharacterData.Portrait, character.CharacterData.CharacterName, character.CharacterData.Age.years);
+        deathPopup.Initialize(character.CharacterData.CharacterName, character.CharacterData.Age.years);
         return deathPopup;
     }
 

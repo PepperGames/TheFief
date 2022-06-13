@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resources:
-    money: 500
-    food: 500
-    wood: 500
-    stone: 500
-    metal: 500
+    money: 1000
+    food: 1000
+    wood: 1000
+    stone: 1000
+    metal: 1000
   _maxResources:
     money: 9999
     food: 9999
