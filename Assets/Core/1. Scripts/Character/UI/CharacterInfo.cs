@@ -14,6 +14,9 @@ public class CharacterInfo : MonoBehaviour
     [SerializeField] protected Button _zoomToWorkButton;
     [SerializeField] protected Button _zoomToHomeButton;
 
+    [SerializeField] protected Button _familyTreeButton;
+    [SerializeField] protected FamilyTree _familyTree;
+
     [SerializeField] private Image _portrait;
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _estatesText;
@@ -32,6 +35,7 @@ public class CharacterInfo : MonoBehaviour
         _closeButton.onClick.AddListener(Hide);
         _zoomToWorkButton.onClick.AddListener(ZoomToWork);
         _zoomToHomeButton.onClick.AddListener(ZoomToHome);
+        _familyTreeButton.onClick.AddListener(ShowFamilyTree);
 
         _character.CharacterData.Happiness.OnHappinessChange += DisplayHappines;
         _portrait.sprite = _character.CharacterData.Portrait;
@@ -49,6 +53,11 @@ public class CharacterInfo : MonoBehaviour
         {
             Show();
         }
+    }
+
+    public virtual void ShowFamilyTree()
+    {
+        _familyTree.Initialize(_character);
     }
 
     public virtual void Show()
@@ -122,7 +131,7 @@ public class CharacterInfo : MonoBehaviour
 
     public virtual void Hide()
     {
-
+        _familyTree.Close();
         gameObject.SetActive(false);
     }
 }
